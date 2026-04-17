@@ -1,3 +1,6 @@
 pyyaml
 openai
 python-dotenv
+requests
+sqlalchemy
+psycopg[binary]

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apollo Outreach Analytics</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <h1>Apollo Outreach Analytics</h1>
+            <p class="subtitle">Campaign and sequence performance dashboard</p>
+            <p class="generated-at" id="generated-at"></p>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <h3>Filters</h3>
+
+            <label for="filter-search">Search sequence</label>
+            <input type="text" id="filter-search" placeholder="Type to search...">
+
+            <label for="filter-status">Sequence status</label>
+            <select id="filter-status">
+                <option value="all">All</option>
+                <option value="active_inactive" selected>Active &amp; Inactive</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="archived">Archived</option>
+                <option value="unknown">Unknown</option>
+            </select>
+
+            <div id="filter-campaign-type-wrap" class="filter-group hidden">
+                <label for="filter-campaign-type">Campaign type</label>
+                <select id="filter-campaign-type"><option value="">All</option></select>
+            </div>
+
+            <div id="filter-persona-wrap" class="filter-group hidden">
+                <label for="filter-persona">Persona</label>
+                <select id="filter-persona"><option value="">All</option></select>
+            </div>
+
+            <div id="filter-industry-wrap" class="filter-group hidden">
+                <label for="filter-industry">Industry</label>
+                <select id="filter-industry"><option value="">All</option></select>
+            </div>
+        </aside>
+
+        <main>
+            <div id="error-banner" class="error-banner hidden"></div>
+
+            <!-- KPI -->
+            <section id="section-kpi">
+                <h2>Executive Overview</h2>
+                <div class="kpi-grid" id="kpi-grid"></div>
+            </section>
+
+            <!-- Sequence performance -->
+            <section id="section-sequence-performance">
+                <h2>Sequence Performance</h2>
+                <div class="table-wrap">
+                    <table id="table-sequence-performance"></table>
+                </div>
+            </section>
+
+            <!-- Message status summary -->
+            <section id="section-message-status">
+                <h2>Message Status Summary</h2>
+                <div class="table-wrap">
+                    <table id="table-message-status"></table>
+                </div>
+            </section>
+
+            <!-- Reply type summary -->
+            <section id="section-reply-type">
+                <h2>Reply Type Summary</h2>
+                <div class="table-wrap">
+                    <table id="table-reply-type"></table>
+                </div>
+            </section>
+
+            <!-- Sequence status summary -->
+            <section id="section-sequence-status">
+                <h2>Sequence Status Summary</h2>
+                <div class="table-wrap">
+                    <table id="table-sequence-status"></table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Data exported from internal Apollo analytics. No live connections.</p>
+    </footer>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>
