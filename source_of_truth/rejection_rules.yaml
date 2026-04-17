@@ -1,0 +1,41 @@
+# Source of Truth — Rejection Rules
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+rejection_rules:
+  description: >
+    Reguły odrzucania kontaktów z kampanii outreachowych.
+    Jeśli kontakt spełnia KTÓREKOLWIEK z poniższych kryteriów, jest odrzucany.
+
+  hard_reject:
+    - reason: not_icp
+      description: "Rola kontaktu nie pasuje do żadnej pozycji w ICP"
+      status: rejected_not_icp
+
+    - reason: not_target_industry
+      description: "Branża firmy nie pasuje do target industries"
+      status: rejected_not_target_industry
+
+    - reason: no_valid_contact
+      description: "Brak sensownego adresu email lub stanowiska w danych"
+      status: no_valid_contact
+
+    - reason: reputation_risk
+      description: "Kontakt lub firma stwarzają ryzyko reputacyjne"
+      status: rejected_reputation_risk
+
+  soft_reject:
+    - reason: insufficient_personalization
+      description: "Za mało danych do sensownej personalizacji - wymaga ręcznego review"
+      status: insufficient_personalization
+      action: requires_manual_review
+
+    - reason: uncertain_data
+      description: "Dane niepewne lub niespójne - wymaga weryfikacji"
+      status: requires_manual_review
+      action: flag_in_notes
+
+  rules:
+    - "Nie generuj maili dla kontaktów odrzuconych (hard reject)."
+    - "Kontakty z soft reject trafiają do review, nie do kosza."
+    - "Jeśli dane są niepewne, oznacz to w notatkach - nie odrzucaj automatycznie."
+    - "Decyzja o wysyłce zawsze należy do człowieka."

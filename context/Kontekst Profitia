@@ -1,0 +1,163 @@
+# PROFITIA / SPENDGURU — KONTEKST DLA AGENTÓW, FLOWÓW I TASKÓW OUTREACH
+# Ten plik jest bazą wiedzy dla GitHub Copilot do tworzenia kampanii outreach, maili, sekwencji Apollo i automatyzacji sprzedaży.
+
+---
+
+## 1. KIM JEST PROFITIA
+- Firma doradcza, 15+ lat doświadczenia, Europa Środkowo-Wschodnia (CEE)
+- Specjalizacja: optymalizacja kosztów, procurement, zakupy strategiczne
+- Wyłączny partner CIPS w Polsce
+- Współpraca z 8 z 10 największych firm w Polsce
+- Łączy doradztwo, analitykę danych i technologię (SpendGuru)
+
+---
+
+## 2. CZYM JEST SPENDGURU
+- B2B SaaS własny produkt Profitii dla zespołów zakupowych
+- POZYCJONOWANIE: negotiation-first (NIE: analytics-first, NIE: kolejny software)
+- Obietnica marki: "Lepsze przygotowanie. Lepsze negocjacje. Lepszy wynik."
+- Moduły:
+  - Cost Scan — benchmarki, should-cost, cost drivers, historia cen
+  - Crystal Ball — prognozy, scenariusze, timing negocjacji
+  - X-Ray — analiza dostawcy, kondycja finansowa, ryzyko, dźwignie
+  - Newsfeed — monitoring sygnałów rynkowych, kategoria, dostawca
+  - AI Assistant — szybsza analiza i interpretacja kategorii
+  - Deal Maker — plan rozmowy, argumentacja, materiał negocjacyjny
+- Proof points:
+  - 13% oszczędności r/r w Lipco Foods
+  - >85% trafności prognoz Crystal Ball
+  - >100 kategorii kosztowych
+  - >300 mln rekordów / serii danych
+  - dane finansowe dla >300 mln dostawców
+  - eksport do PDF / PPTX / XLSX
+
+---
+
+## 3. TOMASZ UŚCIŃSKI — AUTOR I NADAWCA KAMPANII
+- Rola: Head of Sales / Senior Client Partner | Procurement
+- Email: tomasz.uscinski@profitia.pl
+- Tel: +48 787 417 293
+- Firma: PROFITIA Management Consultants Mazurowski i Wspólnicy Spółka Jawna
+- Adres: 02-715 Warszawa, Villa Metro, ul. Puławska 145, V p.
+- Stopka pełna:
+    Tomasz Uściński
+    Senior Client Partner | Procurement |
+    +48 787 417 293
+
+    PROFITIA Management Consultants Mazurowski i Wspólnicy Spółka Jawna
+    Doradztwo procurement | Certyfikowany Partner CIPS w Polsce | Szkolenia | Analityka zakupowa
+
+    02-715 Warszawa, Villa Metro, ul. Puławska 145, V p.
+
+    Uwaga: Ten e-mail jest poufny i przeznaczony tylko dla adresata (-ów) tej wiadomości. Jeżeli nie jesteś adresatem niniejszej wiadomości, usuń oryginał wiadomości wraz z wszelkimi wydrukami (kopiami) i załącznikami.
+
+---
+
+## 4. PERSONY — KOGO TARGETUJEMY
+
+### 4.1 Dyrektor Zakupów / CPO
+- Perspektywa: ZARZĄDCZA
+- Problemy: brak wspólnego standardu, zależność od jednostek, trudność w zarządzaniu wynikami zespołu
+- Potrzeby: standaryzacja, kontrola, przewidywalność, ochrona marży
+- Narracja: "To nie jest tylko wyzwanie negocjacyjne. To wyzwanie zarządcze."
+- CTA placeholder: [LINK_CALENDLY_DYREKTOR]
+
+### 4.2 Kupiec
+- Perspektywa: OPERACYJNA
+- Problemy: brak czasu na przygotowanie, ocena zasadności ofert, improwizacja
+- Potrzeby: szybkość, benchmarki, pewność argumentacji, mniejszy chaos
+- Narracja: "To sposób na łatwiejsze, szybsze i bardziej pewne przygotowanie negocjacji."
+- CTA placeholder: [LINK_CALENDLY_KUPIEC]
+
+### 4.3 Category Manager
+- Problemy: brak prognoz dla kategorii, standaryzacja między kategoriami
+- Potrzeby: prognozy, scenariusze, budżetowanie, cost drivers
+
+### 4.4 Zarząd / Właściciel
+- Potrzeby: obrona marży, przewidywalność kosztów, wpływ zakupów na wynik
+
+### 4.5 Finanse / Controlling
+- Potrzeby: przewidywalność budżetów, dane do obrony decyzji, wpływ rynku na koszty
+
+---
+
+## 5. LOGIKA KAMPANII MAILINGOWYCH (SEKWENCJA)
+
+KROK 1 — EMAIL 1: Nazwanie problemu (zaczynamy od problemu odbiorcy, NIE od produktu)
+KROK 2 — EMAIL 2: Koszt problemu (co tracimy przez obecny stan)
+KROK 3 — LINKEDIN: Krótka wiadomość, budowanie połączenia
+KROK 4 — EMAIL 3: Nowe podejście / 5 pytań / praktyczny przykład
+KROK 5 — EMAIL 4: Domknięcie wątku, bez presji, ostatnia wiadomość
+
+---
+
+## 6. CTA — ZASADY
+- Główne CTA: umów krótką rozmowę → Calendly
+- NIE: "umów demo", NIE: "sprawdź naszą platformę"
+- TAK: "zobaczmy, czy to temat na ten moment", "pokażę na przykładzie jednej kategorii"
+- Placeholdery Calendly: [LINK_CALENDLY_DYREKTOR], [LINK_CALENDLY_KUPIEC]
+
+---
+
+## 7. APOLLO — PLACEHOLDERY PERSONALIZACJI
+- {{contact.First Name}}
+- {{contact.Last Name}}
+- {{contact.Vocative First Name}} — wołacz imienia (np. "Janie", "Moniko")
+- {{contact.title}} — stanowisko
+- {{company.Name}} — nazwa firmy
+- WAŻNE: zawsze dwie wersje kampanii — dla MĘŻCZYZNY i dla KOBIETY (zgodność językowa)
+
+---
+
+## 8. JĘZYK — CO STOSOWAĆ
+Słowa kluczowe:
+- lepsze przygotowanie negocjacji
+- powtarzalny standard pracy negocjacyjnej
+- obrona marży / obrona budżetu
+- cost drivers, benchmarki, should-cost
+- analiza dostawcy, scenariusze, prognozy
+- dźwignie negocjacyjne, plan rozmowy, materiał negocjacyjny
+- skuteczniejsze negocjacje zakupowe
+
+Styl: profesjonalny, konkretny, partnerski, zwięzły, ekspercki ale nie mentorski
+
+---
+
+## 9. CZEGO UNIKAĆ
+- Opisywania SpendGuru jako "kolejnego software'u" lub "platformy analitycznej"
+- Zaczynania od listy modułów i funkcji
+- AI jako atrakcji samej w sobie
+- Słów: transformacja, rewolucja, innowacja — bez konkretu
+- Tonu sugerującego, że kupcy "robią coś źle"
+- Zbyt długich maili
+- Wielu równorzędnych CTA
+
+---
+
+## 10. MODEL SPRZEDAŻY
+Sales-led → Consultative → POC-led
+
+Ścieżka:
+1. Outreach do decydenta
+2. Pierwsze spotkanie (rozmowa o problemie)
+3. Spotkanie strategiczne (metodologia)
+4. Wybór kategorii i dostawcy
+5. Scoping POC
+6. POC 4 tygodnie (tydzień 1: dane; tydzień 2: analiza; tydzień 3-4: plan rozmowy)
+7. Ocena rezultatów
+8. Skalowanie
+
+---
+
+## 11. KANAŁY
+- Apollo (email sequences)
+- Email outbound (bezpośredni)
+- LinkedIn message / connection follow-up
+
+---
+
+## 12. FORMAT OUTPUTU DLA AGENTA TWORZĄCEGO KAMPANIE
+Każdy output kampanii powinien zawierać:
+| Krok | Kanał | Temat | Treść | CTA |
+Dwie wersje: M (mężczyzna) + K (kobieta)
+Placeholdery Apollo gotowe do wklejenia

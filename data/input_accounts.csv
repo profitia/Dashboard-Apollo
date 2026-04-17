@@ -1,0 +1,6 @@
+company_name,company_domain,country,industry,target_persona,contact_first_name,contact_last_name,contact_title,notes
+Example Manufacturing SA,example-manufacturing.pl,PL,Manufacturing,cpo,Marek,Wiśniewski,Dyrektor Zakupów,Rozbudowa zakładu w 2026
+Testowa Chemia Sp. z o.o.,testowa-chemia.pl,PL,Chemicals,cpo,Anna,Kowalska,Head of Procurement,Nowy kontrakt na surowce
+Fikcyjna Logistyka SA,fikcyjna-logistyka.pl,PL,Logistics,buyer,Tomasz,Nowak,Category Manager,Optymalizacja kosztów transportu
+Demo Retail Group,demo-retail.pl,PL,Retail,cpo,Katarzyna,Zielińska,Procurement Director,Konsolidacja dostawców po przejęciu
+Sample Automotive Sp. z o.o.,sample-automotive.pl,PL,Automotive,buyer,Piotr,Jankowski,Senior Buyer,Podwyżki cen stali i komponentów

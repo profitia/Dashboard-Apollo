@@ -1,0 +1,34 @@
+# Source of Truth — SpendGuru Positioning
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+spendguru_positioning:
+  description: >
+    Zasady pozycjonowania SpendGuru / Profitia w komunikacji outreachowej.
+    Obowiązują we wszystkich kampaniach, niezależnie od typu i kanału.
+
+  core_principle: >
+    Nie komunikujemy SpendGuru jako zwykłego software'u.
+    Nie zaczynamy od produktu.
+    Pozycjonujemy SpendGuru / Profitia jako negotiation intelligence
+    i powtarzalny standard przygotowania negocjacji zakupowych.
+
+  positioning_statement: "Lepsze przygotowanie. Lepsze negocjacje. Lepszy wynik."
+
+  communication_rules:
+    - "Komunikacja wychodzi od problemu biznesowego: marża, budżet, koszty, dane, prognozy, ryzyko dostawców, timing negocjacji."
+    - "Główna wartość: lepsze przygotowanie negocjacji, ochrona marży, przewidywalność budżetu, decyzje oparte na danych."
+    - "SpendGuru to blend: dane kosztowe + benchmarki + prognozy + analiza dostawców + market intelligence + AI + doświadczenie ekspertów."
+    - "NIE: 'nasza platforma', 'nasze narzędzie', 'demo naszego systemu'."
+    - "NIE: zaczynanie od produktu, firmy nadawcy lub oferty."
+    - "TAK: zaczynanie od napięcia biznesowego odbiorcy i jego odpowiedzialności."
+
+  what_we_are:
+    - "Negotiation Intelligence"
+    - "Powtarzalny standard przygotowania negocjacji zakupowych"
+    - "Wsparcie dla lepszego przygotowania, nie kolejne narzędzie analityczne"
+
+  what_we_are_not:
+    - "Zwykły SaaS / analytics tool"
+    - "Platforma do raportowania"
+    - "System do zarządzania zakupami"
+    - "Kolejne narzędzie BI"

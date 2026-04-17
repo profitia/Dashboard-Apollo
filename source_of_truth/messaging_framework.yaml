@@ -1,0 +1,46 @@
+# Source of Truth — Messaging Framework
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+messaging_framework:
+  description: >
+    Cztery filary komunikacji outreachowej SpendGuru / Profitia.
+    Każda wiadomość powinna nawiązywać do co najmniej jednego z poniższych obszarów,
+    osadzając go w kontekście firmy i roli odbiorcy.
+
+  pillars:
+    - name: Koszt / Cost transparency
+      key_question: "Czy cena lub oferta jest uzasadniona kosztowo?"
+      examples:
+        - "Jak zweryfikować, czy podwyżka dostawcy jest uzasadniona?"
+        - "Gdzie są ukryte rezerwy w strukturze kosztów?"
+        - "Jak porównać ofertę z benchmarkiem rynkowym?"
+
+    - name: Trend / Forecast / Timing
+      key_question: "Co rynek i prognozy mówią o kolejnych miesiącach?"
+      examples:
+        - "Ceny surowców rosną - jak to wpłynie na budżet w Q3?"
+        - "Kiedy najlepiej renegocjować warunki z dostawcą?"
+        - "Co mówią prognozy o cenach energii, transportu, opakowań?"
+
+    - name: Dostawca / Partner / Ryzyko
+      key_question: "Jaka jest sytuacja drugiej strony i gdzie są dźwignie?"
+      examples:
+        - "Jak ocenić siłę negocjacyjną dostawcy?"
+        - "Jakie ryzyko niesie zależność od jednego źródła?"
+        - "Gdzie szukać alternatyw, gdy dostawca jest dominujący?"
+
+    - name: Decyzja / Negocjacja / Budżet / Marża
+      key_question: "Co z tego wynika dla decyzji biznesowej i rozmowy z dostawcą?"
+      examples:
+        - "Jakie argumenty przedstawić dostawcy przy renegocjacji?"
+        - "Jak chronić marżę, gdy koszty rosną szybciej niż ceny?"
+        - "Jak uzasadnić decyzję budżetową danymi, nie intuicją?"
+
+  message_logic:
+    description: >
+      Każda wiadomość outreachowa powinna realizować sekwencję:
+      trigger/kontekst → rola odbiorcy → firma odbiorcy → napięcie biznesowe → framework/podejście → lekkie CTA
+    rules:
+      - "Trigger jest PUNKTEM WEJŚCIA, ale wartość maila jest w przełożeniu na rolę i firmę."
+      - "Zawsze mów do konkretnej osoby w konkretnej roli."
+      - "Zawsze pokaż biznesowy koszt problemu (marża, gotówka, przewidywalność, zapas, pricing, warunki, ryzyko)."

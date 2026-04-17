@@ -1,0 +1,67 @@
+# Source of Truth — Email Style Guide
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+email_style_guide:
+  description: >
+    Zasady stylu i tonu komunikacji we wszystkich kampaniach outreachowych.
+
+  tone:
+    - profesjonalny
+    - konkretny
+    - elegancki
+    - ludzki
+    - bez przesadnej poufałości
+    - bez hype'u
+    - bez długich wstępów
+    - "insight > pitch"
+
+  message_approach:
+    - "Follow-up po konferencji / artykule / triggerze, a nie generyczny cold mail"
+    - "Pierwsze 1-2 zdania mocno spersonalizowane"
+    - "Najpierw problem biznesowy, potem podejście, dopiero na końcu lekki CTA"
+    - "NIE brzmi jak automatyczny prospecting ani masowy cold mail"
+    - "Brzmi jak sensowna wiadomość od człowieka"
+
+  sequence_3_emails:
+    email_1:
+      description: "Spersonalizowane podziękowanie + trigger/panel + hipoteza + framework + CTA"
+      word_limit: "70-120 słów"
+    email_2:
+      description: "WNOSI NOWĄ WARTOŚĆ (nie jest tylko przypomnieniem!) - rozwija problem, pokazuje 1 konkretny mechanizm/konsekwencję"
+      word_limit: "60-100 słów"
+    email_3:
+      description: "Krótki, prosty, bez presji, jasne CTA"
+      word_limit: "40-70 słów"
+
+  cta_rules:
+    - "Każdy mail MUSI kończyć się wyraźnym, praktycznym CTA"
+    - "Łatwe do odpisania, zachęca do telefonu/Teams/podania terminu"
+    - "Ułatwia adresatowi wykonanie małego kolejnego kroku"
+    - "Najpierw CTA, potem podpis"
+    - "Styl: 'Proszę o informację, jak będzie Panu/Pani wygodnie porozmawiać' / 'telefon albo Teams'"
+
+  typography:
+    - "NIGDY em dash '—' → ZAWSZE zwykły myślnik ' - '"
+    - "Po kropce ZAWSZE wielka litera"
+    - "Po powitaniu z przecinkiem ('Dzień dobry Panie Marku,') → następny akapit od MAŁEJ litery"
+
+  role_references:
+    - "NIGDY: 'Z perspektywy [stanowisko]...' → sugeruje, że nadawca pełni tę rolę"
+    - "ZAWSZE: 'W Pana/Pani roli jako...', 'Dla osoby odpowiedzialnej za...', 'Jako [stanowisko], odpowiada Pan/Pani za...'"
+
+  forbidden:
+    - "Generyczne sformułowania pasujące do każdej firmy"
+    - "Abstrakcyjny język o 'strategii/danych/procesach' BEZ konsekwencji biznesowych"
+    - "Nadmiernie sprzedażowy ton"
+    - "Mechaniczne wklejanie frameworku bez kontekstu"
+    - "'porządek danych', 'uporządkowanie informacji' jako główny benefit"
+    - "'nasza platforma', 'nasze narzędzie'"
+    - "Zaczynanie od produktu/firmy nadawcy/demo"
+    - "Maile wysyłalne do 20 osób bez zmian"
+
+  personalization_requirements:
+    - "Stanowisko i odpowiedzialność biznesowa odbiorcy"
+    - "Realia i model biznesowy firmy"
+    - "Napięcia typowe dla tej funkcji"
+    - "Co temat triggera oznacza dla KONKRETNEJ firmy odbiorcy"
+    - "Wpływ na: marżę, cash flow, dostępność, pricing, zapas, ryzyko, wzrost, rentowność"

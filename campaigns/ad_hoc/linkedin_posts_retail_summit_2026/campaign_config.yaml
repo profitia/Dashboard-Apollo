@@ -1,0 +1,17 @@
+# Campaign Config — LinkedIn Posts Retail Summit 2026
+# Kampania ad-hoc bazująca na postach LinkedIn z Poland & CEE Retail Summit 2026.
+
+campaign_type: ad_hoc_linkedin_posts
+campaign_name: linkedin_posts_retail_summit_2026
+source_type: linkedin_posts
+
+source_of_truth_path: ../../../source_of_truth
+
+input_path: input
+output_path: output
+review_path: review
+prompts_path: prompts
+
+status: active
+auto_send: false
+requires_review: true

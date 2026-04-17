@@ -1,0 +1,47 @@
+# Source of Truth — Statuses
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+statuses:
+  description: >
+    Statusy kontaktów i wiadomości używane w pipeline'ie kampanii.
+
+  contact_statuses:
+    - status: ready_for_review
+      description: "Kontakt zakwalifikowany, wiadomość wygenerowana - czeka na ręczny review"
+      action: review_and_approve
+
+    - status: no_valid_contact
+      description: "Apollo nie zwróciło sensownego maila lub stanowiska"
+      action: skip
+
+    - status: rejected_not_icp
+      description: "Kontakt nie pasuje do ICP (rola decyzyjna)"
+      action: skip
+
+    - status: rejected_not_target_industry
+      description: "Firma nie pasuje do target industries"
+      action: skip
+
+    - status: insufficient_personalization
+      description: "Za mało kontekstu do sensownej personalizacji"
+      action: manual_enrich_or_skip
+
+    - status: requires_manual_review
+      description: "Dane niepewne, konflikty lub wyjątkowe okoliczności"
+      action: human_decision
+
+  message_statuses:
+    - status: draft
+      description: "Wiadomość wygenerowana, nie przeszła QA"
+
+    - status: qa_passed
+      description: "Wiadomość przeszła QA review"
+
+    - status: qa_failed
+      description: "Wiadomość nie przeszła QA - wymaga poprawy"
+
+    - status: approved
+      description: "Wiadomość zatwierdzona do wysyłki przez człowieka"
+
+    - status: sent
+      description: "Wiadomość wysłana"

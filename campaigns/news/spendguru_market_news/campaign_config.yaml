@@ -1,0 +1,17 @@
+# Campaign Config — SpendGuru Market News
+# Kampania newsowa bazująca na artykułach, triggerach rynkowych i newsach branżowych.
+
+campaign_type: news_triggered_campaign
+campaign_name: spendguru_market_news
+source_type: market_news
+
+source_of_truth_path: ../../../source_of_truth
+
+input_path: input
+output_path: output
+review_path: review
+prompts_path: prompts
+
+status: draft
+auto_send: false
+requires_review: true

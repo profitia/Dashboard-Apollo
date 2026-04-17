@@ -1,0 +1,33 @@
+# Source of Truth — Compliance Rules
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+compliance_rules:
+  description: >
+    Reguły compliance i bezpieczeństwa obowiązujące we wszystkich kampaniach.
+
+  sending:
+    - "Nic nie wysyłaj automatycznie."
+    - "Wszystkie kampanie mają trafiać do review."
+    - "Decyzja o wysyłce zawsze należy do człowieka."
+    - "auto_send: false jest domyślnym ustawieniem dla każdej kampanii."
+
+  data_quality:
+    - "Jeśli Apollo nie zwróci sensownego maila lub stanowiska, oznacz jako no_valid_contact."
+    - "Jeśli dane są niepewne, oznacz to w notatkach."
+    - "Nie generuj maili dla kontaktów odrzuconych."
+    - "Nie mieszaj outputów między kampaniami."
+
+  campaign_isolation:
+    - "Każda kampania ma osobne foldery input, output, review, prompts, logs."
+    - "Wyniki kampanii trafiają do folderów konkretnej kampanii, nie do globalnego outputs/."
+    - "Nie łącz kontaktów z różnych kampanii bez jawnej decyzji."
+
+  privacy:
+    - "Nie przechowuj danych osobowych poza wymaganym zakresem."
+    - "Dane kontaktowe traktuj jako poufne."
+    - "Nie udostępniaj danych z jednej kampanii w kontekście innej."
+
+  review_requirements:
+    - "Każda wiadomość przed wysyłką musi przejść QA review."
+    - "Kontakty z niepewnymi danymi trafiają do requires_manual_review."
+    - "Nie pomijaj etapu review, nawet w kampaniach testowych."

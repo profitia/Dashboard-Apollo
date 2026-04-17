@@ -1,0 +1,77 @@
+# Source of Truth — Ideal Customer Profile (ICP)
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+icp:
+  description: >
+    Lista ról decyzyjnych, do których kierujemy komunikację outreachową.
+    Każdy kontakt musi pasować do co najmniej jednej z poniższych ról,
+    aby zostać zakwalifikowany do kampanii.
+
+  roles:
+    - title: CEO
+      category: zarząd
+      priority: high
+
+    - title: Właściciel
+      category: zarząd
+      priority: high
+
+    - title: Członek zarządu
+      category: zarząd
+      priority: high
+
+    - title: Managing Director
+      category: zarząd
+      priority: high
+
+    - title: Business Unit Director
+      category: zarząd
+      priority: medium
+
+    - title: CFO
+      category: finanse
+      priority: high
+
+    - title: Dyrektor finansowy
+      category: finanse
+      priority: high
+
+    - title: Finance Director
+      category: finanse
+      priority: high
+
+    - title: Controlling Director
+      category: finanse
+      priority: medium
+
+    - title: CPO
+      category: zakupy
+      priority: high
+
+    - title: Dyrektor zakupów
+      category: zakupy
+      priority: high
+
+    - title: Procurement Director
+      category: zakupy
+      priority: high
+
+    - title: Category Director
+      category: zakupy
+      priority: high
+
+    - title: Senior Category Leader
+      category: zakupy
+      priority: medium
+
+    - title: COO
+      category: operacje
+      priority: high
+
+    - title: Operations Director
+      category: operacje
+      priority: high
+
+    - title: Supply Chain Director
+      category: operacje
+      priority: high

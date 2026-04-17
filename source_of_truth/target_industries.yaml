@@ -1,0 +1,61 @@
+# Source of Truth — Target Industries
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+target_industries:
+  description: >
+    Branże i segmenty rynku, do których kierujemy kampanie.
+    Kontakt musi działać w firmie z jednej z poniższych branż,
+    aby zostać zakwalifikowany.
+
+  industries:
+    - name: Retail / Sieci handlowe
+      keywords:
+        - retail
+        - sieci handlowe
+        - handel detaliczny
+        - supermarkety
+        - dyskont
+        - convenience
+      priority: high
+
+    - name: FMCG / Handel
+      keywords:
+        - FMCG
+        - fast moving consumer goods
+        - handel hurtowy
+        - dystrybucja
+        - wholesale
+      priority: high
+
+    - name: Produkcja
+      keywords:
+        - produkcja
+        - manufacturing
+        - producent
+        - fabryka
+        - zakład produkcyjny
+      priority: high
+
+    - name: Producenci marek własnych
+      keywords:
+        - marka własna
+        - private label
+        - producent kontraktowy
+        - contract manufacturing
+      priority: high
+
+    - name: Firmy z istotnym tematem kosztów, danych, marży, zakupów i supply chain
+      keywords:
+        - koszty
+        - marża
+        - zakupy
+        - supply chain
+        - łańcuch dostaw
+        - procurement
+        - sourcing
+        - negocjacje z dostawcami
+      priority: medium
+      note: >
+        Szersza kategoria obejmująca firmy, w których temat kosztów,
+        danych zakupowych, marży lub supply chain jest istotny biznesowo,
+        nawet jeśli nie pasują do powyższych branż wprost.

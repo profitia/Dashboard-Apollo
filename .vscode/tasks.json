@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "AI Outreach: Draft CPO PL",
+      "type": "shell",
+      "command": "python src/run_campaign.py --config configs/cpo_pl_test.yaml --mode draft",
+      "group": "build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "AI Outreach: Draft CSV Import PL",
+      "type": "shell",
+      "command": "python src/pipelines/run_csv_campaign.py --config configs/csv_import/csv_import_pl_test.yaml --mode draft",
+      "group": "build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Backup workspace",
+      "type": "shell",
+      "command": "bash scripts/backup.sh",
+      "group": "build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Git push safe files",
+      "type": "shell",
+      "command": "bash scripts/backup.sh --push-only",
+      "group": "build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Backup workspace + Git push",
+      "type": "shell",
+      "command": "bash scripts/backup.sh --push",
+      "group": "build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}

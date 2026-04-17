@@ -1,0 +1,23 @@
+campaign_name: cpo_pl_test
+language_code: pl
+target_persona: cpo
+campaign_type: outbound
+mode: draft
+
+apollo:
+  source: csv
+  create_or_update_contact: false
+  add_to_sequence: false
+
+quality:
+  min_lead_score: 70
+  min_qa_score: 85
+  manual_review_required: true
+
+routing:
+  default_sequence: PL_CPO_MEETING_STD
+  default_mailbox_group: pl_sales_primary
+
+message:
+  max_words: 120
+  style: concise_consultative

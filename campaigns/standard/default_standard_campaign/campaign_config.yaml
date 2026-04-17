@@ -1,0 +1,17 @@
+# Campaign Config — Default Standard Campaign
+# Klasyczna kampania prospectingowa oparta o ICP, branże, role i listy firm.
+
+campaign_type: standard_prospecting_campaign
+campaign_name: default_standard_campaign
+source_type: prospect_list
+
+source_of_truth_path: ../../../source_of_truth
+
+input_path: input
+output_path: output
+review_path: review
+prompts_path: prompts
+
+status: draft
+auto_send: false
+requires_review: true

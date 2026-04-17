@@ -1,0 +1,68 @@
+# =============================================================================
+# .gitignore — Kampanie Apollo / backup-VSC
+# Chroni sekrety, duże foldery i pliki tymczasowe przed commitem do GitHuba.
+# =============================================================================
+
+# ---- SEKRETY I CREDENTIALS ----
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.enc
+*.gpg
+secrets_*
+credentials*
+token*
+!tokenów  # Polish word, not actual token files
+
+# ---- PYTHON ----
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# ---- NODE ----
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ---- BACKUPY ----
+*.zip
+*.tar.gz
+*.tar.bz2
+.backup_state/
+
+# ---- OUTPUTS (duże / generowane) ----
+outputs/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ---- IDE ----
+# Commitujemy .vscode/tasks.json i .vscode/extensions.json
+# ale nie lokalne ustawienia użytkownika
+.vscode/settings.json
+.vscode/launch.json
+.vscode/*.code-workspace
+.idea/
+
+# ---- INNE ----
+*.log
+*.tmp
+*.bak

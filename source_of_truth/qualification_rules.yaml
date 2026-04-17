@@ -1,0 +1,47 @@
+# Source of Truth — Qualification Rules
+# Wspólne dla wszystkich kampanii w projekcie Kampanie Apollo.
+
+qualification_rules:
+  description: >
+    Reguły kwalifikacji leadów do kampanii outreachowych.
+    Lead musi spełnić WSZYSTKIE kryteria minimum, aby zostać zakwalifikowany.
+
+  minimum_criteria:
+    - "Pasuje do ICP (rola decyzyjna z icp.yaml)"
+    - "Pasuje do target industry (branża z target_industries.yaml)"
+    - "Email dostępny z akceptowalną pewnością"
+    - "Istnieje minimalny kontekst do personalizacji"
+    - "Możliwa logiczna hipoteza biznesowa"
+    - "Wiadomość może być dopasowana do persony"
+    - "Brak ryzyka reputacyjnego"
+
+  lead_scoring:
+    ranges:
+      - range: "85-100"
+        label: deep
+        description: "Pełna personalizacja, silna hipoteza, bogaty kontekst"
+
+      - range: "70-84"
+        label: standard
+        description: "Dobra personalizacja, sensowna hipoteza, wystarczający kontekst"
+
+      - range: "50-69"
+        label: light_review
+        description: "Ograniczona personalizacja - wymaga ręcznego review"
+
+      - range: "0-49"
+        label: reject
+        description: "Odrzucony - brak wystarczającego dopasowania"
+
+  message_quality_weights:
+    persona_fit: 0.15
+    trigger_relevance: 0.15
+    hypothesis_quality: 0.15
+    language_naturalness: 0.15
+    concreteness: 0.10
+    cta_quality: 0.10
+    truthfulness: 0.10
+    formatting: 0.10
+
+  min_lead_score: 70
+  min_qa_score: 85

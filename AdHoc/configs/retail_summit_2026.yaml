@@ -1,0 +1,74 @@
+campaign_name: adhoc_linkedin_retail_summit_2026
+language_code: pl
+campaign_type: adhoc_linkedin
+mode: draft
+
+source:
+  type: linkedin_posts
+  event: "Poland & CEE Retail Summit 2026"
+  posts_analysis: AdHoc/data/posts_analysis.json
+
+apollo:
+  enrich_contacts: true
+  create_or_update_contact: false
+  add_to_sequence: false
+
+quality:
+  manual_review_required: true
+  skip_no_email: true
+  skip_no_icp_title: true
+
+message:
+  email_1_max_words: 170
+  email_1_min_words: 120
+  email_2_max_words: 140
+  email_2_min_words: 90
+  email_3_max_words: 90
+  email_3_min_words: 50
+  style: conference_followup
+  tone: professional_insight
+  language: pl
+
+icp:
+  roles:
+    - CEO
+    - owner
+    - board member
+    - CFO
+    - finance director
+    - controlling director
+    - procurement director
+    - CPO
+    - category director
+    - COO
+    - operations director
+    - supply chain director
+    - managing director
+    - business unit director
+    - general manager
+    - dyrektor zarządzający
+    - prezes
+    - wiceprezes
+    - dyrektor finansowy
+    - dyrektor zakupów
+    - dyrektor operacyjny
+    - dyrektor łańcucha dostaw
+    - członek zarządu
+  industries:
+    - retail
+    - FMCG
+    - food production
+    - trade
+    - private label
+    - manufacturing
+    - wholesale
+    - distribution
+    - DIY retail
+    - logistics
+  reject_roles:
+    - moderator
+    - consultant
+    - advisor
+    - analyst
+    - journalist
+    - SaaS vendor

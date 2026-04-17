@@ -1,0 +1,555 @@
+[
+  {
+    "post_id": 1,
+    "post_url": "https://www.linkedin.com/posts/uscinski_panel-okre%C5%9Blanie-priorytet%C3%B3w-przyw%C3%B3dczych-activity-7450165649760210944-vikA",
+    "panel_title": "Określanie priorytetów przywódczych równoważących oczekiwania właścicieli, ambicje strategiczne i realia ekonomiczne",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "priorytety przywódcze",
+      "wspólne cele zamiast silosów",
+      "finanse vs sprzedaż vs operacje",
+      "egzekucja strategii w terenie",
+      "zaangażowanie zespołu"
+    ],
+    "business_problems": [
+      "rozdźwięk między oczekiwaniami właścicieli a realiami",
+      "poszczególne funkcje grają do własnych bramek",
+      "brak wspólnych celów premiowanych na poziomie zarządu",
+      "przełożenie strategii na setki działań operacyjnych"
+    ],
+    "negotiation_intelligence_angle": "Wspólne cele cross-funkcyjne wymagają wspólnych danych decyzyjnych — w tym danych kosztowych i zakupowych, które łączą perspektywę finansów, operacji i zakupów",
+    "participants": [
+      {
+        "name": "Robert Knapczyk",
+        "company": "SHELL Polska",
+        "role_in_panel": "moderator",
+        "credentials": "FCMA, CGMA",
+        "icp_status": "rejected",
+        "rejection_reason": "Moderator + not target industry (energy/oil)"
+      },
+      {
+        "name": "Daniel Pralat",
+        "company": "Chata Polska",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "retail (food chain)",
+        "personalization_angle": "Priorytety przywódcze i wspólne cele — jak dane zakupowe mogą być spoiwem cross-funkcyjnej współpracy"
+      },
+      {
+        "name": "Marek Marzec",
+        "company": "PPH Ewa Bis",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "food production/trade",
+        "personalization_angle": "Egzekucja strategii w firmie produkcyjnej — rola danych kosztowych i zakupowych w operacyjnym dowożeniu priorytetów"
+      },
+      {
+        "name": "Wojciech Trochymiak",
+        "company": "Roche Polska",
+        "role_in_panel": "panelist",
+        "icp_status": "rejected",
+        "rejection_reason": "Not target industry (pharma)"
+      },
+      {
+        "name": "Tomasz Michniewicz",
+        "company": "X-KOM BIZNES",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "electronics retail",
+        "personalization_angle": "Priorytety przywódcze i spójność decyzji — w retailu electronics dane kosztowe i zakupowe mają bezpośredni wpływ na marżę"
+      }
+    ]
+  },
+  {
+    "post_id": 2,
+    "post_url": "https://www.linkedin.com/posts/uscinski_drugi-dzie%C5%84-poland-cee-retail-summit-2026-activity-7450152741064286208-JvvO",
+    "panel_title": "Ujednolicanie jakości danych, pomiaru retail media i kontroli personalizacji w celu poprawy decyzji finansowych",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "jakość danych",
+      "spójność pomiaru",
+      "marża i rentowność",
+      "dane zewnętrzne",
+      "retail media",
+      "personalizacja",
+      "transparentność"
+    ],
+    "business_problems": [
+      "fragmentacja danych i różne KPI",
+      "brak wspólnego modelu interpretacji",
+      "przy niskich marżach 1-2% różnicy ma ogromne znaczenie",
+      "dane sprzedażowe, kosztowe, operacyjne i logistyczne muszą być porównywalne"
+    ],
+    "negotiation_intelligence_angle": "Jakość danych kosztowych i zakupowych ma bezpośredni wpływ na decyzje finansowe — bez spójnych danych trudno ocenić rentowność i przygotować mocną argumentację w negocjacjach z dostawcami",
+    "participants": [
+      {
+        "name": "Cezary Giza",
+        "company": "DIGIMART",
+        "role_in_panel": "moderator",
+        "icp_status": "rejected",
+        "rejection_reason": "Moderator, digital marketing consultant"
+      },
+      {
+        "name": "Konrad Marchlewski",
+        "company": "BEWA",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "retail/distribution",
+        "personalization_angle": "Jakość danych jako fundament decyzji finansowych — spójne dane kosztowe i ich wpływ na marżę"
+      },
+      {
+        "name": "Maciej Wypych",
+        "company": "Castorama Polska",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "DIY retail",
+        "personalization_angle": "Przy niskich marżach w retailu każdy procent ma znaczenie — jakość danych kosztowych decyduje o jakości decyzji zakupowych"
+      },
+      {
+        "name": "Tomasz Sławiński",
+        "company": "Imperial Brands",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "FMCG (tobacco)",
+        "personalization_angle": "Dane zewnętrzne i prognozy w FMCG — wpływ na decyzje kosztowe i negocjacje z dostawcami"
+      }
+    ]
+  },
+  {
+    "post_id": 3,
+    "post_url": "https://www.linkedin.com/posts/uscinski_drugi-dzie%C5%84-poland-cee-retail-summit-2026-activity-7450100900917997568-PN9V",
+    "panel_title": "Koordynowanie reakcji na ryzyka w wymiarach finansowym, operacyjnym i regulacyjnym w warunkach zmienności",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "zarządzanie ryzykiem",
+      "presja kosztowa",
+      "nadmiar regulacji",
+      "współpraca cross-funkcyjna",
+      "odporność organizacji",
+      "gotowość na zmianę"
+    ],
+    "business_problems": [
+      "ryzyka nakładają się na siebie i wzajemnie wzmacniają",
+      "nawet niewielka zmiana regulacyjna oznacza realne koszty",
+      "klasyczne zarządzanie ryzykiem przestaje wystarczać",
+      "ryzyko musi być wbudowane w rozmowę o strategii i decyzjach"
+    ],
+    "negotiation_intelligence_angle": "Ryzyko dostawców i presja kosztowa wymagają proaktywnego podejścia — lepsze dane o dostawcach, trendach cenowych i prognozach dają gotowość zamiast reakcji po fakcie",
+    "participants": [
+      {
+        "name": "Ewa Weinar",
+        "company": "NATURA",
+        "role_in_panel": "moderator",
+        "credentials": "Corporate Counsel",
+        "icp_status": "rejected",
+        "rejection_reason": "Moderator, legal role not ICP"
+      },
+      {
+        "name": "Barbara Robaszkiewicz",
+        "company": "BEIERSDORF",
+        "role_in_panel": "panelist",
+        "known_title": "CEO",
+        "icp_status": "candidate",
+        "industry_fit": "FMCG (cosmetics/personal care)",
+        "personalization_angle": "CEO FMCG — ryzyka finansowe i operacyjne nakładające się na siebie — rola danych kosztowych w proaktywnym zarządzaniu ryzykiem dostawców i ochronie marży"
+      },
+      {
+        "name": "Natalia Korzeniecka-Walak",
+        "company": "EMPIK",
+        "role_in_panel": "panelist",
+        "known_title": "Chief People, Legal and Corporate Affairs Officer, Board Member",
+        "credentials": "LL.M.",
+        "icp_status": "rejected",
+        "rejection_reason": "Board Member but role is People/Legal/Corporate Affairs — not directly procurement/finance/operations focused"
+      },
+      {
+        "name": "Agnieszka Bryl",
+        "company": "EY",
+        "role_in_panel": "panelist",
+        "credentials": "CIA, Partner",
+        "icp_status": "rejected",
+        "rejection_reason": "Consultant (EY Partner)"
+      }
+    ]
+  },
+  {
+    "post_id": 4,
+    "post_url": "https://www.linkedin.com/posts/uscinski_zmiana-sta%C5%82a-si%C4%99-norm%C4%85-stabilno%C5%9B%C4%87-niekoniecznie-activity-7449831971595132928-dKk3",
+    "panel_title": "Zmiana stała się normą. Stabilność – niekoniecznie.",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "zmienność jako norma",
+      "stabilność przez powtarzalność",
+      "jasne zasady podejmowania decyzji",
+      "elastyczność operacyjna",
+      "gotowość organizacyjna na zmianę"
+    ],
+    "business_problems": [
+      "jednoczesna potrzeba elastyczności i stabilności",
+      "brak powtarzalności w kluczowych procesach",
+      "każda zmiana oznacza chaos zamiast przewagi",
+      "decyzje nie mają wspólnego sposobu działania"
+    ],
+    "negotiation_intelligence_angle": "Powtarzalny standard negocjacji zakupowych to element stabilności w zmiennym otoczeniu — jasne zasady przygotowania, dane i framework decyzyjny pozwalają działać spójnie mimo zmienności rynku",
+    "participants": [
+      {
+        "name": "Carolina Halladin",
+        "company": "Halladin Trade Advisory",
+        "role_in_panel": "moderator",
+        "icp_status": "rejected",
+        "rejection_reason": "Consultant/moderator"
+      },
+      {
+        "name": "Grzegorz Przytula",
+        "company": "EY-Parthenon",
+        "role_in_panel": "panelist",
+        "icp_status": "rejected",
+        "rejection_reason": "Consultant (EY-Parthenon)"
+      },
+      {
+        "name": "Rafał Lewandowski",
+        "company": "ID Logistics",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "logistics",
+        "personalization_angle": "Powtarzalność procesów w logistyce — stabilny standard pracy zakupowej jako fundament odporności operacyjnej"
+      },
+      {
+        "name": "Marcin Kus",
+        "company": "Bahlsen Poland",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "FMCG (food production)",
+        "personalization_angle": "Stabilność przez powtarzalność — jak ustandaryzować przygotowanie negocjacji z dostawcami w zmiennym otoczeniu kosztowym"
+      },
+      {
+        "name": "Tomasz Suffner",
+        "company": "Unilever",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "FMCG",
+        "personalization_angle": "Zmienność kosztów surowców i elastyczność decyzyjna — powtarzalny framework negocjacyjny jako element stabilności"
+      }
+    ]
+  },
+  {
+    "post_id": 5,
+    "post_url": "https://www.linkedin.com/posts/uscinski_podczas-panelu-supply-chain-plenary-stage-activity-7449803184123879425-cACM",
+    "panel_title": "Supply Chain Plenary Stage — zmienność jako codzienność",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "zmienność łańcucha dostaw",
+      "prognozy i planowanie",
+      "jakość danych",
+      "koszty i dostępność",
+      "cła i geopolityka",
+      "wspólne cele w łańcuchu"
+    ],
+    "business_problems": [
+      "cła, napięcia geopolityczne, ryzyka energetyczne wpływają na zakupy i koszty",
+      "odchylenia od planu generują realne koszty",
+      "optymalizacja lokalna nie poprawia sytuacji całego łańcucha",
+      "potrzebne lepsze prognozy, dane i standaryzacja"
+    ],
+    "negotiation_intelligence_angle": "Zmienność supply chain przekłada się bezpośrednio na koszty zakupów — lepsze prognozy cenowe, analiza ryzyka dostawców i timing negocjacji mogą ograniczyć wpływ zmienności na marżę",
+    "participants": [
+      {
+        "name": "Lukasz Mazurowski",
+        "company": "PROFITIA Management Consultants",
+        "role_in_panel": "moderator",
+        "icp_status": "rejected",
+        "rejection_reason": "Own company (Profitia)"
+      },
+      {
+        "name": "Mateusz Staniszewski",
+        "company": "Kaufland",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "retail (food, major chain)",
+        "personalization_angle": "Zmienność operacyjna w retailu — wpływ na zakupy i koszty, rola prognoz w decyzjach zakupowych"
+      },
+      {
+        "name": "Maciej Gawronski",
+        "company": "FOZZY GROUP",
+        "role_in_panel": "panelist",
+        "other_companies": "IDKFA, IDCLIP",
+        "icp_status": "candidate",
+        "industry_fit": "retail group",
+        "personalization_angle": "Planowanie z założeniem odchyleń — jak budować gotowość do negocjacji z dostawcami w warunkach ciągłej zmienności"
+      },
+      {
+        "name": "Piotr Alejski",
+        "company": "Brand Machine Group",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "private label producer",
+        "personalization_angle": "Odchylenia w łańcuchu dostaw zaczynają się na styku zakupów i planowania — rola danych kosztowych i prognoz w ograniczaniu kosztów"
+      },
+      {
+        "name": "Kamil Folkert",
+        "company": "Occubee",
+        "role_in_panel": "panelist",
+        "credentials": "PhD",
+        "icp_status": "rejected",
+        "rejection_reason": "Tech/analytics SaaS vendor, not target industry"
+      }
+    ]
+  },
+  {
+    "post_id": 6,
+    "post_url": "https://www.linkedin.com/posts/uscinski_na-poland-cee-retail-summit-2026-panel-activity-7449784801747771392-L_P5",
+    "panel_title": "Płynność, cash flow i kapitał obrotowy — rola decyzji zakupowych i predykcji",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "cash flow",
+      "kapitał obrotowy",
+      "zapas jako cichy zabójca cashu",
+      "jakość decyzji zakupowych",
+      "predykcja popytu",
+      "ryzyko walutowe"
+    ],
+    "business_problems": [
+      "gotówka zamrożona w zapasie",
+      "decyzje zakupowe oderwane od dynamiki rynku",
+      "nadmiar lub braki na półce",
+      "niedoszacowanie zmienności popytu"
+    ],
+    "negotiation_intelligence_angle": "Cash flow to efekt jakości decyzji zakupowych — lepsze dane kosztowe, prognozy i przygotowanie negocjacji z dostawcami chronią marżę i gotówkę",
+    "participants": [
+      {
+        "name": "Wojciech Wieronski",
+        "company": "PHH Group",
+        "role_in_panel": "moderator",
+        "icp_status": "candidate",
+        "industry_fit": "holding/distribution (need Apollo verification)",
+        "personalization_angle": "Cash flow i jakość decyzji zakupowych — moderator, ale biznesowo w temacie"
+      },
+      {
+        "name": "Michal Slawski",
+        "company": "Castorama Polska",
+        "role_in_panel": "panelist",
+        "credentials": "FCCA",
+        "icp_status": "candidate",
+        "industry_fit": "DIY retail",
+        "personalization_angle": "FCCA w retailu — przy dziesiątkach tysięcy SKU jakość predykcji i decyzji zakupowych decyduje o tym, czy gotówka pracuje, czy jest zamrożona w zapasie"
+      },
+      {
+        "name": "Justyna Zasowska",
+        "company": "OBI Polska",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "DIY retail",
+        "personalization_angle": "Właściwy zapas vs wartość zapasu — rola prognoz i jakości decyzji zakupowych w zarządzaniu kapitałem obrotowym"
+      },
+      {
+        "name": "Robert Klimacki",
+        "company": "EY Polska",
+        "role_in_panel": "panelist",
+        "icp_status": "rejected",
+        "rejection_reason": "Consultant (EY)"
+      },
+      {
+        "name": "Wojciech Cabaj",
+        "company": "Avon",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "FMCG (cosmetics/beauty)",
+        "personalization_angle": "Nadmiar zapasu i poświęcanie marży — wcześniejsze decyzje zakupowe i ryzyko walutowe wpływają na koszty i cash flow"
+      }
+    ]
+  },
+  {
+    "post_id": 7,
+    "post_url": "https://www.linkedin.com/posts/uscinski_poland-cee-retail-summit-2026-pokaza%C5%82-jedn%C4%85-activity-7449773449356570624-5qd9",
+    "panel_title": "Financial Performance & Business Management — marka własna jako gra o model biznesowy",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "marka własna",
+      "koszt wytworzenia",
+      "marża na poziomie relacji, nie produktu",
+      "ryzyko dostawców",
+      "skala i efektywność"
+    ],
+    "business_problems": [
+      "zwiększanie sprzedaży może pogarszać wynik finansowy",
+      "tańszy dostawca ≠ lepszy dostawca",
+      "dodatkowe koszty i wymagania operacyjne narzucane przez sieci",
+      "ryzyko koncentracji biznesu i zdolność do skalowania"
+    ],
+    "negotiation_intelligence_angle": "Kontrola nad kosztem wytworzenia i ryzykiem dostawców to fundament rentowności private label — dane kosztowe, analiza dostawców i framework negocjacyjny pomagają chronić marżę",
+    "participants": [
+      {
+        "name": "Mikolaj Sarrach",
+        "company": null,
+        "role_in_panel": "panelist",
+        "known_title": "Doradca Zarządu ds. Eksportu",
+        "icp_status": "rejected",
+        "rejection_reason": "No clear company, advisory role, insufficient data for personalization"
+      },
+      {
+        "name": "Kamil Rabenda",
+        "company": "Soligrano",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "food production",
+        "personalization_angle": "Private label w skali — koszt wytworzenia i siła negocjacyjna wobec sieci jako kluczowe dźwignie rentowności"
+      },
+      {
+        "name": "Krzysztof Łątka",
+        "company": "Organic Way",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "food production (organic)",
+        "personalization_angle": "Marka własna w segmencie premium — kontrola nad kosztem i jakością dostawców jako warunek utrzymania marży"
+      },
+      {
+        "name": "Agnieszka Kreciszewska",
+        "company": "Caparol Polska",
+        "role_in_panel": "panelist",
+        "credentials": "EMBA, FCMA, CGMA",
+        "icp_status": "candidate",
+        "industry_fit": "production (paints/construction)",
+        "personalization_angle": "Ryzyko dostawców i koszty operacyjne narzucane przez sieci — rola danych kosztowych w ocenie, czy współpraca się spina"
+      }
+    ]
+  },
+  {
+    "post_id": 8,
+    "post_url": "https://www.linkedin.com/posts/uscinski_kolejny-panel-na-poland-cee-retail-summit-activity-7449762084923330560-3nCW",
+    "panel_title": "Łączenie systemów zwiększa nie tylko efektywność — ujawnia też miejsca podatne na ryzyka",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "integracja systemów",
+      "silosy danych",
+      "prognozowanie",
+      "dostępność produktu",
+      "ryzyko operacyjne",
+      "decyzje vs ich realizacja"
+    ],
+    "business_problems": [
+      "systemy działają w wyspach i silosach",
+      "brak wykorzystania dostępnych danych",
+      "integracja bez dobrych prognoz to za mało",
+      "rozproszona odpowiedzialność za doświadczenie klienta"
+    ],
+    "negotiation_intelligence_angle": "Integracja danych bez prognoz kosztowych i analizy dostawców daje niepełny obraz — dobra prognoza decyduje o dostępności, zapasie i kosztach",
+    "participants": [
+      {
+        "name": "Wojciech Normand",
+        "company": "Deichmann",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "retail (shoes)",
+        "personalization_angle": "Dostępność produktu i jakość prognoz — w retailu jakość danych zakupowych przekłada się na doświadczenie klienta i koszty"
+      },
+      {
+        "name": "Agnieszka Talecka",
+        "company": "DS Smith",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "packaging production",
+        "personalization_angle": "Projektowanie rozwiązań dla całego łańcucha — rola danych kosztowych i ryzyka dostawców w decyzjach produkcyjnych"
+      },
+      {
+        "name": "Kinga Wyganowska",
+        "company": "RELEX Solutions",
+        "role_in_panel": "panelist",
+        "icp_status": "rejected",
+        "rejection_reason": "SaaS vendor, not target industry"
+      },
+      {
+        "name": "Elisabet Ricart Roig",
+        "company": "Glovo",
+        "role_in_panel": "panelist",
+        "icp_status": "rejected",
+        "rejection_reason": "Delivery platform, not target industry"
+      },
+      {
+        "name": "Robert Stupak",
+        "company": "Carrefour Polska",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "retail (food, major chain)",
+        "personalization_angle": "Ryzyko na styku decyzji marketingowych i operacyjnych — rola danych i prognoz zakupowych w spójności decyzji"
+      },
+      {
+        "name": "Nils Swolkien",
+        "company": "Castorama",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "DIY retail",
+        "personalization_angle": "Systemy mają pomagać powiedzieć klientowi TAK — ale decyzje zakupowe muszą mieć świadomość konsekwencji kosztowych"
+      }
+    ]
+  },
+  {
+    "post_id": 9,
+    "post_url": "https://www.linkedin.com/posts/uscinski_jeste%C5%9Bmy-razem-z-lukasz-mazurowski-i-profitia-activity-7449730814130442240-PxGa",
+    "panel_title": "Ambicja to za mało — Strategy & Growth",
+    "event": "Poland & CEE Retail Summit 2026",
+    "key_themes": [
+      "wzrost",
+      "zdolność organizacji do udźwignięcia ambicji",
+      "ludzie, procesy, pieniądze",
+      "adaptacja modelu biznesowego",
+      "spójność organizacyjna"
+    ],
+    "business_problems": [
+      "ambicja bez zdolności organizacyjnej nie działa",
+      "strategia zostaje na slajdach bez ludzi i procesów",
+      "wzrost wymaga inwestycji i spójności",
+      "przejęcia i skala bez spójności procesowej = chaos"
+    ],
+    "negotiation_intelligence_angle": "Spójność procesowa obejmuje też zakupy — powtarzalny standard przygotowania negocjacji to element dojrzałości organizacji, która chce rosnąć",
+    "participants": [
+      {
+        "name": "Krzysztof Tokarz",
+        "company": "Grupa Specjał",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "wholesale/food distribution",
+        "personalization_angle": "Wzrost i spójność — ludzie, procesy i zaufanie jako fundament, powtarzalny standard zakupowy jako element skali"
+      },
+      {
+        "name": "Kiril Marinov",
+        "company": "Henkel",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "FMCG",
+        "personalization_angle": "Ludzie, procesy, pieniądze — profesjonalizacja zakupów i negocjacji jako inwestycja w zdolność wzrostu"
+      },
+      {
+        "name": "Agnieszka Mosurek-Zava",
+        "company": "Douglas",
+        "role_in_panel": "panelist",
+        "credentials": "PhD",
+        "icp_status": "candidate",
+        "industry_fit": "retail (beauty)",
+        "personalization_angle": "Adaptacja modelu działania — rola danych i powtarzalności w zakupach jako element odporności na zmianę"
+      },
+      {
+        "name": "Mariusz Makowski",
+        "company": "Mars Wrigley",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "FMCG (food)",
+        "personalization_angle": "Wzrost przez spójność — ludzi, procesów i kierunku, w tym standardu pracy zakupowej"
+      },
+      {
+        "name": "Monika Kolaszynska",
+        "company": "SUPER-PHARM",
+        "role_in_panel": "panelist",
+        "icp_status": "candidate",
+        "industry_fit": "retail (pharmacy/beauty)",
+        "personalization_angle": "People-first leadership w retailu — spójne procesy zakupowe jako element budowania wyniku"
+      },
+      {
+        "name": "Magdalena Markiewicz",
+        "company": "POLKA-POLSKA KAUCJA",
+        "role_in_panel": "panelist",
+        "icp_status": "rejected",
+        "rejection_reason": "Deposit return scheme company, not target industry"
+      }
+    ]
+  }
+]
