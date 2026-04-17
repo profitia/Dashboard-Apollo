@@ -17,6 +17,7 @@
 *.gpg
 secrets_*
 credentials*
+.token_cache.json
 token*
 !tokenów  # Polish word, not actual token files
 
