@@ -230,14 +230,28 @@ if [[ "${PUSH_ONLY}" == false ]]; then
         -x ".DS_Store" \
         -x "*.pyc" \
         -x ".env" \
-        -x "Integracja z Office365/.env" \
-        -x "Integracje/.env" \
+        -x "*/.env" \
+        -x ".env.*" \
+        -x "*/.env.*" \
         -x "*.key" \
         -x "*.pem" \
         -x "*.p12" \
         -x "*.pfx" \
+        -x ".token_cache.json" \
+        -x "*/.token_cache.json" \
+        -x "credentials.json" \
+        -x "*/credentials.json" \
+        -x "token*.json" \
+        -x "*/token*.json" \
+        -x "*secret*" \
+        -x "*credential*" \
         -x "outputs/*" \
         > /dev/null 2>&1
+
+    # Dodaj z powrotem pliki .env.example (wykluczone przez .env.*)
+    find . -name ".env.example" -print0 2>/dev/null | while IFS= read -r -d '' f; do
+        zip "${ZIP_PATH}" "${f}" > /dev/null 2>&1 || true
+    done
 
     ZIP_SIZE=$(du -sh "${ZIP_PATH}" | cut -f1)
     log_ok "ZIP utworzony: ${ZIP_PATH} (${ZIP_SIZE})"
