@@ -6,7 +6,7 @@ then save as v3 (Outlook-ready) DOCX files.
 Pipeline:
 1. Load 10 no-email contacts from campaign_results.json
 2. Fix vocative forms (campaign_results.json has base forms, not vocative)
-3. Call LLM (gpt-4.1-mini) with adhoc_email_writer.md prompt + context
+3. Call LLM (centralny llm_router → OPENAI_PRIMARY_MODEL) with adhoc_email_writer.md prompt + context
 4. Apply global rules (em dash → hyphen, CTA gender-aware, role phrasing)
 5. Generate v3 DOCX files (Outlook-ready format)
 """
@@ -24,22 +24,17 @@ _PROJECT_ROOT = os.path.dirname(_ADHOC_ROOT)
 sys.path.insert(0, os.path.join(_PROJECT_ROOT, "src"))
 
 from llm_client import generate_json, is_llm_available
+from core.icp_tier_resolver import resolve_tier, get_tier_prompt_context
+from core.tier_alignment import tier_alignment_check
+from core.apollo_contact_enrichment import resolve_vocative_from_dictionary, resolve_sex_from_dictionary
 from docx import Document
 from docx.shared import Pt, Cm, RGBColor
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-# ── Correct vocative forms ──────────────────────────────────────
-VOCATIVE_FIX = {
-    "Tomasz": "Tomaszu",
-    "Barbara": "Barbaro",
-    "Rafał": "Rafale",
-    "Marcin": "Marcinie",
-    "Piotr": "Piotrze",
-    "Wojciech": "Wojciechu",
-    "Krzysztof": "Krzysztofie",
-    "Agnieszka": "Agnieszko",
-}
+# ── Correct vocative forms (dictionary-based, deterministyczny) ──
+# Zastąpiono hardcoded VOCATIVE_FIX — teraz używa resolve_vocative_from_dictionary()
+# ze źródła prawdy: context/Vocative names od VSC.csv
 
 # ── Signature spec ──────────────────────────────────────────────
 SIG_LINES = [
@@ -91,13 +86,24 @@ def fix_role_phrasing(text: str) -> str:
 def load_context_files() -> dict:
     ctx_dir = os.path.join(_PROJECT_ROOT, "context")
     files = {}
-    if not os.path.isdir(ctx_dir):
-        return files
-    for fname in sorted(os.listdir(ctx_dir)):
-        if fname.endswith(".md"):
-            fpath = os.path.join(ctx_dir, fname)
-            with open(fpath, "r", encoding="utf-8") as f:
-                files[fname] = f.read()
+    if os.path.isdir(ctx_dir):
+        for fname in sorted(os.listdir(ctx_dir)):
+            if fname.endswith(".md"):
+                fpath = os.path.join(ctx_dir, fname)
+                with open(fpath, "r", encoding="utf-8") as f:
+                    files[fname] = f.read()
+
+    # Dołącz icp_tiers.yaml i global_campaign_rules.md
+    sot_tiers = os.path.join(_PROJECT_ROOT, "source_of_truth", "icp_tiers.yaml")
+    if os.path.exists(sot_tiers):
+        with open(sot_tiers, "r", encoding="utf-8") as f:
+            files["icp_tiers.yaml"] = f.read()
+
+    rules_path = os.path.join(_PROJECT_ROOT, "src", "config", "global_campaign_rules.md")
+    if os.path.exists(rules_path):
+        with open(rules_path, "r", encoding="utf-8") as f:
+            files["global_campaign_rules.md"] = f.read()
+
     return files
 
 
@@ -106,15 +112,25 @@ def generate_emails_for_contact(contact: dict, context_files: dict) -> dict | No
     """Call LLM to generate 3-email sequence."""
 
     first_name = contact.get("first_name", "")
-    vocative = VOCATIVE_FIX.get(first_name, contact.get("first_name_vocative", first_name))
+    vocative = resolve_vocative_from_dictionary(first_name) or contact.get("first_name_vocative", first_name)
     gender_str = contact.get("recipient_gender", "male")
     greeting = "Panie" if gender_str == "male" else "Pani"
+
+    # ICP Tier detection
+    contact_title = contact.get("apollo_title") or contact.get("known_title", "")
+    tier_info = resolve_tier(contact_title)
+
+    # Wzbogać kontekst o aktywny tier
+    enriched_context = dict(context_files) if context_files else {}
+    tier_prompt = get_tier_prompt_context(tier_info["tier"])
+    if tier_prompt:
+        enriched_context["__icp_tier_active"] = tier_prompt
 
     prompt_path = os.path.join(_ADHOC_ROOT, "prompts", "adhoc_email_writer.md")
 
     payload = {
         "contact_name": contact["name"],
-        "contact_title": contact.get("apollo_title") or contact.get("known_title", ""),
+        "contact_title": contact_title,
         "company": contact.get("apollo_company") or contact.get("company", ""),
         "recipient_gender": gender_str,
         "first_name_vocative": vocative,
@@ -128,19 +144,26 @@ def generate_emails_for_contact(contact: dict, context_files: dict) -> dict | No
         "hypothesis": contact.get("negotiation_intelligence_angle", ""),
         "suggested_framework": "Cost/Trend/Dostawca/Decyzja",
         "industry_fit": contact.get("industry_fit", ""),
+        "icp_tier": tier_info["tier"],
+        "tier_label": tier_info["tier_label"],
+        "savings_accountability": tier_info["savings_accountability"],
+        "messaging_angle": tier_info["messaging_angle"],
     }
 
-    print(f"  [LLM] Calling for {contact['name']} (vocative: {vocative}, gender: {gender_str})...")
+    print(f"  [LLM] Calling for {contact['name']} (vocative: {vocative}, gender: {gender_str}, tier: {tier_info['tier_label']})...")
 
     result = generate_json(
         agent_name="AdHocEmailWriter",
         prompt_path=prompt_path,
         user_payload=payload,
-        context_files=context_files,
-        relevant_context_keys=["00_master", "01_offer", "03_messaging", "05_quality"],
+        context_files=enriched_context,
+        relevant_context_keys=["00_master", "01_offer", "03_messaging", "05_quality", "icp_tiers", "__icp_tier_active"],
         max_tokens=3000,
         temperature=0.5,
     )
+
+    if result:
+        result["icp_tier"] = tier_info
 
     return result
 
@@ -359,7 +382,14 @@ def main():
             continue
 
         model_used = emails_data.get("_llm_model_used", "unknown")
-        print(f"  ✓ Emails generated (model: {model_used})")
+
+        # Lightweight tier alignment check
+        bodies = [emails_data.get(f"email_{i}_body", "") for i in range(1, 4)]
+        alignment = tier_alignment_check(emails_data.get("icp_tier"), bodies)
+        emails_data["tier_alignment"] = alignment
+
+        align_tag = "PASS" if alignment.get("pass") else "REVIEW"
+        print(f"  ✓ Emails generated (model: {model_used}, alignment: {align_tag})")
 
         # Generate v3 DOCX
         filepath = generate_v3_doc(contact, emails_data, docs_dir)
@@ -374,7 +404,12 @@ def main():
         contact["email_3_subject"] = emails_data.get("email_3_subject", "")
         contact["email_3_body"] = emails_data.get("email_3_body", "")
         contact["_llm_model_used"] = model_used
-        contact["status"] = "ready_for_review_no_email"
+        contact["icp_tier"] = emails_data.get("icp_tier", {})
+        contact["tier_alignment"] = emails_data.get("tier_alignment", {})
+        if alignment.get("requires_review"):
+            contact["status"] = "requires_review_no_email"
+        else:
+            contact["status"] = "ready_for_review_no_email"
 
     # Save updated campaign_results.json
     with open(results_path, "w", encoding="utf-8") as f:

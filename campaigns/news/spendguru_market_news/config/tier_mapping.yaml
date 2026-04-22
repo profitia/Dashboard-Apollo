@@ -1,0 +1,175 @@
+# =============================================================================
+# tier_mapping.yaml — Mapowanie stanowisk do tierów ICP
+# =============================================================================
+# Używa icp_tiers.yaml jako źródła definicji tierów.
+# Ten plik rozszerza mapowanie dla kampanii news (produkcja / FMCG).
+# Wpisy case-insensitive. Obsługiwane wersje PL i EN.
+# =============================================================================
+
+# Mapping: exact / partial title → tier_id
+# Kolejność sprawdzania: tier_1 → tier_2 → tier_3
+# Jeśli brak dopasowania → tier_uncertain
+
+tier_1_titles:
+  label: "Tier 1 — C-Level / Zarząd / Właściciele"
+  titles:
+    # C-Suite PL
+    - "prezes zarządu"
+    - "wiceprezes zarządu"
+    - "prezes"
+    - "dyrektor generalny"
+    - "dyrektor naczelny"
+    - "właściciel"
+    - "współwłaściciel"
+    - "założyciel"
+    - "współzałożyciel"
+    - "dyrektor finansowy"
+    - "dyrektor operacyjny"
+    - "chief executive"
+    - "dyrektor ds. produkcji"   # na poziomie zarządu
+
+    # C-Suite EN
+    - "CEO"
+    - "CFO"
+    - "COO"
+    - "CTO"
+    - "CSO"
+    - "CPO"                      # Chief Procurement Officer — Tier 1 (nie mylić z Category Manager)
+    - "board member"
+    - "managing director"
+    - "general manager"          # GM jeśli całość firmy
+    - "country manager"
+    - "managing partner"
+    - "founder"
+    - "co-founder"
+    - "owner"
+    - "president"
+    - "chairman"
+
+    # Finansowe na poziomie zarządu
+    - "finance director"
+    - "financial director"
+    - "VP Finance"
+    - "VP Operations"
+    - "VP Sales"
+    - "VP Supply Chain"          # tylko jeśli na poziomie całej firmy
+    - "executive director"
+    - "chief financial officer"
+    - "chief operating officer"
+    - "chief procurement officer"
+
+tier_2_titles:
+  label: "Tier 2 — Procurement Management / Liderzy zakupów"
+  titles:
+    # PL
+    - "dyrektor zakupów"
+    - "dyrektor ds. zakupów"
+    - "szef zakupów"
+    - "kierownik działu zakupów"
+    - "head of zakupów"
+    - "kierownik zakupów"
+    - "dyrektor ds. zaopatrzenia"
+    - "dyrektor zaopatrzenia"
+    - "dyrektor ds. supply chain"
+    - "dyrektor łańcucha dostaw"
+    - "dyrektor operacji zakupowych"
+    - "dyrektor kategorii"
+    - "dyrektor ds. kategorii"
+
+    # EN
+    - "procurement director"
+    - "director of procurement"
+    - "head of procurement"
+    - "purchasing director"
+    - "director of purchasing"
+    - "sourcing director"
+    - "head of sourcing"
+    - "supply chain director"
+    - "head of supply chain"
+    - "category director"
+    - "head of category"
+    - "strategic procurement manager"  # jeśli zarządza zespołem
+    - "procurement manager"            # conditional: jeśli zarządza
+    - "purchasing manager"             # conditional: jeśli zarządza
+    - "supply chain manager"           # conditional: jeśli zarządza
+    - "global procurement manager"
+    - "regional procurement manager"
+    - "VP Procurement"
+    - "VP Purchasing"
+    - "VP Sourcing"
+
+tier_3_titles:
+  label: "Tier 3 — Buyers / Operational / Category Managers"
+  titles:
+    # PL
+    - "kupiec"
+    - "starszy kupiec"
+    - "główny kupiec"
+    - "specjalista ds. zakupów"
+    - "specjalista zakupów"
+    - "młodszy kupiec"
+    - "category manager"
+    - "brand manager"
+    - "menedżer kategorii"
+    - "koordynator zakupów"
+    - "specjalista ds. zaopatrzenia"
+    - "specjalista ds. sourcing"
+    - "specjalista ds. dostawców"
+    - "analityk zakupów"
+
+    # EN
+    - "buyer"
+    - "senior buyer"
+    - "strategic buyer"
+    - "junior buyer"
+    - "category manager"
+    - "commodity manager"
+    - "sourcing manager"
+    - "procurement specialist"
+    - "purchasing specialist"
+    - "procurement analyst"
+    - "supply planner"
+    - "demand planner"
+    - "logistics coordinator"
+    - "supply chain coordinator"
+
+# ---------------------------------------------------------------------------
+# Keywords do klasyfikacji (partial match — jeśli tytuł zawiera słowo)
+# ---------------------------------------------------------------------------
+tier_keyword_hints:
+  tier_1_keywords:
+    - "prezes"
+    - "właściciel"
+    - "CEO"
+    - "CFO"
+    - "COO"
+    - "CPO"                     # Chief
+    - "zarząd"
+    - "board"
+    - "managing"
+    - "general manager"
+    - "country manager"
+    - "founder"
+    - "owner"
+    - "president"
+
+  tier_2_keywords:
+    - "dyrektor zakupów"
+    - "dyrektor zaopatrzenia"
+    - "head of procurement"
+    - "head of sourcing"
+    - "procurement director"
+    - "purchasing director"
+    - "sourcing director"
+    - "supply chain director"
+    - "category director"
+
+  tier_3_keywords:
+    - "kupiec"
+    - "buyer"
+    - "category manager"
+    - "commodity manager"
+    - "sourcing manager"
+    - "procurement specialist"
+    - "purchasing specialist"
+    - "procurement analyst"

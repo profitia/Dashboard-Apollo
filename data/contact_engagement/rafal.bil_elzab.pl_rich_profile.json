@@ -1,0 +1,135 @@
+{
+  "core_identity": {
+    "first_name": "Rafal",
+    "last_name": "Bil",
+    "full_name": "Rafal Bil",
+    "email": "rafal.bil@elzab.pl",
+    "job_title": "Head of Product CPO (Retail",
+    "seniority": "C suite"
+  },
+  "org_context": {
+    "company_name": "ELZAB",
+    "departments": "Product",
+    "sub_departments": "Product Management",
+    "industry": "electrical/electronic manufacturing",
+    "keywords_raw": "kasy i drukarki fiskalne, wagi elektroniczne, kody kreskowe, drukarki paragonowe, urzadzenia fiskalne, technologia, zarzadzanie sprzedaza, elektonika, produkcja, pos, szuflady kasowe, computers & electronics manufacturing, electrical/electronic manufacturing, mechanical or industrial engineering",
+    "keywords_list": [
+      "kasy i drukarki fiskalne",
+      "wagi elektroniczne",
+      "kody kreskowe",
+      "drukarki paragonowe",
+      "urzadzenia fiskalne",
+      "technologia",
+      "zarzadzanie sprzedaza",
+      "elektonika",
+      "produkcja",
+      "pos",
+      "szuflady kasowe",
+      "computers & electronics manufacturing",
+      "electrical/electronic manufacturing",
+      "mechanical or industrial engineering"
+    ],
+    "keywords_normalized": [
+      "kasy i drukarki fiskalne",
+      "wagi elektroniczne",
+      "kody kreskowe",
+      "drukarki paragonowe",
+      "urzadzenia fiskalne",
+      "technologia",
+      "zarzadzanie sprzedaza",
+      "elektonika",
+      "produkcja",
+      "pos",
+      "szuflady kasowe",
+      "computers & electronics manufacturing",
+      "electrical/electronic manufacturing",
+      "mechanical or industrial engineering"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/rafa%c5%82-bil-183487206",
+    "website": "https://elzab.com.pl",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/elzab",
+    "facebook_url": "https://facebook.com/ElzabSA",
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Katowice",
+    "state": "Silesian Voivodeship",
+    "country": "POLAND",
+    "company_address": "Zabrze, Silesian Voivodeship, Poland, 41",
+    "company_city": "Zabrze",
+    "company_state": "Silesian Voivodeship",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": "'+48 32 272 20 21",
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Rafal",
+      "Last Name": "Bil",
+      "Title": "Head of Product CPO (Retail",
+      "Company Name": "ELZAB",
+      "Email": "rafal.bil@elzab.pl",
+      "Seniority": "C suite",
+      "Departments": "Product",
+      "Sub Departments": "Product Management",
+      "Industry": "electrical/electronic manufacturing",
+      "Keywords": "kasy i drukarki fiskalne, wagi elektroniczne, kody kreskowe, drukarki paragonowe, urzadzenia fiskalne, technologia, zarzadzanie sprzedaza, elektonika, produkcja, pos, szuflady kasowe, computers & electronics manufacturing, electrical/electronic manufacturing, mechanical or industrial engineering",
+      "Person Linkedin Url": "http://www.linkedin.com/in/rafa%c5%82-bil-183487206",
+      "Website": "https://elzab.com.pl",
+      "Company Linkedin Url": "http://www.linkedin.com/company/elzab",
+      "Facebook Url": "https://facebook.com/ElzabSA",
+      "City": "Katowice",
+      "State": "Silesian Voivodeship",
+      "Country": "Poland",
+      "Company Address": "Zabrze, Silesian Voivodeship, Poland, 41",
+      "Company City": "Zabrze",
+      "Company State": "Silesian Voivodeship",
+      "Company Country": "Poland",
+      "Company Phone": "'+48 32 272 20 21"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.046462",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.857168",
+        "original_row": {
+          "First Name": "Rafal",
+          "Last Name": "Bil",
+          "Title": "Head of Product CPO (Retail",
+          "Company Name": "ELZAB",
+          "Email": "rafal.bil@elzab.pl",
+          "Seniority": "C suite",
+          "Departments": "Product",
+          "Sub Departments": "Product Management",
+          "Industry": "electrical/electronic manufacturing",
+          "Keywords": "kasy i drukarki fiskalne, wagi elektroniczne, kody kreskowe, drukarki paragonowe, urzadzenia fiskalne, technologia, zarzadzanie sprzedaza, elektonika, produkcja, pos, szuflady kasowe, computers & electronics manufacturing, electrical/electronic manufacturing, mechanical or industrial engineering",
+          "Person Linkedin Url": "http://www.linkedin.com/in/rafa%c5%82-bil-183487206",
+          "Website": "https://elzab.com.pl",
+          "Company Linkedin Url": "http://www.linkedin.com/company/elzab",
+          "Facebook Url": "https://facebook.com/ElzabSA",
+          "City": "Katowice",
+          "State": "Silesian Voivodeship",
+          "Country": "Poland",
+          "Company Address": "Zabrze, Silesian Voivodeship, Poland, 41",
+          "Company City": "Zabrze",
+          "Company State": "Silesian Voivodeship",
+          "Company Country": "Poland",
+          "Company Phone": "'+48 32 272 20 21"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "rafal.bil@elzab.pl",
+    "last_saved_at": "2026-04-21T07:02:12.857346"
+  }
+}

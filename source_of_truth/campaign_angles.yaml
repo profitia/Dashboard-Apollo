@@ -1,0 +1,262 @@
+# ============================================================
+# Campaign Angles — Taxonomy & Source of Truth
+# ============================================================
+#
+# Centralna taksonomia angle'i kampanijnych.
+# Używana przez:
+# - angle_tracker.py (resolve, record, recommend)
+# - engagement context (llm_context_summary)
+# - reengagement_router (angle-aware routing)
+# - campaign_name_builder (detect_angle — kompatybilne)
+#
+# Każdy angle ma:
+# - angle_id: unikalny identyfikator
+# - label_pl: etykieta po polsku (do raportów / LLM summary)
+# - label_en: etykieta angielska
+# - description: krótki opis kontekstu
+# - keywords: słowa kluczowe do heurystycznego rozpoznania
+# - related_angles: powiązane angles (do sugestii rotacji)
+# - avoid_repeat_threshold: ile razy bez reply = sugestia zmiany
+#
+# Kompatybilność z campaign_naming_rules.yaml:
+# - angle_codes z naming → mapowane do campaign_angles via `naming_code`
+# ============================================================
+
+angles:
+
+  supplier_price_increases:
+    label_pl: "podwyżki dostawców"
+    label_en: "Supplier Price Increases"
+    description: "Presja cenowa ze strony dostawców, rosnące ceny surowców/materiałów."
+    keywords:
+      - "podwyżki"
+      - "podwyżka"
+      - "price increase"
+      - "wzrost cen"
+      - "presja cenowa"
+      - "dostawca podnosi"
+      - "supplier price"
+    related_angles:
+      - negotiation_preparation
+      - margin_protection
+      - cost_transparency
+    avoid_repeat_threshold: 2
+    naming_code: "Savings"
+
+  savings_delivery:
+    label_pl: "savings delivery"
+    label_en: "Savings Delivery"
+    description: "Dowożenie oszczędności, wykazanie realnych savings z negocjacji/zakupów."
+    keywords:
+      - "savings"
+      - "oszczędności"
+      - "savings delivery"
+      - "redukcja kosztów"
+      - "cost reduction"
+      - "dowożenie oszczędności"
+    related_angles:
+      - avoided_cost
+      - cost_transparency
+      - budget_predictability
+    avoid_repeat_threshold: 2
+    naming_code: "Savings"
+
+  private_label:
+    label_pl: "private label"
+    label_en: "Private Label Cost Control"
+    description: "Kontrola kosztów i marży na markach własnych."
+    keywords:
+      - "private label"
+      - "marka własna"
+      - "marki własne"
+      - "pl cost"
+    related_angles:
+      - margin_protection
+      - supplier_price_increases
+    avoid_repeat_threshold: 2
+    naming_code: "Margin"
+
+  edlp_margin_protection:
+    label_pl: "marża w modelu EDLP"
+    label_en: "EDLP Margin Protection"
+    description: "Ochrona marży w modelu Every Day Low Price."
+    keywords:
+      - "edlp"
+      - "every day low price"
+      - "marża edlp"
+      - "cena półkowa"
+    related_angles:
+      - margin_protection
+      - savings_delivery
+    avoid_repeat_threshold: 2
+    naming_code: "Margin"
+
+  negotiation_preparation:
+    label_pl: "przygotowanie negocjacji"
+    label_en: "Negotiation Preparation"
+    description: "Lepsze przygotowanie do rozmów z dostawcami, dane negocjacyjne."
+    keywords:
+      - "negocjacje"
+      - "negocjacja"
+      - "negotiation"
+      - "preparation"
+      - "przygotowanie"
+      - "standard negocjacji"
+      - "argumentacja"
+    related_angles:
+      - supplier_price_increases
+      - cost_transparency
+      - procurement_team_standardization
+    avoid_repeat_threshold: 2
+    naming_code: "NegStd"
+
+  avoided_cost:
+    label_pl: "avoided cost"
+    label_en: "Avoided Cost Reporting"
+    description: "Wykazanie unikniętych kosztów, raportowanie avoided cost."
+    keywords:
+      - "avoided cost"
+      - "uniknięty koszt"
+      - "cost avoidance"
+      - "uniknięte koszty"
+    related_angles:
+      - savings_delivery
+      - budget_predictability
+    avoid_repeat_threshold: 2
+    naming_code: "AvoidedCost"
+
+  budget_predictability:
+    label_pl: "planowanie budżetu zakupowego"
+    label_en: "Budget Predictability"
+    description: "Przewidywalność budżetu, planowanie wydatków zakupowych."
+    keywords:
+      - "budżet"
+      - "budget"
+      - "planowanie"
+      - "prognoza"
+      - "forecast"
+      - "planning"
+      - "przewidywalność"
+    related_angles:
+      - savings_delivery
+      - avoided_cost
+      - cash_flow
+    avoid_repeat_threshold: 2
+    naming_code: "Forecast"
+
+  supplier_risk:
+    label_pl: "ryzyko dostawcy"
+    label_en: "Supplier Risk Management"
+    description: "Identyfikacja i zarządzanie ryzykiem dostawcy."
+    keywords:
+      - "ryzyko"
+      - "risk"
+      - "supply risk"
+      - "dostawca ryzyko"
+      - "kondycja dostawcy"
+      - "supplier risk"
+    related_angles:
+      - supplier_price_increases
+      - negotiation_preparation
+    avoid_repeat_threshold: 2
+    naming_code: "Risk"
+
+  cost_transparency:
+    label_pl: "transparentność kosztów"
+    label_en: "Cost Transparency"
+    description: "Przejrzystość struktury kosztów, widoczność savings i wydatków."
+    keywords:
+      - "transparency"
+      - "transparentność"
+      - "widoczność kosztów"
+      - "cost breakdown"
+      - "struktura kosztów"
+    related_angles:
+      - savings_delivery
+      - avoided_cost
+      - budget_predictability
+    avoid_repeat_threshold: 2
+    naming_code: "Savings"
+
+  margin_protection:
+    label_pl: "obrona marży"
+    label_en: "Margin Protection"
+    description: "Ochrona marży operacyjnej / handlowej."
+    keywords:
+      - "margin"
+      - "marża"
+      - "margin protection"
+      - "ochrona marży"
+      - "obrona marży"
+      - "obrona ceny"
+    related_angles:
+      - edlp_margin_protection
+      - private_label
+      - supplier_price_increases
+    avoid_repeat_threshold: 2
+    naming_code: "Margin"
+
+  procurement_team_standardization:
+    label_pl: "standard pracy zespołu zakupowego"
+    label_en: "Procurement Team Standardization"
+    description: "Ujednolicenie procesów, narzędzi i standardów w zespole zakupowym."
+    keywords:
+      - "standard"
+      - "standaryzacja"
+      - "zespół zakupowy"
+      - "procurement team"
+      - "ujednolicenie"
+    related_angles:
+      - negotiation_preparation
+      - cost_transparency
+    avoid_repeat_threshold: 2
+    naming_code: "NegStd"
+
+  cash_flow:
+    label_pl: "cash flow / płynność"
+    label_en: "Cash Flow Optimization"
+    description: "Optymalizacja płynności, warunki płatności, gotówka."
+    keywords:
+      - "cash flow"
+      - "gotówka"
+      - "płynność"
+      - "liquidity"
+      - "warunki płatności"
+      - "payment terms"
+    related_angles:
+      - budget_predictability
+      - savings_delivery
+    avoid_repeat_threshold: 2
+    naming_code: "CashFlow"
+
+  general:
+    label_pl: "ogólny / mieszany"
+    label_en: "General"
+    description: "Ogólny angle, nie pasuje do żadnej konkretnej kategorii."
+    keywords: []
+    related_angles: []
+    avoid_repeat_threshold: 3
+    naming_code: "Gen"
+
+
+# ============================================================
+# Mapowanie naming_code → angle_id (dla kompatybilności wstecznej)
+# ============================================================
+# Jeśli pipeline zwraca angle_code z campaign_naming_rules.yaml
+# (np. "Savings", "Margin", "Risk"), ten mapping tłumaczy go
+# na odpowiedni domyślny angle_id z tej taksonomii.
+#
+# Uwaga: mapping jest 1:N (jeden naming_code → wiele angle_ids).
+# Domyślnie wybieramy pierwszy, ale heurystyka keyword może
+# sprecyzować do konkretnego.
+# ============================================================
+
+naming_code_to_default_angle:
+  Savings: savings_delivery
+  AvoidedCost: avoided_cost
+  Margin: margin_protection
+  CashFlow: cash_flow
+  NegStd: negotiation_preparation
+  Risk: supplier_risk
+  Forecast: budget_predictability
+  Gen: general

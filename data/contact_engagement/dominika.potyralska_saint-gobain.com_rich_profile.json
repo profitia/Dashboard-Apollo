@@ -1,0 +1,115 @@
+{
+  "core_identity": {
+    "first_name": "Dominika",
+    "last_name": "Potyralska",
+    "full_name": "Dominika Potyralska",
+    "email": "dominika.potyralska@saint-gobain.com",
+    "job_title": "Purchasing Director Abrasives EMEA",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "Saint-Gobain Abrasives",
+    "departments": "Finance",
+    "sub_departments": "Sourcing / Procurement",
+    "industry": "machinery",
+    "keywords_raw": "coated abrasives, contruction products, superabrasives, bonded abrasives, thin wheels, construction, industrial machinery manufacturing",
+    "keywords_list": [
+      "coated abrasives",
+      "contruction products",
+      "superabrasives",
+      "bonded abrasives",
+      "thin wheels",
+      "construction",
+      "industrial machinery manufacturing"
+    ],
+    "keywords_normalized": [
+      "coated abrasives",
+      "contruction products",
+      "superabrasives",
+      "bonded abrasives",
+      "thin wheels",
+      "construction",
+      "industrial machinery manufacturing"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/dominika-potyralska-82585694",
+    "website": "https://saint-gobain-surfacesolutions.com",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/saint-gobain-abrasives",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": null,
+    "state": "Greater Poland Voivodeship",
+    "country": "POLAND",
+    "company_address": "1 New Bond St, Worcester, Massachusetts, United States, 01606-2614",
+    "company_city": "Worcester",
+    "company_state": "Massachusetts",
+    "company_country": "UNITED STATES"
+  },
+  "company_metadata": {
+    "company_phone": null,
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Dominika",
+      "Last Name": "Potyralska",
+      "Title": "Purchasing Director Abrasives EMEA",
+      "Company Name": "Saint-Gobain Abrasives",
+      "Email": "dominika.potyralska@saint-gobain.com",
+      "Seniority": "Director",
+      "Departments": "Finance",
+      "Sub Departments": "Sourcing / Procurement",
+      "Industry": "machinery",
+      "Keywords": "coated abrasives, contruction products, superabrasives, bonded abrasives, thin wheels, construction, industrial machinery manufacturing",
+      "Person Linkedin Url": "http://www.linkedin.com/in/dominika-potyralska-82585694",
+      "Website": "https://saint-gobain-surfacesolutions.com",
+      "Company Linkedin Url": "http://www.linkedin.com/company/saint-gobain-abrasives",
+      "State": "Greater Poland Voivodeship",
+      "Country": "Poland",
+      "Company Address": "1 New Bond St, Worcester, Massachusetts, United States, 01606-2614",
+      "Company City": "Worcester",
+      "Company State": "Massachusetts",
+      "Company Country": "United States"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.031919",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.831455",
+        "original_row": {
+          "First Name": "Dominika",
+          "Last Name": "Potyralska",
+          "Title": "Purchasing Director Abrasives EMEA",
+          "Company Name": "Saint-Gobain Abrasives",
+          "Email": "dominika.potyralska@saint-gobain.com",
+          "Seniority": "Director",
+          "Departments": "Finance",
+          "Sub Departments": "Sourcing / Procurement",
+          "Industry": "machinery",
+          "Keywords": "coated abrasives, contruction products, superabrasives, bonded abrasives, thin wheels, construction, industrial machinery manufacturing",
+          "Person Linkedin Url": "http://www.linkedin.com/in/dominika-potyralska-82585694",
+          "Website": "https://saint-gobain-surfacesolutions.com",
+          "Company Linkedin Url": "http://www.linkedin.com/company/saint-gobain-abrasives",
+          "State": "Greater Poland Voivodeship",
+          "Country": "Poland",
+          "Company Address": "1 New Bond St, Worcester, Massachusetts, United States, 01606-2614",
+          "Company City": "Worcester",
+          "Company State": "Massachusetts",
+          "Company Country": "United States"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "dominika.potyralska@saint-gobain.com",
+    "last_saved_at": "2026-04-21T07:02:12.831585"
+  }
+}

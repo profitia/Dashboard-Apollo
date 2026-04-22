@@ -1,0 +1,246 @@
+# ============================================================
+# Campaign Definition — CSV do Apollo
+# ============================================================
+# Ustrukturyzowana definicja campaign type "csv_do_apollo".
+# Opisuje właściwości, zależności i reguły tego flow.
+#
+# UWAGA: To jest plik organizacyjny / dokumentacyjny.
+# Nie jest wczytywany przez pipeline. Runtime korzysta z:
+#   - src/pipelines/run_csv_campaign.py (entry point)
+#   - configs/csv_import/*.yaml (konfiguracje per kampania)
+#   - source_of_truth/apollo_custom_fields.yaml (cadence, field mapping)
+# ============================================================
+
+campaign_type: csv_do_apollo
+display_name: "CSV do Apollo — List-based AI Outreach"
+pipeline_campaign_type_code: CSVImport   # kod używany w campaign_name_builder.py
+version: "1.0"
+effective_date: "2026-04-21"
+
+# ----------------------------------------------------------
+# INPUT / OUTPUT
+# ----------------------------------------------------------
+
+primary_input:
+  type: csv
+  format: apollo_export
+  delimiter: ";"
+  encoding: "utf-8-sig"
+  location: "CSV do kampanii/"
+  example_file: "CSV do kampanii/TEST STRUKTURY 2026-04-21 Tier 2 do VSC.csv"
+  # UWAGA: powyższy plik i powiązany DOCX (csv_do_apollo_test_review.docx)
+  # to artefakty walidacji STRUKTURY REPO — nie są wzorcem jakościowym treści kampanii.
+  # Wzorcem jakości są kampanie z outputs/word_campaigns/ z oznaczeniem _sent lub _review (bez _test).
+  required_columns:
+    - "First Name"
+    - "Last Name"
+    - "Email"
+    - "Company Name"
+    - "Title"
+  optional_enrichment_columns:
+    - "Seniority"
+    - "Industry"
+    - "Keywords"
+    - "Person Linkedin Url"
+    - "Website"
+    - "Company Linkedin Url"
+    - "City"
+    - "Company City"
+    - "Company Country"
+
+primary_output:
+  apollo_custom_fields: true    # 6 pól per kontakt (sg_email_step_*)
+  apollo_sequence: true         # tygodniowa sekwencja z merge tagami
+  docx_review_file: true        # plik Word ze Step 1 / FU1 / FU2
+  run_report: true              # markdown raport per run
+  engagement_tracker: true      # lokalny JSON per kontakt
+  campaign_history: true        # lokalny JSON per kontakt
+
+# ----------------------------------------------------------
+# DELIVERY
+# ----------------------------------------------------------
+
+delivery_channel: apollo_email
+apollo_enabled: true
+apollo_sequence_model: weekly_sequence   # 1 sekwencja / wielu kontaktów / merge tags
+sequence_activation_mode: manual         # sekwencja zapisywana jako inactive, aktywacja ręcznie
+mailbox_model: multi_mailbox_round_robin # 5 mailboxów @profitia.pl, round-robin
+
+# ----------------------------------------------------------
+# CONTENT GENERATION
+# ----------------------------------------------------------
+
+pipeline_entry_point: "src/pipelines/run_csv_campaign.py"
+pipeline_mode: "draft"
+
+llm_agents:
+  - name: CSVTriggerInference
+    prompt: "prompts/csv_import/csv_trigger_inference.md"
+    purpose: "Generuje hipotezę dla kontaktów bez mocnego triggera"
+    fallback: heuristic
+  - name: MessageWriter_CSV
+    prompt: "prompts/shared/message_writer.md"
+    purpose: "Główny writer Step 1"
+    fallback: heuristic (_csv_message_heuristic)
+  - name: QA_Reviewer
+    prompt: "prompts/shared/qa_reviewer.md"
+    purpose: "Walidacja jakości treści"
+    fallback: heuristic
+  - name: FollowUp_Writer_FU1
+    prompt: "prompts/shared/follow_up_writer.md"
+    purpose: "FU1 — rozwinięcie problemu + nowa wartość"
+    fallback: heuristic (followup_generator.py)
+  - name: FollowUp_Writer_FU2
+    prompt: "prompts/shared/follow_up_writer.md"
+    purpose: "FU2 — krótkie, bez presji, praktyczne CTA"
+    fallback: heuristic (followup_generator.py)
+
+heuristic_agents:
+  - lead_scoring
+  - account_research
+  - persona_selection
+  - apollo_fields
+  - sequence_router
+  - tier_alignment
+
+# ----------------------------------------------------------
+# SEQUENCE MODEL
+# ----------------------------------------------------------
+
+default_sequence_model: email_only_3steps
+sequence_steps: 3
+sequence_cadence:
+  step_1: "D0 (delay: 0 min)"
+  step_2: "D+2 (delay: 2880 min)"
+  step_3: "D+2 (delay: 2880 min)"
+cadence_source: "source_of_truth/apollo_custom_fields.yaml → sequence_cadence"
+
+# ----------------------------------------------------------
+# CUSTOM FIELDS
+# ----------------------------------------------------------
+
+supports_dynamic_custom_fields: true
+custom_fields_group: VSC
+custom_field_names:
+  - sg_email_step_1_subject
+  - sg_email_step_1_body
+  - sg_email_step_2_subject
+  - sg_email_step_2_body
+  - sg_email_step_3_subject
+  - sg_email_step_3_body
+  - pl_signature_tu   # wspólny podpis (TU = Tomasz Uściński), osobne pole
+
+apollo_merge_tag_syntax: "{{field_name}}"   # bare name — jedyna działająca składnia
+
+# ----------------------------------------------------------
+# THREADING MODEL
+# ----------------------------------------------------------
+
+threading_model: email_thread_simulation
+threading_module: "src/core/email_thread_formatter.py"
+thread_notes:
+  - "Step 1: brak thread, tylko treść + podpis (pl_signature_tu)"
+  - "FU1: thread Step 1 dołączony poniżej separatora HR"
+  - "FU2: thread Step 1 + FU1 dołączone poniżej separatora HR"
+  - "Separator: <hr style='border: none; border-top: 1px solid #b5b5b5'>"
+  - "Thread header format: 'W dniu {data}, {imię} {nazwisko} <{email}> napisał(a):'"
+
+# ----------------------------------------------------------
+# SIGNATURE MODEL
+# ----------------------------------------------------------
+
+signature_model: custom_field_pl_signature_tu
+signature_field: pl_signature_tu
+signature_notes:
+  - "Podpis zdefiniowany w Apollo jako custom field pl_signature_tu"
+  - "Step 1 template: {{sg_email_step_1_body}}{{pl_signature_tu}}"
+  - "FU1/FU2 templates: {{sg_email_step_N_body}} (podpis embedded przed thread)"
+  - "Nie wstawiaj podpisu do sg_email_step_N_body — wyłącznie do pl_signature_tu"
+
+# ----------------------------------------------------------
+# CTA MODEL
+# ----------------------------------------------------------
+
+cta_model: calendly_plus_phone_alt
+cta_notes:
+  - "CTA = Calendly link Tier 2: https://calendly.com/profitia/standard-negocjacji-i-oszczednosci"
+  - "Zawsze dołącz alternatywę telefoniczną (prośba o numer)"
+  - "Formulacja telefoniczna: 'Jeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię.'"
+  - "Nie używaj: 'odpisać TAK i podać numer', 'Wystarczy krótka odpowiedź'"
+  - "Calendly placeholder [link do Calendly] musi być zastąpiony prawdziwym linkiem przed zapi
+
+sem"
+
+# ----------------------------------------------------------
+# REVIEW
+# ----------------------------------------------------------
+
+review_required: true
+requires_docx_review: true
+docx_output_location: "outputs/word_campaigns/"
+review_before_activation: true
+docx_content: "Step 1, FU1, FU2 per kontakt"
+
+# ----------------------------------------------------------
+# KNOWN EXCEPTIONS / GOTCHAS
+# ----------------------------------------------------------
+
+known_exceptions:
+  - id: enrollment_blocked_other_campaigns
+    description: "Kontakty zakończone w innych sekwencjach Apollo mogą być blokowane przez 'contacts_finished_in_other_campaigns'. Rozwiązanie: w UI Apollo 'Add Anyway' lub wyłączyć blokadę w Settings."
+  - id: max_5000_chars_custom_field
+    description: "Apollo hard limit: max 5000 znaków per custom field. Używaj body_html_nosig (bez podpisu i thread history) — ok. 3000-3300 znaków."
+  - id: apollo_merge_tag_syntax
+    description: "Działa tylko {{field_name}} (bare name). Nie działają: {{custom.name}}, {{custom_field.name}}, {{field_id}}."
+  - id: activation_requires_approve_not_put
+    description: "Aktywacja sekwencji wymaga POST /approve + approve touches. PUT z active:true NIE aktywuje."
+  - id: archived_sequence_enrollment
+    description: "Enrollment do archived sequence = kontakt 'paused'. Zawsze twórz nową sekwencję."
+  - id: signature_embedded_in_fu
+    description: "W FU1/FU2 podpis jest embedded w body_html_nosig (przed thread), nie pochodzi z pl_signature_tu."
+
+# ----------------------------------------------------------
+# LINKED SOURCES
+# ----------------------------------------------------------
+
+linked_sources:
+  - path: "source_of_truth/apollo_custom_fields.yaml"
+    purpose: "Custom field names, cadence, outreach_pack mapping"
+  - path: "source_of_truth/apollo_campaign_types.yaml"
+    purpose: "Campaign types registry, delivery types"
+  - path: "source_of_truth/icp_tiers.yaml"
+    purpose: "ICP Tier 1/2/3 definitions + messaging angles"
+  - path: "source_of_truth/email_style_guide.yaml"
+    purpose: "Email style rules (tone, format, prohibited phrases)"
+  - path: "source_of_truth/spendguru_positioning.yaml"
+    purpose: "SpendGuru value proposition + messaging framework"
+  - path: "source_of_truth/campaign_naming_rules.yaml"
+    purpose: "Campaign name format rules"
+  - path: "context/00_master_context.md"
+    purpose: "Master context (loaded as LLM system prompt)"
+  - path: "context/Vocative names od VSC.csv"
+    purpose: "Polish name dictionary: vocative + gender"
+
+# ----------------------------------------------------------
+# LINKED CODE PATHS
+# ----------------------------------------------------------
+
+linked_code_paths:
+  entry_point: "src/pipelines/run_csv_campaign.py"
+  normalizer: "src/agents/csv_import/csv_normalizer.py"
+  rich_profile: "src/core/rich_contact_profile.py"
+  polish_names: "src/core/polish_names.py"
+  thread_formatter: "src/core/email_thread_formatter.py"
+  followup_generator: "src/core/followup_generator.py"
+  icp_tier_resolver: "src/core/icp_tier_resolver.py"
+  campaign_name_builder: "src/core/campaign_name_builder.py"
+  apollo_campaign_sync: "src/core/apollo_campaign_sync.py"
+  weekly_sequence_orchestrator: "src/core/weekly_sequence_orchestrator.py"
+  apollo_contact_enrichment: "src/core/apollo_contact_enrichment.py"
+  enrollment_preflight: "src/core/enrollment_preflight.py"
+  contact_engagement_tracker: "src/core/contact_engagement_tracker.py"
+  contact_campaign_history: "src/core/contact_campaign_history.py"
+  apollo_client: "Integracje/apollo_client.py"
+  config_yaml_dir: "configs/csv_import/"
+  prompts_csv: "prompts/csv_import/"
+  prompts_shared: "prompts/shared/"

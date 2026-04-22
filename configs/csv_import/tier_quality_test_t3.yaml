@@ -1,0 +1,26 @@
+campaign_name: tier_quality_test_t3
+language_code: pl
+target_persona: buyer
+campaign_type: csv_import
+mode: draft
+
+source:
+  type: csv
+  file: data/inputs/csv_import/tier_test_t3.csv
+
+apollo:
+  create_or_update_contact: false
+  add_to_sequence: false
+
+quality:
+  min_lead_score: 50
+  min_qa_score: 50
+  manual_review_required: true
+
+routing:
+  default_sequence: PL_BUYER_MEETING_STD
+  default_mailbox_group: pl_sales_primary
+
+message:
+  max_words: 120
+  style: concise_consultative

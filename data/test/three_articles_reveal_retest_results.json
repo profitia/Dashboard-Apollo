@@ -1,0 +1,687 @@
+[
+  {
+    "label": "ORLEN",
+    "test_id": "orlen_regranulat",
+    "url": "https://tworzywa.online/wiadomosci/orlen-testuje-regranulat-pp-do-opakowan-spozywczych/",
+    "notes": "upstream/material case — polimer, opakowania spożywcze; live fetch",
+    "data_source": "live_fetch",
+    "phases": {
+      "qualify": {
+        "data_source": "live",
+        "title": "ORLEN testuje regranulat PP do opakowań spożywczych",
+        "published_at": "2026-01-30T08:39:02+01:00",
+        "full_text_len": 4455,
+        "tags": [],
+        "companies_mentioned_raw": [],
+        "qualified": true,
+        "total_score": 77.0,
+        "industry_score": 40.0,
+        "purchase_signal_score": 32.0,
+        "disqualification_reason": null,
+        "explanation": "[Industry/food_production]: branża spożywcza; [Industry/food_beverages]: soki; [Industry/plastics]: tworzywa, polimer, polimery, polipropylen, PET; [Industry/chemicals]: pigment; [Industry/pharmaceuticals]: API; [Industry/cosmetics]: kosmetyk; [Industry/paper_forest_products]: las; [Signal/investment_capacity]: inwestycja, zwiększenie mocy; [Signal/supply_chain]: surowce; [Signal/energy_packaging]: opakowania, recykling; [Signal/material_innovation]: regranulat, recyklat",
+        "matched_industry_terms": {
+          "food_production": [
+            "branża spożywcza"
+          ],
+          "food_beverages": [
+            "soki"
+          ],
+          "plastics": [
+            "tworzywa",
+            "polimer",
+            "polimery",
+            "polipropylen",
+            "PET",
+            "PP",
+            "PE",
+            "polistyren",
+            "plastik",
+            "regranulat",
+            "recyklat",
+            "granulat"
+          ],
+          "chemicals": [
+            "pigment"
+          ],
+          "pharmaceuticals": [
+            "API"
+          ],
+          "cosmetics": [
+            "kosmetyk"
+          ],
+          "paper_forest_products": [
+            "las"
+          ]
+        },
+        "matched_purchase_terms": {
+          "investment_capacity": [
+            "inwestycja",
+            "zwiększenie mocy"
+          ],
+          "supply_chain": [
+            "surowce"
+          ],
+          "energy_packaging": [
+            "opakowania",
+            "recykling"
+          ],
+          "material_innovation": [
+            "regranulat",
+            "recyklat"
+          ]
+        }
+      },
+      "entity": {
+        "name": "ORLEN S.A.",
+        "source_name": "ORLEN S.A.",
+        "canonical_name": "ORLEN S.A.",
+        "name_normalized": "orlen",
+        "company_type": "other",
+        "campaign_eligible": true,
+        "confidence": 0.96,
+        "reason": "ORLEN rozwija i testuje opakowania z regranulatu PP w skali przemysłowej, co wskazuje na duże potrzeby zakupowe i negocjacyjne w obszarze materiałów, opakowań oraz łańcucha dostaw. To duża firma produkcyjna z istotnym potencjałem do optymalizacji kosztów zakupów.",
+        "extraction_method": "llm",
+        "related_companies": [
+          "Pollena Kurowski",
+          "Nextloopp"
+        ]
+      },
+      "resolution": {
+        "enabled": true,
+        "resolution_status": "MATCH_POSSIBLE",
+        "resolution_confidence": 0.55,
+        "resolved_company_name": "ORLEN Technologie S.A.",
+        "resolved_domain": "orlentechnologie.com.pl",
+        "resolution_reason": "Best match: 'ORLEN Technologie S.A.' (score=0.55, status=MATCH_POSSIBLE) | Signals: comparison_key_partial_match: 'orlentechnologie' ↔ 'orlen'; name_similarity_low: 0.62; domain_matches_key: 'orlentechnologie.com.pl' | LLM: Najlepiej pasuje ORLEN Technologie S.A., bo ma bezpośredni rdzeń nazwy „ORLEN” i najbardziej ogólny, korporacyjny charakter spośród kandydatów. Pozostali kandydaci są wyraźnie bardziej wyspecjalizowani (Petrobaltic, Gazoprojekt), więc mniej odpowiadają artykułowi o testach regranulatu PP w ramach działań ORLEN.",
+        "candidates_count": 3,
+        "top_candidates": [
+          {
+            "rank": 1,
+            "name": "ORLEN Technologie S.A.",
+            "domain": "orlentechnologie.com.pl",
+            "score": null,
+            "match_reason": null
+          },
+          {
+            "rank": 2,
+            "name": "ORLEN Petrobaltic S.A.",
+            "domain": "",
+            "score": null,
+            "match_reason": null
+          },
+          {
+            "rank": 3,
+            "name": "ORLEN Gazoprojekt S.A.",
+            "domain": "gazoprojekt.pl",
+            "score": null,
+            "match_reason": null
+          }
+        ]
+      },
+      "contacts": {
+        "validation_function": "validate_contact_found (NEW — no email filter)",
+        "resolved_name_used": "ORLEN Technologie S.A.",
+        "resolved_domain_used": "orlentechnologie.com.pl",
+        "strategy_used": "name_only",
+        "winning_strategy": "none",
+        "domain_fallback_triggered": true,
+        "domain_searched": "orlentechnologie.com.pl",
+        "assoc_fallback_triggered": true,
+        "assoc_fallback_company": null,
+        "total_found": 10,
+        "with_email_from_search": 0,
+        "without_email_from_search": 10,
+        "validate_contact_found_ok": true,
+        "validate_contact_found_reason": "Found 10 contact(s) in Apollo",
+        "max_contacts_for_draft": 3,
+        "best_contacts_selected": 3,
+        "best_contacts_with_email": 0,
+        "best_contacts_without_email": 3,
+        "all_contacts_preview": [
+          {
+            "full_name": "Robert",
+            "email": "(no email)",
+            "job_title": "Manager",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": true
+          },
+          {
+            "full_name": "Krzysztof",
+            "email": "(no email)",
+            "job_title": "President of the Management Board - CEO",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": true
+          },
+          {
+            "full_name": "Krzysztof",
+            "email": "(no email)",
+            "job_title": "Project Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": true
+          },
+          {
+            "full_name": "Wojciech",
+            "email": "(no email)",
+            "job_title": "Construction Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Marek",
+            "email": "(no email)",
+            "job_title": "Construction Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Adam",
+            "email": "(no email)",
+            "job_title": "Construction Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Kamil",
+            "email": "(no email)",
+            "job_title": "Production Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Marek",
+            "email": "(no email)",
+            "job_title": "Construction Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Lukasz",
+            "email": "(no email)",
+            "job_title": "Construction Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Pawel",
+            "email": "(no email)",
+            "job_title": "Construction Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          }
+        ]
+      },
+      "messages": {
+        "generation_mode": "ALL selected contacts (no email filter) — NEW FLOW",
+        "total_packs": 3,
+        "packs_with_email": 0,
+        "packs_without_email": 3,
+        "messages": [
+          {
+            "contact_name": "Robert",
+            "contact_email": "(no email)",
+            "tier": "tier_1_c_level",
+            "generated_by": "llm",
+            "has_email": false,
+            "email_1_subject": "ORLEN i regranulat PP - wpływ na negocjacje",
+            "email_1_body_len": 1286,
+            "follow_up_1_subject": "Regranulat PP a obrona wyniku",
+            "follow_up_2_subject": "Krótko o testach PP"
+          },
+          {
+            "contact_name": "Krzysztof",
+            "contact_email": "(no email)",
+            "tier": "tier_1_c_level",
+            "generated_by": "llm",
+            "has_email": false,
+            "email_1_subject": "Regranulat PP i decyzje kosztowe w ORLEN",
+            "email_1_body_len": 1311,
+            "follow_up_1_subject": "Re: Regranulat PP i decyzje kosztowe w ORLEN",
+            "follow_up_2_subject": "Krótkie pytanie o ORLEN"
+          },
+          {
+            "contact_name": "Krzysztof",
+            "contact_email": "(no email)",
+            "tier": "tier_uncertain",
+            "generated_by": "llm",
+            "has_email": false,
+            "email_1_subject": "Regranulat PP a przygotowanie do negocjacji",
+            "email_1_body_len": 1208,
+            "follow_up_1_subject": "Re: Regranulat PP a przygotowanie do negocjacji",
+            "follow_up_2_subject": "Krótko o testach PP"
+          }
+        ]
+      },
+      "dry_run": {
+        "mode": "dry_run=True via create_news_sequence (NEW 4-phase flow)",
+        "sequence_name_would_be": "NEWS-2026-01-30-orlen-sa-orlen-testuje-regranulat-pp-do-opakowan-",
+        "contacts_processed": 3,
+        "email_available_from_search": false,
+        "reveal_would_be_attempted": true,
+        "use_email_reveal_config": true,
+        "auto_enroll": false,
+        "dry_run": true,
+        "phase_1_add_to_list": "Would add ALL selected contacts to Apollo list (no email filter)",
+        "phase_2_reveal": "Would attempt reveal via people/match for contacts without email",
+        "phase_3_custom_fields": "Would set custom fields for contacts WITH email after reveal",
+        "phase_4_notification": "BLOCKED_NO_EMAIL notification"
+      },
+      "final_status_analysis": {
+        "new_flow_logic": true,
+        "email_available_from_search": false,
+        "reveal_would_be_attempted": true,
+        "predicted_final_status": "BLOCKED_NO_EMAIL (after reveal attempt)",
+        "status_source": "reveal would be attempted but result unknown in dry_run — BLOCKED if reveal returns None",
+        "status_is_set_after_reveal": true,
+        "blocked_no_email_triggered_before_reveal": false,
+        "notification_type": "BLOCKED_NO_EMAIL",
+        "notification_contains_generated_content": true
+      }
+    },
+    "final_status": "BLOCKED_NO_EMAIL (after reveal attempt)",
+    "issues": [],
+    "new_flow_diagnostics": {
+      "contacts_found": 10,
+      "contacts_selected": 3,
+      "contacts_with_email_from_search": 0,
+      "contacts_without_email_from_search": 10,
+      "packs_generated": 3,
+      "reveal_attempted_would_be": true,
+      "email_available_from_search": false
+    }
+  },
+  {
+    "label": "Grycan",
+    "test_id": "grycan",
+    "url": "https://www.portalspozywczy.pl/slodycze-przekaski/wiadomosci/przyspieszony-start-sezonu-lodowego-grycan-poczatek-sezonu-przynosi-pozytywne-sygnaly,287489.html",
+    "notes": "brand/FMCG case — producent lodów; fixture (portalspozywczy.pl blocked)",
+    "data_source": "fixture",
+    "phases": {
+      "qualify": {
+        "data_source": "fixture",
+        "title": "Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały",
+        "published_at": "2026-04-15",
+        "full_text_len": 828,
+        "tags": [
+          "lody",
+          "producent",
+          "sezon"
+        ],
+        "companies_mentioned_raw": [
+          "Grycan"
+        ],
+        "qualified": true,
+        "total_score": 60.0,
+        "industry_score": 35.0,
+        "purchase_signal_score": 25.0,
+        "disqualification_reason": null,
+        "explanation": "[Industry/food_production]: producent lody; [Industry/food_beverages]: żywność; [Signal/supply_chain]: surowce mleczne, dostawcy; [Signal/investment_capacity]: zakupy surowców",
+        "matched_industry_terms": {
+          "food_production": [
+            "producent lody",
+            "produkcja"
+          ],
+          "food_beverages": [
+            "żywność"
+          ]
+        },
+        "matched_purchase_terms": {
+          "supply_chain": [
+            "surowce",
+            "dostawcy"
+          ],
+          "investment_capacity": [
+            "zakupy surowców"
+          ]
+        }
+      },
+      "entity": {
+        "name": "Grycan",
+        "source_name": "Grycan",
+        "canonical_name": "Grycan",
+        "name_normalized": "grycan",
+        "company_type": "producer",
+        "campaign_eligible": true,
+        "confidence": 0.98,
+        "reason": "Grycan to duży polski producent lodów FMCG, który zwiększa zakupy surowców mlecznych i intensyfikuje produkcję w sezonie. To bezpośrednio wiąże się z potrzebą negocjacji zakupowych i optymalizacji kosztów dostaw.",
+        "extraction_method": "llm",
+        "related_companies": []
+      },
+      "resolution": {
+        "enabled": true,
+        "resolution_status": "MATCH_POSSIBLE",
+        "resolution_confidence": 0.6,
+        "resolved_company_name": "Grycan - Lody od pokoleń",
+        "resolved_domain": "grycan.pl",
+        "resolution_reason": "Best match: 'Grycan - Lody od pokoleń' (score=0.60, status=MATCH_POSSIBLE) | Signals: comparison_key_partial_match: 'grycanlodyodpokoleń' ↔ 'grycan'; domain_matches_key: 'grycan.pl' | LLM: Kandydat 1 bardzo dobrze pasuje do firmy z artykułu: nazwa zawiera Grycan, domena grycan.pl jest zgodna, a opis biznesu odpowiada producentowi lodów. Brak innych kandydatów sprawia, że to jednoznacznie najlepsze dopasowanie.",
+        "candidates_count": 1,
+        "top_candidates": [
+          {
+            "rank": 1,
+            "name": "Grycan - Lody od pokoleń",
+            "domain": "grycan.pl",
+            "score": null,
+            "match_reason": null
+          }
+        ]
+      },
+      "contacts": {
+        "validation_function": "validate_contact_found (NEW — no email filter)",
+        "resolved_name_used": "Grycan - Lody od pokoleń",
+        "resolved_domain_used": "grycan.pl",
+        "strategy_used": "name_only",
+        "winning_strategy": "none",
+        "domain_fallback_triggered": true,
+        "domain_searched": "grycan.pl",
+        "assoc_fallback_triggered": false,
+        "assoc_fallback_company": null,
+        "total_found": 10,
+        "with_email_from_search": 0,
+        "without_email_from_search": 10,
+        "validate_contact_found_ok": true,
+        "validate_contact_found_reason": "Found 10 contact(s) in Apollo",
+        "max_contacts_for_draft": 3,
+        "best_contacts_selected": 3,
+        "best_contacts_with_email": 0,
+        "best_contacts_without_email": 3,
+        "all_contacts_preview": [
+          {
+            "full_name": "Marta",
+            "email": "(no email)",
+            "job_title": "Manager",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": true
+          },
+          {
+            "full_name": "Monika",
+            "email": "(no email)",
+            "job_title": "Manager",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": true
+          },
+          {
+            "full_name": "Dorota",
+            "email": "(no email)",
+            "job_title": "Senior Brand Manager",
+            "tier": "tier_3_buyers_operational",
+            "tier_label": "Tier 3 - Buyers/Operational",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": true
+          },
+          {
+            "full_name": "Justyna",
+            "email": "(no email)",
+            "job_title": "Brand Manager",
+            "tier": "tier_3_buyers_operational",
+            "tier_label": "Tier 3 - Buyers/Operational",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Karolina",
+            "email": "(no email)",
+            "job_title": "Brand Manager",
+            "tier": "tier_3_buyers_operational",
+            "tier_label": "Tier 3 - Buyers/Operational",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Wojciech",
+            "email": "(no email)",
+            "job_title": "National Key Account Manager / Krajowy Kierownik ds. Rynku Nowoczesnego",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Pawel",
+            "email": "(no email)",
+            "job_title": "Area Operations Manager Southern Poland",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Kuba",
+            "email": "(no email)",
+            "job_title": "Deputy Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Aleksandra",
+            "email": "(no email)",
+            "job_title": "Deputy Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          },
+          {
+            "full_name": "Jolanta",
+            "email": "(no email)",
+            "job_title": "Deputy Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3,
+            "is_selected": false
+          }
+        ]
+      },
+      "messages": {
+        "generation_mode": "ALL selected contacts (no email filter) — NEW FLOW",
+        "total_packs": 3,
+        "packs_with_email": 0,
+        "packs_without_email": 3,
+        "messages": [
+          {
+            "contact_name": "Marta",
+            "contact_email": "(no email)",
+            "tier": "tier_1_c_level",
+            "generated_by": "llm",
+            "has_email": false,
+            "email_1_subject": "Grycan i sezon - koszt surowców mlecznych",
+            "email_1_body_len": 1345,
+            "follow_up_1_subject": "Re: Grycan i sezon - koszt surowców mlecznych",
+            "follow_up_2_subject": "Grycan - krótko o negocjacjach"
+          },
+          {
+            "contact_name": "Monika",
+            "contact_email": "(no email)",
+            "tier": "tier_1_c_level",
+            "generated_by": "llm",
+            "has_email": false,
+            "email_1_subject": "Sezon lodowy i presja na marżę w Grycan",
+            "email_1_body_len": 1404,
+            "follow_up_1_subject": "Mleko, śmietanka i wynik sezonu",
+            "follow_up_2_subject": "Krótko o sezonie w Grycan"
+          },
+          {
+            "contact_name": "Dorota",
+            "contact_email": "(no email)",
+            "tier": "tier_3_buyers_operational",
+            "generated_by": "llm",
+            "has_email": false,
+            "email_1_subject": "Sezon ruszył - a dostawcy już podnoszą stawki?",
+            "email_1_body_len": 1165,
+            "follow_up_1_subject": "Gdy sezon przyspiesza, liczy się obrona ceny",
+            "follow_up_2_subject": "Czy to dobry moment na jedną negocjację?"
+          }
+        ]
+      },
+      "dry_run": {
+        "mode": "dry_run=True via create_news_sequence (NEW 4-phase flow)",
+        "sequence_name_would_be": "NEWS-2026-04-15-grycan-przyspieszony-start-sezonu-lodowego-gryc",
+        "contacts_processed": 3,
+        "email_available_from_search": false,
+        "reveal_would_be_attempted": true,
+        "use_email_reveal_config": true,
+        "auto_enroll": false,
+        "dry_run": true,
+        "phase_1_add_to_list": "Would add ALL selected contacts to Apollo list (no email filter)",
+        "phase_2_reveal": "Would attempt reveal via people/match for contacts without email",
+        "phase_3_custom_fields": "Would set custom fields for contacts WITH email after reveal",
+        "phase_4_notification": "BLOCKED_NO_EMAIL notification"
+      },
+      "final_status_analysis": {
+        "new_flow_logic": true,
+        "email_available_from_search": false,
+        "reveal_would_be_attempted": true,
+        "predicted_final_status": "BLOCKED_NO_EMAIL (after reveal attempt)",
+        "status_source": "reveal would be attempted but result unknown in dry_run — BLOCKED if reveal returns None",
+        "status_is_set_after_reveal": true,
+        "blocked_no_email_triggered_before_reveal": false,
+        "notification_type": "BLOCKED_NO_EMAIL",
+        "notification_contains_generated_content": true
+      }
+    },
+    "final_status": "BLOCKED_NO_EMAIL (after reveal attempt)",
+    "issues": [],
+    "new_flow_diagnostics": {
+      "contacts_found": 10,
+      "contacts_selected": 3,
+      "contacts_with_email_from_search": 0,
+      "contacts_without_email_from_search": 10,
+      "packs_generated": 3,
+      "reveal_attempted_would_be": true,
+      "email_available_from_search": false
+    }
+  },
+  {
+    "label": "Evra Fish",
+    "test_id": "evra_fish",
+    "url": "https://www.portalspozywczy.pl/mieso/wiadomosci/evra-fish-wzrost-spozycia-ryb-w-polsce-nie-wydarzy-sie-w-tradycyjnych-formatach,287584.html",
+    "notes": "canonical naming case — alias matching; fixture (portalspozywczy.pl blocked)",
+    "data_source": "fixture",
+    "phases": {
+      "qualify": {
+        "data_source": "fixture",
+        "title": "Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach",
+        "published_at": "2026-04-16",
+        "full_text_len": 692,
+        "tags": [
+          "ryby",
+          "dystrybucja",
+          "przetwórstwo"
+        ],
+        "companies_mentioned_raw": [
+          "Evra Fish"
+        ],
+        "qualified": true,
+        "total_score": 58.0,
+        "industry_score": 30.0,
+        "purchase_signal_score": 28.0,
+        "disqualification_reason": null,
+        "explanation": "[Industry/food_production]: przetwórstwo rybne; [Signal/supply_chain]: dostawcy ryb, surowce; [Signal/contract_negotiations]: renegocjacja kontraktów",
+        "matched_industry_terms": {
+          "food_production": [
+            "przetwórstwo",
+            "dystrybutor"
+          ],
+          "food_beverages": [
+            "ryby",
+            "owoce morza"
+          ]
+        },
+        "matched_purchase_terms": {
+          "supply_chain": [
+            "dostawcy ryb",
+            "surowce"
+          ],
+          "contract_negotiations": [
+            "renegocjacja kontraktów"
+          ]
+        }
+      },
+      "entity": {
+        "name": "Evra Fish Sp. z o.o.",
+        "source_name": "Evra Fish Sp. z o.o.",
+        "canonical_name": "Evra Fish Sp. z o.o.",
+        "name_normalized": "evrafish",
+        "company_type": "distributor",
+        "campaign_eligible": true,
+        "confidence": 0.98,
+        "reason": "Evra Fish jest dużym dystrybutorem i przetwórcą ryb, który aktywnie negocjuje warunki z dostawcami surowców oraz szuka nowych dostawców. Wzrost kosztów surowców i potrzeba optymalizacji zakupów to bezpośredni trigger dla SpendGuru.",
+        "extraction_method": "llm",
+        "related_companies": []
+      },
+      "resolution": {
+        "enabled": true,
+        "resolution_status": "NO_MATCH",
+        "resolution_confidence": 0.0,
+        "resolved_company_name": "",
+        "resolved_domain": null,
+        "resolution_reason": "No Apollo organizations found for: 'Evra Fish Sp. z o.o.'",
+        "candidates_count": 0,
+        "top_candidates": []
+      }
+    },
+    "final_status": "BLOCKED_COMPANY_NO_MATCH",
+    "issues": [
+      {
+        "issue": "Company 'Evra Fish Sp. z o.o.' → NO_MATCH in resolution",
+        "severity": "HIGH",
+        "module": "news.entity.company_resolver",
+        "exact_behavior": "resolution_status=NO_MATCH, confidence=0.00",
+        "recommendation": "Check alias dict (company_aliases.yaml); LLM may add legal suffix"
+      }
+    ],
+    "new_flow_diagnostics": {
+      "contacts_found": 0,
+      "contacts_selected": 0,
+      "contacts_with_email_from_search": 0,
+      "contacts_without_email_from_search": 0,
+      "packs_generated": 0,
+      "reveal_attempted_would_be": false,
+      "email_available_from_search": false
+    }
+  }
+]

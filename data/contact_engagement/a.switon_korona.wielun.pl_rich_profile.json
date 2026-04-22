@@ -1,0 +1,107 @@
+{
+  "core_identity": {
+    "first_name": "Agnieszka",
+    "last_name": "Switon",
+    "full_name": "Agnieszka Switon",
+    "email": "a.switon@korona.wielun.pl",
+    "job_title": "Director Global Procurement",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "Gala Poland sp. z o.o.",
+    "departments": "Finance",
+    "sub_departments": "Sourcing / Procurement",
+    "industry": "mechanical or industrial engineering",
+    "keywords_raw": "produkcja swiec, manufacturing, mechanical or industrial engineering",
+    "keywords_list": [
+      "produkcja swiec",
+      "manufacturing",
+      "mechanical or industrial engineering"
+    ],
+    "keywords_normalized": [
+      "produkcja swiec",
+      "manufacturing",
+      "mechanical or industrial engineering"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/agnieszka-%c5%9bwito%c5%84-6313981b2",
+    "website": "https://nowakowski-trans.pl",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/koronacandles",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Wielun",
+    "state": "Lodz Voivodeship",
+    "country": "POLAND",
+    "company_address": "10 ulica Fabryczna, Lodz Voivodeship, Poland, 98-300",
+    "company_city": null,
+    "company_state": "Lodz Voivodeship",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": null,
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Agnieszka",
+      "Last Name": "Switon",
+      "Title": "Director Global Procurement",
+      "Company Name": "Gala Poland sp. z o.o.",
+      "Email": "a.switon@korona.wielun.pl",
+      "Seniority": "Director",
+      "Departments": "Finance",
+      "Sub Departments": "Sourcing / Procurement",
+      "Industry": "mechanical or industrial engineering",
+      "Keywords": "produkcja swiec, manufacturing, mechanical or industrial engineering",
+      "Person Linkedin Url": "http://www.linkedin.com/in/agnieszka-%c5%9bwito%c5%84-6313981b2",
+      "Website": "https://nowakowski-trans.pl",
+      "Company Linkedin Url": "http://www.linkedin.com/company/koronacandles",
+      "City": "Wielun",
+      "State": "Lodz Voivodeship",
+      "Country": "Poland",
+      "Company Address": "10 ulica Fabryczna, Lodz Voivodeship, Poland, 98-300",
+      "Company State": "Lodz Voivodeship",
+      "Company Country": "Poland"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.030247",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.827586",
+        "original_row": {
+          "First Name": "Agnieszka",
+          "Last Name": "Switon",
+          "Title": "Director Global Procurement",
+          "Company Name": "Gala Poland sp. z o.o.",
+          "Email": "a.switon@korona.wielun.pl",
+          "Seniority": "Director",
+          "Departments": "Finance",
+          "Sub Departments": "Sourcing / Procurement",
+          "Industry": "mechanical or industrial engineering",
+          "Keywords": "produkcja swiec, manufacturing, mechanical or industrial engineering",
+          "Person Linkedin Url": "http://www.linkedin.com/in/agnieszka-%c5%9bwito%c5%84-6313981b2",
+          "Website": "https://nowakowski-trans.pl",
+          "Company Linkedin Url": "http://www.linkedin.com/company/koronacandles",
+          "City": "Wielun",
+          "State": "Lodz Voivodeship",
+          "Country": "Poland",
+          "Company Address": "10 ulica Fabryczna, Lodz Voivodeship, Poland, 98-300",
+          "Company State": "Lodz Voivodeship",
+          "Company Country": "Poland"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "a.switon@korona.wielun.pl",
+    "last_saved_at": "2026-04-21T07:02:12.827819"
+  }
+}

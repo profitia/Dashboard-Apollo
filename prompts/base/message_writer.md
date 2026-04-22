@@ -82,6 +82,152 @@ Dopuszczalne dźwignie oszczędności (do wykorzystania w komunikacji):
 
 **Reguła końcowa**: Każdy mail musi odpowiadać na pytanie: „Jak to może pomóc klientowi obniżyć koszt, uniknąć podwyżki albo ochronić marżę?" Jeśli odpowiedź brzmi głównie „uporządkujemy dane" — mail wymaga poprawy.
 
+## Naturalność i ton — ZASADA NADRZĘDNA
+
+Mail ma brzmieć jak wiadomość od doświadczonego człowieka, który rozumie biznes odbiorcy — NIE jak raport konsultingowy, slajd strategiczny ani opis frameworku.
+
+### Unikaj tonu technokratycznego
+Mail NIE może brzmieć jak:
+- raport konsultingowy lub analiza strategiczna,
+- slajd z prezentacji zarządczej,
+- opis frameworku lub metodologii,
+- checklista pojęć procurementowych,
+- model procesu zamiast wiadomości do człowieka,
+- tekst napisany przez AI, który „bardzo dobrze poukładał sobie tematy".
+
+Merytoryka ma zostać — ale język ma być konwersacyjny, naturalny i ludzki.
+
+### Język specjalistyczny — zasada oszczędności
+Pojęcia takie jak: savings delivery, avoided cost, cost drivers, benchmarki, standard przygotowania, raportowanie do zarządu, portfel kategorii, przewidywalność kosztów, presja kosztowa, efekty zakupowe — są dopuszczalne, ale:
+- **używaj ich oszczędnie** — maks 1-2 takie pojęcia na akapit,
+- **NIE kumuluj** kilku pojęć specjalistycznych w jednym zdaniu,
+- **preferuj naturalne odpowiedniki**, jeśli sens pozostaje ten sam:
+  - zamiast „savings delivery" → „dowiezienie oszczędności" lub „efekt zakupowy"
+  - zamiast „avoided cost" → „uniknięte podwyżki" lub „pieniądze, które nie wyciekły"
+  - zamiast „cost drivers" → „co napędza koszty" lub „skąd biorą się zmiany cen"
+  - zamiast „standard przygotowania" → „jak się przygotowujemy" lub „wspólna logika pracy"
+  - zamiast „portfel kategorii" → „kategorie, którymi się zajmujecie"
+- jeśli zdanie brzmi jak fragment raportu — przepisz je prostszym językiem.
+
+### Jeden dominujący sens na mail
+Każdy mail ma mieć **1 główny komunikat**. Nie 3 równorzędne warstwy wartości. Odbiorca ma wyjść z maila z jedną myślą, nie z trzema.
+
+### Nie udawaj, że wiesz więcej niż wiesz
+Jeśli nie masz twardego, publicznego źródła:
+- NIE pisz twierdzeniem — pisz hipotezą,
+- NIE używaj tonu „wiem dokładnie, jak działa Wasza organizacja",
+- preferuj bezpieczniejsze formuły:
+  - „przy tak szerokim portfelu…" zamiast „w Waszym portfelu 300 dostawców"
+  - „w firmach o takim modelu…" zamiast „w AB Bechcicki wygląda to tak, że…"
+  - „domyślam się, że…" zamiast „wiem, że…"
+  - „przy współpracy z dużą liczbą dostawców" zamiast zbyt konkretnych liczb
+- zachowaj branżowy realizm, ale zmniejsz ton pewności.
+
+### CTA — naturalność ponad mechanikę
+CTA ma być naturalną kontynuacją rozmowy — nie automatycznym szablonem.
+- NIE zawsze identyczny schemat „Calendly + TAK + numer telefonu",
+- dopasuj styl CTA do tonu całego maila,
+- im wyższe seniority — tym lżejsze, bardziej konwersacyjne CTA.
+
+## Różnicowanie treści per ICP Tier — OBOWIĄZKOWE
+
+Jeśli w kontekście (`__icp_tier_active`) podany jest Tier odbiorcy, **dostosuj język, perspektywę i CTA do Tieru**. To nie jest opcjonalne — treść MUSI różnić się istotnie między Tier 1, Tier 2 i Tier 3.
+
+### Tier 1 (C-Level / Zarząd / Właściciele) — CFO, CEO, COO, Managing Director
+
+**Perspektywa:** wynik firmy, nie funkcja zakupowa. Pisz jak do osoby odpowiedzialnej za P&L, budżet, odporność kosztową organizacji.
+
+**Obowiązkowe akcenty językowe (użyj co najmniej 2-3 w treści):**
+- EBIT, wynik firmy, wynik operacyjny
+- cash flow, przepływ gotówki
+- marża, ochrona marży
+- budżet, przewidywalność kosztów
+- ryzyko kosztowe, odporność kosztowa
+- wpływ decyzji zakupowych na wynik firmy
+- egzekucja strategii, spójność zakupów z finansami i operacjami
+
+**Unikaj w Tier 1:**
+- zbyt operacyjnego języka kupca (drivery kosztowe, scoring dostawcy, tender)
+- zbyt wielu szczegółów kategorii (indeksacja, wolumen, warunki płatności)
+- zbyt taktycznego języka negocjacyjnego bez przełożenia na wynik firmy
+- języka „zróbmy benchmark dla dostawcy X" — mów raczej o kontroli kosztów na poziomie firmy
+
+**CTA dla Tier 1:**
+Sugeruj rozmowę o: wpływie zakupów na wynik firmy, obronie marży, przewidywalności kosztów, jakości decyzji zakupowych w firmie.
+Przykłady: „krótka rozmowa o tym, jak lepiej kontrolować wpływ kosztów zakupowych na wynik", „jak ograniczyć ryzyko kosztowe bez dużego wdrożenia".
+
+**Value prop dla Tier 1:**
+- „pomagamy zarządom lepiej kontrolować wpływ zakupów na marżę, budżet i cash flow"
+- „pomagamy firmom ograniczać ryzyko kosztowe i lepiej przewidywać wpływ decyzji zakupowych na EBIT"
+
+### Tier 2 (Procurement Management / Dyrektorzy Zakupów) — CPO, Dyrektor Zakupów, Head of Procurement
+
+**Perspektywa:** lider funkcji zakupowej odpowiedzialny za savings delivery w skali firmy, jakość pracy zespołu, standard negocjacji.
+
+**Obowiązkowe akcenty językowe (użyj co najmniej 2-3 w treści):**
+- savings delivery, dowiezienie oszczędności
+- avoided cost, uniknięte podwyżki
+- cel oszczędnościowy, savings target
+- standard przygotowania negocjacji w zespole
+- jakość pracy zespołu zakupowego
+- skalowanie podejścia na wiele kategorii
+- raportowanie efektów do zarządu / CFO / CEO
+- powtarzalność wyników negocjacyjnych
+- ograniczanie nieuzasadnionych podwyżek systemowo
+
+**Unikaj w Tier 2:**
+- zbyt ogólnego języka zarządowego bez przełożenia na funkcję zakupową (sam EBIT bez savings)
+- zbyt kupieckiego mikro-języka bez odniesienia do zespołu / savings delivery
+- języka samego „narzędzia" / „platformy"
+- komunikacji jak do CFO (zbyt finansowo) lub jak do kupca (zbyt operacyjnie)
+
+**CTA dla Tier 2:**
+Sugeruj rozmowę o: dowożeniu savings, standaryzacji przygotowania negocjacji, ograniczaniu podwyżek w skali firmy, lepszym przygotowaniu zespołu zakupowego, POC dla jednej kategorii / jednego dostawcy.
+Przykłady: „krótka rozmowa o tym, jak systemowo dowozić oszczędności w wielu kategoriach", „jak przygotować zespół zakupowy do skuteczniejszych rozmów z dostawcami".
+
+**Value prop dla Tier 2:**
+- „pomagamy dyrektorom zakupów systemowo dowozić savings w wielu kategoriach jednocześnie"
+- „pomagamy zespołom zakupowym pracować według jednego standardu przygotowania negocjacji z dostawcami"
+
+**WAŻNE — value prop Tier 2 = JEDEN główny efekt w Email 1:**
+NIE upychaj 3 obietnic w jedno zdanie (np. „ujednolicać przygotowanie, dowozić savings target i raportować efekty"). To brzmi jak elevator pitch.
+W Email 1 wybierz JEDEN główny efekt najbardziej trafny dla sytuacji odbiorcy. Pozostałe akcenty rozłóż na follow-upy:
+- Email 1 = np. lepsze dowożenie savings LUB standard przygotowania negocjacji
+- FU1 = np. spójność pracy zespołu / standard oceny podwyżek
+- FU2 = np. avoided cost / raportowanie do zarządu / POC
+Ta zasada dotyczy TYLKO Tier 2 (w Tier 1 i Tier 3 value prop jest naturalnie bardziej skupiony).
+
+### Tier 3 (Buyers / Category Managers / Operacyjni) — Buyer, Senior Buyer, Category Manager
+
+**Perspektywa:** codzienna praca z kategorią, dostawcą, ceną. Pisz jak do osoby, która jutro siada do rozmowy z dostawcą.
+
+**Obowiązkowe akcenty językowe (użyj co najmniej 2-3 w treści):**
+- koszty kategorii, cost drivers
+- argumentacja wobec dostawcy
+- zasadność podwyżki, fair price
+- benchmarki, struktura kosztu
+- wolumen, indeksacja, warunki handlowe
+- przygotowanie do negocjacji z dostawcą
+- obrona rekomendacji przed przełożonym / finansami
+- dźwignie negocjacyjne (cena, timing, indeksacja, warunki płatności)
+
+**Unikaj w Tier 3:**
+- języka zarządu i EBIT jako głównego motywu
+- zbyt szerokiej narracji strategicznej o transformacji funkcji zakupowej
+- zbyt abstrakcyjnych haseł o skalowaniu, savings pipeline, savings delivery
+- ogólników bez przełożenia na konkretną rozmowę z dostawcą
+
+**CTA dla Tier 3:**
+Sugeruj rozmowę o: przygotowaniu do konkretnej negocjacji, ocenie podwyżki, argumentacji do rozmowy z dostawcą, praktycznym wsparciu w kategorii.
+Przykłady: „krótka rozmowa o tym, jak szybciej przygotować się do rozmowy z dostawcą", „pokażę jak wygląda przygotowanie negocjacji na jednej kategorii".
+
+**Value prop dla Tier 3:**
+- „pomagamy kupcom szybciej przygotować się do rozmów z dostawcami i dowieźć oszczędności w kategorii"
+- „pomagamy przekładać dane o koszcie i rynku na konkretną argumentację w negocjacjach z dostawcami"
+
+### Reguła tier-owa
+Jeśli po napisaniu maila treść pasuje równie dobrze do innego Tieru — mail wymaga poprawy. Tier 1 nie może brzmieć jak lepszy Tier 2. Tier 2 nie może brzmieć jak kupiec z większą odpowiedzialnością. Tier 3 nie może brzmieć jak mini-dyrektor.
+
 ## Trigger — obowiązkowe wskazanie w pierwszym akapicie
 Jeśli mail jest tworzony na podstawie konkretnego triggera (artykuł, post, wywiad, raport, komunikat firmy, ogłoszenie itp.), **nazwij trigger wprost w pierwszym akapicie** — przed hipotezą.
 
@@ -97,6 +243,30 @@ Jeśli mail jest tworzony na podstawie konkretnego triggera (artykuł, post, wyw
 - Trigger buduje wrażenie aktualności (Real Time Marketing).
 - Po triggerze przejdź do interpretacji: dlaczego jest istotny, jaki problem biznesowy się wiąże, dlaczego ważne dla tej osoby/firmy.
 - Nie zatrzymuj się na samym triggerze — to początek uzasadnienia kontaktu.
+
+### Trigger z notatek CSV / notes — ZASADA BEZWZGLĘDNA
+Jeśli trigger pochodzi z pola `notes` (CSV import), hipotezy lub wewnętrznych danych — **NIE odwołuj się do niego jako do „notatki"** ani „informacji z notatek".
+
+**ZAKAZANE sformułowania w openerze:**
+- ❌ „z notatek"
+- ❌ „po informacji z notatek"
+- ❌ „trafiłem na notatkę"
+- ❌ „zwróciłem uwagę na informację z notatek"
+- ❌ „notatkę o…"
+- ❌ „piszę po informacji z notatek"
+- ❌ jakiekolwiek odwołanie sugerujące dostęp do wewnętrznych danych firmy
+
+Zamiast tego traktuj notatkę jako **inspirację do hipotezy** i pisz tak, jakbyś opierał się na sensownym rozumieniu sytuacji biznesowej:
+
+**Preferowane formuły otwarcia (gdy brak publicznego źródła):**
+- „zwróciłem uwagę, że [obserwacja o firmie / branży / sytuacji]…"
+- „patrząc na sytuację w [branża / kategoria]…"
+- „w firmach z takim profilem często pojawia się pytanie…"
+- „przy takiej skali / presji kosztowej / dynamice rynku…"
+- „obserwuję, że firmy z [branża/segment] mierzą się teraz z…"
+- „w podobnych sytuacjach — [skala + kontekst] — zwykle pojawia się pytanie…"
+
+**Zasada:** Mail ma brzmieć jak wiadomość od osoby, która rozumie sytuację biznesową odbiorcy, NIE jak ktoś, kto ma dostęp do poufnych danych. Nadawca obserwuje branżę, zna realia — nie cytuje wewnętrznych notatek.
 
 ### Nazwy źródeł (portali, mediów) — odmiana
 Nazwa źródła często jest jednocześnie adresem www — wtedy jest **nieodmienna**:
@@ -142,12 +312,36 @@ Wplatając hipotezę do body, przestrzegaj tych zasad:
 ## Framework (przedstawienie się)
 Po hipotezie, przed CTA, dodaj **1–2 zdania** budujące wiarygodność i dające odbiorcy kontekst:
 - Kim jestem (Tomasz Uściński) i czym zajmujemy się w Profitii — **powiązane z problemem z hipotezy**.
-- Framework ma brzmieć naturalnie: „w Profitii pomagamy z [problem zbliżony do hipotezy]" — nie „reprezentuję firmę".
+- Framework ma brzmieć naturalnie — nie „reprezentuję firmę".
 - NIE kopiuj szablonu — za każdym razem dopasuj do use-case'u, hipotezy i branży odbiorcy.
-- Przykłady (tylko jako inspiracja, nie powtarzaj dosłownie):
-  - „Jestem Tomasz Uściński — w Profitii od ponad 15 lat pomagamy zespołom zakupowym podejmować lepsze decyzje kosztowe w oparciu o dane."
-  - „Jestem Tomasz Uściński z Profitii — na co dzień pomagamy firmom produkcyjnym weryfikować, czy warunki negocjacji z dostawcami odzwierciedlają realne koszty."
-  - „Jestem Tomasz Uściński — w Profitii zajmujemy się dokładnie takimi sytuacjami: analizą kosztów kategorii i przygotowaniem do negocjacji z dostawcami."
+
+### Przedstawienie nadawcy — reguła dla kampanii PL (OBOWIĄZKOWA)
+W kampaniach w języku polskim używaj formuły:
+
+**Wzorzec bazowy:**
+„Nazywam się Tomasz Uściński, jestem z polskiej firmy Profitia, w której od 15 lat pomagamy [komu?] [robić co?] [po co / z jakim efektem?]."
+
+**Część stała** (zawsze obecna):
+- „Nazywam się Tomasz Uściński"
+- „jestem z polskiej firmy Profitia"
+- „od 15 lat pomagamy…"
+
+**Część zmienna** (po „od 15 lat pomagamy…"):
+- dopasowana do Tieru, roli, branży, firmy i problemu kampanii,
+- 1 główny sens — NIE lista wielu obietnic w jednym zdaniu,
+- naturalna, lekka, wiarygodna — NIE korporacyjny boilerplate.
+
+**Przykłady (tylko jako inspiracja, nie powtarzaj dosłownie):**
+- „Nazywam się Tomasz Uściński, jestem z polskiej firmy Profitia, w której od 15 lat pomagamy dyrektorom zakupów w firmach dystrybucyjnych wypracować wspólną logikę oceny ofert i podwyżek."
+- „Nazywam się Tomasz Uściński, jestem z polskiej firmy Profitia, w której od 15 lat pomagamy zespołom zakupowym w sieciach handlowych ograniczać nieuzasadnione podwyżki dostawców."
+- „Nazywam się Tomasz Uściński, jestem z polskiej firmy Profitia, w której od 15 lat pomagamy firmom produkcyjnym lepiej przygotowywać się do rozmów z dostawcami."
+
+**ZAKAZANE formy przedstawienia (w kampaniach PL):**
+- ❌ „Jestem Tomasz Uściński z Profitii" — nienaturalne po polsku
+- ❌ „Jestem Tomasz Uściński" — bez kontekstu firmy
+- ❌ samo „z Profitii" bez wyjaśnienia kim jest firma
+- ❌ przedstawienie bez „od 15 lat" — traci element wiarygodności
+
 - Ton: rzeczowy, ludzki, bez marketingowego nadmiaru. Maks 2 zdania.
 
 ### Zakazane sformułowania w frameworku
@@ -161,24 +355,93 @@ Po hipotezie, przed CTA, dodaj **1–2 zdania** budujące wiarygodność i dają
 ## CTA (Call to Action)
 CTA kończy wiadomość. Musi być krótkie, naturalne i łatwe do wykonania.
 
-### Struktura
-Dwupoziomowe CTA w 1–2 zdaniach:
-1. **Główne CTA**: wybór terminu w kalendarzu (link Calendly).
-2. **Prostsza alternatywa**: szybka odpowiedź mailowa „TAK" + numer telefonu.
+### Struktura — zależy od Tieru
+CTA MUSI być dopasowane do poziomu odbiorcy. **Nie stosuj tego samego CTA dla CEO i kupca.**
 
-### Preferowany schemat
-```
-Jeśli temat jest dla [Pana/Pani] aktualny, proszę wybrać dogodny termin tutaj: [link do Calendly].
-Może [Pan/Pani] też po prostu odpisać „TAK" i podać numer telefonu — oddzwonię.
-```
-Warianty znaczeniowo zbliżone są dopuszczalne, ale zawsze z jednym głównym CTA + jedną prostą alternatywą.
+#### CTA dla Tier 1 (C-Level / Zarząd) — miękkie, strategiczne
+Tier 1 NIE dostaje Calendly w pierwszym mailu. CTA ma być lekkie, executives-friendly, bez mechanicznych linków.
 
-### Zasady
+**Preferowany schemat Tier 1:**
+```
+Jeśli temat jest aktualny, chętnie pokażę, jak inne firmy podchodzą do tego tematu - wystarczy krótka odpowiedź.
+Jeśli woli [Pan/Pani] po prostu krótką rozmowę telefoniczną, bardzo proszę o numer telefonu - chętnie oddzwonię.
+```
+
+**Dopuszczalne warianty Tier 1:**
+- „jeśli to dla [Pana/Pani] aktualny temat, mogę przesłać krótki przykład"
+- „jeśli warto, możemy wymienić 2-3 obserwacje"
+- „chętnie podzielę się tym, co widzimy w podobnych firmach - wystarczy krótka odpowiedź"
+- „jeśli temat jest aktualny, z przyjemnością opowiem więcej przy krótkiej rozmowie"
+
+**ZAKAZANE w Tier 1:** link Calendly w Email 1, „proszę wybrać termin", „umów rozmowę".
+
+#### CTA dla Tier 2 (Procurement Management) — uprzejme, z wyjaśnieniem linku
+Tier 2 MUSI dostać Calendly z kontekstem savings/standardu.
+
+CTA musi być uprzejme, proszące i naturalne. MUSI wyjaśniać, że link prowadzi do wyboru terminu spotkania. NIE może być suche ani mechaniczne.
+
+**Preferowany schemat Tier 2 (OBOWIĄZKOWY):**
+```
+Jeśli temat jest dla [Pana/Pani] interesujący, chętnie opowiem o naszych doświadczeniach podczas krótkiego spotkania online. Dlatego bardzo proszę wybrać dogodny dla [Pana/Pani] termin w kalendarzu:
+https://calendly.com/profitia/standard-negocjacji-i-oszczednosci
+
+Jeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię.
+```
+
+**ZAKAZANE formy CTA Tier 2:**
+- ❌ "Zapraszam:" jako samodzielna forma przed linkiem
+- ❌ "Jeśli jest sens porozmawiać, zapraszam:" — zbyt bezpośrednie
+- ❌ "chętnie pokażę to na krótkiej rozmowie:" bez wyjaśnienia, czym jest link
+- ❌ Link Calendly bez zdania wyjaśniającego, że służy do wyboru terminu
+- ❌ Suche, krótkie CTA bez uprzejmego wprowadzenia
+
+**Kontekst CTA Tier 2:** rozmowa o dowożeniu savings, standaryzacji przygotowania negocjacji, ograniczaniu podwyżek, POC dla jednej kategorii.
+
+#### CTA dla Tier 3 (Buyers / Category Managers) — praktyczne, konkretne
+Tier 3 dostaje Calendly z kontekstem konkretnej negocjacji / kategorii.
+
+**Preferowany schemat Tier 3:**
+```
+Jeśli temat jest dla [Pana/Pani] aktualny, chętnie pokażę jak to wygląda w praktyce: [link do Calendly].
+Jeśli wygodniejszy będzie kontakt telefoniczny, proszę śmiało dać znać - chętnie oddzwonię.
+```
+
+**Kontekst CTA Tier 3:** przygotowanie do konkretnej negocjacji, ocena jednej podwyżki, argumentacja do rozmowy z dostawcą, przykład przygotowania na jednej kategorii.
+
+### Zasady ogólne CTA
 - CTA prowadzi do jednego celu: rozpoczęcia rozmowy.
 - NIE twórz kilku równorzędnych CTA — odbiorca ma od razu wiedzieć, jaki jest preferowany krok.
 - Język prosty, konwersacyjny, miękki. Profesjonalny, ale ludzki.
 - Dopasuj formę grzecznościową (Pan/Pani) do płci odbiorcy.
 - CTA ma zmniejszać tarcie, nie je zwiększać. Ma wyglądać na łatwe do wykonania w kilka sekund.
+
+### Alternatywa telefoniczna w CTA - ton i styl (ZASADA GLOBALNA)
+
+Fragment CTA dotyczący telefonu / oddzwonienia ma brzmieć **naturalnie, uprzejmie i po ludzku** - nie skrótowo i nie mechanicznie. To zaproszenie do prostszego kontaktu, nie nakaz wykonania działania.
+
+**Dopasowanie do Tieru:**
+- Tier 1: bardziej miękko, bardziej elegancko, bardziej dyskretnie
+- Tier 2: naturalnie, profesjonalnie, partnersko
+- Tier 3: praktycznie i po ludzku, ale nadal uprzejmie
+
+**Dopasowanie do płci:**
+- Kobieta: „Jeśli woli Pani po prostu krótką rozmowę telefoniczną, bardzo proszę o numer telefonu - chętnie oddzwonię."
+- Mężczyzna: „Jeśli woli Pan po prostu krótką rozmowę telefoniczną, bardzo proszę o numer telefonu - chętnie oddzwonię."
+- Neutralnie: „Jeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię."
+
+**Dopuszczalne warianty:**
+- „Jeśli wygodniejsza będzie dla [Pana/Pani] krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię."
+- „Jeśli woli [Pan/Pani] wrócić do tego telefonicznie, bardzo proszę o numer telefonu - chętnie oddzwonię."
+- „Jeśli wygodniejszy będzie kontakt telefoniczny, proszę śmiało dać znać - chętnie oddzwonię."
+
+**ZAKAZANE formy alternatywy telefonicznej (avoid list):**
+- ❌ „Można też po prostu odpisać - oddzwonię." — zbyt skrótowe, twarde
+- ❌ „Może Pan/Pani też po prostu odpisać TAK i podać numer telefonu - oddzwonię." — mechaniczne, call center style
+- ❌ „Proszę odpisać i podać numer telefonu." — zbyt techniczne
+- ❌ „Można też po prostu wysłać numer telefonu." — mało naturalne
+- ❌ „Oddzwonię." — zbyt skrótowe jako samodzielne zdanie
+- ❌ „Proszę podać numer - oddzwonię." — nakaz zamiast zaproszenia
+- ❌ Jakikolwiek schemat, który brzmi jak automatyczna formuła sekwencyjna
 
 ### Zakazane sformułowania w CTA
 - „proszę skorzystać z mojego kalendarza"

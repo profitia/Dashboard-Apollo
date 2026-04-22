@@ -48,7 +48,7 @@ except ImportError:
         return False
 
 # --- CSV normalizer ---
-from agents.csv_import.csv_normalizer import normalize_contacts
+from agents.csv_import.csv_normalizer import normalize_contacts, normalize_contacts_rich
 
 # --- Wspólne agenty z run_campaign ---
 from run_campaign import (
@@ -74,6 +74,14 @@ from run_campaign import (
 from core.email_signature import strip_signature as _strip_signature
 from core.email_thread_formatter import build_outreach_pack
 from core.followup_generator import generate_followup
+from core.icp_tier_resolver import resolve_tier, get_tier_prompt_context
+from core.campaign_name_builder import build_campaign_metadata
+from core.contact_campaign_history import update_contact_campaign_history, enrich_contact_output
+from core.apollo_campaign_sync import build_apollo_sync_payload, sync_outreach_pack_to_apollo
+from core.weekly_sequence_orchestrator import run_weekly_sequence, generate_sequence_name
+from core.contact_engagement_tracker import record_campaign_batch
+from core.apollo_contact_enrichment import enrich_contact_name_fields, build_safe_greeting
+from core.tier_alignment import tier_alignment_check
 
 
 # ============================================================
@@ -104,12 +112,19 @@ def agent_csv_trigger_inference(contact: dict, persona: dict,
                 "notes": notes,
                 "language": "pl",
             }
+            # Extended context for richer hypothesis
+            if contact.get("keywords_raw"):
+                payload["keywords"] = contact["keywords_raw"]
+            if contact.get("seniority"):
+                payload["seniority"] = contact["seniority"]
+            if contact.get("website"):
+                payload["company_website"] = contact["website"]
             result = generate_json(
                 agent_name="CSVTriggerInference",
                 prompt_path=prompt_path,
                 user_payload=payload,
                 context_files=context_files,
-                relevant_context_keys=["01_offer", "02_personas", "03_messaging"],
+                relevant_context_keys=["01_offer", "02_personas", "03_messaging", "icp_tiers", "__icp_tier_active"],
             )
             if result and "hypothesis" in result:
                 result["llm_used"] = True
@@ -144,8 +159,9 @@ def contact_to_pipeline_row(contact: dict) -> dict:
     """
     Konwertuje znormalizowany kontakt na format row oczekiwany przez
     wspólne agenty (lead_scoring, persona_selection, message_writer itd.).
+    Przekazuje rozszerzone pola (keywords, urls, location) dla downstream logic.
     """
-    return {
+    row = {
         "company_name": contact.get("company_name", ""),
         "company_domain": contact.get("company_domain", ""),
         "country": contact.get("country", ""),
@@ -155,6 +171,27 @@ def contact_to_pipeline_row(contact: dict) -> dict:
         "contact_title": contact.get("job_title", ""),
         "notes": contact.get("notes", ""),
     }
+    # Extended fields — available for enriched pipeline steps
+    if contact.get("email"):
+        row["email"] = contact["email"]
+    if contact.get("seniority"):
+        row["seniority"] = contact["seniority"]
+    if contact.get("keywords_raw"):
+        row["keywords_raw"] = contact["keywords_raw"]
+        row["keywords_list"] = contact.get("keywords_list", [])
+    if contact.get("person_linkedin_url"):
+        row["person_linkedin_url"] = contact["person_linkedin_url"]
+    if contact.get("website"):
+        row["website"] = contact["website"]
+    if contact.get("company_linkedin_url"):
+        row["company_linkedin_url"] = contact["company_linkedin_url"]
+    if contact.get("city"):
+        row["city"] = contact["city"]
+    if contact.get("company_city"):
+        row["company_city"] = contact["company_city"]
+    if contact.get("company_country"):
+        row["company_country"] = contact["company_country"]
+    return row
 
 
 # ============================================================
@@ -192,13 +229,22 @@ def agent_csv_message_writer(contact: dict, research: dict, persona: dict,
             "first_name_vocative": contact.get("first_name_vocative"),
             "greeting": contact.get("greeting", "Dzień dobry,"),
         }
+        # Extended context — keywords, seniority, location (for better personalization)
+        if contact.get("keywords_raw"):
+            payload["keywords"] = contact["keywords_raw"]
+        if contact.get("seniority"):
+            payload["seniority"] = contact["seniority"]
+        if contact.get("city"):
+            payload["contact_city"] = contact["city"]
+        if contact.get("website"):
+            payload["company_website"] = contact["website"]
 
         result = generate_json(
             agent_name="MessageWriter_CSV",
             prompt_path=prompt_path,
             user_payload=payload,
             context_files=context_files,
-            relevant_context_keys=["01_offer", "02_personas", "03_messaging", "05_quality"],
+            relevant_context_keys=["01_offer", "02_personas", "03_messaging", "05_quality", "icp_tiers", "__icp_tier_active"],
             max_tokens=2500,
         )
         if result and "body" in result:
@@ -324,17 +370,30 @@ def run_csv_pipeline(contact: dict, config: dict, context_files: dict | None = N
     research = agent_account_research(row)
     persona = agent_persona_selection(row)
 
+    # ICP Tier detection
+    contact_title = contact.get("job_title", "")
+    tier_info = resolve_tier(contact_title)
+
+    # Wzbogać kontekst o aktywny tier
+    enriched_context = dict(context_files) if context_files else {}
+    tier_prompt = get_tier_prompt_context(tier_info["tier"])
+    if tier_prompt:
+        enriched_context["__icp_tier_active"] = tier_prompt
+
     # Hypothesis: dedykowany CSV trigger inference
     hypothesis = agent_csv_trigger_inference(contact, persona,
-                                            context_files=context_files,
+                                            context_files=enriched_context,
                                             base_dir=base_dir)
 
     # Message writer: z normalizacją gender/vocative
     message = agent_csv_message_writer(contact, research, persona, hypothesis, config,
-                                       context_files=context_files, base_dir=base_dir)
+                                       context_files=enriched_context, base_dir=base_dir)
 
     qa = agent_qa_reviewer(message, persona, hypothesis, config,
-                           context_files=context_files, base_dir=base_dir)
+                           context_files=enriched_context, base_dir=base_dir)
+    qa["tier_detected"] = tier_info["tier"]
+    qa["tier_label"] = tier_info["tier_label"]
+
     fields = agent_apollo_fields(row, message, persona, hypothesis, scoring, qa, config)
     routing = agent_sequence_router(persona, config)
 
@@ -346,7 +405,18 @@ def run_csv_pipeline(contact: dict, config: dict, context_files: dict | None = N
         "domain": contact.get("company_domain", ""),
         "gender": contact.get("gender", "unknown"),
         "vocative": contact.get("first_name_vocative"),
+        "email": contact.get("email", ""),
+        "job_title": contact.get("job_title", ""),
+        "company_name": contact.get("company_name", ""),
     }
+    # Pass rich_profile through for engagement tracker
+    if contact.get("rich_profile"):
+        contact_dict["rich_profile"] = contact["rich_profile"]
+
+    # --- Name enrichment (deterministyczny, z source of truth) ---
+    name_enrichment = enrich_contact_name_fields(
+        contact_dict, write_to_apollo=False,
+    )
 
     # --- Follow-upy + outreach pack ---
     email_1_body_core = _strip_signature(message.get("body", ""))
@@ -361,7 +431,7 @@ def run_csv_pipeline(contact: dict, config: dict, context_files: dict | None = N
         previous_followup_body="",
         contact=contact_dict,
         message=message,
-        context_files=context_files,
+        context_files=enriched_context,
         base_dir=base_dir,
         trigger_title=trigger_title,
         trigger_source=trigger_source,
@@ -374,7 +444,7 @@ def run_csv_pipeline(contact: dict, config: dict, context_files: dict | None = N
         previous_followup_body=fu1_result["body"],
         contact=contact_dict,
         message=message,
-        context_files=context_files,
+        context_files=enriched_context,
         base_dir=base_dir,
         trigger_title=trigger_title,
         trigger_source=trigger_source,
@@ -392,18 +462,32 @@ def run_csv_pipeline(contact: dict, config: dict, context_files: dict | None = N
         date_follow_up_2=(today + timedelta(days=5)).strftime("%d.%m.%Y"),
     )
 
+    # Tier alignment check (heuristic, non-blocking)
+    tier_alignment = tier_alignment_check(
+        tier_info,
+        [email_1_body_core, fu1_result["body"], fu2_result["body"]],
+    )
+    if tier_alignment.get("requires_review"):
+        qa.setdefault("requires_review", False)
+        qa["requires_review"] = True
+        qa.setdefault("tier_alignment_comments", [])
+        qa["tier_alignment_comments"] = tier_alignment["comments"]
+
     return {
         "normalized_contact": contact,
         "contact": contact_dict,
         "lead_scoring": scoring,
         "account_research": research,
         "persona_selection": persona,
+        "icp_tier": tier_info,
         "hypothesis": hypothesis,
         "message": message,
         "qa": qa,
         "apollo_fields": fields,
         "routing": routing,
         "outreach_pack": outreach_pack,
+        "name_enrichment": name_enrichment,
+        "tier_alignment": tier_alignment,
         "followup_meta": {
             "follow_up_1_llm_used": fu1_result["llm_used"],
             "follow_up_2_llm_used": fu2_result["llm_used"],
@@ -578,11 +662,13 @@ def main():
     print(f"       Załadowano {len(raw_rows)} rekordów.")
 
     # Normalizacja
-    print("[3/9] Normalizuję dane kontaktowe...")
-    normalized = normalize_contacts(raw_rows)
+    print("[3/9] Normalizuję dane kontaktowe (rich profile mode)...")
+    normalized = normalize_contacts_rich(raw_rows, persist=True)
     warnings_total = sum(len(c.get("normalization_warnings", [])) for c in normalized)
     genders = [c.get("gender", "unknown") for c in normalized]
+    rich_count = sum(1 for c in normalized if c.get("rich_profile"))
     print(f"       Gender: female={genders.count('female')}, male={genders.count('male')}, unknown={genders.count('unknown')}")
+    print(f"       Rich profiles: {rich_count}/{len(normalized)}")
     if warnings_total:
         print(f"       Warnings: {warnings_total}")
         for c in normalized:
@@ -600,11 +686,21 @@ def main():
     # LLM status
     print("[5/9] Sprawdzam dostępność LLM...")
     if is_llm_available():
-        llm_model = os.getenv("LLM_MODEL", "gpt-4o-mini")
-        print(f"       LLM AKTYWNY: model={llm_model}")
+        from src.config.openai_client import get_config_summary
+        _cfg = get_config_summary()
+        print(f"       LLM AKTYWNY: provider={_cfg['provider']}, primary={_cfg['primary_model']}, fallback={_cfg['fallback_model']}, cheap={_cfg['cheap_model']}")
         print("       Agenty z LLM: CSVTriggerInference, MessageWriter_CSV, QA Reviewer")
     else:
         print("       LLM NIEAKTYWNY — pipeline użyje heurystyk (fallback).")
+
+    # Campaign naming
+    campaign_metadata = build_campaign_metadata(
+        config=config,
+        flow_name="run_csv_campaign",
+    )
+    auto_campaign_name = campaign_metadata["campaign_name"]
+    print(f"       campaign_name: {auto_campaign_name}")
+    apollo_sync = build_apollo_sync_payload(campaign_metadata)
 
     # Run pipeline
     print(f"[6/10] Uruchamiam pipeline dla {len(normalized)} kontaktów...")
@@ -619,17 +715,44 @@ def main():
         vocative = contact.get("first_name_vocative", "-")
         llm_tag = "LLM" if result["message"].get("llm_used") else "heuristic"
         fu_tag = "LLM" if result["followup_meta"]["follow_up_1_llm_used"] else "heur"
-        print(f"       [{i}/{len(normalized)}] {company} ({gender}/{vocative}) → QA: {score} ({decision}) [msg:{llm_tag}, fu:{fu_tag}]")
+        tier_tag = result["icp_tier"]["tier_label"]
+        print(f"       [{i}/{len(normalized)}] {company} ({gender}/{vocative}) → Tier: {tier_tag} | QA: {score} ({decision}) [msg:{llm_tag}, fu:{fu_tag}]")
+
+    # Flagowanie kontaktów — campaign history
+    for r in results:
+        update_contact_campaign_history(
+            contact=r["contact"],
+            campaign_metadata=campaign_metadata,
+            apollo_metadata=apollo_sync,
+        )
+
+    # Engagement tracking — zapis historii outreach per kontakt
+    try:
+        engagement_profiles = record_campaign_batch(
+            contacts_results=results,
+            campaign_name=auto_campaign_name,
+            campaign_type=config.get("campaign_type", "csv_import"),
+            apollo_sequence_name=apollo_sync.get("apollo_sequence_name"),
+            apollo_sequence_id=apollo_sync.get("apollo_sequence_id"),
+        )
+        print(f"       Engagement tracker: {len(engagement_profiles)} profili zapisanych")
+    except Exception as exc:
+        print(f"       [WARN] Engagement tracker error: {exc}")
 
     # Prepare output dir
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    campaign_name = config.get("campaign_name", "unknown")
-    run_dir_name = f"{timestamp}_{campaign_name}"
+    run_dir_name = f"{timestamp}_{auto_campaign_name}"
     run_dir = os.path.join(BASE_DIR, "outputs", "runs", run_dir_name)
     ensure_dir(run_dir)
 
     # Write outputs
     print(f"[7/10] Zapisuję wyniki do: outputs/runs/{run_dir_name}/")
+
+    # campaign_metadata.json
+    write_json(os.path.join(run_dir, "campaign_metadata.json"), {
+        "campaign_metadata": campaign_metadata,
+        "apollo_sync": apollo_sync,
+    })
 
     # normalized_contacts.json
     write_json(os.path.join(run_dir, "normalized_contacts.json"), normalized)
@@ -638,6 +761,7 @@ def main():
     messages = [
         {
             "contact": r["contact"],
+            "icp_tier": r["icp_tier"],
             "message": r["message"],
             "persona": r["persona_selection"]["persona_type"],
             "hypothesis": r["hypothesis"]["hypothesis"],
@@ -650,6 +774,7 @@ def main():
     qa_results = [
         {
             "contact": r["contact"],
+            "icp_tier": r["icp_tier"]["tier"],
             "qa": r["qa"],
             "lead_score": r["lead_scoring"]["lead_score"],
         }
@@ -668,6 +793,42 @@ def main():
     ]
     write_json(os.path.join(run_dir, "outreach_pack.json"), outreach_packs)
     print(f"       outreach_pack.json — {len(outreach_packs)} kontaktów × 3 emaile")
+
+    # Apollo weekly sequence — nowy model: 1 sekwencja / wielu kontaktów / dynamic content
+    apollo_mode = config.get("apollo", {}).get("mode", "sync_fields")
+    if apollo_mode == "weekly_sequence":
+        contacts_with_packs = [
+            {"email": r["contact"].get("email", ""), "outreach_pack": r["outreach_pack"]}
+            for r in results if r["contact"].get("email") and r.get("outreach_pack")
+        ]
+        seq_name = config.get("apollo", {}).get("sequence_name") or generate_sequence_name(
+            campaign_type=campaign_metadata.get("campaign_type", "CSVImport"),
+            market=campaign_metadata.get("market", "PL"),
+        )
+        weekly_result = run_weekly_sequence(
+            contacts_with_packs=contacts_with_packs,
+            sequence_name=seq_name,
+            campaign_type=campaign_metadata.get("campaign_type", "CSVImport"),
+            market=campaign_metadata.get("market", "PL"),
+            dry_run=config.get("apollo", {}).get("dry_run", True),
+        )
+        write_json(os.path.join(run_dir, "apollo_weekly_sequence.json"), weekly_result)
+        summary = weekly_result.get("summary", {})
+        print(f"       apollo_weekly_sequence.json — {summary.get('verdict', '?')}: "
+              f"{summary.get('enrolled', 0)}/{summary.get('contacts_input', 0)} enrolled, "
+              f"sequence={summary.get('sequence_name', '?')}")
+    else:
+        # Fallback: stary model per-contact sync (backward compatible)
+        apollo_sync_results = []
+        for r in results:
+            email = r["contact"].get("email", "")
+            if email and r.get("outreach_pack"):
+                sync_result = sync_outreach_pack_to_apollo(email, r["outreach_pack"])
+                apollo_sync_results.append({"contact_email": email, **sync_result})
+        if apollo_sync_results:
+            write_json(os.path.join(run_dir, "apollo_custom_fields_sync.json"), apollo_sync_results)
+            ok = sum(1 for s in apollo_sync_results if s.get("status") == "success")
+            print(f"       apollo_custom_fields_sync.json — {ok}/{len(apollo_sync_results)} kontaktów zsynchronizowanych")
 
     # apollo_payloads.json
     payloads = [
@@ -696,6 +857,8 @@ def main():
             "gender": r["contact"]["gender"],
             "vocative": r["contact"]["vocative"],
             "persona": r["persona_selection"]["persona_type"],
+            "tier": r["icp_tier"]["tier"],
+            "tier_label": r["icp_tier"]["tier_label"],
             "lead_score": r["lead_scoring"]["lead_score"],
             "qa_score": r["qa"]["qa_score"],
             "decision": r["qa"]["decision"],

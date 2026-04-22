@@ -1,0 +1,27 @@
+{
+  "contact_key": "beata_krawczyk_polaris fmcg sa",
+  "last_campaign_name": "CSVImport_T2_Gen_Gen_PL_W03_M04_R26_v1",
+  "last_campaign_sent_at": "2026-04-18T20:26:54.133871",
+  "last_campaign_type": "CSVImport",
+  "last_campaign_tier": "T2",
+  "last_campaign_segment": "Gen",
+  "last_campaign_angle": "Gen",
+  "last_apollo_sequence_name": "CSVImport_T2_Gen_Gen_PL_W03_M04_R26_v1",
+  "campaign_history": [
+    {
+      "campaign_name": "CSVImport_T2_Gen_Gen_PL_W03_M04_R26_v1",
+      "sent_at": "2026-04-18T20:26:54.133871",
+      "campaign_type": "CSVImport",
+      "tier": "T2",
+      "segment": "Gen",
+      "angle": "Gen",
+      "market": "PL",
+      "version": 1,
+      "apollo_sequence_name": "CSVImport_T2_Gen_Gen_PL_W03_M04_R26_v1",
+      "status": "assigned",
+      "apollo_sync_status": "",
+      "last_seen_at": "2026-04-18T20:44:08.484323",
+      "duplicate_prevented": true
+    }
+  ]
+}

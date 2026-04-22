@@ -1,0 +1,355 @@
+# ============================================================
+# Apollo Campaign Types — Source of Truth
+# ============================================================
+# Definicja typów stepów Apollo, wewnętrznych delivery types,
+# domyślnych reguł mapowania oraz templates sekwencji.
+#
+# Współpracuje z:
+#   - source_of_truth/campaign_naming_rules.yaml (naming)
+#   - src/core/apollo_campaign_sync.py (integracja Apollo)
+#   - src/core/campaign_name_builder.py (metadata)
+# ============================================================
+
+# ----------------------------------------------------------
+# 1. Typy stepów Apollo
+# ----------------------------------------------------------
+# Oficjalna lista typów kroków obsługiwanych przez Apollo Sequences.
+# Nazwy odpowiadają wartościom w Apollo UI / API.
+
+apollo_step_types:
+  automatic_email:
+    apollo_label: "Automatic email"
+    description: "Mail wysyłany automatycznie przez Apollo w zaplanowanym terminie."
+    when_to_use: "Standardowy outbound mailowy - cold mail, follow-up, sekwencja."
+    is_outbound: true
+    is_task: false
+    requires_manual_work: false
+
+  manual_email:
+    apollo_label: "Manual email"
+    description: "Mail przygotowany przez Apollo, ale wysyłany ręcznie przez użytkownika."
+    when_to_use: "Gdy mail wymaga personalizacji w ostatniej chwili lub review przed wysyłką."
+    is_outbound: true
+    is_task: true
+    requires_manual_work: true
+
+  phone_call:
+    apollo_label: "Phone call"
+    description: "Task do wykonania telefonu do kontaktu."
+    when_to_use: "Follow-up telefoniczny po mailach lub jako element multichannel."
+    is_outbound: true
+    is_task: true
+    requires_manual_work: true
+
+  action_item:
+    apollo_label: "Action item"
+    description: "Generyczny task wewnętrzny - nie jest outboundem do kontaktu."
+    when_to_use: "Research, weryfikacja danych, przygotowanie materiałów, notatki."
+    is_outbound: false
+    is_task: true
+    requires_manual_work: true
+
+  linkedin_connect:
+    apollo_label: "LinkedIn - send connection request"
+    description: "Wysłanie zaproszenia do kontaktu na LinkedIn."
+    when_to_use: "Pierwszy krok LinkedIn outreach - budowanie relacji przed mailem."
+    is_outbound: true
+    is_task: true
+    requires_manual_work: true
+
+  linkedin_message:
+    apollo_label: "LinkedIn - send message"
+    description: "Wysłanie wiadomości bezpośredniej na LinkedIn (InMail lub message)."
+    when_to_use: "Follow-up po zaakceptowanym connection request lub InMail do nowego kontaktu."
+    is_outbound: true
+    is_task: true
+    requires_manual_work: true
+
+  linkedin_view:
+    apollo_label: "LinkedIn - view profile"
+    description: "Odwiedzenie profilu LinkedIn kontaktu (generuje notyfikację)."
+    when_to_use: "Miękki sygnał zainteresowania przed connection request lub mailem."
+    is_outbound: false
+    is_task: true
+    requires_manual_work: true
+
+  linkedin_interact:
+    apollo_label: "LinkedIn - interact with post"
+    description: "Polubienie lub skomentowanie posta kontaktu na LinkedIn."
+    when_to_use: "Budowanie visibility przed bezpośrednim outreach."
+    is_outbound: false
+    is_task: true
+    requires_manual_work: true
+
+
+# ----------------------------------------------------------
+# 2. Wewnętrzne typy delivery / channel
+# ----------------------------------------------------------
+# Kody używane wewnętrznie w naszym systemie.
+# Każdy mapuje się na konkretny typ stepu Apollo.
+
+internal_delivery_types:
+  email_auto:
+    description: "Automatyczny mail wysyłany przez Apollo bez interwencji użytkownika."
+    default_apollo_step_type: "automatic_email"
+    is_email: true
+    is_manual: false
+    is_multichannel_compatible: true
+
+  email_manual:
+    description: "Mail wysyłany ręcznie - Apollo przygotowuje draft, użytkownik wysyła."
+    default_apollo_step_type: "manual_email"
+    is_email: true
+    is_manual: true
+    is_multichannel_compatible: true
+
+  call:
+    description: "Telefon do kontaktu - task w Apollo z numerem i notatkami."
+    default_apollo_step_type: "phone_call"
+    is_email: false
+    is_manual: true
+    is_multichannel_compatible: true
+
+  task:
+    description: "Wewnętrzny task - nie jest outboundem do kontaktu."
+    default_apollo_step_type: "action_item"
+    is_email: false
+    is_manual: true
+    is_multichannel_compatible: true
+
+  linkedin_connect:
+    description: "Zaproszenie do kontaktu na LinkedIn."
+    default_apollo_step_type: "linkedin_connect"
+    is_email: false
+    is_manual: true
+    is_multichannel_compatible: true
+
+  linkedin_message:
+    description: "Wiadomość bezpośrednia na LinkedIn."
+    default_apollo_step_type: "linkedin_message"
+    is_email: false
+    is_manual: true
+    is_multichannel_compatible: true
+
+  linkedin_view:
+    description: "Odwiedzenie profilu LinkedIn kontaktu."
+    default_apollo_step_type: "linkedin_view"
+    is_email: false
+    is_manual: true
+    is_multichannel_compatible: true
+
+  linkedin_interact:
+    description: "Interakcja z postem kontaktu na LinkedIn."
+    default_apollo_step_type: "linkedin_interact"
+    is_email: false
+    is_manual: true
+    is_multichannel_compatible: true
+
+
+# ----------------------------------------------------------
+# 3. Domyślna reguła delivery dla kampanii mailowych
+# ----------------------------------------------------------
+# WAŻNE: to jest jawna reguła, nie ukryte założenie.
+# Każda standardowa kampania mailowa w naszym systemie domyślnie
+# używa Apollo step type = "Automatic email".
+
+default_campaign_delivery_rule:
+  description: >
+    Jeśli kampania generuje standardową sekwencję mailową do wysyłki przez Apollo
+    i nie wskazano innego delivery mode, to primary_delivery_type = email_auto
+    a default Apollo step type = Automatic email.
+  primary_delivery_type: "email_auto"
+  default_apollo_step_type: "Automatic email"
+  applies_to:
+    - "LinPost"
+    - "LinEvent"
+    - "NewsTrig"
+    - "AdHoc"
+    - "ApolloList"
+    - "CSVImport"
+    - "FollowUp"
+    - "WebSignal"
+    - "Intent"
+  exceptions:
+    - campaign_type: "NoEmail"
+      reason: "NoEmail nie wysyła maili - mapuje się na action_item lub null."
+
+
+# ----------------------------------------------------------
+# 4. Mapowanie campaign type -> domyślny delivery type
+# ----------------------------------------------------------
+
+campaign_type_delivery_defaults:
+  LinPost:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Kampanie z LinkedIn posts - standardowy email outbound."
+
+  LinEvent:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Kampanie pokonferencyjne - standardowy email outbound."
+
+  NewsTrig:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Kampanie triggerowane artykułami - standardowy email outbound."
+
+  AdHoc:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Kampanie ad hoc - standardowy email outbound."
+
+  ApolloList:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Kampanie z list Apollo - standardowy email outbound."
+
+  CSVImport:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Kampanie z importu CSV - standardowy email outbound."
+
+  CSVDoApollo:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: >
+      Pełny flow: CSV (semicolon) → normalizacja → AI content generation
+      → Apollo custom fields sync → weekly sequence → enrollment → inactive →
+      DOCX review → manual activation. Główny operacyjny typ tygodniowych kampanii.
+      Pipeline: src/pipelines/run_csv_campaign.py.
+      Folder organizacyjny: campaigns/csv_do_apollo/.
+      Kod w campaign_name_builder.py: CSVImport (alias tego samego flow).
+
+  FollowUp:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Follow-upy do istniejących kampanii - standardowy email outbound."
+
+  NoEmail:
+    delivery_type: "task"
+    apollo_step_type: "Action item"
+    notes: "Kontakty bez emaila - research task, nie outbound mailowy."
+
+  WebSignal:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Kampanie z sygnałów webowych - standardowy email outbound."
+
+  Intent:
+    delivery_type: "email_auto"
+    apollo_step_type: "Automatic email"
+    notes: "Kampanie z sygnałów intent - standardowy email outbound."
+
+
+# ----------------------------------------------------------
+# 5. Templates sekwencji
+# ----------------------------------------------------------
+# Gotowe schematy sekwencji do użycia w kampaniach.
+# Na dziś aktywny jest email_only.
+# Pozostałe są przygotowane na przyszłe kampanie wielokanałowe.
+
+sequence_templates:
+  email_only:
+    description: "Standardowa sekwencja 3 maili automatycznych."
+    is_multichannel: false
+    # Cadence: domyślne wartości z apollo_custom_fields.yaml → sequence_cadence
+    # Override per kampania możliwy w config YAML.
+    steps:
+      - step: 1
+        apollo_step_type: "Automatic email"
+        delivery_type: "email_auto"
+        label: "Email 1 - intro"
+        delay_days: 0
+        wait_time_minutes: 0
+      - step: 2
+        apollo_step_type: "Automatic email"
+        delivery_type: "email_auto"
+        label: "Email 2 - wartość"
+        delay_days: 2
+        wait_time_minutes: 2880
+      - step: 3
+        apollo_step_type: "Automatic email"
+        delivery_type: "email_auto"
+        label: "Email 3 - CTA"
+        delay_days: 2
+        wait_time_minutes: 2880
+
+  email_plus_call:
+    description: "Sekwencja email + telefon + email. Follow-up telefoniczny po pierwszym mailu."
+    is_multichannel: true
+    steps:
+      - step: 1
+        apollo_step_type: "Automatic email"
+        delivery_type: "email_auto"
+        label: "Email 1 - intro"
+      - step: 2
+        apollo_step_type: "Phone call"
+        delivery_type: "call"
+        label: "Telefon - follow-up"
+      - step: 3
+        apollo_step_type: "Automatic email"
+        delivery_type: "email_auto"
+        label: "Email 2 - wartość"
+
+  linkedin_plus_email:
+    description: "LinkedIn warm-up + email. Budowanie relacji przed mailem."
+    is_multichannel: true
+    steps:
+      - step: 1
+        apollo_step_type: "LinkedIn - view profile"
+        delivery_type: "linkedin_view"
+        label: "LinkedIn - odwiedź profil"
+      - step: 2
+        apollo_step_type: "LinkedIn - send connection request"
+        delivery_type: "linkedin_connect"
+        label: "LinkedIn - zaproszenie"
+      - step: 3
+        apollo_step_type: "Automatic email"
+        delivery_type: "email_auto"
+        label: "Email 1 - intro"
+
+  multichannel_light:
+    description: "Lekki multichannel - LinkedIn view + email + task."
+    is_multichannel: true
+    steps:
+      - step: 1
+        apollo_step_type: "LinkedIn - view profile"
+        delivery_type: "linkedin_view"
+        label: "LinkedIn - odwiedź profil"
+      - step: 2
+        apollo_step_type: "Automatic email"
+        delivery_type: "email_auto"
+        label: "Email 1 - intro"
+      - step: 3
+        apollo_step_type: "Action item"
+        delivery_type: "task"
+        label: "Task - review i decyzja"
+
+  no_email_research:
+    description: "Sekwencja research - bez wysyłki maili. Dla kontaktów bez emaila."
+    is_multichannel: false
+    steps:
+      - step: 1
+        apollo_step_type: "Action item"
+        delivery_type: "task"
+        label: "Research kontaktu"
+      - step: 2
+        apollo_step_type: "LinkedIn - view profile"
+        delivery_type: "linkedin_view"
+        label: "LinkedIn - odwiedź profil"
+
+
+# ----------------------------------------------------------
+# 6. Cross-references
+# ----------------------------------------------------------
+# Powiązania z innymi plikami source of truth.
+
+cross_references:
+  campaign_naming: "source_of_truth/campaign_naming_rules.yaml"
+  icp_tiers: "source_of_truth/icp_tiers.yaml"
+  messaging_framework: "source_of_truth/messaging_framework.yaml"
+  code_modules:
+    campaign_sync: "src/core/apollo_campaign_sync.py"
+    campaign_builder: "src/core/campaign_name_builder.py"
+    contact_history: "src/core/contact_campaign_history.py"

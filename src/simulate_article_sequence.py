@@ -29,6 +29,18 @@ from run_campaign import (
 from send_followup_test import (
     build_step2, build_step3, generate_followup_body, _strip_signature,
 )
+from core.icp_tier_resolver import resolve_tier, get_tier_prompt_context
+from core.tier_alignment import tier_alignment_check
+
+try:
+    from core.campaign_name_builder import build_campaign_metadata
+except ImportError:
+    build_campaign_metadata = None
+
+try:
+    from core.apollo_contact_enrichment import enrich_contact_name_fields
+except ImportError:
+    enrich_contact_name_fields = None
 
 # ============================================================
 # Dane symulacji — artykuł + fikcyjny odbiorca
@@ -69,6 +81,15 @@ SIMULATED_CONTACT = {
 def generate_step1(contact: dict, article: dict, context_files: dict) -> dict:
     """Generuje mail 1 (opening) na podstawie artykułu jako triggera."""
     prompt_path = os.path.join(BASE_DIR, "prompts", "shared", "message_writer.md")
+
+    # ICP Tier detection
+    tier_info = resolve_tier(contact.get("title", ""))
+
+    # Wzbogać kontekst o aktywny tier
+    enriched_context = dict(context_files) if context_files else {}
+    tier_prompt = get_tier_prompt_context(tier_info["tier"])
+    if tier_prompt:
+        enriched_context["__icp_tier_active"] = tier_prompt
 
     payload = {
         "persona_type": "cpo",
@@ -116,12 +137,13 @@ def generate_step1(contact: dict, article: dict, context_files: dict) -> dict:
         agent_name="MessageWriter_Simulation",
         prompt_path=prompt_path,
         user_payload=payload,
-        context_files=context_files,
-        relevant_context_keys=["01_offer", "02_personas", "03_messaging", "05_quality"],
+        context_files=enriched_context,
+        relevant_context_keys=["01_offer", "02_personas", "03_messaging", "05_quality", "icp_tiers", "__icp_tier_active"],
     )
 
     if result and "body" in result:
         result["llm_used"] = True
+        result["icp_tier"] = tier_info
         # Dodaj firmę do subject jeśli brak
         if contact["company"] not in result.get("subject", ""):
             result["subject"] = f"{result['subject']} — {contact['company']}"
@@ -188,6 +210,15 @@ def main():
     step1_body_clean = _strip_signature(step1_body_with_sig)
     print(f"       OK — subject: {step1_subject}")
     print(f"       {len(step1_body_clean.split())} słów")
+
+    # Lightweight tier alignment check (step1 only — followups nie mają jeszcze body)
+    tier_info = step1_msg.get("icp_tier", {})
+    alignment = tier_alignment_check(tier_info, [step1_body_clean])
+    align_tag = "PASS" if alignment.get("pass") else "REVIEW"
+    print(f"       Tier alignment: {align_tag}")
+    if alignment.get("comments"):
+        for c in alignment["comments"]:
+            print(f"         - {c}")
 
     # Daty
     today = datetime.now()
@@ -287,11 +318,25 @@ def main():
     print("DONE — 3 maile wysłane. Sprawdź skrzynkę.")
 
     # Zapisz dane symulacji
+    # Re-run alignment on all 3 bodies combined
+    all_bodies = [step1_body_clean, followup2_body, followup3_body]
+    final_alignment = tier_alignment_check(step1_msg.get("icp_tier", {}), all_bodies)
+
     output = {
         "simulation": {
             "article": article,
             "contact": contact,
         },
+        "campaign_metadata": build_campaign_metadata(
+            config={"campaign_type": "article_triggered", "market": "PL"},
+            flow_name="simulate_article_sequence",
+            trigger="article",
+        ) if build_campaign_metadata else None,
+        "icp_tier": step1_msg.get("icp_tier", {}),
+        "tier_alignment": final_alignment,
+        "name_enrichment": enrich_contact_name_fields(
+            contact, write_to_apollo=False,
+        ) if enrich_contact_name_fields else None,
         "step1": {
             "subject": step1_subject,
             "body_clean": step1_body_clean,

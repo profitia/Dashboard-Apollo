@@ -1,0 +1,133 @@
+{
+  "core_identity": {
+    "first_name": "Daniel",
+    "last_name": "Matela",
+    "full_name": "Daniel Matela",
+    "email": "daniel.x.matela@gsk.com",
+    "job_title": "Head of Capital Equipment Procurement",
+    "seniority": "Head"
+  },
+  "org_context": {
+    "company_name": "GSK",
+    "departments": "Finance",
+    "sub_departments": "Sourcing / Procurement",
+    "industry": "pharmaceuticals",
+    "keywords_raw": "pharmaceutical products & vaccines, health & wellness, biotechnology, pharmaceuticals, heathcare, life sciences, biotechnology: pharmaceutical preparations, health care, pharmaceutical manufacturing, health, wellness & fitness, medical",
+    "keywords_list": [
+      "pharmaceutical products & vaccines",
+      "health & wellness",
+      "biotechnology",
+      "pharmaceuticals",
+      "heathcare",
+      "life sciences",
+      "biotechnology: pharmaceutical preparations",
+      "health care",
+      "pharmaceutical manufacturing",
+      "health",
+      "wellness & fitness",
+      "medical"
+    ],
+    "keywords_normalized": [
+      "pharmaceutical products & vaccines",
+      "health & wellness",
+      "biotechnology",
+      "pharmaceuticals",
+      "heathcare",
+      "life sciences",
+      "biotechnology: pharmaceutical preparations",
+      "health care",
+      "pharmaceutical manufacturing",
+      "health",
+      "wellness & fitness",
+      "medical"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/daniel-matela-mcips-cpcm-63a9143b",
+    "website": "https://gsk.com",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/gsk",
+    "facebook_url": "https://www.facebook.com/GSK",
+    "twitter_url": "http://twitter.com/GSK"
+  },
+  "location": {
+    "city": "Piaseczno",
+    "state": "Masovian Voivodeship",
+    "country": "POLAND",
+    "company_address": "79 New Oxford Street, London, England, United Kingdom, WC1A 1DG",
+    "company_city": "London",
+    "company_state": "England",
+    "company_country": "UNITED KINGDOM"
+  },
+  "company_metadata": {
+    "company_phone": "'+44 20 8047 5000",
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Daniel",
+      "Last Name": "Matela",
+      "Title": "Head of Capital Equipment Procurement",
+      "Company Name": "GSK",
+      "Email": "daniel.x.matela@gsk.com",
+      "Seniority": "Head",
+      "Departments": "Finance",
+      "Sub Departments": "Sourcing / Procurement",
+      "Industry": "pharmaceuticals",
+      "Keywords": "pharmaceutical products & vaccines, health & wellness, biotechnology, pharmaceuticals, heathcare, life sciences, biotechnology: pharmaceutical preparations, health care, pharmaceutical manufacturing, health, wellness & fitness, medical",
+      "Person Linkedin Url": "http://www.linkedin.com/in/daniel-matela-mcips-cpcm-63a9143b",
+      "Website": "https://gsk.com",
+      "Company Linkedin Url": "http://www.linkedin.com/company/gsk",
+      "Facebook Url": "https://www.facebook.com/GSK",
+      "Twitter Url": "http://twitter.com/GSK",
+      "City": "Piaseczno",
+      "State": "Masovian Voivodeship",
+      "Country": "Poland",
+      "Company Address": "79 New Oxford Street, London, England, United Kingdom, WC1A 1DG",
+      "Company City": "London",
+      "Company State": "England",
+      "Company Country": "United Kingdom",
+      "Company Phone": "'+44 20 8047 5000"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.043204",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.851531",
+        "original_row": {
+          "First Name": "Daniel",
+          "Last Name": "Matela",
+          "Title": "Head of Capital Equipment Procurement",
+          "Company Name": "GSK",
+          "Email": "daniel.x.matela@gsk.com",
+          "Seniority": "Head",
+          "Departments": "Finance",
+          "Sub Departments": "Sourcing / Procurement",
+          "Industry": "pharmaceuticals",
+          "Keywords": "pharmaceutical products & vaccines, health & wellness, biotechnology, pharmaceuticals, heathcare, life sciences, biotechnology: pharmaceutical preparations, health care, pharmaceutical manufacturing, health, wellness & fitness, medical",
+          "Person Linkedin Url": "http://www.linkedin.com/in/daniel-matela-mcips-cpcm-63a9143b",
+          "Website": "https://gsk.com",
+          "Company Linkedin Url": "http://www.linkedin.com/company/gsk",
+          "Facebook Url": "https://www.facebook.com/GSK",
+          "Twitter Url": "http://twitter.com/GSK",
+          "City": "Piaseczno",
+          "State": "Masovian Voivodeship",
+          "Country": "Poland",
+          "Company Address": "79 New Oxford Street, London, England, United Kingdom, WC1A 1DG",
+          "Company City": "London",
+          "Company State": "England",
+          "Company Country": "United Kingdom",
+          "Company Phone": "'+44 20 8047 5000"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "daniel.x.matela@gsk.com",
+    "last_saved_at": "2026-04-21T07:02:12.851733"
+  }
+}

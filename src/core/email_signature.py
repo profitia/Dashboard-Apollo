@@ -18,6 +18,12 @@ FONT_BASE = (
     "font-size: 11pt; color: #000000; line-height: 1.5;"
 )
 
+FONT_PARAGRAPH = (
+    "font-family: Aptos, Calibri, Arial, sans-serif; "
+    "font-size: 11pt; color: #000000; line-height: 1.5; "
+    "margin: 0 0 10px 0;"
+)
+
 FONT_LINK = (
     "font-family: Aptos, Calibri, Arial, sans-serif; "
     "font-size: 11pt; color: #0000ff; text-decoration: underline;"
@@ -66,7 +72,13 @@ SIGNATURE_PLAIN = f"""Pozdrawiam serdecznie,
 # HTML signature
 # ============================================================
 
-SIGNATURE_HTML = f"""<p style="{FONT_BASE}">Pozdrawiam serdecznie,</p>
+FONT_SIGNATURE_CLOSING = (
+    "font-family: Aptos, Calibri, Arial, sans-serif; "
+    "font-size: 11pt; color: #000000; line-height: 1.5; "
+    "margin: 10px 0 2px 0;"
+)
+
+SIGNATURE_HTML = f"""<p style="{FONT_SIGNATURE_CLOSING}">Pozdrawiam serdecznie,</p>
 <table cellpadding="0" cellspacing="0" border="0" style="{FONT_BASE}">
   <tr><td style="padding-bottom:0;"><strong style="{FONT_BASE} font-weight:bold;">{SENDER_NAME}</strong></td></tr>
   <tr><td style="{FONT_BASE}">{SENDER_TITLE}</td></tr>
@@ -78,6 +90,43 @@ SIGNATURE_HTML = f"""<p style="{FONT_BASE}">Pozdrawiam serdecznie,</p>
   <tr><td style="height:11pt;">&nbsp;</td></tr>
   <tr><td style="font-family: Aptos, Calibri, Arial, sans-serif; font-size: 9pt; color: #949494; line-height: 1.4;">{CONFIDENTIALITY_NOTICE}</td></tr>
 </table>"""
+
+
+# ============================================================
+# Standalone signature HTML — osobne pole Apollo (pl_signature_tu)
+# ============================================================
+# Używane gdy podpis jest w osobnym custom field, a body zawiera
+# tylko treść maila. Template: {{sg_email_step_x_body}}{{pl_signature_tu}}
+#
+# Różnica vs SIGNATURE_HTML:
+# - margin-top: 2px (bo body <p> ma margin-bottom: 10px → łączny gap ≈ 12px)
+# - brak META_BLOCK (jest w body)
+# - brak pustych paragrafów na początku
+
+FONT_SIGNATURE_STANDALONE_CLOSING = (
+    "font-family: Aptos, Calibri, Arial, sans-serif; "
+    "font-size: 11pt; color: #000000; line-height: 1.5; "
+    "margin: 2px 0 2px 0;"
+)
+
+# WAŻNE: Cały HTML w jednej linii — Apollo konwertuje \n na <br /> w merge tagach.
+# BEZ <table> — lekki podpis tekstowy dla lepszej deliverability i naturalnego wyglądu.
+SIGNATURE_STANDALONE_HTML = (
+    f'<p style="{FONT_SIGNATURE_STANDALONE_CLOSING}">Pozdrawiam serdecznie,</p>'
+    f'<p style="{FONT_BASE} margin: 0 0 0 0;">'
+    f'<strong>{SENDER_NAME}</strong><br>'
+    f'{SENDER_TITLE}<br>'
+    f'+48&#8203; 787&#8203; 417&#8203; 293'
+    f'</p>'
+    f'<p style="{FONT_BASE} margin: 8px 0 0 0;">'
+    f'<strong>{SENDER_COMPANY}</strong><br>'
+    f'{SENDER_TAGLINE}<br>'
+    f'{SENDER_ADDRESS}'
+    f'</p>'
+    f'<p style="font-family: Aptos, Calibri, Arial, sans-serif; font-size: 9pt; color: #949494; line-height: 1.4; margin: 8px 0 0 0;">'
+    f'{CONFIDENTIALITY_NOTICE}'
+    f'</p>'
+)
 
 
 # ============================================================
@@ -97,14 +146,21 @@ META_BLOCK = (
 # ============================================================
 
 def body_to_html(body_text: str) -> str:
-    """Konwertuje plain text body na HTML ze stylem Aptos 11pt #000000."""
+    """Konwertuje plain text body na HTML ze stylem Aptos 11pt #000000.
+
+    Używa FONT_PARAGRAPH z kontrolowanym marginem (margin: 0 0 10px 0)
+    zamiast domyślnego marginu <p> (~1em), który tworzy zbyt duże odstępy.
+
+    WAŻNE: Elementy łączone BEZ \n — Apollo konwertuje \n w merge tagach
+    na <br />, co tworzy niechciane odstępy między paragrafami.
+    """
     escaped = html_mod.escape(body_text)
     paragraphs = escaped.split("\n\n")
     parts = [
-        f'<p style="{FONT_BASE}">{p.replace(chr(10), "<br>")}</p>'
+        f'<p style="{FONT_PARAGRAPH}">{p.replace(chr(10), "<br>")}</p>'
         for p in paragraphs
     ]
-    return "\n".join(parts)
+    return "".join(parts)
 
 
 # Placeholdery, które LLM może dodać zamiast podpisu

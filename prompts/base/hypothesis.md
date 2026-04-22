@@ -51,6 +51,16 @@ Preferuj sformułowania:
 ### Osadzenie w obszarze odpowiedzialności
 Hipoteza musi nawiązywać do realnych obszarów roli: koszty, negocjacje, dostawcy, marża, ryzyko, budżet, efektywność operacyjna, standaryzacja procesów.
 
+### Różnicowanie hipotezy per ICP Tier
+
+Jeśli w kontekście podany jest Tier odbiorcy (`__icp_tier_active`), hipoteza MUSI być sformułowana z perspektywy odpowiedniej do Tieru.
+
+**Tier 1 (C-Level / Zarząd):** Hipoteza z perspektywy wyniku firmy, marży, EBIT, cash flow, budżetu, ryzyka kosztowego. Nie mów o szczegółach kategorii ani standardzie pracy kupca. Przykład: „pojawia się pytanie, na ile presję kosztową da się jeszcze ograniczyć bez uszczerbku dla marży i wyniku firmy".
+
+**Tier 2 (Procurement Management):** Hipoteza z perspektywy savings delivery, celu oszczędnościowego, standardu pracy zespołu, powtarzalności wyników negocjacyjnych w wielu kategoriach. Nie mów ogólnie o „wyniku firmy" (to Tier 1) ani o konkretnej rozmowie z jednym dostawcą (to Tier 3). Przykład: „przy jednoczesnej presji na dowiezienie savings targetu zespół zakupowy może potrzebować bardziej spójnego standardu oceny podwyżek w kluczowych kategoriach".
+
+**Tier 3 (Buyers / Category Managers):** Hipoteza z perspektywy codziennej pracy z kategorią i dostawcą: cost drivers, benchmarki, zasadność podwyżki, argumentacja, przygotowanie do negocjacji. Nie mów o EBIT, strategii firmy ani o zarządzaniu zespołem. Przykład: „kluczowe może być szybkie oddzielenie realnych driverów kosztowych od argumentów negocjacyjnych dostawcy i obronienie budżetu kategorii".
+
 ### Łączenie stanowiska z firmą
 Gdy to możliwe, połącz w jednym zdaniu. Dopuszczalne konstrukcje:
 - „jako Dyrektor Zakupów w [firma]…"

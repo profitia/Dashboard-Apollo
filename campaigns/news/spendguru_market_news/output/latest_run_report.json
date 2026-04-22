@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-04-22T17:20:00.094176+00:00",
+  "campaign_id": "spendguru_market_news",
+  "run_mode": "report",
+  "dry_run": false,
+  "summary": {
+    "total_processed": 0,
+    "success": 0,
+    "requires_attention": 0,
+    "rejected_skipped": 0,
+    "company_contact_blocked": 0,
+    "requires_review": 0
+  },
+  "status_breakdown": [],
+  "detail_lists": {
+    "READY_FOR_REVIEW": [],
+    "BLOCKED_COMPANY_AMBIGUOUS": [],
+    "PENDING_MANUAL_REVIEW": [],
+    "BLOCKED_NO_EMAIL": []
+  },
+  "top_reasons": []
+}

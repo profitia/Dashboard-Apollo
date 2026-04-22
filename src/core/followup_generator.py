@@ -79,7 +79,7 @@ def generate_followup_body(
         prompt_path=prompt_path,
         user_payload=payload,
         context_files=context_files,
-        relevant_context_keys=["01_offer", "03_messaging", "05_quality"],
+        relevant_context_keys=["01_offer", "03_messaging", "05_quality", "icp_tiers", "__icp_tier_active"],
     )
 
     if result and "body" in result:

@@ -1,0 +1,90 @@
+{
+  "core_identity": {
+    "first_name": "Piotr",
+    "last_name": "Makal",
+    "full_name": "Piotr Makal",
+    "email": "piotr.makal@el-cab.com.pl",
+    "job_title": "Purchasing and Logistics Director",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "El-Cab Sp. z o.o.",
+    "departments": "Operations",
+    "sub_departments": "Logistics, Purchasing",
+    "industry": "Electrical / Electronic Manufacturing",
+    "keywords_raw": "kable, przewody, energetyka, instalacje elektryczne, budownictwo, OZE",
+    "keywords_list": [
+      "kable",
+      "przewody",
+      "energetyka",
+      "instalacje elektryczne",
+      "budownictwo",
+      "OZE"
+    ],
+    "keywords_normalized": [
+      "kable",
+      "przewody",
+      "energetyka",
+      "instalacje elektryczne",
+      "budownictwo",
+      "oze"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "https://www.linkedin.com/in/piotr-makal-123456/",
+    "website": "https://www.el-cab.com.pl",
+    "company_domain": null,
+    "company_linkedin_url": "https://www.linkedin.com/company/el-cab/",
+    "facebook_url": "https://www.facebook.com/elcab",
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Wrocław",
+    "state": "Dolnośląskie",
+    "country": "POLAND",
+    "company_address": "ul. Grabiszyńska 200",
+    "company_city": "Wrocław",
+    "company_state": "Dolnośląskie",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": "+48 71 352 44 00",
+    "employees_count": "150-200",
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Piotr",
+      "Last Name": "Makal",
+      "Title": "Purchasing and Logistics Director",
+      "Email": "piotr.makal@el-cab.com.pl",
+      "Seniority": "Director",
+      "Departments": "Operations",
+      "Sub Departments": "Logistics, Purchasing",
+      "Person Linkedin Url": "https://www.linkedin.com/in/piotr-makal-123456/",
+      "Company Name": "El-Cab Sp. z o.o.",
+      "Website": "https://www.el-cab.com.pl",
+      "Company Linkedin Url": "https://www.linkedin.com/company/el-cab/",
+      "Facebook Url": "https://www.facebook.com/elcab",
+      "Company Phone": "+48 71 352 44 00",
+      "Industry": "Electrical / Electronic Manufacturing",
+      "Keywords": "kable, przewody, energetyka, instalacje elektryczne, budownictwo, OZE",
+      "City": "Wrocław",
+      "State": "Dolnośląskie",
+      "Country": "Poland",
+      "Company Address": "ul. Grabiszyńska 200",
+      "Company City": "Wrocław",
+      "Company State": "Dolnośląskie",
+      "Company Country": "Poland",
+      "# Employees": "150-200"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-20T08:11:22.434294"
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "piotr.makal@el-cab.com.pl",
+    "last_saved_at": "2026-04-20T08:11:22.434380"
+  }
+}

@@ -62,6 +62,62 @@
         "reveal": "always",
         "panel": "new"
       }
+    },
+    {
+      "label": "News: Run Daily (dry-run)",
+      "type": "shell",
+      "command": "python src/news/orchestrator.py run-daily --dry-run --verbose",
+      "group": "build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "News: Run Daily (live)",
+      "type": "shell",
+      "command": "python src/news/orchestrator.py run-daily --verbose",
+      "group": "build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "News: Scan only",
+      "type": "shell",
+      "command": "python src/news/orchestrator.py scan --verbose",
+      "group": "build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "News: Run Smoke Tests",
+      "type": "shell",
+      "command": "python -m pytest tests/test_news_pipeline_smoke.py -v",
+      "group": "test",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
     }
   ]
 }

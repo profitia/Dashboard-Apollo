@@ -40,6 +40,27 @@ email_style_guide:
     - "Najpierw CTA, potem podpis"
     - "Styl: 'Proszę o informację, jak będzie Panu/Pani wygodnie porozmawiać' / 'telefon albo Teams'"
 
+  cta_phone_tone:
+    description: >
+      Alternatywa telefoniczna w CTA ma brzmieć naturalnie, uprzejmie
+      i po ludzku - nie skrótowo i nie mechanicznie.
+      To zaproszenie do prostszego kontaktu, nie nakaz wykonania działania.
+    tier_tone:
+      tier_1: "bardziej miękko, elegancko, dyskretnie"
+      tier_2: "naturalnie, profesjonalnie, partnersko"
+      tier_3: "praktycznie, po ludzku, ale nadal uprzejmie"
+    preferred_examples:
+      female: "Jeśli woli Pani po prostu krótką rozmowę telefoniczną, bardzo proszę o numer telefonu - chętnie oddzwonię."
+      male: "Jeśli woli Pan po prostu krótką rozmowę telefoniczną, bardzo proszę o numer telefonu - chętnie oddzwonię."
+      neutral: "Jeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię."
+    forbidden:
+      - "Można też po prostu odpisać - oddzwonię."
+      - "Może Pan/Pani też po prostu odpisać TAK i podać numer telefonu - oddzwonię."
+      - "Proszę odpisać i podać numer telefonu."
+      - "Można też po prostu wysłać numer telefonu."
+      - "Oddzwonię. (jako samodzielne zdanie)"
+      - "Wystarczy krótka odpowiedź - umówimy się na 15 minut."
+
   typography:
     - "NIGDY em dash '—' → ZAWSZE zwykły myślnik ' - '"
     - "Po kropce ZAWSZE wielka litera"

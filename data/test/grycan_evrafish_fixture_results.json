@@ -1,0 +1,288 @@
+[
+  {
+    "label": "Grycan",
+    "test_id": "grycan",
+    "url": "https://www.portalspozywczy.pl/slodycze-przekaski/wiadomosci/przyspieszony-start-sezonu-lodowego-grycan-poczatek-sezonu-przynosi-pozytywne-sygnaly,287489.html",
+    "notes": "brand/FMCG case — producent lodów; fetch failed, fixture used",
+    "fetch_mode": "fixture",
+    "phases": {
+      "qualify": {
+        "title": "Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały",
+        "published_at": "2026-04-15",
+        "fetch_mode": "fixture (portalspozywczy.pl blocked)",
+        "qualified": true,
+        "total_score": 60.0,
+        "industry_score": 35.0,
+        "purchase_signal_score": 25.0,
+        "disqualification_reason": null,
+        "explanation": "[Industry/food_production]: producent lody; [Industry/food_beverages]: żywność; [Signal/supply_chain]: surowce mleczne, dostawcy; [Signal/investment_capacity]: zakupy surowców",
+        "matched_industry_terms": {
+          "food_production": [
+            "producent lody",
+            "produkcja"
+          ],
+          "food_beverages": [
+            "żywność"
+          ]
+        },
+        "matched_purchase_terms": {
+          "supply_chain": [
+            "surowce",
+            "dostawcy"
+          ],
+          "investment_capacity": [
+            "zakupy surowców"
+          ]
+        }
+      },
+      "entity": {
+        "name": "Grycan",
+        "source_name": "Grycan",
+        "canonical_name": "Grycan",
+        "name_normalized": "grycan",
+        "company_type": "producer",
+        "campaign_eligible": true,
+        "confidence": 0.98,
+        "reason": "Grycan jest producentem lodów FMCG i intensywnie zarządza zakupami surowców mlecznych, co bezpośrednio wiąże się z negocjacjami zakupowymi. Artykuł wskazuje na wzrost popytu, zwiększone zakupy mleka, śmietanki i masła oraz potrzebę optymalizacji łańcucha dostaw.",
+        "extraction_method": "llm",
+        "related_companies": []
+      },
+      "resolution": {
+        "enabled": true,
+        "resolution_status": "MATCH_POSSIBLE",
+        "resolution_confidence": 0.65,
+        "resolved_company_name": "Grycan - Lody od pokoleń",
+        "resolved_domain": "grycan.pl",
+        "resolution_reason": "Best match: 'Grycan - Lody od pokoleń' (score=0.65, status=MATCH_POSSIBLE) | Signals: comparison_key_partial_match: 'grycanlodyodpokoleń' ↔ 'grycan'; domain_matches_key: 'grycan.pl' | LLM: Nazwa kandydata i domena grycan.pl jednoznacznie wskazują na firmę Grycan z artykułu. Dodatkowo kontekst biznesowy (produkcja lodów, sieć lodziarni, zakupy surowców mlecznych) w pełni się zgadza.",
+        "candidates_count": 1,
+        "top_candidates": [
+          {
+            "rank": 1,
+            "name": "Grycan - Lody od pokoleń",
+            "domain": "grycan.pl",
+            "score": null,
+            "match_reason": null
+          }
+        ]
+      },
+      "contacts": {
+        "resolved_name_used": "Grycan - Lody od pokoleń",
+        "resolved_domain_used": "grycan.pl",
+        "strategy_used": "name_only",
+        "winning_strategy": "none",
+        "name_search_email_count": 0,
+        "domain_fallback_triggered": true,
+        "domain_searched": "grycan.pl",
+        "domain_search_email_count": 0,
+        "assoc_fallback_triggered": false,
+        "assoc_fallback_company": null,
+        "assoc_search_email_count": 0,
+        "total_found": 10,
+        "with_email": 0,
+        "without_email": 10,
+        "threshold_met": false,
+        "threshold_reason": "Not enough valid contacts: 0 (min 1)",
+        "contacts": [
+          {
+            "full_name": "Marta",
+            "email": "(no email)",
+            "job_title": "Manager",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Monika",
+            "email": "(no email)",
+            "job_title": "Manager",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Dorota",
+            "email": "(no email)",
+            "job_title": "Senior Brand Manager",
+            "tier": "tier_3_buyers_operational",
+            "tier_label": "Tier 3 - Buyers/Operational",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Justyna",
+            "email": "(no email)",
+            "job_title": "Brand Manager",
+            "tier": "tier_3_buyers_operational",
+            "tier_label": "Tier 3 - Buyers/Operational",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Karolina",
+            "email": "(no email)",
+            "job_title": "Brand Manager",
+            "tier": "tier_3_buyers_operational",
+            "tier_label": "Tier 3 - Buyers/Operational",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Wojciech",
+            "email": "(no email)",
+            "job_title": "National Key Account Manager / Krajowy Kierownik ds. Rynku Nowoczesnego",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Pawel",
+            "email": "(no email)",
+            "job_title": "Area Operations Manager Southern Poland",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Kuba",
+            "email": "(no email)",
+            "job_title": "Deputy Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Jolanta",
+            "email": "(no email)",
+            "job_title": "Deputy Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Aleksandra",
+            "email": "(no email)",
+            "job_title": "Deputy Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          }
+        ]
+      },
+      "messages": {
+        "total_packs": 0,
+        "messages": []
+      }
+    },
+    "final_status": "BLOCKED_NO_EMAIL",
+    "issues": [
+      {
+        "issue": "Contact threshold not met",
+        "severity": "CRITICAL",
+        "module": "news.contacts.contact_finder",
+        "exact_behavior": "Not enough valid contacts: 0 (min 1)",
+        "recommendation": "Check Apollo search and domain fallback"
+      }
+    ]
+  },
+  {
+    "label": "Evra Fish",
+    "test_id": "evra_fish",
+    "url": "https://www.portalspozywczy.pl/mieso/wiadomosci/evra-fish-wzrost-spozycia-ryb-w-polsce-nie-wydarzy-sie-w-tradycyjnych-formatach,287584.html",
+    "notes": "canonical naming case — alias matching EvraFish; fetch failed, fixture used",
+    "fetch_mode": "fixture",
+    "phases": {
+      "qualify": {
+        "title": "Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach",
+        "published_at": "2026-04-16",
+        "fetch_mode": "fixture (portalspozywczy.pl blocked)",
+        "qualified": true,
+        "total_score": 58.0,
+        "industry_score": 30.0,
+        "purchase_signal_score": 28.0,
+        "disqualification_reason": null,
+        "explanation": "[Industry/food_production]: przetwórstwo rybne; [Signal/supply_chain]: dostawcy ryb, surowce; [Signal/contract_negotiations]: renegocjacja kontraktów",
+        "matched_industry_terms": {
+          "food_production": [
+            "przetwórstwo",
+            "dystrybutor"
+          ],
+          "food_beverages": [
+            "ryby",
+            "owoce morza"
+          ]
+        },
+        "matched_purchase_terms": {
+          "supply_chain": [
+            "dostawcy ryb",
+            "surowce"
+          ],
+          "contract_negotiations": [
+            "renegocjacja kontraktów"
+          ]
+        }
+      },
+      "entity": {
+        "name": "Evra Fish Sp. z o.o.",
+        "source_name": "Evra Fish Sp. z o.o.",
+        "canonical_name": "Evra Fish Sp. z o.o.",
+        "name_normalized": "evrafish",
+        "company_type": "distributor",
+        "campaign_eligible": true,
+        "confidence": 0.98,
+        "reason": "Evra Fish jest dużym dystrybutorem i przetwórcą ryb, który aktywnie negocjuje warunki z dostawcami surowców. Wzrost kosztów surowców i potrzeba optymalizacji zakupów to bezpośredni trigger dla SpendGuru.",
+        "extraction_method": "llm",
+        "related_companies": []
+      },
+      "resolution": {
+        "enabled": true,
+        "resolution_status": "NO_MATCH",
+        "resolution_confidence": 0.0,
+        "resolved_company_name": "",
+        "resolved_domain": null,
+        "resolution_reason": "No Apollo organizations found for: 'Evra Fish Sp. z o.o.'",
+        "candidates_count": 0,
+        "top_candidates": []
+      },
+      "contacts": {
+        "resolved_name_used": "Evra Fish Sp. z o.o.",
+        "resolved_domain_used": null,
+        "strategy_used": "name_only",
+        "winning_strategy": "none",
+        "name_search_email_count": 0,
+        "domain_fallback_triggered": false,
+        "domain_searched": null,
+        "domain_search_email_count": 0,
+        "assoc_fallback_triggered": false,
+        "assoc_fallback_company": null,
+        "assoc_search_email_count": 0,
+        "total_found": 0,
+        "with_email": 0,
+        "without_email": 0,
+        "threshold_met": false,
+        "threshold_reason": "Not enough valid contacts: 0 (min 1)",
+        "contacts": []
+      },
+      "messages": {
+        "total_packs": 0,
+        "messages": []
+      }
+    },
+    "final_status": "BLOCKED_COMPANY_NO_MATCH",
+    "issues": [
+      {
+        "issue": "Contact threshold not met",
+        "severity": "CRITICAL",
+        "module": "news.contacts.contact_finder",
+        "exact_behavior": "Not enough valid contacts: 0 (min 1)",
+        "recommendation": "Check Apollo search and domain fallback"
+      }
+    ]
+  }
+]

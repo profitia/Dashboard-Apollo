@@ -1,0 +1,496 @@
+# =============================================================================
+# Source of Truth — ICP Tiers
+# =============================================================================
+# Plik jest GŁÓWNYM źródłem segmentacji odbiorców dla wszystkich kampanii.
+# Obowiązuje globalnie: Apollo, CSV Import, AdHoc, LinkedIn, News,
+# konferencyjne, rewrite, walidacja, scoring.
+#
+# Historyczny plik icp.yaml pozostaje w katalogu jako referencja.
+# Nowym standardem jest icp_tiers.yaml z podziałem na 3 Tiery.
+# =============================================================================
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TIER 1 — C-Level / Zarząd / Właściciele
+# ─────────────────────────────────────────────────────────────────────────────
+
+tier_1_c_level:
+  label: "Tier 1 - C-Level / Zarząd / Właściciele"
+  description: >
+    Osoby odpowiadające za wynik firmy lub dużej jednostki biznesowej.
+    CEO, CFO, COO, właściciele, członkowie zarządu, managing directors.
+
+  roles:
+    - CEO
+    - owner
+    - właściciel
+    - board member
+    - członek zarządu
+    - CFO
+    - dyrektor finansowy
+    - finance director
+    - controlling director
+    - COO
+    - managing director
+    - business unit director
+
+  conditional_roles:
+    - role: supply chain director
+      condition: >
+        Przypisz do Tier 1 tylko jeśli jest członkiem zarządu lub odpowiada
+        strategicznie za koszt, zapas, dostępność i ryzyko na poziomie firmy.
+    - role: operations director
+      condition: >
+        Przypisz do Tier 1 tylko jeśli odpowiada za wynik operacyjny, koszt
+        i dostępność na poziomie całej organizacji.
+
+  perspective: >
+    Tier 1 nie myśli o SpendGuru jako o narzędziu zakupowym.
+    Tier 1 myśli o wyniku firmy, marży, EBIT, cash flow, budżecie,
+    przewidywalności kosztów, odporności firmy na zmienność, ograniczeniu
+    ryzyka, egzekucji strategii, lepszym połączeniu zakupów, finansów,
+    operacji i biznesu.
+    Dla Tier 1 oszczędności zakupowe są ważne, ale nie jako projekt zakupowy.
+    Są ważne jako wpływ na wynik firmy, marżę, budżet i cash flow.
+
+  savings_accountability: >
+    Tier 1 odpowiada za wynik firmy, marżę, budżet, cash flow i wpływ
+    decyzji zakupowych na EBIT. Tier 1 oczekuje, że Tier 2, czyli liderzy
+    zakupów, dowiozą oszczędności i ograniczą nieuzasadnione podwyżki
+    w skali całej firmy.
+
+  pain_points:
+    - Presja na marżę przy ograniczonej możliwości przerzucania kosztów na klienta.
+    - Wysoka zmienność cen surowców, energii, opakowań, logistyki i usług.
+    - Trudność w przewidywaniu kosztów i budżetów.
+    - Rozjazd między strategią, finansami, zakupami i operacją.
+    - Brak pewności, czy podwyżki dostawców są realnie uzasadnione.
+    - Akceptowanie podwyżek, które później obniżają wynik.
+    - Gotówka zamrożona w zapasach albo złym timingu zakupów.
+    - Decyzje zakupowe oparte zbyt często na intuicji, a nie na danych.
+    - Brak widoczności, czy zespół zakupowy pracuje według powtarzalnego standardu.
+    - Trudność w skalowaniu dobrych praktyk zakupowych na wiele kategorii i zespołów.
+    - Ryzyko, że wzrost firmy jest "kupowany marżą".
+    - Brak spójnego obrazu ryzyka kosztowego i dostawczego.
+
+  needs:
+    - Lepsza przewidywalność kosztów i budżetu.
+    - Większy wpływ zakupów na EBIT / wynik.
+    - Ochrona marży.
+    - Kontrola nad presją kosztową.
+    - Uspójnienie decyzji zakupowych z finansami, operacjami i strategią.
+    - Ograniczenie ryzyka dostawców i ryzyka kosztowego.
+    - Lepsza kontrola nad jakością negocjacji prowadzonych przez zespół.
+    - Szybsze wykrywanie nieuzasadnionych podwyżek.
+    - Zarządczy obraz potencjału oszczędnościowego.
+    - Możliwość sprawdzenia metody na jednej kategorii bez dużego wdrożenia.
+    - Większa odporność organizacji na zmienność rynku.
+
+  value_proposition:
+    primary: >
+      Pomagamy zarządom i liderom biznesu lepiej kontrolować marżę, budżet
+      i ryzyko kosztowe poprzez powtarzalny standard decyzji zakupowych
+      i negocjacji z dostawcami oparty na danych.
+    variants:
+      - Lepsza kontrola nad tym, czy wzrost firmy nie jest kupowany marżą.
+      - Większa przewidywalność kosztów w zmiennym otoczeniu.
+      - Mniej intuicyjnych decyzji zakupowych, więcej decyzji opartych na danych.
+      - Możliwość wychwycenia, które podwyżki są uzasadnione, a które są narracją dostawcy.
+      - Uspójnienie zakupów, finansów i operacji wokół jednej logiki kosztowej.
+      - Lepszy zarządczy obraz ryzyka kosztowego i dostawczego.
+      - Pierwszy POC na jednej kategorii jako bezpieczny sposób oceny wartości.
+      - Wpływ na EBIT, marżę i cash flow bez konieczności dużego wdrożenia na start.
+    one_liner: >
+      SpendGuru pomaga zarządom zobaczyć, gdzie decyzje zakupowe wpływają
+      na wynik, budżet i odporność firmy.
+
+  messaging_tone:
+    how_to_write:
+      - strategicznie
+      - biznesowo
+      - zarządczo
+      - bez nadmiaru języka procurementowego
+      - mówić o wyniku, marży, cash flow, budżecie, ryzyku i egzekucji strategii
+      - nie zaczynać od narzędzia
+      - nie sprzedawać dashboardu
+      - nie sugerować, że CEO/CFO ma sam analizować dane
+      - pokazywać wpływ decyzji zakupowych na wynik firmy
+    avoid:
+      - "narzędzie dla kupców"
+      - "dashboard"
+      - "moduły SpendGuru"
+      - zbyt szczegółowy opis funkcjonalności
+      - zbyt techniczny język
+      - nadmiar słownictwa zakupowego
+      - operacyjne szczegóły właściwe dla kupca
+      - komunikacja jak do category managera
+
+  typical_question: >
+    Jak zakupy wpływają na wynik firmy, marżę, budżet i cash flow?
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TIER 2 — Dyrektorzy Zakupów / Procurement Management
+# ─────────────────────────────────────────────────────────────────────────────
+
+tier_2_procurement_management:
+  label: "Tier 2 - Procurement Management / Dyrektorzy zakupów"
+  description: >
+    Liderzy zakupów, procurement management, supply chain / operations
+    management i osoby odpowiadające za zespół, proces, dostawców,
+    wynik zakupowy i savings w skali firmy.
+    To najważniejszy segment dla narracji Negotiation Intelligence.
+
+  roles:
+    - dyrektor zakupów
+    - procurement director
+    - CPO
+    - category director
+    - senior category leader
+    - supply chain director
+    - operations director
+    - procurement manager
+    - purchasing manager
+    - sourcing director
+    - head of procurement
+    - head of purchasing
+    - head of supply chain
+
+  conditional_roles:
+    - role: COO
+      condition: >
+        Przypisz do Tier 2 jeśli w danej firmie mocno odpowiada za procesy,
+        zakupy, dostawców i supply chain.
+    - role: business unit director
+      condition: >
+        Przypisz do Tier 2 jeśli odpowiada za kategorię / P&L / obszar
+        biznesowy wymagający mocnych zakupów.
+
+  perspective: >
+    Tier 2 odpowiada za funkcję zakupową, jakość pracy zespołu, proces
+    przygotowania negocjacji i oszczędności zakupowe całej firmy.
+    Tier 2 myśli o savings delivery, dowiezieniu celów oszczędnościowych,
+    unikniętych podwyżkach, poprawie warunków zakupowych, wpływie zakupów
+    na EBIT, standardzie przygotowania negocjacji, jakości pracy zespołu,
+    powtarzalności efektów, kontroli nad kategoriami i dostawcami,
+    raportowaniu efektów do zarządu, CFO i CEO.
+
+  savings_accountability: >
+    Tier 2 odpowiada przed Tier 1 za oszczędności zakupowe całej firmy.
+    Tier 2 jest rozliczany z savings delivery, avoided cost, poprawy warunków
+    zakupowych, ograniczenia nieuzasadnionych podwyżek, wpływu zakupów
+    na wynik, jakości pracy zespołu zakupowego.
+    Proces, dane i standard negocjacji są dla Tier 2 sposobem na systemowe
+    dowożenie oszczędności, a nie celem samym w sobie.
+
+  pain_points:
+    - Presja ze strony zarządu / finansów na dowiezienie oszczędności.
+    - Konieczność pokazania mierzalnego wpływu zakupów na wynik firmy.
+    - Savings targety są realizowane nierówno między kategoriami.
+    - Trudność w odróżnieniu realnych oszczędności od jednorazowych efektów lub deklaracji dostawców.
+    - Brak powtarzalnego mechanizmu dowożenia savings w wielu kategoriach.
+    - Presja na obronę budżetu przy rosnących oczekiwaniach dostawców.
+    - Konieczność raportowania efektów zakupowych do CFO / CEO / zarządu.
+    - Dostawcy coraz częściej uzasadniają podwyżki inflacją, surowcami, energią, logistyką i geopolityką.
+    - Część podwyżek jest zasadna, a część jest narracją negocjacyjną.
+    - Kupcy przygotowują się do negocjacji różnie - każdy według własnego stylu.
+    - Brak wspólnego standardu oceny ceny, kosztu, trendu i dostawcy.
+    - Trudność w porównywaniu jakości przygotowania poszczególnych kupców.
+    - Za duża zależność od doświadczenia i intuicji pojedynczych osób.
+    - Ręczne zbieranie danych przed negocjacjami.
+    - Brak szybkiego dostępu do benchmarków, driverów kosztowych i prognoz.
+    - Słaba przewidywalność efektów negocjacyjnych.
+    - Trudność w skalowaniu dobrych praktyk na kolejne kategorie.
+    - Brak spójnego materiału negocjacyjnego dla kupca.
+    - Ryzyko akceptowania nieuzasadnionych podwyżek.
+    - Brak jasnej odpowiedzi kiedy wracać do negocjacji, o co negocjować i jakiej argumentacji użyć.
+
+  needs:
+    - Systematyczne dowożenie oszczędności w całej organizacji.
+    - Lepsza kontrola nad savings pipeline.
+    - Możliwość szybszej identyfikacji kategorii z potencjałem oszczędnościowym.
+    - Powtarzalny standard przygotowania negocjacji.
+    - Jeden sposób pracy dla zespołu, kategorii i dostawców.
+    - Lepsza kontrola nad jakością przygotowania kupców.
+    - Dane do oceny zasadności podwyżek.
+    - Benchmarki i cost drivers dla kategorii.
+    - Prognozy kosztowe wspierające timing decyzji.
+    - Analiza dostawcy i jego potencjalnych słabości / ryzyk.
+    - Gotowy materiał negocjacyjny.
+    - Szybsze przygotowanie zespołu do rozmów.
+    - Dane do obrony wyników zakupowych przed zarządem i finansami.
+    - Lepsza przewidywalność realizacji celów oszczędnościowych.
+    - Narzędzie do skalowania oszczędności na kolejne kategorie i kupców.
+    - Możliwość wdrożenia POC na jednej kategorii.
+    - Lepsza komunikacja efektów zakupowych do zarządu / finansów.
+    - Standaryzacja pracy bez zabierania kupcom elastyczności.
+
+  value_proposition:
+    primary: >
+      Pomagamy dyrektorom zakupów systemowo dowozić oszczędności w całej
+      firmie poprzez powtarzalny standard przygotowania negocjacji, oparty
+      na danych kosztowych, benchmarkach, prognozach i analizie dostawców.
+    variants:
+      - Jeden standard przygotowania negocjacji zamiast wielu indywidualnych stylów pracy.
+      - Lepsza kontrola nad jakością pracy zespołu zakupowego.
+      - Mniej negocjacji opartych na intuicji, więcej opartych na danych.
+      - Silniejsza argumentacja wobec dostawców.
+      - Lepsza ocena zasadności podwyżek.
+      - Szybsze przygotowanie kupców do rozmów.
+      - Możliwość skalowania dobrych praktyk na kolejne kategorie i dostawców.
+      - Lepsza przewidywalność wyników negocjacji.
+      - Gotowe materiały negocjacyjne i scenariusze rozmowy.
+      - Systemowe dowożenie savings w wielu kategoriach.
+      - Lepsza obrona efektów zakupowych przed CFO / CEO / zarządem.
+      - Mniej nieuzasadnionych podwyżek.
+      - Lepszy wpływ zakupów na EBIT.
+    one_liner: >
+      SpendGuru pomaga liderom zakupów przełożyć dane i standard pracy
+      zespołu na mierzalne oszczędności, uniknięte podwyżki i lepszy
+      wpływ zakupów na wynik firmy.
+
+  messaging_tone:
+    how_to_write:
+      - procurementowo
+      - zarządczo
+      - praktycznie
+      - metodycznie
+      - mówić o savings delivery
+      - mówić o odpowiedzialności przed zarządem / CFO / CEO
+      - mówić o standardzie pracy zespołu
+      - podkreślać powtarzalność, dane, benchmarki, prognozy i analizę dostawcy
+      - pokazywać, że celem nie jest sam proces, ale systemowe dowożenie oszczędności
+      - CTA formułować jako rozmowę o POC dla jednej kategorii / jednego dostawcy
+    avoid:
+      - zbyt ogólny język zarządczy
+      - mówienie wyłącznie o marży bez przełożenia na proces zakupowy
+      - komunikacja jak do CFO
+      - zbyt duży nacisk na software
+      - zbyt techniczny opis AI
+      - zbyt operacyjne szczegóły właściwe dla pojedynczego kupca
+      - przedstawianie standardu jako celu samego w sobie bez odniesienia do savings
+
+  typical_question: >
+    Jak mój zespół zakupowy dowiezie oszczędności dla całej firmy
+    i pokaże wartość przed zarządem?
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TIER 3 — Kupcy / Category Managerowie / Operacyjni
+# ─────────────────────────────────────────────────────────────────────────────
+
+tier_3_buyers_operational:
+  label: "Tier 3 - Buyers / Category Managers / Operacyjni"
+  description: >
+    Kupcy, category managerowie, sourcing managerowie i osoby operacyjnie
+    prowadzące kategorie, negocjacje i relacje z dostawcami.
+
+  roles:
+    - buyer
+    - senior buyer
+    - category manager
+    - senior category manager
+    - category buyer
+    - strategic buyer
+    - sourcing manager
+    - commodity buyer
+    - purchasing manager
+    - procurement manager
+    - procurement specialist
+    - purchasing specialist
+    - category specialist
+    - sourcing specialist
+    - procurement analyst
+    - purchasing analyst
+
+  conditional_roles:
+    - role: senior category leader
+      condition: >
+        Przypisz do Tier 3 jeśli rola jest operacyjna i odpowiada za kategorię,
+        a nie za zespół lub strategię wielu kategorii.
+    - role: category director
+      condition: >
+        Przypisz do Tier 3 tylko w małych organizacjach, jeśli faktycznie
+        działa operacyjnie jako właściciel kategorii.
+
+  perspective: >
+    Tier 3 myśli o codziennej pracy w kategorii: mam cel oszczędnościowy,
+    muszę dowieźć wynik w swojej kategorii, mam negocjacje z dostawcą,
+    dostawca chce podwyżki, muszę ocenić czy cena jest fair, muszę szybko
+    zebrać dane, nie mam czasu na pełną analizę, potrzebuję argumentów,
+    muszę obronić rekomendację przed szefem / finansami / biznesem,
+    muszę wiedzieć czy wracać do negocjacji teraz czy czekać,
+    muszę przygotować materiał na spotkanie.
+
+  savings_accountability: >
+    Tier 3 odpowiada przed Tier 2 za oszczędności i avoided cost w swojej
+    kategorii. Tier 3 jest rozliczany z category savings, avoided cost,
+    obniżek cen, ograniczenia nieuzasadnionych podwyżek, poprawy warunków,
+    jakości przygotowania negocjacji, uzasadnienia rekomendacji zakupowej.
+    Dane, benchmarki i argumentacja pomagają kupcowi dowieźć wynik kategorii
+    oraz obronić rekomendację przed przełożonym, finansami i biznesem.
+
+  pain_points:
+    - Presja na dowiezienie oszczędności w kategorii.
+    - Trudność w znalezieniu realnego potencjału oszczędnościowego.
+    - Dostawcy zgłaszają podwyżki, które zjadają savings target.
+    - Brak danych do obrony lub zakwestionowania podwyżki.
+    - Trudność w pokazaniu przełożonemu, skąd wynika potencjał oszczędności.
+    - Ryzyko, że savings są deklarowane, ale trudno je obronić danymi.
+    - Brak argumentów do uzyskania obniżki albo uniknięcia podwyżki.
+    - Trudność w wyborze właściwej dźwigni - cena, wolumen, indeksacja, termin płatności, długość kontraktu.
+    - Dostawca zgłasza podwyżkę, a kupiec musi szybko ocenić jej zasadność.
+    - Brak czasu na ręczne zbieranie danych.
+    - Dane są rozproszone albo nieaktualne.
+    - Trudność w ocenie, czy oferta jest fair.
+    - Trudność w znalezieniu benchmarków i driverów kosztowych.
+    - Brak pewności, jak rynek będzie zachowywał się w kolejnych miesiącach.
+    - Trudność w przełożeniu danych na argumentację.
+    - Presja ze strony dostawcy i biznesu.
+    - Konieczność obrony rekomendacji przed przełożonym lub finansami.
+    - Zbyt dużo improwizacji przed negocjacjami.
+    - Brak gotowego schematu przygotowania rozmowy.
+    - Brak szybkiego materiału negocjacyjnego.
+
+  needs:
+    - Szybsza identyfikacja potencjału oszczędności w kategorii.
+    - Dane do obrony savings przed przełożonym i finansami.
+    - Mocniejsze argumenty do obniżki ceny lub uniknięcia podwyżki.
+    - Lepsze przygotowanie do rozmowy o cenie, wolumenie, indeksacji lub płatności.
+    - Możliwość pokazania konkretnego efektu negocjacyjnego.
+    - Gotowy materiał wspierający savings case w kategorii.
+    - Większa pewność, że savings są realne i możliwe do obrony.
+    - Szybsze przygotowanie do rozmowy z dostawcą.
+    - Jasna odpowiedź, czy oferta / podwyżka jest uzasadniona.
+    - Dane o koszcie zasadnym i driverach kosztowych.
+    - Benchmarki rynkowe.
+    - Prognozy pomagające dobrać timing decyzji.
+    - Analiza sytuacji dostawcy.
+    - Gotowa argumentacja.
+    - Dźwignie negocjacyjne.
+    - Scenariusze rozmowy.
+    - Materiał do wykorzystania w negocjacjach lub przed szefem.
+    - Większa pewność w rozmowie z dostawcą.
+    - Mniej ręcznej pracy.
+    - Mniej improwizacji.
+
+  value_proposition:
+    primary: >
+      Pomagamy kupcom szybciej identyfikować potencjał oszczędności
+      w kategorii, lepiej bronić się przed podwyżkami i przygotować
+      mocniejszą argumentację do rozmów z dostawcami.
+    variants:
+      - Szybsze przygotowanie do negocjacji.
+      - Większa pewność w rozmowie z dostawcą.
+      - Lepsza odpowiedź na podwyżki.
+      - Gotowe argumenty oparte na danych.
+      - Łatwiejsza ocena, czy oferta jest fair.
+      - Mniej ręcznego zbierania danych.
+      - Lepsze wykorzystanie benchmarków i prognoz.
+      - Praktyczny materiał negocjacyjny.
+      - Możliwość szybszego uzasadnienia rekomendacji przed przełożonym lub finansami.
+      - Lepsze decyzje - cena, timing, wolumen, indeksacja, płatność, długość umowy.
+      - Łatwiejsze dowiezienie savings w kategorii.
+      - Mocniejsza obrona avoided cost.
+      - Większa szansa na obniżkę ceny albo uniknięcie nieuzasadnionej podwyżki.
+    one_liner: >
+      SpendGuru pomaga kupcowi przełożyć dane o koszcie, rynku i dostawcy
+      na konkretne oszczędności lub uniknięte podwyżki w jego kategorii.
+
+  messaging_tone:
+    how_to_write:
+      - praktycznie
+      - konkretnie
+      - codziennym językiem pracy kupca
+      - mniej zarządczo
+      - mówić o podwyżkach, ofertach, benchmarkach, cost drivers, timingu i argumentacji
+      - mówić o celu oszczędnościowym w kategorii
+      - pokazywać, jak szybciej przygotować się do rozmowy z dostawcą
+      - pokazywać, jak obronić rekomendację przed przełożonym lub finansami
+      - CTA formułować jako pokazanie przykładu przygotowania do jednej negocjacji
+    avoid:
+      - zbyt wysokopoziomowy język o strategii
+      - zbyt wiele odniesień do EBIT, zarządu i transformacji
+      - mówienie wyłącznie o kontroli nad zespołem
+      - abstrakcyjny język o "powtarzalnym standardzie" bez pokazania jak pomaga kupcowi
+      - sugerowanie, że kupiec odpowiada za całą strategię firmy
+      - komunikacja jak do CFO albo CEO
+
+  typical_question: >
+    Jak dowiozę oszczędności w mojej kategorii i obronię je w rozmowie
+    z dostawcą oraz przełożonym?
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MAPOWANIE RÓL NA TIERY
+# ─────────────────────────────────────────────────────────────────────────────
+
+role_to_tier_mapping:
+  # Tier 1
+  CEO: tier_1_c_level
+  owner: tier_1_c_level
+  właściciel: tier_1_c_level
+  board member: tier_1_c_level
+  członek zarządu: tier_1_c_level
+  CFO: tier_1_c_level
+  dyrektor finansowy: tier_1_c_level
+  finance director: tier_1_c_level
+  controlling director: tier_1_c_level
+  COO: tier_1_c_level
+  managing director: tier_1_c_level
+  business unit director: tier_1_c_level
+
+  # Tier 2
+  dyrektor zakupów: tier_2_procurement_management
+  procurement director: tier_2_procurement_management
+  CPO: tier_2_procurement_management
+  category director: tier_2_procurement_management
+  senior category leader: tier_2_procurement_management
+  supply chain director: tier_2_procurement_management
+  operations director: tier_2_procurement_management
+  head of procurement: tier_2_procurement_management
+  head of purchasing: tier_2_procurement_management
+  head of supply chain: tier_2_procurement_management
+  sourcing director: tier_2_procurement_management
+
+  # Tier 2 or 3 — conditional
+  procurement manager: conditional_tier_2_or_3
+  purchasing manager: conditional_tier_2_or_3
+
+  # Tier 3
+  buyer: tier_3_buyers_operational
+  senior buyer: tier_3_buyers_operational
+  category manager: tier_3_buyers_operational
+  senior category manager: tier_3_buyers_operational
+  category buyer: tier_3_buyers_operational
+  strategic buyer: tier_3_buyers_operational
+  sourcing manager: tier_3_buyers_operational
+  commodity buyer: tier_3_buyers_operational
+  procurement specialist: tier_3_buyers_operational
+  purchasing specialist: tier_3_buyers_operational
+  category specialist: tier_3_buyers_operational
+  sourcing specialist: tier_3_buyers_operational
+  procurement analyst: tier_3_buyers_operational
+  purchasing analyst: tier_3_buyers_operational
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# REGUŁY CONDITIONAL TIER 2 OR 3
+# ─────────────────────────────────────────────────────────────────────────────
+
+conditional_tier_rules:
+  description: >
+    Reguły rozstrzygania ról warunkowych (procurement manager, purchasing manager).
+  assign_tier_2_if:
+    - stanowisko zawiera "head"
+    - stanowisko zawiera "director"
+    - stanowisko zawiera "lead"
+    - stanowisko zawiera "team"
+    - stanowisko zawiera "manager of"
+    - stanowisko zawiera "department"
+    - stanowisko zawiera "regional"
+    - stanowisko zawiera "group"
+    - wskazuje odpowiedzialność za zespół lub funkcję
+  assign_tier_3_if:
+    - stanowisko wskazuje prowadzenie kategorii operacyjnie
+    - stanowisko wskazuje sourcing lub zakupy operacyjne bez odpowiedzialności za zespół
+  fallback: tier_uncertain

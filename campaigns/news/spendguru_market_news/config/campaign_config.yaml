@@ -1,0 +1,220 @@
+# =============================================================================
+# spendguru_market_news — Campaign Config
+# =============================================================================
+# Operacyjne ustawienia kampanii. Edytuj bez modyfikowania logiki aplikacji.
+# =============================================================================
+
+campaign_id: spendguru_market_news
+campaign_label: "SpendGuru Market News"
+campaign_type: news_triggered
+language: pl
+market: PL
+
+# ---------------------------------------------------------------------------
+# Sequence naming convention
+# Format: NEWS-{YYYY-MM-DD}-{CompanySlug}-{TopicSlug}
+# ---------------------------------------------------------------------------
+sequence_naming:
+  prefix: "NEWS"
+  max_company_slug_len: 30
+  max_topic_slug_len: 40
+
+# ---------------------------------------------------------------------------
+# Apollo Lists — per Tier (nazwy muszą być dokładne jak w Apollo)
+# ---------------------------------------------------------------------------
+apollo_lists:
+  tier_1: "PL Tier 1 do market_news VSC"
+  tier_2: "PL Tier 2 do market_news VSC"
+  tier_3: "PL Tier 3 do market_news VSC"
+
+# ---------------------------------------------------------------------------
+# 1. Lookback window — ile dni wstecz skanować artykuły
+# ---------------------------------------------------------------------------
+lookback_days: 5
+
+# ---------------------------------------------------------------------------
+# 2. Freshness rules — max wiek artykułu kwalifikowanego do kampanii
+# ---------------------------------------------------------------------------
+max_article_age_days: 14
+
+# ---------------------------------------------------------------------------
+# 2a. Industry scope — aktywne branże kampanii
+#
+# Model 3-warstwowy:
+#   canonical label → technical key → matching terms (w keywords.yaml)
+#
+# Canonical business labels (10 branż):
+#   retail | food production | food & beverages | packaging & containers |
+#   plastics | chemicals | pharmaceuticals | building materials |
+#   cosmetics | paper & forest products
+# ---------------------------------------------------------------------------
+active_industry_scope:
+  # Canonical industry groups — bezpośrednio mapują na canonical business labels
+  - retail                   # canonical: "retail"
+  - food_production          # canonical: "food production"
+  - food_beverages           # canonical: "food & beverages"
+  - packaging_containers     # canonical: "packaging & containers"
+  - plastics                 # canonical: "plastics"
+  - chemicals                # canonical: "chemicals"
+  - pharmaceuticals          # canonical: "pharmaceuticals"
+  - building_materials       # canonical: "building materials"
+  - cosmetics                # canonical: "cosmetics"
+  - paper_forest_products    # canonical: "paper & forest products"
+
+# Supporting scoring groups — nie są oddzielnymi canonical branżami,
+# ale ich słowa wzmacniają scoring dla artykułów z zakresu kampanii.
+active_supporting_groups:
+  - fmcg_trade               # FMCG/handel — wspiera retail, food_production, food_beverages
+  - manufacturing            # generic fallback dla ogólnych artykułów produkcyjnych
+
+# ---------------------------------------------------------------------------
+# 2b. Relevance scoring thresholds
+# Artykuł kwalifikowany gdy: total >= min_relevance_score
+#                             AND industry >= min_industry_score
+#                             AND purchase >= min_purchase_signal_score
+# Uwaga: rozszerzone keyword groups (v2, 2026-04-22) pozwalają zachować
+# min_industry_score=15 — artykuły upstream (opakowania, tworzywa) teraz
+# trafiają w dedykowane grupy zamiast legować na 'food_production'.
+# ---------------------------------------------------------------------------
+min_relevance_score: 40
+min_industry_score: 12
+min_purchase_signal_score: 15
+
+# ---------------------------------------------------------------------------
+# 3. Minimum contact threshold — warunek tworzenia sekwencji
+# Sekwencja powstaje gdy:
+#   - >= 1 kontakt Tier 2 (lub Tier 1) z poprawnym adresem e-mail
+#   - lub >= 1 kontakt Tier 1 + >= 1 poprawny e-mail
+# ---------------------------------------------------------------------------
+min_contacts_to_create_sequence: 1
+require_email_for_sequence: true
+tier_3_required: false        # brak Tier 3 nie blokuje sekwencji
+
+# ---------------------------------------------------------------------------
+# 4. Company priority rules — jak wybierać główną firmę z artykułu
+# Kolejność kryteriów: im wyżej, tym ważniejsze
+# ---------------------------------------------------------------------------
+company_priority_rules:
+  - is_producer: true
+  - is_manufacturer: true
+  - is_retailer_or_chain: true
+  - mentioned_first: true
+  - most_mentioned: true
+
+# ---------------------------------------------------------------------------
+# 5. Excluded companies / domains (lista wykluczeń z outreachu)
+# ---------------------------------------------------------------------------
+excluded_companies: []
+excluded_domains: []
+
+# Przykład:
+# excluded_companies:
+#   - "Biedronka"
+#   - "Lidl"
+# excluded_domains:
+#   - "jeronimomartins.com"
+
+# ---------------------------------------------------------------------------
+# 6. Human review gate
+# true  = sekwencja trafia do review queue (status: pending_review)
+# false = sekwencja tworzy się automatycznie (status: auto_created)
+# ---------------------------------------------------------------------------
+human_review_gate: false
+
+# ---------------------------------------------------------------------------
+# 7. Notification channels
+# Dostępne: log, json_report, email, webhook, slack
+# ---------------------------------------------------------------------------
+notification_channels:
+  - log
+  - json_report
+
+notification_webhook_url: ""     # URL webhooka (opcjonalnie)
+notification_email_to: "tomasz.uscinski@profitia.pl"  # odbiorca alertów
+
+# ---------------------------------------------------------------------------
+# 8. Draft-only workflow (aktywny tryb)
+# auto_enroll: false  — kontakty NIE są automatycznie dodawane do sekwencji
+# send_approval_email: true — po zapisaniu draftu wysyłane jest powiadomienie
+# approval_email_to — odbiorca powiadomień zatwierdzających
+# contact_stage_draft — stage ustawiany na kontakcie po zapisaniu draftu
+# ---------------------------------------------------------------------------
+auto_enroll: false
+send_approval_email: true
+approval_email_to: "tomasz.uscinski@profitia.pl"
+contact_stage_draft: "News pipeline - drafted"
+
+# Powiadomienie BLOCKED_NO_EMAIL — wysyłane gdy kontakty znalezione, treści wygenerowane, ale brak emaila.
+# true  = wyślij mail BLOCKED_NO_EMAIL do approval_email_to
+# false = cicha kontynuacja (stare zachowanie)
+send_blocked_email_notification: true
+
+# ---------------------------------------------------------------------------
+# 8. Language rules
+# ---------------------------------------------------------------------------
+email_language: pl                # pl | en | auto (auto = bazuj na lokalizacji firmy)
+fallback_language: pl
+
+# ---------------------------------------------------------------------------
+# Sequence cadence (minuty — zgodnie ze standardem projektu)
+# D0 / D+2 / D+2
+# ---------------------------------------------------------------------------
+sequence_cadence: [0, 2880, 2880]
+
+# ---------------------------------------------------------------------------
+# Apollo sequence settings
+# activate_automatically = false — aktywacja zawsze ręczna
+# auto_enroll = false — enrollment do sekwencji wymaga ręcznego zatwierdzenia
+# ---------------------------------------------------------------------------
+activate_automatically: false
+auto_enroll: false
+mailbox_mode: all_active          # all_active | single
+mailbox_distribution: round_robin
+
+# ---------------------------------------------------------------------------
+# Tryb draft_review
+# true = generuj uzasadnienia, trigger, hypothesis, CTA rationale
+# ---------------------------------------------------------------------------
+draft_review_mode: true
+
+# Relevance thresholds — patrz sekcja 2b powyżej (min_relevance_score, min_industry_score, min_purchase_signal_score)
+
+# ---------------------------------------------------------------------------
+# Apollo enrichment
+# ---------------------------------------------------------------------------
+apollo_search_seniority: ["director", "vp", "c_suite", "owner", "founder", "manager"]
+apollo_contacts_per_company: 10   # max kontaktów pobieranych z Apollo per firma
+
+# ---------------------------------------------------------------------------
+# Company Resolution Layer
+# Warstwa między entity_extractor a contact_finder.
+# Dopasowuje firmę z artykułu do właściwej organizacji w Apollo.
+#
+# Statusy: MATCH_CONFIDENT | MATCH_POSSIBLE | AMBIGUOUS_HOLD | NO_MATCH
+#   MATCH_CONFIDENT  — pewne dopasowanie → przekaż do contact_finder
+#   MATCH_POSSIBLE   — prawdopodobne    → przekaż do contact_finder
+#   AMBIGUOUS_HOLD   — kilka kandydatów → manual review, nie twórz sekwencji
+#   NO_MATCH         — brak kandydatów  → pomiń artykuł
+# ---------------------------------------------------------------------------
+use_company_resolution: false          # true = włącz resolution layer
+
+company_resolution_use_website_check: false    # true = pobierz title/meta ze strony www
+                                               # (lekkie, tylko 8KB HTML)
+
+company_resolution_min_confidence: 0.45        # minimalna pewność → MATCH_POSSIBLE
+company_resolution_confident_threshold: 0.72   # pewność → MATCH_CONFIDENT
+company_resolution_alias_dict: "campaigns/news/spendguru_market_news/data/company_aliases.yaml"  # alias dict — ścieżka względna do workspace root
+
+# ---------------------------------------------------------------------------
+# Contact search fallbacks (od 2026-04-22)
+# ---------------------------------------------------------------------------
+use_domain_fallback: true                    # szukaj po domenie jeśli name search = 0 emaili
+use_associated_company_fallback: true        # szukaj firm powiązanych jeśli name+domain = 0 emaili
+max_associated_company_candidates: 2        # max firm powiązanych do sprawdzenia
+
+# ---------------------------------------------------------------------------
+# State / deduplication
+# ---------------------------------------------------------------------------
+dedup_window_days: 30             # okno deduplikacji: ta sama firma w ciągu 30 dni
+state_file: "data/processed_articles.json"
+sequences_log_file: "data/sequences_created.json"

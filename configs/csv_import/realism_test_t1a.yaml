@@ -1,0 +1,26 @@
+campaign_name: realism_test_t1a
+language_code: pl
+target_persona: c_level
+campaign_type: csv_import
+mode: draft
+
+source:
+  type: csv
+  file: data/inputs/csv_import/realism_t1a.csv
+
+apollo:
+  create_or_update_contact: false
+  add_to_sequence: false
+
+quality:
+  min_lead_score: 50
+  min_qa_score: 50
+  manual_review_required: true
+
+routing:
+  default_sequence: PL_CLEVEL_MEETING_STD
+  default_mailbox_group: pl_sales_primary
+
+message:
+  max_words: 120
+  style: concise_consultative

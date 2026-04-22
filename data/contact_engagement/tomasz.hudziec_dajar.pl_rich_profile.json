@@ -1,0 +1,95 @@
+{
+  "core_identity": {
+    "first_name": "Tomasz",
+    "last_name": "Hudziec",
+    "full_name": "Tomasz Hudziec",
+    "email": "tomasz.hudziec@dajar.pl",
+    "job_title": "Purchaising Director",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "DAJAR",
+    "departments": null,
+    "sub_departments": null,
+    "industry": "wholesale",
+    "keywords_raw": null,
+    "keywords_list": [],
+    "keywords_normalized": []
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/tomasz-hudziec-9502541b",
+    "website": "https://dajar.com",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/dajar",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Piaseczno",
+    "state": "Masovian Voivodeship",
+    "country": "POLAND",
+    "company_address": "6 ulica Poltawska, Koszalin, West Pomeranian Voivodeship, Poland, 75-072",
+    "company_city": "Koszalin",
+    "company_state": "West Pomeranian Voivodeship",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": null,
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Tomasz",
+      "Last Name": "Hudziec",
+      "Title": "Purchaising Director",
+      "Company Name": "DAJAR",
+      "Email": "tomasz.hudziec@dajar.pl",
+      "Seniority": "Director",
+      "Industry": "wholesale",
+      "Person Linkedin Url": "http://www.linkedin.com/in/tomasz-hudziec-9502541b",
+      "Website": "https://dajar.com",
+      "Company Linkedin Url": "http://www.linkedin.com/company/dajar",
+      "City": "Piaseczno",
+      "State": "Masovian Voivodeship",
+      "Country": "Poland",
+      "Company Address": "6 ulica Poltawska, Koszalin, West Pomeranian Voivodeship, Poland, 75-072",
+      "Company City": "Koszalin",
+      "Company State": "West Pomeranian Voivodeship",
+      "Company Country": "Poland"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.038389",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.841547",
+        "original_row": {
+          "First Name": "Tomasz",
+          "Last Name": "Hudziec",
+          "Title": "Purchaising Director",
+          "Company Name": "DAJAR",
+          "Email": "tomasz.hudziec@dajar.pl",
+          "Seniority": "Director",
+          "Industry": "wholesale",
+          "Person Linkedin Url": "http://www.linkedin.com/in/tomasz-hudziec-9502541b",
+          "Website": "https://dajar.com",
+          "Company Linkedin Url": "http://www.linkedin.com/company/dajar",
+          "City": "Piaseczno",
+          "State": "Masovian Voivodeship",
+          "Country": "Poland",
+          "Company Address": "6 ulica Poltawska, Koszalin, West Pomeranian Voivodeship, Poland, 75-072",
+          "Company City": "Koszalin",
+          "Company State": "West Pomeranian Voivodeship",
+          "Company Country": "Poland"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "tomasz.hudziec@dajar.pl",
+    "last_saved_at": "2026-04-21T07:02:12.841676"
+  }
+}

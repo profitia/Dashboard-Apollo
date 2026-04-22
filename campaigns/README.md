@@ -25,6 +25,18 @@ Klasyczne kampanie prospectingowe:
 - sekwencje Apollo
 - cykliczny outreach
 
+### `csv_do_apollo/`
+Kampanie oparte o zewnętrzne listy CSV z pełną integracją Apollo:
+- import listy CSV (format Apollo export, separator `;`)
+- generacja spersonalizowanych treści (Step 1 / FU1 / FU2) przez pipeline AI
+- zapis custom fields w Apollo (dynamiczny content per kontakt via merge tagi)
+- budowa tygodniowej sekwencji Apollo (inactive przed review)
+- enrollment kontaktów (round-robin multi-mailbox)
+- DOCX do review przed manualną aktywacją
+- **Główny operacyjny flow tygodniowego outreach Profitia / SpendGuru**
+
+Szczegóły: [`csv_do_apollo/README.md`](csv_do_apollo/README.md)
+
 ## Wspólne zasady
 
 - Wszystkie kampanie korzystają ze wspólnego **source_of_truth/** (ICP, branże, framework, styl, compliance).

@@ -1,0 +1,238 @@
+# ============================================================
+# Campaign Naming Rules — Source of Truth
+# ============================================================
+# Oficjalny standard nazewnictwa kampanii w AI Outreach System.
+# Wszystkie kampanie generowane w VSC muszą stosować ten standard.
+# Nazwa kampanii jest źródłem prawdy dla analityki.
+# ============================================================
+
+# ----------------------------------------------------------
+# 1. Szablon nazwy kampanii
+# ----------------------------------------------------------
+campaign_name_template: "{campaign_type}_{tier}_{segment}_{angle}_{market}_{timing}_{version}"
+# Przykład: LinPost_T2_Prod_Savings_PL_W01_M05_R26_v1
+
+# ----------------------------------------------------------
+# 2. Reguły timingu (week-of-month)
+# ----------------------------------------------------------
+# Week-of-month liczone WYŁĄCZNIE z numeru dnia miesiąca.
+# NIE używaj tygodni ISO ani tygodni od poniedziałku.
+timing_rules:
+  description: "Wxx_Mxx_Rxx — tydzień miesiąca, miesiąc, rok (2-cyfrowy)"
+  week_of_month:
+    W01: "dni 1-7 miesiąca"
+    W02: "dni 8-14 miesiąca"
+    W03: "dni 15-21 miesiąca"
+    W04: "dni 22-28 miesiąca"
+    W05: "dni 29-31 miesiąca (jeśli występuje)"
+  month_format: "Mxx — numer miesiąca z zerem wiodącym (M01..M12)"
+  year_format: "Rxx — dwie ostatnie cyfry roku (R26 = 2026)"
+  examples:
+    - date: "2026-05-01"
+      timing: "W01_M05_R26"
+    - date: "2026-05-12"
+      timing: "W02_M05_R26"
+    - date: "2026-05-20"
+      timing: "W03_M05_R26"
+    - date: "2026-05-27"
+      timing: "W04_M05_R26"
+    - date: "2026-05-30"
+      timing: "W05_M05_R26"
+
+# ----------------------------------------------------------
+# 3. Kody typów kampanii
+# ----------------------------------------------------------
+campaign_type_codes:
+  LinPost:
+    label: "LinkedIn Post Campaign"
+    description: "Kampania automatyczna na podstawie postów LinkedIn"
+    triggers: ["linkedin_post", "linkedin_posts"]
+  LinEvent:
+    label: "LinkedIn Event Campaign"
+    description: "Kampania po wydarzeniu / konferencji / panelu"
+    triggers: ["event", "conference", "summit", "panel", "webinar"]
+  NewsTrig:
+    label: "News Triggered Campaign"
+    description: "Kampania triggerowana newsem / artykułem"
+    triggers: ["news", "article", "article_triggered"]
+  AdHoc:
+    label: "Ad Hoc Campaign"
+    description: "Kampania ręcznie zdefiniowana"
+    triggers: ["ad_hoc", "adhoc", "manual"]
+  ApolloList:
+    label: "Apollo List Campaign"
+    description: "Kampania oparta o listę Apollo"
+    triggers: ["apollo_list", "apollo"]
+  CSVImport:
+    label: "CSV Import Campaign"
+    description: "Kampania z importu CSV"
+    triggers: ["csv_import", "csv"]
+  FollowUp:
+    label: "Follow-up Campaign"
+    description: "Follow-up do wcześniejszej kampanii"
+    triggers: ["followup", "follow_up", "follow-up"]
+  NoEmail:
+    label: "No Email Campaign"
+    description: "Kampania / analiza bez wysyłki email"
+    triggers: ["no_email", "noemail", "analysis_only"]
+  WebSignal:
+    label: "Web Signal Campaign"
+    description: "Kampania na podstawie sygnału z www"
+    triggers: ["web_signal", "website", "web_visit"]
+  Intent:
+    label: "Intent Signal Campaign"
+    description: "Kampania na podstawie intent signal"
+    triggers: ["intent", "intent_signal", "buying_intent"]
+
+# ----------------------------------------------------------
+# 4. Kody tierów
+# ----------------------------------------------------------
+tier_codes:
+  T1:
+    label: "Tier 1 - C-Level / Zarząd"
+    icp_tier_id: "tier_1_c_level"
+  T2:
+    label: "Tier 2 - Procurement Management"
+    icp_tier_id: "tier_2_procurement_management"
+  T3:
+    label: "Tier 3 - Buyers / Operational"
+    icp_tier_id: "tier_3_buyers_operational"
+  T0:
+    label: "Tier uncertain"
+    icp_tier_id: "tier_uncertain"
+
+# ----------------------------------------------------------
+# 5. Kody segmentów
+# ----------------------------------------------------------
+segment_codes:
+  Retail:
+    label: "Retail"
+    keywords: ["retail", "detaliczny", "sklep", "sieć handlowa"]
+  FMCG:
+    label: "FMCG"
+    keywords: ["fmcg", "consumer goods", "szybkozbywalne"]
+  Prod:
+    label: "Production / Manufacturing"
+    keywords: ["production", "manufacturing", "produkcja", "fabryka", "przemysł"]
+  PrivLbl:
+    label: "Private Label"
+    keywords: ["private label", "marka własna", "own brand"]
+  Pharma:
+    label: "Pharma"
+    keywords: ["pharma", "pharmaceutical", "farmacja", "leki"]
+  Energy:
+    label: "Energy"
+    keywords: ["energy", "energetyka", "utilities", "oil", "gas"]
+  Srv:
+    label: "Services"
+    keywords: ["services", "usługi", "consulting", "outsourcing"]
+  Gen:
+    label: "General / Mixed"
+    keywords: []
+
+# ----------------------------------------------------------
+# 6. Kody angle
+# ----------------------------------------------------------
+angle_codes:
+  Savings:
+    label: "Savings"
+    keywords: ["savings", "oszczędności", "redukcja kosztów", "cost reduction"]
+  AvoidedCost:
+    label: "Avoided Cost"
+    keywords: ["avoided cost", "uniknięty koszt", "cost avoidance"]
+  Margin:
+    label: "Margin Protection"
+    keywords: ["margin", "marża", "margin protection", "ochrona marży"]
+  CashFlow:
+    label: "Cash Flow"
+    keywords: ["cash flow", "gotówka", "płynność", "liquidity"]
+  NegStd:
+    label: "Negotiation Standardization"
+    keywords: ["negotiation", "negocjacje", "standard negocjacji", "preparation"]
+  Risk:
+    label: "Risk Management"
+    keywords: ["risk", "ryzyko", "supply risk", "dostawca"]
+  Forecast:
+    label: "Forecasting"
+    keywords: ["forecast", "prognoza", "budżet", "planning"]
+  Gen:
+    label: "General"
+    keywords: []
+
+# ----------------------------------------------------------
+# 7. Kody rynków
+# ----------------------------------------------------------
+market_codes:
+  PL:
+    label: "Poland"
+    languages: ["pl"]
+    countries: ["PL", "Polska", "Poland"]
+  EN:
+    label: "English / International"
+    languages: ["en"]
+    countries: ["UK", "US", "IE", "International"]
+  CEE:
+    label: "Central & Eastern Europe"
+    languages: ["en", "pl"]
+    countries: ["CZ", "SK", "HU", "RO", "BG"]
+  DE:
+    label: "DACH / Germany"
+    languages: ["de"]
+    countries: ["DE", "AT", "CH"]
+  Gen:
+    label: "General / Unknown"
+    languages: []
+    countries: []
+
+# ----------------------------------------------------------
+# 8. Reguły fallback
+# ----------------------------------------------------------
+fallback_rules:
+  segment_unknown: "Gen"
+  angle_unknown: "Gen"
+  market_unknown: "Gen"
+  tier_uncertain:
+    code: "T0"
+    action: "Użyj najbardziej prawdopodobnego Tieru jeśli confidence >= medium. W przeciwnym razie oznacz do review."
+  version_default: 1
+
+# ----------------------------------------------------------
+# 9. Reguły automatycznego rozpoznawania
+# ----------------------------------------------------------
+auto_detection:
+  campaign_type:
+    source: "flow / trigger / input type"
+    rules:
+      - "LinkedIn post trigger → LinPost"
+      - "Konferencja / panel / event → LinEvent"
+      - "Article / news trigger → NewsTrig"
+      - "Ręczne wejście / brak triggera → AdHoc"
+      - "CSV import flow → CSVImport"
+      - "Follow-up flag → FollowUp"
+  tier:
+    source: "ICP Tier resolver (icp_tier_resolver.py)"
+    rules:
+      - "Użyj resolve_tier() z istniejącego modułu"
+      - "Mapuj tier_id na kod: tier_1_c_level→T1, tier_2→T2, tier_3→T3"
+  segment:
+    source: "industry z danych kontaktu / config / target_industry"
+    rules:
+      - "Szukaj keyword match w segment_codes.keywords"
+      - "Fallback: Gen"
+  angle:
+    source: "brief kampanii / trigger / temat panelu / pain point"
+    rules:
+      - "Szukaj keyword match w angle_codes.keywords"
+      - "Fallback: Gen"
+  market:
+    source: "language_code z config / country kontaktu"
+    rules:
+      - "pl → PL"
+      - "en → EN"
+      - "de → DE"
+      - "Fallback: Gen"
+  version:
+    default: 1
+    rules:
+      - "Inkrementuj przy kolejnych iteracjach kampanii"
+      - "Przekaż jawnie jeśli to re-run"

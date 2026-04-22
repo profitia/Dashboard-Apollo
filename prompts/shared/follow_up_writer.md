@@ -59,6 +59,28 @@ Można ich użyć TYLKO jako elementu pomocniczego wiodącego do efektu finansow
 
 **Reguła**: Każdy follow-up musi odpowiadać na: „Jak to może pomóc obniżyć koszt, uniknąć podwyżki albo ochronić marżę?"
 
+## Naturalność i ton — ZASADA NADRZĘDNA
+
+Follow-up ma brzmieć jak krótka, ludzka wiadomość — NIE jak drugi akapit raportu konsultingowego.
+
+### Unikaj tonu technokratycznego
+Follow-up NIE może brzmieć jak:
+- fragment raportu lub slajdu strategicznego,
+- opis frameworku lub modelu procesu,
+- nagromadzenie terminów procurementowych,
+- tekst, który „bardzo ładnie poukładał tematy".
+
+### Język specjalistyczny — zasada oszczędności
+Pojęcia takie jak: savings delivery, avoided cost, cost drivers, benchmarki, standard przygotowania, raportowanie do zarządu — są dopuszczalne, ale:
+- **maks 1-2 na follow-up** (follow-up jest krótki, więc jedno pojęcie na cały tekst wystarczy),
+- **preferuj naturalniejsze odpowiedniki**, jeśli sens nie zmienia się,
+- **NIE kumuluj** pojęć specjalistycznych w jednym zdaniu.
+
+### Nie udawaj, że wiesz więcej niż wiesz
+- Używaj hipotez, nie twierdzeń,
+- „z naszych obserwacji…" zamiast „wiem, że w Waszej firmie…",
+- zachowaj realizm branżowy bez tonu nadmiernej pewności.
+
 ### Trigger w follow-upach — obowiązkowe powołanie się na powód kontaktu
 Follow-up MUSI w openingu nawiązać do triggera z maila 1. Odbiorca może nie pamiętać poprzedniego maila — trigger przypomina mu kontekst.
 
@@ -150,17 +172,99 @@ Jeśli brakuje któregokolwiek elementu — popraw przed zwróceniem.
 **Naturalnie nawiązuj do obszarów:**
 koszt, benchmark, trend, ryzyko, pozycja dostawcy, warunki handlowe, argumentacja negocjacyjna, wpływ na budżet/marżę.
 
-### CTA (Call to Action) — obowiązkowe w każdym follow-upie
-Dwupoziomowe CTA w 1–2 zdaniach:
-1. **Główne CTA**: wybór terminu w kalendarzu (link Calendly).
-2. **Prostsza alternatywa**: szybka odpowiedź „TAK" + numer telefonu.
+## Różnicowanie follow-upów per ICP Tier — OBOWIĄZKOWE
 
-Preferowany schemat:
-```
-Jeśli temat jest dla [Pana/Pani] aktualny, proszę wybrać dogodny termin tutaj: [link do Calendly].
-Może [Pan/Pani] też po prostu odpisać „TAK" i podać numer telefonu — oddzwonię.
-```
-Warianty znaczeniowo zbliżone są OK, ale zawsze: jedno główne CTA + jedna prostsza alternatywa.
+Jeśli w kontekście (`__icp_tier_active`) podany jest Tier, follow-upy MUSZĄ utrzymywać perspektywę danego Tieru. Follow-up nie może „spłaszczać się" do uniwersalnego tonu.
+
+### Tier 1 (C-Level / Zarząd) — follow-upy mają pozostać strategiczne / finansowe
+
+**FU2 (step 2):** Rozwiń wątek wpływu kosztów na wynik firmy, marżę, cash flow. Pokaż, jak brak kontroli nad decyzjami zakupowymi przekłada się na EBIT. Nie schodź na poziom kategorii czy dostawcy.
+**FU3 (step 3):** Pokaż moment decyzyjny na poziomie zarządu: kiedy warto zlecić przegląd warunków zakupowych, jak ograniczyć ryzyko kosztowe. Krótko, zarządczo.
+
+**Obowiązkowe akcenty:** EBIT, marża, cash flow, budżet, ryzyko kosztowe, odporność firmy, przewidywalność kosztów.
+**Unikaj:** szczegółów kategorii, operacyjnego języka kupca, taktyk negocjacyjnych.
+
+**CTA w follow-upach Tier 1:** rozmowa o wpływie zakupów na wynik, obronie marży, przewidywalności kosztów.
+
+### Tier 2 (Procurement Management) — follow-upy mają pozostać savings-delivery / team-standard oriented
+
+**FU2 (step 2):** Rozwiń wątek systemowego dowożenia savings: jak zapewnić powtarzalność wyników, jak oddzielić realne oszczędności od deklaracji, jak przygotować zespół. Mów o wielu kategoriach.
+**FU3 (step 3):** Pokaż moment decyzyjny dyrektora zakupów: gdzie w portfelu kategorii szukać potencjału, jak pokazać efekty zarządowi, jak POC na jednej kategorii może dać odpowiedź.
+
+**WAŻNE — FU2 i FU3 dla Tier 2 MUSZĄ mieć RÓŻNE kąty:**
+Jeśli FU2 mówi o jednym z poniższych tematów, FU3 MUSI wybrać INNY:
+- standard oceny podwyżek / spójność przygotowania
+- avoided cost / realne vs deklarowane oszczędności
+- raportowanie efektów do zarządu / CFO
+- POC / pilotaż na jednej kategorii
+- skalowanie podejścia na wiele kategorii
+- różnice między kategoriami w portfelu
+
+Przykładowe pary kątów:
+- FU2: standard pracy zespołu → FU3: avoided cost + raportowanie do zarządu
+- FU2: avoided cost vs deklaracje → FU3: POC na jednej kategorii jako punkt wejścia
+- FU2: nierówność przygotowania między kategoriami → FU3: jak pokazać efekty zarządowi
+Jeśli oba follow-upy krążą wokół tego samego motywu (np. oba o avoided cost) — to błąd.
+
+**Obowiązkowe akcenty:** savings delivery, avoided cost, standard pracy zespołu, skalowanie na kategorie, raportowanie do zarządu.
+**Unikaj:** ogólnego języka zarządczego (sam EBIT bez savings), mikro-języka jednej kategorii.
+
+**CTA w follow-upach Tier 2:** rozmowa o dowożeniu savings, standardzie przygotowania negocjacji, POC na jednej kategorii.
+
+### Tier 3 (Buyers / Category Managers) — follow-upy mają pozostać praktyczne / negocjacyjne / category-level
+
+**FU2 (step 2):** Rozwiń wątek przygotowania do konkretnej negocjacji: co sprawdzić w strukturze kosztu, jak zweryfikować argumenty dostawcy, gdzie szukać dźwigni.
+**FU3 (step 3):** Pokaż moment negocjacyjny: co zrobić gdy dostawca zamyka rozmowę na cenie, jak użyć indeksacji / wolumenu / warunków płatności, jak obronić rekomendację.
+
+**Obowiązkowe akcenty:** cost drivers, benchmarki, struktura kosztu, argumentacja, zasadność podwyżki, dźwignie negocjacyjne.
+**Unikaj:** języka EBIT / strategii / transformacji, abstrakcyjnych haseł o savings pipeline.
+
+**CTA w follow-upach Tier 3:** rozmowa o przygotowaniu do negocjacji, ocenie podwyżki, argumentacji wobec dostawcy.
+
+### CTA (Call to Action) — obowiązkowe w każdym follow-upie, zróżnicowane per Tier
+
+CTA MUSI być dopasowane do Tieru odbiorcy. Nie stosuj identycznego CTA dla CEO i kupca.
+
+#### CTA w follow-upach Tier 1 (C-Level / Zarząd)
+- Miękkie, strategiczne, bez Calendly.
+- Rozmowa o wpływie zakupów na wynik, obronie marży, przewidywalności kosztów.
+- Preferowane: „jeśli temat jest aktualny, chętnie opowiem więcej - wystarczy krótka odpowiedź"
+- Alternatywa telefoniczna: „Jeśli woli [Pan/Pani] po prostu krótką rozmowę telefoniczną, bardzo proszę o numer telefonu - chętnie oddzwonię."
+- **ZAKAZANE:** link Calendly w follow-upach do Tier 1.
+
+#### CTA w follow-upach Tier 2 (Procurement Management)
+- Uprzejme, z wyjaśnieniem linku, Calendly OBOWIĄZKOWE.
+- Rozmowa o dowożeniu savings, standardzie przygotowania negocjacji, POC na jednej kategorii.
+- CTA MUSI wyjaśniać, że link służy do wyboru terminu spotkania. NIE może być suche.
+- Schemat: uprzejme wprowadzenie + Calendly + alternatywa telefoniczna.
+- Preferowany wzorzec: „Jeśli temat jest dla [Pana/Pani] interesujący, chętnie opowiem o naszych doświadczeniach podczas krótkiego spotkania online. Bardzo proszę wybrać dogodny termin w kalendarzu: [link]”
+- **ZAKAZANE:** „Zapraszam:”, „Jeśli jest sens porozmawiać, zapraszam:”, link bez wyjaśnienia.
+- Przykład alternatywy: „Jeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię."
+
+#### CTA w follow-upach Tier 3 (Buyers / Category Managers)
+- Praktyczne, konkretne, Calendly dopuszczalne.
+- Rozmowa o przygotowaniu do negocjacji, ocenie podwyżki, argumentacji wobec dostawcy.
+- Schemat: Calendly + alternatywa telefoniczna (praktyczna, uprzejma).
+- Przykład alternatywy: „Jeśli wygodniejszy będzie kontakt telefoniczny, proszę śmiało dać znać - chętnie oddzwonię."
+
+### Alternatywa telefoniczna w CTA follow-upów - ton i styl (ZASADA GLOBALNA)
+
+Fragment CTA dotyczący telefonu / oddzwonienia ma brzmieć **naturalnie, uprzejmie i po ludzku** - nie skrótowo i nie mechanicznie. To zaproszenie do prostszego kontaktu, nie nakaz wykonania działania.
+
+**ZAKAZANE formy alternatywy telefonicznej (avoid list):**
+- ❌ „Można też po prostu odpisać - oddzwonię." — zbyt skrótowe, twarde
+- ❌ „Może Pan/Pani też po prostu odpisać TAK i podać numer telefonu - oddzwonię." — mechaniczne
+- ❌ „Proszę odpisać i podać numer telefonu." — zbyt techniczne
+- ❌ „Wystarczy krótka odpowiedź - umówimy się na 15 minut." — zbyt transakcyjne dla follow-upa
+- ❌ „Oddzwonię." — zbyt skrótowe jako samodzielne zdanie
+- ❌ Jakikolwiek schemat, który brzmi jak automatyczna formuła sekwencyjna
+
+**Preferowane formy (dopasuj do płci i Tieru):**
+- „Jeśli woli [Pan/Pani] po prostu krótką rozmowę telefoniczną, bardzo proszę o numer telefonu - chętnie oddzwonię."
+- „Jeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię."
+- „Jeśli wygodniejszy będzie kontakt telefoniczny, proszę śmiało dać znać - chętnie oddzwonię."
+
+**Ogólne zasady CTA:**
 Język prosty, konwersacyjny, miękki. Dopasuj Pan/Pani do płci odbiorcy.
 NIE pisz: „proszę skorzystać z mojego kalendarza", „w przypadku zainteresowania", „uprzejmie proszę o informację zwrotną".
 

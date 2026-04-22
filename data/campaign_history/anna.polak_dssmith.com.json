@@ -1,0 +1,25 @@
+{
+  "contact_key": "anna.polak@dssmith.com",
+  "last_campaign_name": "CSVImport_T2_Gen_Gen_PL_W03_M04_R26_v1",
+  "last_campaign_sent_at": "2026-04-20T13:33:23.126717",
+  "last_campaign_type": "CSVImport",
+  "last_campaign_tier": "T2",
+  "last_campaign_segment": "Gen",
+  "last_campaign_angle": "Gen",
+  "last_apollo_sequence_name": "CSVImport_T2_Gen_Gen_PL_W03_M04_R26_v1",
+  "campaign_history": [
+    {
+      "campaign_name": "CSVImport_T2_Gen_Gen_PL_W03_M04_R26_v1",
+      "sent_at": "2026-04-20T13:33:23.126717",
+      "campaign_type": "CSVImport",
+      "tier": "T2",
+      "segment": "Gen",
+      "angle": "Gen",
+      "market": "PL",
+      "version": 1,
+      "apollo_sequence_name": "CSVImport_T2_Gen_Gen_PL_W03_M04_R26_v1",
+      "status": "assigned",
+      "apollo_sync_status": ""
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# Company Aliases Dictionary — Company Resolution Layer
+# Workspace: spendguru_market_news
+#
+# Cel: ręczne mapowanie wariantów nazw firm (media/portale) → canonical_name + domain hints
+# Używany przez company_resolver.py jako pre-search enrichment.
+#
+# Pola:
+#   source_variants   — lista wariantów nazw stosowanych przez media/portale (case-insensitive)
+#   canonical_name    — preferowana forma nazwy do szukania w Apollo
+#   search_variants   — dodatkowe warianty do przeszukania w Apollo org/people search (opcjonalne)
+#   domain            — domena firmy (hint dla heurystyki i website check, opcjonalne)
+#   notes             — komentarz diagnostyczny
+
+aliases:
+  - source_variants:
+      - "Evra Fish"
+      - "Evra-Fish"
+      - "EVRA FISH"
+    canonical_name: "EvraFish"
+    search_variants:
+      - "EvraFish"
+    domain: ""
+    notes: >
+      Media (Portal Spożywczy) piszą 'Evra Fish' ze spacją.
+      Branding i KRS firmy to 'EvraFish' (jedno słowo).
+      Przetwórca i dystrybutor ryb i owoców morza. Polska spółka z o.o.
+      Apollo org search może nie mieć firmy — people search bardziej prawdopodobny.
+
+  - source_variants:
+      - "Grycan"
+    canonical_name: "Grycan"
+    search_variants:
+      - "Grycan lody"
+      - "Grycan ice cream"
+    domain: "grycan.pl"
+    notes: >
+      Popularny producent lodów premium. Portal używa skrótu 'Grycan'.
+      Pełna nazwa prawna: 'Grycan - Lody od pokoleń Sp. z o.o.' lub podobna.
+      Domena: grycan.pl — używana jako domain_hint w heurystyce gdy Apollo nie ma domeny.

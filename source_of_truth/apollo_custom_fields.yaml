@@ -1,0 +1,82 @@
+# Apollo Custom Fields & Sequence Defaults
+# =============================================
+# Oficjalny standard projektu Kampanie Apollo.
+# Pola utworzone w Apollo w grupie "VSC".
+# Typy: subject = single-line text, body = multi-line text.
+#
+# NIE ZMIENIAJ NAZW — muszą dokładnie odpowiadać polom w Apollo.
+
+# ============================================================
+# Domyślny cadence sekwencji (standard projektu)
+# ============================================================
+# D0 / D+2 / D+2 — standardowy odstęp między mailami.
+# Apollo API wymaga wait_time w minutach (1 dzień = 1440 min).
+#
+# Override: config kampanii może nadpisać te wartości przez klucz
+# "sequence_cadence" w pliku YAML kampanii.
+#
+# ZMIANA STANDARDU: wcześniej D0/D+1/D+1 (1440 min) — od 19.04.2026 D0/D+2/D+2.
+sequence_cadence:
+  step_1:
+    delay_days: 0
+    wait_time_minutes: 0
+    label: "D0 — email wysyłany natychmiast"
+  step_2:
+    delay_days: 2
+    wait_time_minutes: 2880
+    label: "D+2 — follow-up po 2 dniach"
+  step_3:
+    delay_days: 2
+    wait_time_minutes: 2880
+    label: "D+2 — drugi follow-up po kolejnych 2 dniach"
+
+# Mapowanie: klucz pipeline → nazwa pola Apollo
+sequence_email_fields:
+  email_step_1_subject: sg_email_step_1_subject
+  email_step_1_body:    sg_email_step_1_body
+  email_step_2_subject: sg_email_step_2_subject
+  email_step_2_body:    sg_email_step_2_body
+  email_step_3_subject: sg_email_step_3_subject
+  email_step_3_body:    sg_email_step_3_body
+
+# Mapowanie: klucz outreach_pack → pola Apollo
+# UWAGA: body_html_nosig = body HTML BEZ podpisu (podpis w osobnym polu).
+# Zmiana 2026-04-20: przejście z body (plain + sig) na body_html_nosig + osobny podpis.
+outreach_pack_mapping:
+  email_1:
+    subject: sg_email_step_1_subject
+    body_html_nosig: sg_email_step_1_body
+  follow_up_1:
+    subject: sg_email_step_2_subject
+    body_html_nosig: sg_email_step_2_body
+  follow_up_2:
+    subject: sg_email_step_3_subject
+    body_html_nosig: sg_email_step_3_body
+
+# Pole podpisu — wspólne dla wszystkich stepów i kontaktów (TU = Tomasz Uściński)
+# Pole w Apollo: pl_signature_tu (textarea, max 3000 znaków)
+# Merge tag: {{pl_signature_tu}}
+signature_field: pl_signature_tu
+
+# ============================================================
+# Calendly links per ICP Tier — globalna reguła CTA
+# ============================================================
+# Każda kampania z CTA prowadzącym do spotkania powinna używać
+# linku Calendly dopasowanego do Tieru odbiorcy.
+# System automatycznie podstawia właściwy link — nie zostawiaj
+# placeholderów [link do Calendly].
+#
+# Dodano: 2026-04-20.
+calendly_links_per_tier:
+  tier_1:
+    url: "https://calendly.com/profitia/zakupy-a-marza-firmy"
+    label: "Zakupy a marża firmy"
+    cta_tone: "miękkie, strategiczne, bez mechanicznego Calendly w Email 1"
+  tier_2:
+    url: "https://calendly.com/profitia/standard-negocjacji-i-oszczednosci"
+    label: "Standard negocjacji i oszczędności"
+    cta_tone: "operacyjno-zarządcze, Calendly dopuszczalne"
+  tier_3:
+    url: "https://calendly.com/profitia/przygotowanie-negocjacji-z-dostawcami"
+    label: "Przygotowanie negocjacji z dostawcami"
+    cta_tone: "praktyczne, konkretne, Calendly dopuszczalne"

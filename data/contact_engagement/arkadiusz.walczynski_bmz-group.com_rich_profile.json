@@ -1,0 +1,115 @@
+{
+  "core_identity": {
+    "first_name": "Arkadiusz",
+    "last_name": "Walczynski",
+    "full_name": "Arkadiusz Walczynski",
+    "email": "arkadiusz.walczynski@bmz-group.com",
+    "job_title": "Purchasing Director",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "BMZ Poland",
+    "departments": "Finance",
+    "sub_departments": "Sourcing / Procurement",
+    "industry": "electrical/electronic manufacturing",
+    "keywords_raw": "elektromobilnosc, produkcja i projektowanie baterii, baterie litowojonowe, appliances, electrical, & electronics manufacturing, electrical/electronic manufacturing, mechanical or industrial engineering",
+    "keywords_list": [
+      "elektromobilnosc",
+      "produkcja i projektowanie baterii",
+      "baterie litowojonowe",
+      "appliances",
+      "electrical",
+      "& electronics manufacturing",
+      "electrical/electronic manufacturing",
+      "mechanical or industrial engineering"
+    ],
+    "keywords_normalized": [
+      "elektromobilnosc",
+      "produkcja i projektowanie baterii",
+      "baterie litowojonowe",
+      "appliances",
+      "electrical",
+      "& electronics manufacturing",
+      "electrical/electronic manufacturing",
+      "mechanical or industrial engineering"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/arkadiusz-walczy%c5%84ski",
+    "website": null,
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/bmz-poland",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Knurow",
+    "state": "Silesian Voivodeship",
+    "country": "POLAND",
+    "company_address": "ulica Alberta Einsteina, Silesian Voivodeship, Poland, 44-109",
+    "company_city": null,
+    "company_state": "Silesian Voivodeship",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": null,
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Arkadiusz",
+      "Last Name": "Walczynski",
+      "Title": "Purchasing Director",
+      "Company Name": "BMZ Poland",
+      "Email": "arkadiusz.walczynski@bmz-group.com",
+      "Seniority": "Director",
+      "Departments": "Finance",
+      "Sub Departments": "Sourcing / Procurement",
+      "Industry": "electrical/electronic manufacturing",
+      "Keywords": "elektromobilnosc, produkcja i projektowanie baterii, baterie litowojonowe, appliances, electrical, & electronics manufacturing, electrical/electronic manufacturing, mechanical or industrial engineering",
+      "Person Linkedin Url": "http://www.linkedin.com/in/arkadiusz-walczy%c5%84ski",
+      "Company Linkedin Url": "http://www.linkedin.com/company/bmz-poland",
+      "City": "Knurow",
+      "State": "Silesian Voivodeship",
+      "Country": "Poland",
+      "Company Address": "ulica Alberta Einsteina, Silesian Voivodeship, Poland, 44-109",
+      "Company State": "Silesian Voivodeship",
+      "Company Country": "Poland"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.041459",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.847915",
+        "original_row": {
+          "First Name": "Arkadiusz",
+          "Last Name": "Walczynski",
+          "Title": "Purchasing Director",
+          "Company Name": "BMZ Poland",
+          "Email": "arkadiusz.walczynski@bmz-group.com",
+          "Seniority": "Director",
+          "Departments": "Finance",
+          "Sub Departments": "Sourcing / Procurement",
+          "Industry": "electrical/electronic manufacturing",
+          "Keywords": "elektromobilnosc, produkcja i projektowanie baterii, baterie litowojonowe, appliances, electrical, & electronics manufacturing, electrical/electronic manufacturing, mechanical or industrial engineering",
+          "Person Linkedin Url": "http://www.linkedin.com/in/arkadiusz-walczy%c5%84ski",
+          "Company Linkedin Url": "http://www.linkedin.com/company/bmz-poland",
+          "City": "Knurow",
+          "State": "Silesian Voivodeship",
+          "Country": "Poland",
+          "Company Address": "ulica Alberta Einsteina, Silesian Voivodeship, Poland, 44-109",
+          "Company State": "Silesian Voivodeship",
+          "Company Country": "Poland"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "arkadiusz.walczynski@bmz-group.com",
+    "last_saved_at": "2026-04-21T07:02:12.848149"
+  }
+}

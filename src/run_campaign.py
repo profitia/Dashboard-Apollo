@@ -36,6 +36,19 @@ from core.email_signature import (
 )
 from core.email_thread_formatter import build_outreach_pack, build_email_1
 from core.followup_generator import generate_followup
+from core.icp_tier_resolver import resolve_tier, get_tier_prompt_context
+from core.campaign_name_builder import build_campaign_metadata
+from core.contact_campaign_history import update_contact_campaign_history, enrich_contact_output
+from core.apollo_campaign_sync import build_apollo_sync_payload, sync_outreach_pack_to_apollo
+from core.weekly_sequence_orchestrator import run_weekly_sequence, generate_sequence_name
+from core.contact_engagement_tracker import record_campaign_batch
+from core.apollo_contact_enrichment import enrich_contact_name_fields, build_safe_greeting
+from core.tier_alignment import tier_alignment_check
+from core.rich_contact_profile import (
+    build_rich_profile,
+    save_or_merge_rich_profile,
+    build_llm_context as build_rich_llm_context,
+)
 
 # Backward-compatible aliases (used by send_followup_test.py, simulate_article_sequence.py)
 EMAIL_SIGNATURE_PLAIN = SIGNATURE_PLAIN
@@ -83,7 +96,7 @@ def load_csv(csv_path: str) -> list[dict]:
 
 
 def load_context_files(base_dir: str) -> dict[str, str]:
-    """Wczytuje pliki kontekstowe *.md z katalogu głównego projektu."""
+    """Wczytuje pliki kontekstowe *.md z katalogu głównego projektu + source_of_truth."""
     context = {}
     patterns = [
         os.path.join(base_dir, "[0-9][0-9]_*.md"),
@@ -95,6 +108,23 @@ def load_context_files(base_dir: str) -> dict[str, str]:
             if name not in context:
                 with open(filepath, "r", encoding="utf-8") as f:
                     context[name] = f.read()
+
+    # Dołącz icp_tiers.yaml i global_campaign_rules.md
+    sot_tiers = os.path.join(base_dir, "source_of_truth", "icp_tiers.yaml")
+    if os.path.exists(sot_tiers):
+        with open(sot_tiers, "r", encoding="utf-8") as f:
+            context["icp_tiers.yaml"] = f.read()
+
+    rules_path = os.path.join(base_dir, "src", "config", "global_campaign_rules.md")
+    if os.path.exists(rules_path):
+        with open(rules_path, "r", encoding="utf-8") as f:
+            context["global_campaign_rules.md"] = f.read()
+
+    policy_path = os.path.join(base_dir, "src", "config", "model_policy.md")
+    if os.path.exists(policy_path):
+        with open(policy_path, "r", encoding="utf-8") as f:
+            context["model_policy.md"] = f.read()
+
     return context
 
 
@@ -425,7 +455,7 @@ def agent_hypothesis(research: dict, persona: dict, row: dict,
             prompt_path=prompt_path,
             user_payload=payload,
             context_files=context_files,
-            relevant_context_keys=["01_offer", "02_personas", "03_messaging"],
+            relevant_context_keys=["01_offer", "02_personas", "03_messaging", "icp_tiers", "__icp_tier_active"],
         )
         if result and "hypothesis" in result:
             result["llm_used"] = True
@@ -558,7 +588,7 @@ def agent_message_writer(
             prompt_path=prompt_path,
             user_payload=payload,
             context_files=context_files,
-            relevant_context_keys=["01_offer", "02_personas", "03_messaging", "05_quality"],
+            relevant_context_keys=["01_offer", "02_personas", "03_messaging", "05_quality", "icp_tiers", "__icp_tier_active"],
         )
         if result and "body" in result:
             result["llm_used"] = True
@@ -726,7 +756,7 @@ def agent_qa_reviewer(message: dict, persona: dict, hypothesis: dict, config: di
             prompt_path=prompt_path,
             user_payload=payload,
             context_files=context_files,
-            relevant_context_keys=["03_messaging", "05_quality"],
+            relevant_context_keys=["03_messaging", "05_quality", "icp_tiers", "__icp_tier_active"],
         )
         if result and "qa_score" in result and "decision" in result:
             result["llm_used"] = True
@@ -843,12 +873,28 @@ def run_pipeline(row: dict, config: dict, context_files: dict | None = None,
     scoring = agent_lead_scoring(row, config)
     research = agent_account_research(row)
     persona = agent_persona_selection(row)
+
+    # ICP Tier detection (przed hipotezą i message writerem)
+    contact_title = row.get("contact_title", "")
+    tier_info = resolve_tier(contact_title)
+
+    # Dodaj tier prompt context do context_files (tymczasowa kopia)
+    enriched_context = dict(context_files) if context_files else {}
+    tier_prompt = get_tier_prompt_context(tier_info["tier"])
+    if tier_prompt:
+        enriched_context["__icp_tier_active"] = tier_prompt
+
     hypothesis = agent_hypothesis(research, persona, row,
-                                  context_files=context_files, base_dir=base_dir)
+                                  context_files=enriched_context, base_dir=base_dir)
     message = agent_message_writer(row, research, persona, hypothesis, config,
-                                   context_files=context_files, base_dir=base_dir)
+                                   context_files=enriched_context, base_dir=base_dir)
     qa = agent_qa_reviewer(message, persona, hypothesis, config,
-                           context_files=context_files, base_dir=base_dir)
+                           context_files=enriched_context, base_dir=base_dir)
+
+    # Dodaj tier alignment info do QA report
+    qa["tier_detected"] = tier_info["tier"]
+    qa["tier_label"] = tier_info["tier_label"]
+
     fields = agent_apollo_fields(row, message, persona, hypothesis, scoring, qa, config)
     routing = agent_sequence_router(persona, config)
 
@@ -864,7 +910,23 @@ def run_pipeline(row: dict, config: dict, context_files: dict | None = None,
         "domain": row.get("company_domain", ""),
         "gender": pl["gender"],
         "vocative": pl["first_name_vocative"],
+        "email": row.get("email", row.get("contact_email", "")),
+        "job_title": row.get("contact_title", ""),
+        "company_name": row.get("company_name", ""),
     }
+
+    # Build and persist rich profile from row data
+    try:
+        rich = build_rich_profile(row)
+        save_or_merge_rich_profile(rich)
+        contact_dict["rich_profile"] = rich
+    except Exception:
+        pass
+
+    # --- Name enrichment (deterministyczny, z source of truth) ---
+    name_enrichment = enrich_contact_name_fields(
+        contact_dict, write_to_apollo=False,
+    )
 
     # --- Follow-upy + outreach pack ---
     email_1_body_core = _strip_signature(message.get("body", ""))
@@ -880,7 +942,7 @@ def run_pipeline(row: dict, config: dict, context_files: dict | None = None,
         previous_followup_body="",
         contact=contact_dict,
         message=message,
-        context_files=context_files,
+        context_files=enriched_context,
         base_dir=base_dir,
         trigger_title=trigger_title,
         trigger_source=trigger_source,
@@ -894,7 +956,7 @@ def run_pipeline(row: dict, config: dict, context_files: dict | None = None,
         previous_followup_body=fu1_result["body"],
         contact=contact_dict,
         message=message,
-        context_files=context_files,
+        context_files=enriched_context,
         base_dir=base_dir,
         trigger_title=trigger_title,
         trigger_source=trigger_source,
@@ -913,17 +975,31 @@ def run_pipeline(row: dict, config: dict, context_files: dict | None = None,
         date_follow_up_2=(today + timedelta(days=5)).strftime("%d.%m.%Y"),
     )
 
+    # Tier alignment check (heuristic, non-blocking)
+    tier_alignment = tier_alignment_check(
+        tier_info,
+        [email_1_body_core, fu1_result["body"], fu2_result["body"]],
+    )
+    if tier_alignment.get("requires_review"):
+        qa.setdefault("requires_review", False)
+        qa["requires_review"] = True
+        qa.setdefault("tier_alignment_comments", [])
+        qa["tier_alignment_comments"] = tier_alignment["comments"]
+
     return {
         "contact": contact_dict,
         "lead_scoring": scoring,
         "account_research": research,
         "persona_selection": persona,
+        "icp_tier": tier_info,
         "hypothesis": hypothesis,
         "message": message,
         "qa": qa,
         "apollo_fields": fields,
         "routing": routing,
         "outreach_pack": outreach_pack,
+        "name_enrichment": name_enrichment,
+        "tier_alignment": tier_alignment,
         "followup_meta": {
             "follow_up_1_llm_used": fu1_result["llm_used"],
             "follow_up_2_llm_used": fu2_result["llm_used"],
@@ -978,10 +1054,18 @@ def generate_run_report(
 
 ## Campaign
 - **Nazwa**: {config.get('campaign_name', 'unknown')}
+- **Campaign Name (standard)**: {campaign_metadata.get('campaign_name', '')}
 - **Język**: {config.get('language_code', 'pl')}
 - **Persona**: {config.get('target_persona', 'unknown')}
 - **Tryb**: {config.get('mode', 'draft')}
 - **Data**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+## Campaign Metadata
+- **Type**: {campaign_metadata.get('campaign_type', '')} ({campaign_metadata.get('campaign_type_reason', '')})
+- **Tier**: {campaign_metadata.get('tier', '')} ({campaign_metadata.get('tier_reason', '')})
+- **Segment**: {campaign_metadata.get('segment', '')} ({campaign_metadata.get('segment_reason', '')})
+- **Angle**: {campaign_metadata.get('angle', '')} ({campaign_metadata.get('angle_reason', '')})
+- **Market**: {campaign_metadata.get('market', '')} ({campaign_metadata.get('market_reason', '')})
 
 ## Pliki kontekstowe
 - **Status**: {ctx_status}
@@ -1098,8 +1182,9 @@ def main():
     # LLM status
     print("[4/8] Sprawdzam dostępność LLM...")
     if is_llm_available():
-        llm_model = os.getenv("LLM_MODEL", "gpt-4o-mini")
-        print(f"       LLM AKTYWNY: provider=openai, model={llm_model}")
+        from src.config.openai_client import get_config_summary
+        _cfg = get_config_summary()
+        print(f"       LLM AKTYWNY: provider={_cfg['provider']}, primary={_cfg['primary_model']}, fallback={_cfg['fallback_model']}, cheap={_cfg['cheap_model']}")
         print("       Agenty z LLM: Hypothesis, Message Writer, QA Reviewer")
     else:
         print("       LLM NIEAKTYWNY — pipeline użyje heurystyk (fallback).")
@@ -1109,10 +1194,25 @@ def main():
         elif provider == "openai" and not os.getenv("OPENAI_API_KEY", "").strip():
             print("       Powód: brak OPENAI_API_KEY w .env")
         else:
-            print("       Powód: brak LLM_PROVIDER w .env (ustaw 'github' lub 'openai')")
+            print("       Powód: brak LLM_PROVIDER w .env (ustaw 'openai' lub 'github')")
+
+    # Campaign naming
+    print("[5/10] Generuję campaign_name...")
+    campaign_metadata = build_campaign_metadata(
+        config=config,
+        flow_name="run_campaign",
+    )
+    auto_campaign_name = campaign_metadata["campaign_name"]
+    print(f"       campaign_name: {auto_campaign_name}")
+    print(f"       type={campaign_metadata['campaign_type']} tier={campaign_metadata['tier']} "
+          f"segment={campaign_metadata['segment']} angle={campaign_metadata['angle']} "
+          f"market={campaign_metadata['market']}")
+
+    # Apollo sync payload
+    apollo_sync = build_apollo_sync_payload(campaign_metadata)
 
     # Run pipeline
-    print(f"[5/9] Uruchamiam pipeline dla {len(accounts)} kontaktów...")
+    print(f"[6/10] Uruchamiam pipeline dla {len(accounts)} kontaktów...")
     results = []
     for i, row in enumerate(accounts, 1):
         result = run_pipeline(row, config, context_files=context_files, base_dir=base_dir)
@@ -1124,22 +1224,50 @@ def main():
         decision = result["qa"]["decision"]
         llm_tag = "LLM" if result["message"].get("llm_used") else "heuristic"
         fu_tag = "LLM" if result["followup_meta"]["follow_up_1_llm_used"] else "heur"
-        print(f"       [{i}/{len(accounts)}] {company} ({gender_tag}/{vocative_tag}) → QA: {score} ({decision}) [msg:{llm_tag}, fu:{fu_tag}]")
+        tier_tag = result["icp_tier"]["tier_label"]
+        print(f"       [{i}/{len(accounts)}] {company} ({gender_tag}/{vocative_tag}) → Tier: {tier_tag} | QA: {score} ({decision}) [msg:{llm_tag}, fu:{fu_tag}]")
+
+    # Flagowanie kontaktów — campaign history
+    for r in results:
+        update_contact_campaign_history(
+            contact=r["contact"],
+            campaign_metadata=campaign_metadata,
+            apollo_metadata=apollo_sync,
+        )
+
+    # Engagement tracking — zapis historii outreach per kontakt
+    try:
+        engagement_profiles = record_campaign_batch(
+            contacts_results=results,
+            campaign_name=auto_campaign_name,
+            campaign_type=config.get("campaign_type", "outbound"),
+            apollo_sequence_name=apollo_sync.get("apollo_sequence_name"),
+            apollo_sequence_id=apollo_sync.get("apollo_sequence_id"),
+        )
+        print(f"       Engagement tracker: {len(engagement_profiles)} profili zapisanych")
+    except Exception as exc:
+        print(f"       [WARN] Engagement tracker error: {exc}")
 
     # Prepare output dir
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    campaign_name = config.get("campaign_name", "unknown")
-    run_dir_name = f"{timestamp}_{campaign_name}"
+    run_dir_name = f"{timestamp}_{auto_campaign_name}"
     run_dir = os.path.join(base_dir, "outputs", "runs", run_dir_name)
     ensure_dir(run_dir)
 
     # Write outputs
-    print(f"[6/9] Zapisuję wyniki do: outputs/runs/{run_dir_name}/")
+    print(f"[7/10] Zapisuję wyniki do: outputs/runs/{run_dir_name}/")
+
+    # campaign_metadata.json
+    write_json(os.path.join(run_dir, "campaign_metadata.json"), {
+        "campaign_metadata": campaign_metadata,
+        "apollo_sync": apollo_sync,
+    })
 
     # generated_messages.json
     messages = [
         {
             "contact": r["contact"],
+            "icp_tier": r["icp_tier"],
             "message": r["message"],
             "persona": r["persona_selection"]["persona_type"],
             "hypothesis": r["hypothesis"]["hypothesis"],
@@ -1152,6 +1280,7 @@ def main():
     qa_results = [
         {
             "contact": r["contact"],
+            "icp_tier": r["icp_tier"]["tier"],
             "qa": r["qa"],
             "lead_score": r["lead_scoring"]["lead_score"],
         }
@@ -1170,6 +1299,42 @@ def main():
     ]
     write_json(os.path.join(run_dir, "outreach_pack.json"), outreach_packs)
     print(f"       outreach_pack.json — {len(outreach_packs)} kontaktów × 3 emaile")
+
+    # Apollo weekly sequence — nowy model: 1 sekwencja / wielu kontaktów / dynamic content
+    apollo_mode = config.get("apollo", {}).get("mode", "sync_fields")
+    if apollo_mode == "weekly_sequence":
+        contacts_with_packs = [
+            {"email": r["contact"].get("email", ""), "outreach_pack": r["outreach_pack"]}
+            for r in results if r["contact"].get("email") and r.get("outreach_pack")
+        ]
+        seq_name = config.get("apollo", {}).get("sequence_name") or generate_sequence_name(
+            campaign_type=campaign_metadata.get("campaign_type", "Standard"),
+            market=campaign_metadata.get("market", "PL"),
+        )
+        weekly_result = run_weekly_sequence(
+            contacts_with_packs=contacts_with_packs,
+            sequence_name=seq_name,
+            campaign_type=campaign_metadata.get("campaign_type", "Standard"),
+            market=campaign_metadata.get("market", "PL"),
+            dry_run=config.get("apollo", {}).get("dry_run", True),
+        )
+        write_json(os.path.join(run_dir, "apollo_weekly_sequence.json"), weekly_result)
+        summary = weekly_result.get("summary", {})
+        print(f"       apollo_weekly_sequence.json — {summary.get('verdict', '?')}: "
+              f"{summary.get('enrolled', 0)}/{summary.get('contacts_input', 0)} enrolled, "
+              f"sequence={summary.get('sequence_name', '?')}")
+    else:
+        # Fallback: stary model per-contact sync (backward compatible)
+        apollo_sync_results = []
+        for r in results:
+            email = r["contact"].get("email", "")
+            if email and r.get("outreach_pack"):
+                sync_result = sync_outreach_pack_to_apollo(email, r["outreach_pack"])
+                apollo_sync_results.append({"contact_email": email, **sync_result})
+        if apollo_sync_results:
+            write_json(os.path.join(run_dir, "apollo_custom_fields_sync.json"), apollo_sync_results)
+            ok = sum(1 for s in apollo_sync_results if s.get("status") == "success")
+            print(f"       apollo_custom_fields_sync.json — {ok}/{len(apollo_sync_results)} kontaktów zsynchronizowanych")
 
     # apollo_payloads.json
     payloads = [
@@ -1196,6 +1361,8 @@ def main():
             "last_name": r["contact"]["last_name"],
             "title": r["contact"]["title"],
             "persona": r["persona_selection"]["persona_type"],
+            "tier": r["icp_tier"]["tier"],
+            "tier_label": r["icp_tier"]["tier_label"],
             "lead_score": r["lead_scoring"]["lead_score"],
             "qa_score": r["qa"]["qa_score"],
             "decision": r["qa"]["decision"],
@@ -1206,7 +1373,7 @@ def main():
     rejected = [contact_row(r) for r in results if r["qa"]["decision"] == "reject"]
     manual_review = [contact_row(r) for r in results if r["qa"]["decision"] in ("manual_review", "rewrite")]
 
-    print(f"[7/9] Approved: {len(approved)}, Rejected: {len(rejected)}, Manual review: {len(manual_review)}")
+    print(f"[8/10] Approved: {len(approved)}, Rejected: {len(rejected)}, Manual review: {len(manual_review)}")
 
     write_csv_rows(os.path.join(run_dir, "approved.csv"), approved)
     write_csv_rows(os.path.join(run_dir, "rejected.csv"), rejected)
@@ -1218,12 +1385,12 @@ def main():
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(report)
 
-    print(f"[8/9] Raport zapisany: {report_path}")
+    print(f"[9/10] Raport zapisany: {report_path}")
 
     # Outreach pack summary
     fu1_llm = sum(1 for r in results if r["followup_meta"]["follow_up_1_llm_used"])
     fu2_llm = sum(1 for r in results if r["followup_meta"]["follow_up_2_llm_used"])
-    print(f"[9/9] Follow-upy: FU1 LLM={fu1_llm}/{len(results)}, FU2 LLM={fu2_llm}/{len(results)}")
+    print(f"[10/10] Follow-upy: FU1 LLM={fu1_llm}/{len(results)}, FU2 LLM={fu2_llm}/{len(results)}")
     print()
     print("=" * 60)
     print("DONE — Draft pipeline zakończony pomyślnie.")

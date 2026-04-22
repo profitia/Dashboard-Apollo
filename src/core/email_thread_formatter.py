@@ -19,6 +19,7 @@ if _SRC_DIR not in sys.path:
 from core.email_signature import (
     SIGNATURE_PLAIN,
     SIGNATURE_HTML,
+    SIGNATURE_STANDALONE_HTML,
     META_BLOCK,
     FONT_BASE,
     SENDER_NAME,
@@ -40,7 +41,8 @@ def make_contact_email(contact: dict) -> str:
     """Generuje syntetyczny email z imienia/nazwiska/domeny kontaktu."""
     first = contact.get("first_name", "kontakt").lower().translate(_PL_TRANSLITERATE)
     last = contact.get("last_name", "").lower().translate(_PL_TRANSLITERATE)
-    domain = contact.get("domain", contact.get("company_domain", "example.com"))
+    domain = str(contact.get("domain", contact.get("company_domain", "example.com"))).strip()
+    domain = domain.removeprefix("https://").removeprefix("http://").lstrip("/")
     return f"{first}.{last}@{domain}"
 
 
@@ -76,7 +78,7 @@ def _separator_html(date_str: str, contact: dict, subject: str) -> str:
     )
     return (
         f'<hr style="{style_line}">'
-        f'<div style="{style_header}">'
+        f'<div style="{style_header} margin-bottom: 12px;">'
         f'<b>W dniu {date_str} {SENDER_NAME} napisał:</b><br>'
         f'Do: {first} {last} | {contact_email}<br>'
         f'Od: {SENDER_NAME} | {SENDER_BRAND}<br>'
@@ -86,10 +88,12 @@ def _separator_html(date_str: str, contact: dict, subject: str) -> str:
 
 
 def _strip_meta_tags(html_content: str) -> str:
-    """Usuwa metatagi z cytowanego HTML (żeby nie duplikować)."""
+    """Usuwa META_BLOCK (metatagi + style) z cytowanego HTML (żeby nie duplikować)."""
     for tag in [
         '<meta name="format-detection" content="telephone=no">',
         '<meta name="x-apple-disable-message-reformatting">',
+        ('<style>a[x-apple-data-detectors]'
+         '{color:inherit !important;text-decoration:none !important;}</style>'),
     ]:
         html_content = html_content.replace(tag, "")
     return html_content.strip()
@@ -104,22 +108,21 @@ def build_email_1(body_core: str, subject: str) -> dict:
     Buduje finalny email_1 z body_core + podpis.
 
     Returns:
-        dict z: subject, body_core, body (full plain), body_html (full HTML)
+        dict z: subject, body_core, body (full plain), body_html (full HTML),
+                body_html_nosig (HTML bez podpisu — do osobnego pola Apollo)
     """
     clean = strip_llm_signature(body_core).rstrip()
 
     body_full = clean + "\n\n" + SIGNATURE_PLAIN
-    html_full = (
-        META_BLOCK + "\n"
-        + body_to_html(clean) + "\n"
-        + SIGNATURE_HTML
-    )
+    body_html_nosig = META_BLOCK + body_to_html(clean)
+    html_full = body_html_nosig + SIGNATURE_HTML
 
     return {
         "subject": subject,
         "body_core": clean,
         "body": body_full,
         "body_html": html_full,
+        "body_html_nosig": body_html_nosig,
     }
 
 
@@ -143,10 +146,23 @@ def build_follow_up_1(
         date_email_1: Data email_1 w formacie DD.MM.RRRR
 
     Returns:
-        dict z: subject, body_core, body (full plain), body_html (full HTML)
+        dict z: subject, body_core, body (full plain), body_html (full HTML),
+                body_html_nosig (HTML bez podpisu — do osobnego pola Apollo)
     """
     clean = strip_llm_signature(body_core).rstrip()
     subject = f"RE: {email_1['subject']}"
+
+    # === body_html_nosig (nowa treść + podpis + historia wątku — do Apollo custom field) ===
+    # Podpis jest embedded PRZED thread, bo w FU template nie ma {{pl_signature_tu}}.
+    # Thread: separator + cytowany Email 1 (bez meta, bez podpisu)
+    quoted_e1 = _strip_meta_tags(email_1["body_html_nosig"])
+    body_html_nosig = (
+        META_BLOCK
+        + body_to_html(clean)
+        + SIGNATURE_STANDALONE_HTML
+        + _separator_html(date_email_1, contact, email_1["subject"])
+        + quoted_e1
+    )
 
     # === PLAIN ===
     plain = clean + "\n\n" + SIGNATURE_PLAIN
@@ -154,9 +170,9 @@ def build_follow_up_1(
     plain += email_1["body"]
 
     # === HTML ===
-    html = META_BLOCK + "\n"
-    html += body_to_html(clean) + "\n"
-    html += SIGNATURE_HTML + "\n"
+    html = META_BLOCK
+    html += body_to_html(clean)
+    html += SIGNATURE_HTML
     html += _separator_html(date_email_1, contact, email_1["subject"]) + "\n"
     html += f'<div style="padding-left: 0;">{email_1["body_html"]}</div>'
 
@@ -165,6 +181,7 @@ def build_follow_up_1(
         "body_core": clean,
         "body": plain,
         "body_html": html,
+        "body_html_nosig": body_html_nosig,
     }
 
 
@@ -190,10 +207,25 @@ def build_follow_up_2(
         date_follow_up_1: Data follow_up_1 w formacie DD.MM.RRRR
 
     Returns:
-        dict z: subject, body_core, body (full plain), body_html (full HTML)
+        dict z: subject, body_core, body (full plain), body_html (full HTML),
+                body_html_nosig (HTML bez podpisu — do osobnego pola Apollo)
     """
     clean = strip_llm_signature(body_core).rstrip()
     subject = f"RE: {email_1['subject']}"
+
+    # === body_html_nosig (nowa treść + podpis + historia wątku — do Apollo custom field) ===
+    # Podpis jest embedded PRZED thread, bo w FU template nie ma {{pl_signature_tu}}.
+    # Thread: separator + cytowany FU1 (z zagnieżdżonym Email 1)
+    # Każda wiadomość w threadzie ma własny podpis — E1 na dole też.
+    quoted_fu1 = _strip_meta_tags(follow_up_1["body_html_nosig"])
+    body_html_nosig = (
+        META_BLOCK
+        + body_to_html(clean)
+        + SIGNATURE_STANDALONE_HTML
+        + _separator_html(date_follow_up_1, contact, follow_up_1["subject"])
+        + quoted_fu1
+        + SIGNATURE_STANDALONE_HTML
+    )
 
     # === PLAIN ===
     plain = clean + "\n\n" + SIGNATURE_PLAIN
@@ -202,9 +234,9 @@ def build_follow_up_2(
     plain += follow_up_1["body"]
 
     # === HTML ===
-    html = META_BLOCK + "\n"
-    html += body_to_html(clean) + "\n"
-    html += SIGNATURE_HTML + "\n"
+    html = META_BLOCK
+    html += body_to_html(clean)
+    html += SIGNATURE_HTML
     html += _separator_html(date_follow_up_1, contact, follow_up_1["subject"]) + "\n"
     # Cytujemy PEŁNY follow_up_1 HTML (bez meta tagów)
     fu1_html = _strip_meta_tags(follow_up_1["body_html"])
@@ -215,6 +247,7 @@ def build_follow_up_2(
         "body_core": clean,
         "body": plain,
         "body_html": html,
+        "body_html_nosig": body_html_nosig,
     }
 
 

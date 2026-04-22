@@ -1,0 +1,130 @@
+# =============================================================================
+# sources.yaml — Konfiguracja serwisów do skanowania
+# =============================================================================
+# Dodaj nowe serwisy jako wpisy w liście `sources`.
+# Usuń lub ustaw `enabled: false` by wyłączyć.
+# Nie modyfikuj logiki aplikacji — tylko ten plik.
+# =============================================================================
+
+sources:
+
+  - id: wiadomosci_handlowe
+    label: "Wiadomości Handlowe"
+    enabled: true
+    base_url: "https://www.wiadomoscihandlowe.pl"
+
+    # Adresy do skanowania (tag pages, kategorie, strony wyników)
+    scan_urls:
+      - url: "https://www.wiadomoscihandlowe.pl/artykuly/producenci"
+        label: "Producenci — lista artykułów"
+        type: article_index
+      - url: "https://www.wiadomoscihandlowe.pl/artykuly/tags/produkcja-zywnosci"
+        label: "Tag: produkcja żywności"
+        type: tag_page
+      - url: "https://www.wiadomoscihandlowe.pl/artykuly/tags/producenci-zywnosci"
+        label: "Tag: producenci żywności"
+        type: tag_page
+      - url: "https://www.wiadomoscihandlowe.pl/artykuly/tags/przetworstwo-spozywcze"
+        label: "Tag: przetwórstwo spożywcze"
+        type: tag_page
+      - url: "https://www.wiadomoscihandlowe.pl/artykuly/tags/branża-spozywcza"
+        label: "Tag: branża spożywcza"
+        type: tag_page
+      - url: "https://www.wiadomoscihandlowe.pl/artykuly/tags/fmcg"
+        label: "Tag: FMCG"
+        type: tag_page
+
+    # Selektory HTML do parsowania listy artykułów
+    article_list_selectors:
+      article_link: "a[href*='/artykuly/']"
+      title: "h1, h2, h3"
+      date: "time[datetime], .date, .article-date, meta[property='article:published_time']"
+
+    # Selektory do parsowania treści artykułu
+    article_selectors:
+      title: "h1.article-title, h1, .entry-title"
+      lead: ".article-lead, .lead, .excerpt, .intro, p:first-of-type"
+      body: ".article-body, .entry-content, article .content, .article-content"
+      date: "time[datetime], .article-date, meta[property='article:published_time']"
+      tags: ".tags a, .article-tags a, .tag-list a"
+      canonical: "link[rel='canonical']"
+
+    # Paywall / login
+    paywall:
+      mode: partial_content         # public | partial_content | logged_in
+      login_url: ""                 # URL logowania (jeśli tryb logged_in)
+      login_credentials_env:        # Nazwy zmiennych środowiskowych z danymi logowania
+        username: "WH_USERNAME"
+        password: "WH_PASSWORD"
+      paywall_indicators:           # Sygnały paywalla (selektory CSS lub frazy)
+        - ".paywall"
+        - ".premium-content"
+        - "Treść dostępna dla subskrybentów"
+        - "Zaloguj się"
+
+    # Opcje scrapowania
+    scrape_options:
+      user_agent: "Mozilla/5.0 (compatible; Profitia-OutreachBot/1.0)"
+      request_delay_ms: 1500        # Opóźnienie między requestami
+      timeout_s: 15
+      follow_redirects: true
+      max_articles_per_scan: 50
+
+# ---------------------------------------------------------------------------
+# Szablon do dodania nowego serwisu:
+# ---------------------------------------------------------------------------
+# - id: portal_spozywczy
+#   label: "Portal Spożywczy"
+#   enabled: false
+#   base_url: "https://www.portalspozywczy.pl"
+#   scan_urls:
+#     - url: "https://www.portalspozywczy.pl/produkcja/"
+#       type: article_index
+#   article_list_selectors:
+#     article_link: "a[href*='/artykul/']"
+#   article_selectors:
+#     title: "h1"
+#     lead: ".lead"
+#     body: ".article-body"
+#     date: "time"
+#     tags: ".tags a"
+#     canonical: "link[rel='canonical']"
+#   paywall:
+#     mode: public
+#   scrape_options:
+#     request_delay_ms: 2000
+#     max_articles_per_scan: 30
+
+  - id: tworzywa_online
+    label: "Tworzywa Online"
+    enabled: true
+    base_url: "https://tworzywa.online"
+
+    scan_urls:
+      - url: "https://tworzywa.online/wiadomosci/"
+        label: "Wiadomości — lista artykułów"
+        type: article_index
+
+    article_list_selectors:
+      article_link: "a[href*='/wiadomosci/']"
+      title: ".entry-title, h2"
+      date: "time[datetime], .post-date"
+
+    article_selectors:
+      title: ".entry-title, h1.entry-title"
+      lead: ".entry-summary, .excerpt, p:first-of-type"
+      body: ".entry-content, .post-content, article .content"
+      date: "time[datetime], .post-date, meta[property='article:published_time']"
+      tags: ".tags a, .post-tags a"
+      canonical: "link[rel='canonical']"
+
+    paywall:
+      mode: public
+      paywall_indicators: []
+
+    scrape_options:
+      user_agent: "Mozilla/5.0 (compatible; Profitia-OutreachBot/1.0)"
+      request_delay_ms: 1000
+      timeout_s: 15
+      follow_redirects: true
+      max_articles_per_scan: 30

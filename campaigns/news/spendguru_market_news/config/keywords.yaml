@@ -1,0 +1,599 @@
+# =============================================================================
+# keywords.yaml — Grupy słów kluczowych do scoringu relevantności
+# =============================================================================
+# Każda grupa ma wagę (weight) — im wyżej, tym mocniejszy sygnał.
+# Dodaj słowa kluczowe bez modyfikowania logiki aplikacji.
+# Scoring: każde trafienie += weight * count (z normalizacją do 0-100).
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# A. RELEVANCE BRANŻOWE (max 40 pkt)
+# Artykuł musi trafić w co najmniej 1 branżę GTM.
+#
+# Model 3-warstwowy:
+#   canonical label  — czytelna nazwa biznesowa (w raportach i dokumentacji)
+#   technical key    — stabilny klucz YAML/scoringowy (snake_case)
+#   terms            — słowa dopasowujące artykuły
+#
+# Canonical business labels (10 branż aktywnych):
+#   retail | food production | food & beverages | packaging & containers |
+#   plastics | chemicals | pharmaceuticals | building materials |
+#   cosmetics | paper & forest products
+#
+# Grupy poniżej dzielą się na:
+#   [CANONICAL]   — główna branża GTM (wprost w active_industry_scope)
+#   [SUPPORTING]  — dodatkowe grupy scoringowe, nie są samodzielnymi branżami
+# ---------------------------------------------------------------------------
+industry_keywords:
+
+  # [CANONICAL] retail
+  retail:
+    label: "Retail"
+    weight: 3
+    terms:
+      - sieć handlowa
+      - sieć sklepów
+      - supermarket
+      - hipermarket
+      - dyskont
+      - retail
+      - handel detaliczny
+      - sklep spożywczy
+      - biedronka
+      - lidl
+      - kaufland
+      - aldi
+      - netto
+      - carrefour
+      - auchan
+      - tesco
+      - dino
+      - stokrotka
+      - piotr i paweł
+      - eurocash
+
+  # [SUPPORTING] FMCG / handel — wspiera retail, food_production, food_beverages
+  fmcg_trade:
+    label: "FMCG / Handel"
+    weight: 3
+    terms:
+      - fmcg
+      - szybkozbywalne
+      - dobra konsumpcyjne
+      - consumer goods
+      - brand owner
+      - private label
+      - marka własna
+      - producent marki
+      - handel hurtowy
+      - dystrybutor
+      - import spożywczy
+      - eksport spożywczy
+
+  # [CANONICAL] food production
+  food_production:
+    label: "Food Production"
+    weight: 4
+    terms:
+      - produkcja żywności
+      - producent żywności
+      - przetwórstwo żywności
+      - przetwórstwo spożywcze
+      - branża spożywcza
+      - sektor spożywczy
+      - zakład produkcyjny
+      - linia produkcyjna
+      - fabryka żywności
+      - zakład przetwórstwa
+      - food manufacturer
+      - food processing
+      - food production
+      - producent artykułów spożywczych
+      - sektor rolno-spożywczy
+      - agro-food
+      - producent napojów
+      - producent nabiału
+      - producent mięsa
+      - producent pieczywa
+      - producent słodyczy
+      - producent przekąsek
+      - producent konserw
+      - producent mrożonek
+
+  # [SUPPORTING] Manufacturing — generic fallback dla artykułów produkcyjnych
+  manufacturing:
+    label: "Manufacturing (generic fallback)"
+    weight: 2
+    terms:
+      - producent
+      - manufacturer
+      - wytwórca
+      - zakład produkcyjny
+      - inwestycja produkcyjna
+      - rozbudowa fabryki
+      - nowy zakład
+      - rozbudowa zakładu
+      - CAPEX
+      - modernizacja linii
+
+  # [CANONICAL] food & beverages
+  food_beverages:
+    label: "Food & Beverages"
+    weight: 3
+    terms:
+      - napoje
+      - napój
+      - producent napojów
+      - browar
+      - piwowarstwo
+      - browary
+      - woda mineralna
+      - woda gazowana
+      - sok owocowy
+      - soki
+      - napoje energetyczne
+      - napoje funkcjonalne
+      - winiarstwo
+      - wino
+      - destylat
+      - alkohol
+      - spirits
+      - branża napojów
+      - linia rozlewnicza
+      - rozlew
+      - beverage
+      - brewery
+
+  # [CANONICAL] packaging & containers
+  packaging_containers:
+    label: "Packaging & Containers"
+    weight: 3
+    terms:
+      - producent opakowań
+      - opakowania spożywcze
+      - materiały opakowaniowe
+      - opakowanie plastikowe
+      - opakowanie kartonowe
+      - opakowanie papierowe
+      - opakowanie szklane
+      - opakowanie metalowe
+      - folia
+      - folia stretch
+      - folia shrink
+      - laminat
+      - butelka PET
+      - puszka aluminiowa
+      - puszka stalowa
+      - słoik szklany
+      - etykieta
+      - etykiety
+      - przemysł opakowaniowy
+      - branża opakowaniowa
+      - packaging
+      - packaging manufacturer
+      - container
+      - opakowania jednostkowe
+      - opakowania zbiorcze
+      - opakowania transportowe
+
+  # [CANONICAL] plastics
+  plastics:
+    label: "Plastics"
+    weight: 3
+    terms:
+      - tworzywa sztuczne
+      - tworzywo sztuczne
+      - tworzywa
+      - polimer
+      - polimery
+      - polipropylen
+      - polietylen
+      - polietylen tereftalanowy
+      - PET
+      - PP
+      - PE
+      - PVC
+      - PS
+      - polistyren
+      - plastik
+      - plastiki
+      - regranulat
+      - recyklat
+      - granulat
+      - rPP
+      - rPET
+      - producent tworzyw
+      - przemysł tworzyw
+      - przetwórstwo tworzyw
+      - kompozyt
+      - bioplastik
+      - biopolimer
+      - compounding
+
+  # [CANONICAL] chemicals
+  chemicals:
+    label: "Chemicals"
+    weight: 3
+    terms:
+      - branża chemiczna
+      - przemysł chemiczny
+      - chemia
+      - producent chemikaliów
+      - substancja chemiczna
+      - środek chemiczny
+      - żywica
+      - klej
+      - farba
+      - lakier
+      - pigment
+      - barwnik
+      - detergent
+      - środki czystości
+      - surfaktant
+      - adicja
+      - chemical
+      - petrochemia
+      - petrochemikalia
+      - kwas
+      - zasada
+      - solvent
+      - rozpuszczalnik
+
+  # [CANONICAL] pharmaceuticals
+  pharmaceuticals:
+    label: "Pharmaceuticals"
+    weight: 3
+    terms:
+      - farmacja
+      - farmaceutyk
+      - farmaceutyki
+      - branża farmaceutyczna
+      - przemysł farmaceutyczny
+      - producent leków
+      - wytwórca leków
+      - leki
+      - lek
+      - środek farmaceutyczny
+      - API
+      - substancja aktywna
+      - suplementy diety
+      - suplement
+      - GMP
+      - pharmaceutical
+      - pharma
+      - OTC
+      - prescription
+      - generyki
+      - biotechnologia
+
+  # [CANONICAL] building materials
+  building_materials:
+    label: "Building Materials"
+    weight: 3
+    terms:
+      - materiały budowlane
+      - producent materiałów budowlanych
+      - budownictwo
+      - branża budowlana
+      - cement
+      - beton
+      - cegła
+      - klinkier
+      - stal budowlana
+      - drewno budowlane
+      - drewno konstrukcyjne
+      - izolacja termiczna
+      - ocieplenie
+      - wełna mineralna
+      - styropian
+      - szkło budowlane
+      - okna
+      - drzwi
+      - podłogi
+      - płytki ceramiczne
+      - gips
+      - zaprawa
+      - construction materials
+
+  # [CANONICAL] cosmetics
+  cosmetics:
+    label: "Cosmetics"
+    weight: 3
+    terms:
+      - kosmetyki
+      - kosmetyk
+      - producent kosmetyków
+      - branża kosmetyczna
+      - przemysł kosmetyczny
+      - pielęgnacja skóry
+      - pielęgnacja ciała
+      - pielęgnacja włosów
+      - perfumy
+      - zapachy
+      - make-up
+      - makijaż
+      - kosmetyki naturalne
+      - kosmetyki organiczne
+      - chemia kosmetyczna
+      - składnik aktywny
+      - INCI
+      - beauty
+      - personal care
+      - dermokosmetyk
+      - surowiec kosmetyczny
+
+  # [CANONICAL] paper & forest products
+  paper_forest_products:
+    label: "Paper & Forest Products"
+    weight: 3
+    terms:
+      - papier
+      - papiernia
+      - producent papieru
+      - celuloza
+      - pulpa celulozowa
+      - pulpa
+      - karton
+      - tektura
+      - producent kartonu
+      - las
+      - drewno
+      - leśnictwo
+      - drewno tartaczne
+      - tarcica
+      - paper
+      - tissue
+      - papier higieniczny
+      - papier pakowy
+      - makulatura
+      - recykling papieru
+      - forest products
+      - opakowania papierowe
+
+# ---------------------------------------------------------------------------
+# B. SYGNAŁY ZAKUPOWE (max 40 pkt)
+# Artykuł musi zawierać co najmniej 1 sygnał zakupowy.
+# ---------------------------------------------------------------------------
+purchase_signals:
+
+  investment_capacity:
+    label: "Inwestycje / Moce produkcyjne"
+    weight: 5
+    terms:
+      - inwestycja
+      - rozbudowa
+      - nowa fabryka
+      - nowy zakład
+      - rozbudowa zakładu
+      - zwiększenie mocy
+      - moce produkcyjne
+      - linia technologiczna
+      - CAPEX
+      - projekt inwestycyjny
+      - uruchomienie zakładu
+      - uruchomienie linii
+      - otwarcie zakładu
+
+  cost_pressure:
+    label: "Presja kosztowa / Koszty"
+    weight: 5
+    terms:
+      - wzrost kosztów
+      - koszty produkcji
+      - presja kosztowa
+      - inflacja kosztów
+      - drożyzna
+      - ceny surowców
+      - wzrost cen
+      - podwyżka cen
+      - ceny energii
+      - koszty energii
+      - koszty operacyjne
+      - marża
+      - rentowność
+      - wynik finansowy
+      - EBIT
+      - zysk operacyjny
+
+  supply_chain:
+    label: "Łańcuch dostaw / Dostawcy"
+    weight: 4
+    terms:
+      - dostawca
+      - dostawa
+      - logistyka
+      - łańcuch dostaw
+      - supply chain
+      - zakłócenia dostaw
+      - niedobór
+      - dostępność surowców
+      - surowce
+      - nowe źródła dostaw
+      - dywersyfikacja dostawców
+      - zmiana dostawcy
+      - kontrakty dostaw
+
+  energy_packaging:
+    label: "Energia / Opakowania"
+    weight: 3
+    terms:
+      - energia
+      - koszty energii
+      - opakowania
+      - materiały opakowaniowe
+      - recykling
+      - opakowania ekologiczne
+      - transformacja energetyczna
+      - OZE
+      - efektywność energetyczna
+
+  retail_requirements:
+    label: "Wymagania sieci / Wejście do sieci"
+    weight: 4
+    terms:
+      - wejście do sieci
+      - listing
+      - wymagania sieci
+      - warunki handlowe
+      - kontrakty z siecią
+      - negocjacje z siecią
+      - przetarg zakupowy
+      - przetarg dostawców
+      - umowa z dostawcą
+      - kontrakt handlowy
+
+  regulatory:
+    label: "Zmiany regulacyjne"
+    weight: 3
+    terms:
+      - regulacje
+      - przepisy
+      - dyrektywa
+      - normy
+      - certyfikacja
+      - compliance
+      - wymogi prawne
+      - zmiany przepisów
+      - ESG
+      - zrównoważony rozwój
+
+  expansion:
+    label: "Ekspansja / Nowe rynki"
+    weight: 3
+    terms:
+      - ekspansja
+      - nowy rynek
+      - wejście na rynek
+      - internacjonalizacja
+      - eksport
+      - przejęcie
+      - fuzja
+      - akwizycja
+      - strategia wzrostu
+
+  material_innovation:
+    label: "Innowacje materiałowe / Nowe surowce"
+    weight: 4
+    terms:
+      - nowy materiał
+      - nowe materiały
+      - nowa technologia materiałowa
+      - test materiału
+      - testy materiałowe
+      - pilotaż materiałowy
+      - zmiana surowca
+      - zamiennik surowca
+      - alternatywny surowiec
+      - alternatywny materiał
+      - regranulat
+      - recyklat
+      - bioplastik
+      - biopolimer
+      - biomasa
+      - nowy komponent
+      - innowacja materiałowa
+      - innowacja opakowaniowa
+      - materiał z recyklingu
+      - surowce wtórne
+      - surowce z odzysku
+      - modyfikacja składu
+      - nowa formuła
+      - nowy skład
+      - nowe opakowanie
+      - zmiana opakowania
+      - certyfikacja materiałowa
+
+  compliance_trigger:
+    label: "Termin regulacyjny / Compliance trigger"
+    weight: 5
+    terms:
+      - wymóg regulacyjny
+      - wymogi regulacyjne
+      - obowiązkowy od
+      - obowiązkowe od
+      - do 2025
+      - do 2026
+      - do 2027
+      - do 2028
+      - do 2029
+      - do 2030
+      - do 2035
+      - do 2040
+      - do 2050
+      - termin wdrożenia
+      - deadline regulacyjny
+      - deadline
+      - PPWR
+      - ESPR
+      - CBAM
+      - taksonomia UE
+      - regulacja EU
+      - regulacja UE
+      - dyrektywa EU
+      - dyrektywa UE
+      - rozporządzenie UE
+      - dyrektywa opakowaniowa
+      - wymogi opakowaniowe
+      - recycled content
+      - zawartość recyklatu
+      - zawartość surowców wtórnych
+      - ESG requirement
+      - wymóg ESG
+      - raportowanie ESG
+      - sprawozdawczość ESG
+      - compliance
+      - certyfikat zgodności
+      - norma środowiskowa
+
+# ---------------------------------------------------------------------------
+# C. SYGNAŁY WZMACNIAJĄCE — dodatkowe punkty za premium kontekst
+# ---------------------------------------------------------------------------
+amplifier_signals:
+  label: "Sygnały wzmacniające (bonus)"
+  weight: 2
+  terms:
+    - negocjacje
+    - renegocjacja
+    - warunki zakupowe
+    - konsolidacja
+    - outsourcing
+    - partnerstwo strategiczne
+    - joint venture
+    - fuzja
+    - restrukturyzacja
+    - cięcia kosztów
+    - optymalizacja kosztów
+    - savings
+    - oszczędności
+
+# ---------------------------------------------------------------------------
+# D. SŁOWA ZAKUPOWE / NEGOCJACYJNE — extra boost gdy w artykule
+# ---------------------------------------------------------------------------
+procurement_vocabulary:
+  label: "Vocabulaire zakupowy"
+  weight: 2
+  terms:
+    - zakupy
+    - procurement
+    - sourcing
+    - przetarg
+    - negocjacje z dostawcami
+    - kategoria zakupowa
+    - kontrakt
+    - umowa dostawcza
+    - warunki płatności
+    - rabat
+    - upust
+    - benchmark
+    - TCO
+    - koszt całkowity
+
+# ---------------------------------------------------------------------------
+# Freshness scoring (bonus za świeżość)
+# ---------------------------------------------------------------------------
+freshness_scoring:
+  age_0_1_days: 20   # max bonus
+  age_1_3_days: 15
+  age_3_7_days: 10
+  age_7_14_days: 5
+  age_14_plus_days: 0

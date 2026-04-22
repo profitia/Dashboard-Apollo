@@ -1,0 +1,101 @@
+{
+  "core_identity": {
+    "first_name": "Marzena",
+    "last_name": "Buczkowska",
+    "full_name": "Marzena Buczkowska",
+    "email": "marzena_buczkowska@polipack.eu",
+    "job_title": "Procurement Director",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "Polipack",
+    "departments": "Finance",
+    "sub_departments": "Sourcing / Procurement",
+    "industry": "plastics",
+    "keywords_raw": "plastics manufacturing, chemicals",
+    "keywords_list": [
+      "plastics manufacturing",
+      "chemicals"
+    ],
+    "keywords_normalized": [
+      "plastics manufacturing",
+      "chemicals"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/marzenabuczkowska",
+    "website": "https://polipack.pl",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/polipackpphu",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": null,
+    "state": null,
+    "country": "POLAND",
+    "company_address": "22 ulica Handlowa, Pomeranian Voivodeship, Poland, 84-241",
+    "company_city": null,
+    "company_state": "Pomeranian Voivodeship",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": null,
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Marzena",
+      "Last Name": "Buczkowska",
+      "Title": "Procurement Director",
+      "Company Name": "Polipack",
+      "Email": "marzena_buczkowska@polipack.eu",
+      "Seniority": "Director",
+      "Departments": "Finance",
+      "Sub Departments": "Sourcing / Procurement",
+      "Industry": "plastics",
+      "Keywords": "plastics manufacturing, chemicals",
+      "Person Linkedin Url": "http://www.linkedin.com/in/marzenabuczkowska",
+      "Website": "https://polipack.pl",
+      "Company Linkedin Url": "http://www.linkedin.com/company/polipackpphu",
+      "Country": "Poland",
+      "Company Address": "22 ulica Handlowa, Pomeranian Voivodeship, Poland, 84-241",
+      "Company State": "Pomeranian Voivodeship",
+      "Company Country": "Poland"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.033369",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.833993",
+        "original_row": {
+          "First Name": "Marzena",
+          "Last Name": "Buczkowska",
+          "Title": "Procurement Director",
+          "Company Name": "Polipack",
+          "Email": "marzena_buczkowska@polipack.eu",
+          "Seniority": "Director",
+          "Departments": "Finance",
+          "Sub Departments": "Sourcing / Procurement",
+          "Industry": "plastics",
+          "Keywords": "plastics manufacturing, chemicals",
+          "Person Linkedin Url": "http://www.linkedin.com/in/marzenabuczkowska",
+          "Website": "https://polipack.pl",
+          "Company Linkedin Url": "http://www.linkedin.com/company/polipackpphu",
+          "Country": "Poland",
+          "Company Address": "22 ulica Handlowa, Pomeranian Voivodeship, Poland, 84-241",
+          "Company State": "Pomeranian Voivodeship",
+          "Company Country": "Poland"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "marzena_buczkowska@polipack.eu",
+    "last_saved_at": "2026-04-21T07:02:12.834115"
+  }
+}

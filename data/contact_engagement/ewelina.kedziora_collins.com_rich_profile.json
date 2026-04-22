@@ -1,0 +1,105 @@
+{
+  "core_identity": {
+    "first_name": "Ewelina",
+    "last_name": "Kedziora",
+    "full_name": "Ewelina Kedziora",
+    "email": "ewelina.kedziora@collins.com",
+    "job_title": "Associate Director Procurement",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "Collins Aerospace Wrocław",
+    "departments": "Finance",
+    "sub_departments": "Sourcing / Procurement",
+    "industry": "aviation & aerospace",
+    "keywords_raw": "aviation & aerospace component manufacturing",
+    "keywords_list": [
+      "aviation & aerospace component manufacturing"
+    ],
+    "keywords_normalized": [
+      "aviation & aerospace component manufacturing"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/ewelina-kedziora-67ab9566",
+    "website": "https://collinspolska.pl",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/collins-aerospace-wroclaw",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Wroclaw",
+    "state": "Lower Silesian Voivodeship",
+    "country": "POLAND",
+    "company_address": "65/67 ulica Bierutowska, Wroclaw, Wojewodztwo dolnoslaskie, Poland, 51-317",
+    "company_city": "Wroclaw",
+    "company_state": "Wojewodztwo dolnoslaskie",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": null,
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Ewelina",
+      "Last Name": "Kedziora",
+      "Title": "Associate Director Procurement",
+      "Company Name": "Collins Aerospace Wrocław",
+      "Email": "ewelina.kedziora@collins.com",
+      "Seniority": "Director",
+      "Departments": "Finance",
+      "Sub Departments": "Sourcing / Procurement",
+      "Industry": "aviation & aerospace",
+      "Keywords": "aviation & aerospace component manufacturing",
+      "Person Linkedin Url": "http://www.linkedin.com/in/ewelina-kedziora-67ab9566",
+      "Website": "https://collinspolska.pl",
+      "Company Linkedin Url": "http://www.linkedin.com/company/collins-aerospace-wroclaw",
+      "City": "Wroclaw",
+      "State": "Lower Silesian Voivodeship",
+      "Country": "Poland",
+      "Company Address": "65/67 ulica Bierutowska, Wroclaw, Wojewodztwo dolnoslaskie, Poland, 51-317",
+      "Company City": "Wroclaw",
+      "Company State": "Wojewodztwo dolnoslaskie",
+      "Company Country": "Poland"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.033171",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.833704",
+        "original_row": {
+          "First Name": "Ewelina",
+          "Last Name": "Kedziora",
+          "Title": "Associate Director Procurement",
+          "Company Name": "Collins Aerospace Wrocław",
+          "Email": "ewelina.kedziora@collins.com",
+          "Seniority": "Director",
+          "Departments": "Finance",
+          "Sub Departments": "Sourcing / Procurement",
+          "Industry": "aviation & aerospace",
+          "Keywords": "aviation & aerospace component manufacturing",
+          "Person Linkedin Url": "http://www.linkedin.com/in/ewelina-kedziora-67ab9566",
+          "Website": "https://collinspolska.pl",
+          "Company Linkedin Url": "http://www.linkedin.com/company/collins-aerospace-wroclaw",
+          "City": "Wroclaw",
+          "State": "Lower Silesian Voivodeship",
+          "Country": "Poland",
+          "Company Address": "65/67 ulica Bierutowska, Wroclaw, Wojewodztwo dolnoslaskie, Poland, 51-317",
+          "Company City": "Wroclaw",
+          "Company State": "Wojewodztwo dolnoslaskie",
+          "Company Country": "Poland"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "ewelina.kedziora@collins.com",
+    "last_saved_at": "2026-04-21T07:02:12.833831"
+  }
+}

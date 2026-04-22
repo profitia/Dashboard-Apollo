@@ -1,0 +1,113 @@
+{
+  "core_identity": {
+    "first_name": "Tomasz",
+    "last_name": "Studniarek",
+    "full_name": "Tomasz Studniarek",
+    "email": "t.studniarek@neonet.pl",
+    "job_title": "BACK Office Director ( It/supply Chain / Procurement )",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "Neonet SA",
+    "departments": "Finance, Information Technology, Operations",
+    "sub_departments": "Sourcing / Procurement, Information Technology, IT Operations, Office Operations, Supply Chain",
+    "industry": "retail",
+    "keywords_raw": "rtv, it, agd, gsm",
+    "keywords_list": [
+      "rtv",
+      "it",
+      "agd",
+      "gsm"
+    ],
+    "keywords_normalized": [
+      "rtv",
+      "it",
+      "agd",
+      "gsm"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/tomasz-studniarek-43114285",
+    "website": "https://neonet.pl",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/neonet-sa",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Warsaw",
+    "state": "Masovian Voivodeship",
+    "country": "POLAND",
+    "company_address": "48A Nyska, Wroclaw, Wojewodztwo dolnoslaskie, Poland, 52-443",
+    "company_city": "Wroclaw",
+    "company_state": "Wojewodztwo dolnoslaskie",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": "'+48 71 388 56 00",
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Tomasz",
+      "Last Name": "Studniarek",
+      "Title": "BACK Office Director ( It/supply Chain / Procurement )",
+      "Company Name": "Neonet SA",
+      "Email": "t.studniarek@neonet.pl",
+      "Seniority": "Director",
+      "Departments": "Finance, Information Technology, Operations",
+      "Sub Departments": "Sourcing / Procurement, Information Technology, IT Operations, Office Operations, Supply Chain",
+      "Industry": "retail",
+      "Keywords": "rtv, it, agd, gsm",
+      "Person Linkedin Url": "http://www.linkedin.com/in/tomasz-studniarek-43114285",
+      "Website": "https://neonet.pl",
+      "Company Linkedin Url": "http://www.linkedin.com/company/neonet-sa",
+      "City": "Warsaw",
+      "State": "Masovian Voivodeship",
+      "Country": "Poland",
+      "Company Address": "48A Nyska, Wroclaw, Wojewodztwo dolnoslaskie, Poland, 52-443",
+      "Company City": "Wroclaw",
+      "Company State": "Wojewodztwo dolnoslaskie",
+      "Company Country": "Poland",
+      "Company Phone": "'+48 71 388 56 00"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.031505",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.830470",
+        "original_row": {
+          "First Name": "Tomasz",
+          "Last Name": "Studniarek",
+          "Title": "BACK Office Director ( It/supply Chain / Procurement )",
+          "Company Name": "Neonet SA",
+          "Email": "t.studniarek@neonet.pl",
+          "Seniority": "Director",
+          "Departments": "Finance, Information Technology, Operations",
+          "Sub Departments": "Sourcing / Procurement, Information Technology, IT Operations, Office Operations, Supply Chain",
+          "Industry": "retail",
+          "Keywords": "rtv, it, agd, gsm",
+          "Person Linkedin Url": "http://www.linkedin.com/in/tomasz-studniarek-43114285",
+          "Website": "https://neonet.pl",
+          "Company Linkedin Url": "http://www.linkedin.com/company/neonet-sa",
+          "City": "Warsaw",
+          "State": "Masovian Voivodeship",
+          "Country": "Poland",
+          "Company Address": "48A Nyska, Wroclaw, Wojewodztwo dolnoslaskie, Poland, 52-443",
+          "Company City": "Wroclaw",
+          "Company State": "Wojewodztwo dolnoslaskie",
+          "Company Country": "Poland",
+          "Company Phone": "'+48 71 388 56 00"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "t.studniarek@neonet.pl",
+    "last_saved_at": "2026-04-21T07:02:12.830706"
+  }
+}

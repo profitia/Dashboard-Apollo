@@ -1,0 +1,111 @@
+{
+  "core_identity": {
+    "first_name": "Dariusz",
+    "last_name": "Strzemieczny",
+    "full_name": "Dariusz Strzemieczny",
+    "email": "dstrzemieczny@id-logistics.com",
+    "job_title": "Procurement Director",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "ID Logistics Group",
+    "departments": "Finance",
+    "sub_departments": "Sourcing / Procurement",
+    "industry": "logistics & supply chain",
+    "keywords_raw": "transportation, logistics, supply chain & storage, logistics & supply chain",
+    "keywords_list": [
+      "transportation",
+      "logistics",
+      "supply chain & storage",
+      "logistics & supply chain"
+    ],
+    "keywords_normalized": [
+      "transportation",
+      "logistics",
+      "supply chain & storage",
+      "logistics & supply chain"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/dariusz-strzemieczny-543423b2",
+    "website": "https://id-logistics.com",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/idlogisticsgroup",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Warsaw",
+    "state": "Masovian Voivodeship",
+    "country": "POLAND",
+    "company_address": "55 Chemin des Engranauds, Orgon, Provence-Alpes-Cote d'Azur, France, 13660",
+    "company_city": "Orgon",
+    "company_state": "Provence-Alpes-Cote d'Azur",
+    "company_country": "FRANCE"
+  },
+  "company_metadata": {
+    "company_phone": null,
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Dariusz",
+      "Last Name": "Strzemieczny",
+      "Title": "Procurement Director",
+      "Company Name": "ID Logistics Group",
+      "Email": "dstrzemieczny@id-logistics.com",
+      "Seniority": "Director",
+      "Departments": "Finance",
+      "Sub Departments": "Sourcing / Procurement",
+      "Industry": "logistics & supply chain",
+      "Keywords": "transportation, logistics, supply chain & storage, logistics & supply chain",
+      "Person Linkedin Url": "http://www.linkedin.com/in/dariusz-strzemieczny-543423b2",
+      "Website": "https://id-logistics.com",
+      "Company Linkedin Url": "http://www.linkedin.com/company/idlogisticsgroup",
+      "City": "Warsaw",
+      "State": "Masovian Voivodeship",
+      "Country": "Poland",
+      "Company Address": "55 Chemin des Engranauds, Orgon, Provence-Alpes-Cote d'Azur, France, 13660",
+      "Company City": "Orgon",
+      "Company State": "Provence-Alpes-Cote d'Azur",
+      "Company Country": "France"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.031709",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.830992",
+        "original_row": {
+          "First Name": "Dariusz",
+          "Last Name": "Strzemieczny",
+          "Title": "Procurement Director",
+          "Company Name": "ID Logistics Group",
+          "Email": "dstrzemieczny@id-logistics.com",
+          "Seniority": "Director",
+          "Departments": "Finance",
+          "Sub Departments": "Sourcing / Procurement",
+          "Industry": "logistics & supply chain",
+          "Keywords": "transportation, logistics, supply chain & storage, logistics & supply chain",
+          "Person Linkedin Url": "http://www.linkedin.com/in/dariusz-strzemieczny-543423b2",
+          "Website": "https://id-logistics.com",
+          "Company Linkedin Url": "http://www.linkedin.com/company/idlogisticsgroup",
+          "City": "Warsaw",
+          "State": "Masovian Voivodeship",
+          "Country": "Poland",
+          "Company Address": "55 Chemin des Engranauds, Orgon, Provence-Alpes-Cote d'Azur, France, 13660",
+          "Company City": "Orgon",
+          "Company State": "Provence-Alpes-Cote d'Azur",
+          "Company Country": "France"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "dstrzemieczny@id-logistics.com",
+    "last_saved_at": "2026-04-21T07:02:12.831276"
+  }
+}

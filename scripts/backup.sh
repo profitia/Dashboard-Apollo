@@ -39,20 +39,27 @@ log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 # ---- PARSOWANIE ARGUMENTÓW ----
 DO_PUSH=false
 PUSH_ONLY=false
+CUSTOM_MESSAGE=""
 
-for arg in "$@"; do
-    case "$arg" in
-        --push)      DO_PUSH=true ;;
-        --push-only) PUSH_ONLY=true; DO_PUSH=true ;;
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --push)      DO_PUSH=true; shift ;;
+        --push-only) PUSH_ONLY=true; DO_PUSH=true; shift ;;
+        --message|-m)
+            shift
+            CUSTOM_MESSAGE="${1:-}"
+            shift
+            ;;
         --help|-h)
-            echo "Użycie: $0 [--push] [--push-only]"
-            echo "  (brak flag)  — tylko backup ZIP + changelog"
-            echo "  --push       — backup + git commit & push safe files"
-            echo "  --push-only  — tylko git commit & push (bez tworzenia ZIP)"
+            echo "Użycie: $0 [--push] [--push-only] [--message \"opis zmian\"]"
+            echo "  (brak flag)       — tylko backup ZIP + changelog"
+            echo "  --push            — backup + git commit & push safe files"
+            echo "  --push-only       — tylko git commit & push (bez tworzenia ZIP)"
+            echo "  --message/-m \"X\" — opis funkcjonalny zmian (trafia do changelog i git commit)"
             exit 0
             ;;
         *)
-            log_error "Nieznany argument: $arg"
+            log_error "Nieznany argument: $1"
             exit 1
             ;;
     esac
@@ -281,6 +288,9 @@ ${GIT_STATUS:-"(brak zmian)"}
 --- Commity od poprzedniego backupu ---
 ${GIT_LOG_SINCE_LAST:-"(brak)"}
 
+=== OPIS FUNKCJONALNY ZMIAN ===
+${CUSTOM_MESSAGE:-"(nie podano opisu)"}
+
 === DRZEWO KATALOGÓW ===
 ${TREE_OUTPUT}
 
@@ -358,7 +368,11 @@ if [[ "${DO_PUSH}" == true ]]; then
     if git diff --cached --quiet 2>/dev/null; then
         log_warn "Brak zmian do commitowania."
     else
-        COMMIT_MSG="backup ${DATE_TODAY}_${VERSION}"
+        if [[ -n "${CUSTOM_MESSAGE}" ]]; then
+            COMMIT_MSG="backup ${DATE_TODAY}_${VERSION}: ${CUSTOM_MESSAGE}"
+        else
+            COMMIT_MSG="backup ${DATE_TODAY}_${VERSION}"
+        fi
         git commit -m "${COMMIT_MSG}"
         log_ok "Commit: ${COMMIT_MSG}"
 

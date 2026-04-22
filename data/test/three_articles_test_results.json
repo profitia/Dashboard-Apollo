@@ -1,0 +1,251 @@
+[
+  {
+    "label": "ORLEN",
+    "test_id": "orlen_regranulat",
+    "url": "https://tworzywa.online/wiadomosci/orlen-testuje-regranulat-pp-do-opakowan-spozywczych/",
+    "notes": "upstream/material case — pośrednio procurementowy, firma przemysłowa",
+    "phases": {
+      "qualify": {
+        "title": "ORLEN testuje regranulat PP do opakowań spożywczych",
+        "published_at": "2026-01-30T08:39:02+01:00",
+        "source_id": "tworzywa_online",
+        "full_text_len": 4455,
+        "tags": [],
+        "companies_mentioned_raw": [],
+        "qualified": true,
+        "total_score": 77.0,
+        "industry_score": 40.0,
+        "purchase_signal_score": 32.0,
+        "disqualification_reason": null,
+        "explanation": "[Industry/food_production]: branża spożywcza; [Industry/food_beverages]: soki; [Industry/plastics]: tworzywa, polimer, polimery, polipropylen, PET; [Industry/chemicals]: pigment; [Industry/pharmaceuticals]: API; [Industry/cosmetics]: kosmetyk; [Industry/paper_forest_products]: las; [Signal/investment_capacity]: inwestycja, zwiększenie mocy; [Signal/supply_chain]: surowce; [Signal/energy_packaging]: opakowania, recykling; [Signal/material_innovation]: regranulat, recyklat",
+        "matched_industry_terms": {
+          "food_production": [
+            "branża spożywcza"
+          ],
+          "food_beverages": [
+            "soki"
+          ],
+          "plastics": [
+            "tworzywa",
+            "polimer",
+            "polimery",
+            "polipropylen",
+            "PET",
+            "PP",
+            "PE",
+            "polistyren",
+            "plastik",
+            "regranulat",
+            "recyklat",
+            "granulat"
+          ],
+          "chemicals": [
+            "pigment"
+          ],
+          "pharmaceuticals": [
+            "API"
+          ],
+          "cosmetics": [
+            "kosmetyk"
+          ],
+          "paper_forest_products": [
+            "las"
+          ]
+        },
+        "matched_purchase_terms": {
+          "investment_capacity": [
+            "inwestycja",
+            "zwiększenie mocy"
+          ],
+          "supply_chain": [
+            "surowce"
+          ],
+          "energy_packaging": [
+            "opakowania",
+            "recykling"
+          ],
+          "material_innovation": [
+            "regranulat",
+            "recyklat"
+          ]
+        }
+      },
+      "entity": {
+        "name": "ORLEN S.A.",
+        "source_name": "ORLEN S.A.",
+        "canonical_name": "ORLEN S.A.",
+        "name_normalized": "orlen",
+        "company_type": "other",
+        "campaign_eligible": true,
+        "confidence": 0.97,
+        "reason": "ORLEN rozwija i testuje opakowania z regranulatu PP, co wskazuje na duże potrzeby zakupowe i negocjacyjne w obszarze surowców, opakowań oraz łańcucha dostaw. To duża grupa przemysłowa z istotnym potencjałem do optymalizacji kosztów zakupów.",
+        "extraction_method": "llm",
+        "related_companies": [
+          "Pollena Kurowski",
+          "Nextloopp"
+        ]
+      },
+      "resolution": {
+        "enabled": false
+      },
+      "contacts": {
+        "resolved_name_used": "ORLEN S.A.",
+        "resolved_domain_used": null,
+        "strategy_used": "name_only",
+        "winning_strategy": "none",
+        "name_search_email_count": 0,
+        "domain_fallback_triggered": false,
+        "domain_searched": null,
+        "domain_search_email_count": 0,
+        "assoc_fallback_triggered": true,
+        "assoc_fallback_company": null,
+        "assoc_search_email_count": 0,
+        "total_found": 10,
+        "with_email": 0,
+        "without_email": 10,
+        "threshold_met": false,
+        "threshold_reason": "Not enough valid contacts: 0 (min 1)",
+        "contacts": [
+          {
+            "full_name": "Aneta",
+            "email": "(no email)",
+            "job_title": "Manager",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Maciej",
+            "email": "(no email)",
+            "job_title": "Director - Retail Network Development Office",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Piotr",
+            "email": "(no email)",
+            "job_title": "Director of Retail Systems and CRM Office",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Piotr",
+            "email": "(no email)",
+            "job_title": "Executive Director for Commercial Marketing",
+            "tier": "tier_1_c_level",
+            "tier_label": "Tier 1 - C-Level",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Justyna",
+            "email": "(no email)",
+            "job_title": "Category Manager",
+            "tier": "tier_3_buyers_operational",
+            "tier_label": "Tier 3 - Buyers/Operational",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Magdalena",
+            "email": "(no email)",
+            "job_title": "Project Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Maciej",
+            "email": "(no email)",
+            "job_title": "Project Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Robert",
+            "email": "(no email)",
+            "job_title": "IT Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Anna",
+            "email": "(no email)",
+            "job_title": "Project Manager | Strategy Department",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          },
+          {
+            "full_name": "Lukasz",
+            "email": "(no email)",
+            "job_title": "Project Manager",
+            "tier": "tier_uncertain",
+            "tier_label": "Tier Uncertain",
+            "source": "apollo",
+            "confidence": 0.3
+          }
+        ]
+      },
+      "messages": {
+        "total_packs": 0,
+        "messages": []
+      }
+    },
+    "final_status": "BLOCKED_NO_EMAIL",
+    "issues": [
+      {
+        "issue": "Contact threshold not met",
+        "severity": "CRITICAL",
+        "module": "news.contacts.contact_finder",
+        "exact_behavior": "Not enough valid contacts: 0 (min 1)",
+        "recommendation": "Check Apollo search; try domain fallback or associated company"
+      }
+    ]
+  },
+  {
+    "label": "Grycan",
+    "test_id": "grycan",
+    "url": "https://www.portalspozywczy.pl/slodycze-przekaski/wiadomosci/przyspieszony-start-sezonu-lodowego-grycan-poczatek-sezonu-przynosi-pozytywne-sygnaly,287489.html",
+    "notes": "brand/FMCG case — producent lodów",
+    "phases": {},
+    "final_status": "FETCH_FAILED",
+    "issues": [
+      {
+        "issue": "Article fetch failed",
+        "severity": "CRITICAL",
+        "module": "news.ingestion.article_fetcher",
+        "exact_behavior": "fetch_article returned unusable article or error",
+        "recommendation": "Check network access; portalspozywczy.pl may block scrapers"
+      }
+    ]
+  },
+  {
+    "label": "Evra Fish",
+    "test_id": "evra_fish",
+    "url": "https://www.portalspozywczy.pl/mieso/wiadomosci/evra-fish-wzrost-spozycia-ryb-w-polsce-nie-wydarzy-sie-w-tradycyjnych-formatach,287584.html",
+    "notes": "canonical naming case — alias matching EvraFish",
+    "phases": {},
+    "final_status": "FETCH_FAILED",
+    "issues": [
+      {
+        "issue": "Article fetch failed",
+        "severity": "CRITICAL",
+        "module": "news.ingestion.article_fetcher",
+        "exact_behavior": "fetch_article returned unusable article or error",
+        "recommendation": "Check network access; portalspozywczy.pl may block scrapers"
+      }
+    ]
+  }
+]

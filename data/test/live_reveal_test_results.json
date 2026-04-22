@@ -1,0 +1,227 @@
+{
+  "test_id": "live_reveal_grycan",
+  "case": "grycan",
+  "dry_run": false,
+  "auto_enroll": false,
+  "use_email_reveal": true,
+  "started_at": "2026-04-22T18:52:55.404899+00:00",
+  "campaign_config_keys": {
+    "apollo_lists": {
+      "tier_1": "PL Tier 1 do market_news VSC",
+      "tier_2": "PL Tier 2 do market_news VSC",
+      "tier_3": "PL Tier 3 do market_news VSC"
+    },
+    "use_email_reveal": true,
+    "auto_enroll": false,
+    "send_approval_email": true,
+    "contact_stage_draft": "News pipeline - drafted",
+    "approval_email_to": "tomasz.uscinski@profitia.pl",
+    "send_blocked_email_notification": true
+  },
+  "phases": {
+    "qualify": {
+      "data_source": "fixture",
+      "title": "Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały",
+      "published_at": "2026-04-15",
+      "qualified": true,
+      "total_score": 60.0,
+      "industry_score": 35.0,
+      "purchase_signal_score": 25.0,
+      "disqualification_reason": null,
+      "explanation": "[Industry/food_production]: producent lody; [Industry/food_beverages]: żywność; [Signal/supply_chain]: surowce mleczne, dostawcy; [Signal/investment_capacity]: zakupy surowców"
+    },
+    "entity": {
+      "name": "Grycan",
+      "source_name": "Grycan",
+      "canonical_name": "Grycan",
+      "name_normalized": "grycan",
+      "company_type": "producer",
+      "campaign_eligible": true,
+      "confidence": 0.98,
+      "reason": "Grycan jest producentem lodów FMCG i ma istotne potrzeby zakupowe w surowcach mlecznych oraz zarządzaniu łańcuchem dostaw. Wzrost popytu i planowana ekspansja zwiększają potencjał do optymalizacji negocjacji z dostawcami.",
+      "extraction_method": "llm"
+    },
+    "resolution": {
+      "resolution_status": "MATCH_POSSIBLE",
+      "resolution_confidence": 0.6,
+      "resolved_company_name": "Grycan - Lody od pokoleń",
+      "resolved_domain": "grycan.pl",
+      "resolution_reason": "Best match: 'Grycan - Lody od pokoleń' (score=0.60, status=MATCH_POSSIBLE) | Signals: comparison_key_partial_match: 'grycanlodyodpokoleń' ↔ 'grycan'; domain_matches_key: 'grycan.pl' | LLM: Kandydat 1 bardzo dobrze pasuje do firmy z artykułu: nazwa zawiera Grycan, domena grycan.pl jest zgodna, a opis biznesu odpowiada producentowi lodów. Kontekst artykułu o produkcji lodów, sieci lodziarni i zakupach surowców mlecznych dodatkowo potwierdza dopasowanie.",
+      "candidates_count": 1,
+      "top_candidates": [
+        {
+          "rank": 1,
+          "name": "Grycan - Lody od pokoleń",
+          "domain": "grycan.pl",
+          "score": null
+        }
+      ]
+    },
+    "contacts": {
+      "validation_function": "validate_contact_found (NEW — no email filter)",
+      "resolved_name_used": "Grycan - Lody od pokoleń",
+      "resolved_domain_used": "grycan.pl",
+      "strategy_used": "name_only",
+      "winning_strategy": "none",
+      "domain_fallback_triggered": true,
+      "assoc_fallback_triggered": false,
+      "total_found": 10,
+      "with_email_from_search": 0,
+      "without_email_from_search": 10,
+      "validate_contact_found_ok": true,
+      "validate_contact_found_reason": "Found 10 contact(s) in Apollo",
+      "contacts_selected": 3,
+      "selected_with_email": 0,
+      "selected_without_email": 3,
+      "selected_contacts": [
+        {
+          "full_name": "Marta",
+          "job_title": "Manager",
+          "email": "(no email)",
+          "tier": "tier_1_c_level",
+          "tier_label": "Tier 1 - C-Level",
+          "apollo_contact_id": "66a86b99b597f900014170fa",
+          "company_name": "Grycan - Lody od pokoleń",
+          "company_domain": "grycan.pl"
+        },
+        {
+          "full_name": "Monika",
+          "job_title": "Manager",
+          "email": "(no email)",
+          "tier": "tier_1_c_level",
+          "tier_label": "Tier 1 - C-Level",
+          "apollo_contact_id": "636e672cd87c6e0001c842f4",
+          "company_name": "Grycan - Lody od pokoleń",
+          "company_domain": "grycan.pl"
+        },
+        {
+          "full_name": "Justyna",
+          "job_title": "Brand Manager",
+          "email": "(no email)",
+          "tier": "tier_3_buyers_operational",
+          "tier_label": "Tier 3 - Buyers/Operational",
+          "apollo_contact_id": "61dcdc10e8cf8a00015d3a83",
+          "company_name": "Grycan - Lody od pokoleń",
+          "company_domain": "grycan.pl"
+        }
+      ]
+    },
+    "messages": {
+      "mode": "ALL selected contacts (no email filter) — NEW FLOW",
+      "total_packs": 3,
+      "packs_with_email": 0,
+      "packs_without_email": 3,
+      "messages": [
+        {
+          "contact_name": "Marta",
+          "contact_email": "(no email)",
+          "has_email": false,
+          "tier": "tier_1_c_level",
+          "generated_by": "llm",
+          "email_1_subject": "Sezon lodowy i presja na marżę w Grycan",
+          "email_1_body_len": 1198,
+          "follow_up_1_subject": "Re: Sezon lodowy i presja na marżę w Grycan",
+          "follow_up_2_subject": "Krótko o sezonie Grycan"
+        },
+        {
+          "contact_name": "Monika",
+          "contact_email": "(no email)",
+          "has_email": false,
+          "tier": "tier_1_c_level",
+          "generated_by": "llm",
+          "email_1_subject": "Sezon lodowy i presja na marżę w Grycan",
+          "email_1_body_len": 1377,
+          "follow_up_1_subject": "Re: Sezon lodowy i presja na marżę w Grycan",
+          "follow_up_2_subject": "Grycan - jedno krótkie pytanie"
+        },
+        {
+          "contact_name": "Justyna",
+          "contact_email": "(no email)",
+          "has_email": false,
+          "tier": "tier_3_buyers_operational",
+          "generated_by": "llm",
+          "email_1_subject": "Sezon lodowy ruszył - pytanie o dostawców",
+          "email_1_body_len": 1136,
+          "follow_up_1_subject": "Grycan i sezon - jedna rzecz przed rozmową",
+          "follow_up_2_subject": "Czy to dobry moment na jedną rozmowę?"
+        }
+      ]
+    }
+  },
+  "live_sequence_result": {
+    "sequence_name": "NEWS-2026-04-15-grycan-przyspieszony-start-sezonu-lodowego-gryc",
+    "dry_run": false,
+    "auto_enroll": false,
+    "contacts_processed": 3,
+    "contacts_added_to_list": 2,
+    "contacts_stage_set": 2,
+    "contacts_synced": 2,
+    "contacts_enrolled": 0,
+    "reveal_attempted": true,
+    "reveal_count": 2,
+    "email_available": true,
+    "errors": [],
+    "contact_results": [
+      {
+        "full_name": "Marta",
+        "email": "(no email)",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "apollo_person_id": "66a86b99b597f900014170fa",
+        "apollo_crm_contact_id": null,
+        "list_name": "PL Tier 1 do market_news VSC",
+        "stage": "News pipeline - drafted",
+        "status": "drafted",
+        "email_revealed": false,
+        "blocked_notification_block": {
+          "first_name": "Marta",
+          "last_name": "",
+          "email": "",
+          "tier": "tier_1_c_level",
+          "tier_label": "Tier 1 - C-Level",
+          "list_name": "PL Tier 1 do market_news VSC",
+          "step_1_subject": "Sezon lodowy i presja na marżę w Grycan",
+          "step_1_body": "Dzień dobry Pani Marto,\n\nwidziałem informację, że Grycan bardzo dobrze zaczyna sezon lodowy 2026, a jednocześnie zwiększa zakupy mleka, śmietanki i masła, żeby zabezpieczyć rosnący popyt.\n\nW Pani roli jako Managera to zwykle oznacza nie tylko większą sprzedaż, ale też większą ekspozycję na presję kosztową po stronie dostawców. Przy szybkim starcie sezonu łatwo o sytuację, w której podwyżki cen surowców są akceptowane zbyt szybko, bo priorytetem staje się ciągłość produkcji i dostępność towaru.\n\nW takich momentach najlepiej działa podejście oparte na przygotowaniu do negocjacji, a nie na samej analizie kosztów. Chodzi o to, żeby przed rozmową z dostawcą mieć jasny obraz benchmarków, sygnałów rynkowych i realnego pola do obrony ceny - tak, aby decyzje zakupowe wspierały marżę i EBIT, zamiast tylko reagować na propozycje z rynku.\n\nJeśli będzie Pani chciała, mogę pokazać na jednej kategorii kosztowej, jak wygląda takie przygotowanie i gdzie zwykle pojawia się przestrzeń do obrony wyniku.\n\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię.\n\nZ poważaniem,\nTomasz Uściński\nHead of Sales | Profitia\ntomasz.uscinski@profitia.pl | +48 787 417 293",
+          "step_2_subject": "Re: Sezon lodowy i presja na marżę w Grycan",
+          "step_2_body": "Dzień dobry Pani Marto,\n\nwracam do tematu, bo przy sezonie, który odpowiada za większość rocznych przychodów, nawet niewielka różnica w cenie mleka czy śmietanki potrafi przełożyć się na zauważalny efekt w wyniku.\n\nW praktyce największym ryzykiem nie jest sam wzrost kosztu, tylko brak twardego punktu odniesienia w rozmowie z dostawcą. Jeśli po stronie zakupów nie ma szybkiej odpowiedzi na pytanie, co jest uzasadnioną podwyżką, a co tylko próbą poprawy warunków handlowych, firma oddaje część marży zanim jeszcze zacznie się realna dyskusja.\n\nDlatego w przygotowaniu negocjacyjnym tak ważne są trzy rzeczy: benchmark cenowy, sygnały z rynku surowców i scenariusz rozmowy oparty na faktach, a nie na deklaracjach dostawcy. To zwykle pozwala blokować znaczną część proponowanych podwyżek i lepiej chronić EBIT w okresie wzmożonego popytu.\n\nJeśli temat jest aktualny po Państwa stronie, chętnie pokażę, jak wygląda takie podejście na jednej kategorii surowcowej.\n\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię.\n\nZ poważaniem,\nTomasz Uściński\nHead of Sales | Profitia\ntomasz.uscinski@profitia.pl | +48 787 417 293",
+          "step_3_subject": "Krótko o sezonie Grycan",
+          "step_3_body": "Dzień dobry Pani Marto,\n\nzostawiam już tylko krótką wiadomość. Przy tak mocnym starcie sezonu lodowego kluczowe jest, żeby wzrost sprzedaży nie został zjedzony przez zbyt łatwe akceptowanie podwyżek surowców.\n\nJeśli warto, mogę pokazać, jak wygląda przygotowanie do jednej rozmowy z dostawcą tak, żeby lepiej bronić marży.\n\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę śmiało przesłać numer - oddzwonię.\n\nZ poważaniem,\nTomasz Uściński\nHead of Sales | Profitia\ntomasz.uscinski@profitia.pl | +48 787 417 293"
+        }
+      },
+      {
+        "full_name": "Monika",
+        "email": "monika.bartkowska@grycan.pl",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "apollo_person_id": "636e672cd87c6e0001c842f4",
+        "apollo_crm_contact_id": "69e9186f254318000d78266e",
+        "list_name": "PL Tier 1 do market_news VSC",
+        "stage": "News pipeline - drafted",
+        "status": "drafted_with_email",
+        "email_revealed": true
+      },
+      {
+        "full_name": "Justyna",
+        "email": "justyna.osinska@grycan.pl",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "apollo_person_id": "61dcdc10e8cf8a00015d3a83",
+        "apollo_crm_contact_id": "69e9192e5a464f0019025f4d",
+        "list_name": "PL Tier 3 do market_news VSC",
+        "stage": "News pipeline - drafted",
+        "status": "drafted_with_email",
+        "email_revealed": true
+      }
+    ]
+  },
+  "final_status": "READY_FOR_REVIEW",
+  "final_stage": "email_reveal",
+  "final_reason": "Email revealed for 2 contact(s) — content synced to Apollo",
+  "issues": [],
+  "apollo_list_check": {
+    "PL Tier 1 do market_news VSC": true,
+    "PL Tier 2 do market_news VSC": true,
+    "PL Tier 3 do market_news VSC": true
+  },
+  "completed_at": "2026-04-22T18:53:37.395986+00:00"
+}

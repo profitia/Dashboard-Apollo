@@ -1,0 +1,27 @@
+{
+  "contact_key": "anna_lewandowska_grupa handlowa maxpol sa",
+  "last_campaign_name": "CSVImport_T0_Gen_Gen_PL_W03_M04_R26_v1",
+  "last_campaign_sent_at": "2026-04-18T21:00:15.155344",
+  "last_campaign_type": "CSVImport",
+  "last_campaign_tier": "T0",
+  "last_campaign_segment": "Gen",
+  "last_campaign_angle": "Gen",
+  "last_apollo_sequence_name": "CSVImport_T0_Gen_Gen_PL_W03_M04_R26_v1",
+  "campaign_history": [
+    {
+      "campaign_name": "CSVImport_T0_Gen_Gen_PL_W03_M04_R26_v1",
+      "sent_at": "2026-04-18T21:00:15.155344",
+      "campaign_type": "CSVImport",
+      "tier": "T0",
+      "segment": "Gen",
+      "angle": "Gen",
+      "market": "PL",
+      "version": 1,
+      "apollo_sequence_name": "CSVImport_T0_Gen_Gen_PL_W03_M04_R26_v1",
+      "status": "assigned",
+      "apollo_sync_status": "",
+      "last_seen_at": "2026-04-18T21:23:25.378655",
+      "duplicate_prevented": true
+    }
+  ]
+}

@@ -4,6 +4,9 @@ CSV Normalizer — moduł normalizacji danych kontaktowych z importu CSV.
 
 Jawne mapowanie kolumn, rozdzielanie Name, inferencja płci,
 wyznaczanie wołacza polskiego. Logika deterministyczna (bez LLM).
+
+v2: Rozszerzony o rich_contact_profile — buduje pełny profil wiedzy o odbiorcy,
+nie tylko minimalny rekord mailingowy.
 """
 
 import json
@@ -18,6 +21,12 @@ if _SRC_DIR not in sys.path:
     sys.path.insert(0, _SRC_DIR)
 
 from core.polish_names import get_polish_name_data as _csv_lookup, resolve_polish_contact
+from core.rich_contact_profile import (
+    build_rich_profile,
+    flatten_to_normalized_contact,
+    build_llm_context,
+    save_or_merge_rich_profile,
+)
 
 
 # ============================================================
@@ -278,3 +287,74 @@ def normalize_contact(row: dict) -> dict:
 def normalize_contacts(rows: list[dict]) -> list[dict]:
     """Normalizuje listę rekordów CSV."""
     return [normalize_contact(row) for row in rows]
+
+
+# ============================================================
+# Rich profile normalization (v2)
+# ============================================================
+
+def normalize_contact_rich(row: dict, persist: bool = True) -> dict:
+    """
+    Normalizuje jeden rekord CSV do rozszerzonego profilu kontaktu.
+
+    1. Buduje rich_profile z pełnym zestawem pól (core_identity, org_context, urls, location, ...)
+    2. Rozwiązuje gender/vocative z polskiego źródła imion
+    3. Spłaszcza do backward-compatible formatu (z rich_profile jako nested field)
+    4. Opcjonalnie zapisuje/merguje do trwałego storage
+
+    Args:
+        row: surowy rekord CSV
+        persist: czy zapisać/zmergować profil do storage (domyślnie True)
+
+    Returns:
+        Backward-compatible normalized contact dict z dodatkowymi polami
+        i zagnieżdżonym rich_profile.
+    """
+    # 1. Build rich profile
+    rich = build_rich_profile(row)
+    first_name = rich["core_identity"].get("first_name") or ""
+
+    # 2. Gender / vocative
+    gender_data = {}
+    if first_name:
+        csv_data = _csv_lookup(first_name)
+        if csv_data:
+            gender_data["gender"] = csv_data["gender"]
+            gender_data["vocative"] = csv_data["vocative"]
+            gender_data["greeting"] = build_greeting(csv_data["gender"], csv_data["vocative"])
+        else:
+            gender_data["gender"] = "unknown"
+            gender_data["vocative"] = None
+            gender_data["greeting"] = build_greeting("unknown", None)
+            rich["normalization_warnings"].append(
+                f"Could not determine gender/vocative for '{first_name}'"
+            )
+    else:
+        gender_data["gender"] = "unknown"
+        gender_data["vocative"] = None
+        gender_data["greeting"] = build_greeting("unknown", None)
+
+    # 3. Flatten to backward-compatible format
+    normalized = flatten_to_normalized_contact(rich, gender_data)
+    # Preserve notes from the original normalize_contact output
+    mapped_notes = ""
+    for csv_col, value in row.items():
+        key = csv_col.strip().lower()
+        if key in ("notes", "note", "comment", "comments"):
+            mapped_notes = (value or "").strip()
+            break
+    normalized["notes"] = mapped_notes
+
+    # 4. Persist
+    if persist:
+        try:
+            save_or_merge_rich_profile(rich)
+        except Exception as exc:
+            rich["normalization_warnings"].append(f"Profile save failed: {exc}")
+
+    return normalized
+
+
+def normalize_contacts_rich(rows: list[dict], persist: bool = True) -> list[dict]:
+    """Normalizuje listę rekordów CSV do rozszerzonych profili."""
+    return [normalize_contact_rich(row, persist=persist) for row in rows]

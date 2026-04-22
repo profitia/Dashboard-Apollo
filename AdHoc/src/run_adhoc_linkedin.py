@@ -50,6 +50,34 @@ except ImportError:
     SIGNATURE_PLAIN = "\nPozdrawiam serdecznie,\nTomasz Uściński"
 
 try:
+    from core.icp_tier_resolver import resolve_tier, get_tier_prompt_context
+except ImportError:
+    def resolve_tier(title, context=""):
+        return {"tier": "tier_uncertain", "tier_label": "Tier nierozstrzygnięty",
+                "tier_reason": "icp_tier_resolver unavailable", "savings_accountability": "",
+                "messaging_angle": "", "auto_detected": True}
+    def get_tier_prompt_context(tier_id):
+        return ""
+
+try:
+    from core.campaign_name_builder import build_campaign_metadata
+    from core.contact_campaign_history import update_contact_campaign_history
+    from core.apollo_campaign_sync import build_apollo_sync_payload
+    from core.apollo_contact_enrichment import enrich_contact_name_fields, build_safe_greeting
+except ImportError:
+    build_campaign_metadata = None
+    update_contact_campaign_history = None
+    build_apollo_sync_payload = None
+    enrich_contact_name_fields = None
+    build_safe_greeting = None
+
+try:
+    from core.tier_alignment import tier_alignment_check
+except ImportError:
+    def tier_alignment_check(tier_info, email_bodies):
+        return {"pass": False, "comments": ["tier_alignment module unavailable"], "requires_review": True}
+
+try:
     from apollo_client import ApolloClient
 except ImportError:
     ApolloClient = None
@@ -96,16 +124,27 @@ def load_config(config_path: str) -> dict:
 # ── Load context files ─────────────────────────────────────────
 
 def load_context_files() -> dict:
-    """Load context/*.md files from project root."""
+    """Load context/*.md files + source_of_truth from project root."""
     ctx_dir = os.path.join(_PROJECT_ROOT, "context")
     files = {}
-    if not os.path.isdir(ctx_dir):
-        return files
-    for fname in sorted(os.listdir(ctx_dir)):
-        if fname.endswith(".md"):
-            fpath = os.path.join(ctx_dir, fname)
-            with open(fpath, "r", encoding="utf-8") as f:
-                files[fname] = f.read()
+    if os.path.isdir(ctx_dir):
+        for fname in sorted(os.listdir(ctx_dir)):
+            if fname.endswith(".md"):
+                fpath = os.path.join(ctx_dir, fname)
+                with open(fpath, "r", encoding="utf-8") as f:
+                    files[fname] = f.read()
+
+    # Dołącz icp_tiers.yaml i global_campaign_rules.md
+    sot_tiers = os.path.join(_PROJECT_ROOT, "source_of_truth", "icp_tiers.yaml")
+    if os.path.exists(sot_tiers):
+        with open(sot_tiers, "r", encoding="utf-8") as f:
+            files["icp_tiers.yaml"] = f.read()
+
+    rules_path = os.path.join(_PROJECT_ROOT, "src", "config", "global_campaign_rules.md")
+    if os.path.exists(rules_path):
+        with open(rules_path, "r", encoding="utf-8") as f:
+            files["global_campaign_rules.md"] = f.read()
+
     return files
 
 
@@ -278,9 +317,19 @@ def generate_email_sequence(
     """Generate 3-email sequence via LLM."""
     prompt_path = os.path.join(_ADHOC_ROOT, "prompts", "adhoc_email_writer.md")
 
+    # ICP Tier detection
+    contact_title = contact.get("apollo_title") or contact.get("known_title", "")
+    tier_info = resolve_tier(contact_title)
+
+    # Wzbogać kontekst o aktywny tier
+    enriched_context = dict(context_files) if context_files else {}
+    tier_prompt = get_tier_prompt_context(tier_info["tier"])
+    if tier_prompt:
+        enriched_context["__icp_tier_active"] = tier_prompt
+
     payload = {
         "contact_name": contact["name"],
-        "contact_title": contact.get("apollo_title") or contact.get("known_title", ""),
+        "contact_title": contact_title,
         "company": contact.get("apollo_company") or contact.get("company", ""),
         "recipient_gender": polish["recipient_gender"],
         "first_name_vocative": polish["first_name_vocative"],
@@ -294,17 +343,24 @@ def generate_email_sequence(
         "hypothesis": contact.get("negotiation_intelligence_angle", ""),
         "suggested_framework": "Cost/Trend/Dostawca/Decyzja",
         "industry_fit": contact.get("industry_fit", ""),
+        "icp_tier": tier_info["tier"],
+        "tier_label": tier_info["tier_label"],
+        "savings_accountability": tier_info["savings_accountability"],
+        "messaging_angle": tier_info["messaging_angle"],
     }
 
     result = generate_json(
         agent_name="AdHocEmailWriter",
         prompt_path=prompt_path,
         user_payload=payload,
-        context_files=context_files,
-        relevant_context_keys=["00_master", "01_offer", "03_messaging", "05_quality"],
+        context_files=enriched_context,
+        relevant_context_keys=["00_master", "01_offer", "03_messaging", "05_quality", "icp_tiers", "__icp_tier_active"],
         max_tokens=3000,
         temperature=0.5,
     )
+
+    if result:
+        result["icp_tier"] = tier_info
 
     return result
 
@@ -356,7 +412,8 @@ def write_csv_output(records: list, path: str):
         "post_url", "panel_title", "contact_name", "contact_title", "company",
         "industry_fit", "icp_fit_reason", "apollo_email", "apollo_linkedin_url",
         "data_confidence", "personalization_memo", "email_1_subject", "email_1_body",
-        "email_2_subject", "email_2_body", "email_3_subject", "email_3_body", "status",
+        "email_2_subject", "email_2_body", "email_3_subject", "email_3_body",
+        "tier", "tier_label", "tier_alignment_pass", "status",
     ]
 
     with open(path, "w", encoding="utf-8", newline="") as f:
@@ -381,6 +438,9 @@ def write_csv_output(records: list, path: str):
                 "email_2_body": r.get("email_2_body", ""),
                 "email_3_subject": r.get("email_3_subject", ""),
                 "email_3_body": r.get("email_3_body", ""),
+                "tier": r.get("icp_tier", {}).get("tier", ""),
+                "tier_label": r.get("icp_tier", {}).get("tier_label", ""),
+                "tier_alignment_pass": str(r.get("tier_alignment", {}).get("pass", "")),
                 "status": r.get("status", ""),
             }
             writer.writerow(row)
@@ -473,7 +533,23 @@ def run_pipeline(config: dict):
 
     # Create output directory
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    output_dir = os.path.join(_ADHOC_ROOT, "outputs", f"{timestamp}_{campaign_name}")
+
+    # Campaign naming
+    _campaign_metadata = None
+    _apollo_sync = None
+    if build_campaign_metadata is not None:
+        _campaign_metadata = build_campaign_metadata(
+            config=config,
+            flow_name="run_adhoc_linkedin",
+            trigger="linkedin_post",
+        )
+        auto_name = _campaign_metadata["campaign_name"]
+        print(f"  campaign_name: {auto_name}")
+        if build_apollo_sync_payload is not None:
+            _apollo_sync = build_apollo_sync_payload(_campaign_metadata)
+        output_dir = os.path.join(_ADHOC_ROOT, "outputs", f"{timestamp}_{auto_name}")
+    else:
+        output_dir = os.path.join(_ADHOC_ROOT, "outputs", f"{timestamp}_{campaign_name}")
     os.makedirs(output_dir, exist_ok=True)
 
     # Load data
@@ -542,6 +618,17 @@ def run_pipeline(config: dict):
         # Merge data
         record = {**cand, **apollo_data, **polish}
         record["personalization_memo"] = build_personalization_memo(cand, polish)
+
+        # Name enrichment (deterministyczny, z source of truth)
+        if enrich_contact_name_fields is not None:
+            enrichment_contact = {
+                "first_name": polish["first_name"],
+                "apollo_contact_id": apollo_data.get("apollo_id"),
+            }
+            record["name_enrichment"] = enrich_contact_name_fields(
+                enrichment_contact, write_to_apollo=False,
+            )
+
         results.append(record)
 
     # Filter: skip email generation for no-email contacts
@@ -574,14 +661,40 @@ def run_pipeline(config: dict):
             record["email_3_subject"] = emails.get("email_3_subject", "")
             record["email_3_body"] = emails.get("email_3_body", "")
             record["_llm_model_used"] = emails.get("_llm_model_used", "")
-            record["status"] = "ready_for_review"
-            print(f"    ✓ Emails generated (model: {record['_llm_model_used']})")
+            record["icp_tier"] = emails.get("icp_tier", {})
+
+            # Lightweight tier alignment check
+            bodies = [record.get(f"email_{i}_body", "") for i in range(1, 4)]
+            alignment = tier_alignment_check(record["icp_tier"], bodies)
+            record["tier_alignment"] = alignment
+            if alignment.get("requires_review"):
+                record["status"] = "requires_review"
+            else:
+                record["status"] = "ready_for_review"
+
+            tier_tag = record["icp_tier"].get("tier_label", "?")
+            align_tag = "PASS" if alignment.get("pass") else "REVIEW"
+            print(f"    ✓ Emails generated (model: {record['_llm_model_used']}, tier: {tier_tag}, alignment: {align_tag})")
         else:
             record["status"] = "insufficient_personalization"
             print(f"    ✗ LLM failed — insufficient_personalization")
 
     # Write outputs
     print(f"\n[6/7] Writing outputs to {output_dir}/...")
+
+    # Campaign metadata
+    if _campaign_metadata:
+        meta_path = os.path.join(output_dir, "campaign_metadata.json")
+        write_json_output({"campaign_metadata": _campaign_metadata, "apollo_sync": _apollo_sync}, meta_path)
+
+    # Contact campaign history
+    if _campaign_metadata and update_contact_campaign_history:
+        for r in results:
+            contact = {"first_name": r.get("name", "").split()[0] if r.get("name") else "",
+                       "last_name": " ".join(r.get("name", "").split()[1:]) if r.get("name") else "",
+                       "company": r.get("apollo_company", r.get("company", "")),
+                       "email": r.get("apollo_email", "")}
+            update_contact_campaign_history(contact, _campaign_metadata, _apollo_sync)
 
     # Full results JSON
     write_json_output(results, os.path.join(output_dir, "campaign_results.json"))

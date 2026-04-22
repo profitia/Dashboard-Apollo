@@ -1,0 +1,153 @@
+{
+  "core_identity": {
+    "first_name": "Jedrzej",
+    "last_name": "Jeziorowski",
+    "full_name": "Jedrzej Jeziorowski",
+    "email": "jedrzej.jeziorowski@elis.com",
+    "job_title": "CEE Procurement Director",
+    "seniority": "Director"
+  },
+  "org_context": {
+    "company_name": "Elis Textile Service Sp. z o.o. - wynajem i serwis odzieży roboczej, mat i urządzeń higienicznych",
+    "departments": "Finance",
+    "sub_departments": "Sourcing / Procurement",
+    "industry": "facilities services",
+    "keywords_raw": "wynajem odziezy i akcesoriow do stref cleanroom, cleanroom, wynajem odziezy roboczej, reczniki kuchenne, wynajem urzadzen higienicznych, scierki, wynajem odziezy ochronnej, maty wejsciowe, odziez robocza, mopy podlogowe, lampy owadobojcze, aromatyzacja pomieszczen, wynajem mopow, maty logo, dozowniki mydla, czysciwo przemyslowe, ochrona strefy produkcji, dozowniki papieru, dezynfekcja, buty robocze, wynajem mat podlogowych, ochrona pracownikow, urzadzenia skanujace, odziez ochronna, maty podlogowe",
+    "keywords_list": [
+      "wynajem odziezy i akcesoriow do stref cleanroom",
+      "cleanroom",
+      "wynajem odziezy roboczej",
+      "reczniki kuchenne",
+      "wynajem urzadzen higienicznych",
+      "scierki",
+      "wynajem odziezy ochronnej",
+      "maty wejsciowe",
+      "odziez robocza",
+      "mopy podlogowe",
+      "lampy owadobojcze",
+      "aromatyzacja pomieszczen",
+      "wynajem mopow",
+      "maty logo",
+      "dozowniki mydla",
+      "czysciwo przemyslowe",
+      "ochrona strefy produkcji",
+      "dozowniki papieru",
+      "dezynfekcja",
+      "buty robocze",
+      "wynajem mat podlogowych",
+      "ochrona pracownikow",
+      "urzadzenia skanujace",
+      "odziez ochronna",
+      "maty podlogowe"
+    ],
+    "keywords_normalized": [
+      "wynajem odziezy i akcesoriow do stref cleanroom",
+      "cleanroom",
+      "wynajem odziezy roboczej",
+      "reczniki kuchenne",
+      "wynajem urzadzen higienicznych",
+      "scierki",
+      "wynajem odziezy ochronnej",
+      "maty wejsciowe",
+      "odziez robocza",
+      "mopy podlogowe",
+      "lampy owadobojcze",
+      "aromatyzacja pomieszczen",
+      "wynajem mopow",
+      "maty logo",
+      "dozowniki mydla",
+      "czysciwo przemyslowe",
+      "ochrona strefy produkcji",
+      "dozowniki papieru",
+      "dezynfekcja",
+      "buty robocze",
+      "wynajem mat podlogowych",
+      "ochrona pracownikow",
+      "urzadzenia skanujace",
+      "odziez ochronna",
+      "maty podlogowe"
+    ]
+  },
+  "urls": {
+    "person_linkedin_url": "http://www.linkedin.com/in/jedrzej-jeziorowski",
+    "website": "https://elis.com",
+    "company_domain": null,
+    "company_linkedin_url": "http://www.linkedin.com/company/elis-polska-poland",
+    "facebook_url": null,
+    "twitter_url": null
+  },
+  "location": {
+    "city": "Gdynia",
+    "state": "Pomeranian Voivodeship",
+    "country": "POLAND",
+    "company_address": "1 ulica Dunska, Zukowo, Pomeranian Voivodeship, Poland, 83-330",
+    "company_city": "Zukowo",
+    "company_state": "Pomeranian Voivodeship",
+    "company_country": "POLAND"
+  },
+  "company_metadata": {
+    "company_phone": null,
+    "employees_count": null,
+    "annual_revenue": null,
+    "company_description": null
+  },
+  "raw_input_metadata": {
+    "original_row": {
+      "First Name": "Jedrzej",
+      "Last Name": "Jeziorowski",
+      "Title": "CEE Procurement Director",
+      "Company Name": "Elis Textile Service Sp. z o.o. - wynajem i serwis odzieży roboczej, mat i urządzeń higienicznych",
+      "Email": "jedrzej.jeziorowski@elis.com",
+      "Seniority": "Director",
+      "Departments": "Finance",
+      "Sub Departments": "Sourcing / Procurement",
+      "Industry": "facilities services",
+      "Keywords": "wynajem odziezy i akcesoriow do stref cleanroom, cleanroom, wynajem odziezy roboczej, reczniki kuchenne, wynajem urzadzen higienicznych, scierki, wynajem odziezy ochronnej, maty wejsciowe, odziez robocza, mopy podlogowe, lampy owadobojcze, aromatyzacja pomieszczen, wynajem mopow, maty logo, dozowniki mydla, czysciwo przemyslowe, ochrona strefy produkcji, dozowniki papieru, dezynfekcja, buty robocze, wynajem mat podlogowych, ochrona pracownikow, urzadzenia skanujace, odziez ochronna, maty podlogowe",
+      "Person Linkedin Url": "http://www.linkedin.com/in/jedrzej-jeziorowski",
+      "Website": "https://elis.com",
+      "Company Linkedin Url": "http://www.linkedin.com/company/elis-polska-poland",
+      "City": "Gdynia",
+      "State": "Pomeranian Voivodeship",
+      "Country": "Poland",
+      "Company Address": "1 ulica Dunska, Zukowo, Pomeranian Voivodeship, Poland, 83-330",
+      "Company City": "Zukowo",
+      "Company State": "Pomeranian Voivodeship",
+      "Company Country": "Poland"
+    },
+    "unmapped_fields": {},
+    "imported_at": "2026-04-21T06:56:05.038158",
+    "import_history": [
+      {
+        "imported_at": "2026-04-21T07:02:12.841094",
+        "original_row": {
+          "First Name": "Jedrzej",
+          "Last Name": "Jeziorowski",
+          "Title": "CEE Procurement Director",
+          "Company Name": "Elis Textile Service Sp. z o.o. - wynajem i serwis odzieży roboczej, mat i urządzeń higienicznych",
+          "Email": "jedrzej.jeziorowski@elis.com",
+          "Seniority": "Director",
+          "Departments": "Finance",
+          "Sub Departments": "Sourcing / Procurement",
+          "Industry": "facilities services",
+          "Keywords": "wynajem odziezy i akcesoriow do stref cleanroom, cleanroom, wynajem odziezy roboczej, reczniki kuchenne, wynajem urzadzen higienicznych, scierki, wynajem odziezy ochronnej, maty wejsciowe, odziez robocza, mopy podlogowe, lampy owadobojcze, aromatyzacja pomieszczen, wynajem mopow, maty logo, dozowniki mydla, czysciwo przemyslowe, ochrona strefy produkcji, dozowniki papieru, dezynfekcja, buty robocze, wynajem mat podlogowych, ochrona pracownikow, urzadzenia skanujace, odziez ochronna, maty podlogowe",
+          "Person Linkedin Url": "http://www.linkedin.com/in/jedrzej-jeziorowski",
+          "Website": "https://elis.com",
+          "Company Linkedin Url": "http://www.linkedin.com/company/elis-polska-poland",
+          "City": "Gdynia",
+          "State": "Pomeranian Voivodeship",
+          "Country": "Poland",
+          "Company Address": "1 ulica Dunska, Zukowo, Pomeranian Voivodeship, Poland, 83-330",
+          "Company City": "Zukowo",
+          "Company State": "Pomeranian Voivodeship",
+          "Company Country": "Poland"
+        },
+        "unmapped_fields": {}
+      }
+    ]
+  },
+  "normalization_warnings": [],
+  "_storage_meta": {
+    "contact_key": "jedrzej.jeziorowski@elis.com",
+    "last_saved_at": "2026-04-21T07:02:12.841320"
+  }
+}

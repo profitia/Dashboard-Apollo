@@ -6,7 +6,7 @@ then save as v3 (Outlook-ready) DOCX files.
 Pipeline:
 1. Load 10 no-email contacts from campaign_results.json
 2. Fix vocative forms (campaign_results.json has base forms, not vocative)
-3. Call LLM (gpt-4.1-mini) with adhoc_email_writer.md prompt + context
+3. Call LLM (centralny llm_router → OPENAI_PRIMARY_MODEL) with adhoc_email_writer.md prompt + context
 4. Apply global rules (em dash → hyphen, CTA gender-aware, role phrasing)
 5. Generate v3 DOCX files (Outlook-ready format)
 """

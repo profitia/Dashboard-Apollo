@@ -1,0 +1,91 @@
+{
+  "contact_key": "tomasz.uscinski@profitia.pl",
+  "contact_email": "tomasz.uscinski@profitia.pl",
+  "contact_name": "Monika Sitkowska",
+  "contact_title": "Senior Director Purchasing",
+  "company_name": "ALDI Polska",
+  "apollo_contact_id": null,
+  "current_status": "completed_sequence",
+  "outreach_history": [
+    {
+      "campaign_name": "Monika_Sitkowska_campaign_v3",
+      "campaign_type": "outbound",
+      "apollo_sequence_name": "TEST_MONIKA_SITKOWSKA_V3_LIVE_SEND",
+      "apollo_sequence_id": "69e5073a87a6e9000d33b668",
+      "mailbox_used": "t.uscinski@profitia.pl",
+      "sent_at": "2026-04-19T21:23:09.532350",
+      "sent_date": "2026-04-19",
+      "steps": [
+        {
+          "step_number": 1,
+          "step_type": "initial",
+          "subject": "Pytanie o podwyżki dostawców FMCG - ALDI Polska",
+          "body": "Dzień dobry Pani Moniko,\n\nw modelu dyskontowym - gdzie niska cena na półce jest fundamentem, a private label stanowi rdzeń oferty - domyślam się, że weryfikacja podwyżek od dostawców FMCG to dziś jeden z ważniejszych tematów. Szczególnie gdy uzasadnienia opierają się na surowcach, opakowaniach czy logistyce, a każda zaakceptowana podwyżka wpływa na pozycję cenową wobec Lidla czy Biedronki.\n\nNazywam się Tomasz Uściński, jestem z polskiej firmy Profitia, w której od 15 lat pomagamy dyrektorom zakupów w sieciach handlowych szybciej oddzielać podwyżki realnie wynikające ze zmian kosztowych od tych, z którymi warto wrócić do rozmowy.\n\nJeśli to dla Pani aktualny temat, proszę wybrać termin tutaj: [link do Calendly] - albo odpisać \"TAK\" i podać numer telefonu.",
+          "body_html": ""
+        },
+        {
+          "step_number": 2,
+          "step_type": "follow_up",
+          "subject": "RE: Pytanie o podwyżki dostawców FMCG - ALDI Polska",
+          "body": "Dzień dobry Pani Moniko,\n\nw kontekście private label najtrudniejsze bywa nie samo odrzucenie podwyżki, ale zbudowanie spójnej logiki oceny - żeby cały zespół weryfikował argumenty dostawców w podobny sposób.",
+          "body_html": ""
+        },
+        {
+          "step_number": 3,
+          "step_type": "follow_up",
+          "subject": "RE: Pytanie o podwyżki dostawców FMCG - ALDI Polska",
+          "body": "Dzień dobry Pani Moniko,\n\nz naszych obserwacji wynika, że w sieciach handlowych kluczowy moment pojawia się, gdy zarząd pyta: \"ile podwyżek udało się ograniczyć i gdzie jest jeszcze przestrzeń?\"",
+          "body_html": ""
+        }
+      ],
+      "steps_count": 3,
+      "metadata": {
+        "tier": "tier_1",
+        "segment": "Retail / Discount",
+        "continuation_test": true
+      },
+      "angle_data": {
+        "primary_angle_id": "supplier_price_increases",
+        "primary_angle_label": "podwyżki dostawców",
+        "secondary_angle_ids": [
+          "private_label",
+          "edlp_margin_protection"
+        ],
+        "secondary_angle_labels": [
+          "private label",
+          "ochrona marży EDLP"
+        ]
+      },
+      "last_seen_at": "2026-04-19T21:40:28.941127"
+    }
+  ],
+  "angle_history": [
+    {
+      "campaign_name": "Monika_Sitkowska_campaign_v3",
+      "sent_date": "2026-04-19",
+      "primary_angle_id": "supplier_price_increases",
+      "primary_angle_label": "podwyżki dostawców",
+      "secondary_angle_ids": [
+        "private_label",
+        "edlp_margin_protection"
+      ],
+      "secondary_angle_labels": [
+        "private label",
+        "ochrona marży EDLP"
+      ]
+    }
+  ],
+  "engagement_snapshot": {
+    "total_opens": 3,
+    "unique_opens": 3,
+    "last_open_at": "2026-04-15T21:40:28.941717",
+    "total_replies": 0,
+    "last_reply_at": null,
+    "replied": false,
+    "bounced": false,
+    "unsubscribed": false,
+    "last_checked_at": "2026-04-19T21:40:28.941869"
+  },
+  "created_at": "2026-04-19T21:23:09.532338",
+  "updated_at": "2026-04-19T21:40:28.942227"
+}
