@@ -1,0 +1,307 @@
+{
+  "pilot_run_at": "2026-04-23T11:35:58.084201+00:00",
+  "dry_run": false,
+  "campaign_id": "spendguru_market_news",
+  "company_under_test": "Colian",
+  "article": {
+    "url": "https://www.portalspozywczy.pl/slodycze-przekaski/wiadomosci/colian-chce-wejsc-do-top-10-w-europie-kolanski-o-eksporcie-i-przejeciach-na-eec-2026,287905.html",
+    "title": "Colian chce wejść do top 10 w Europie. Kolański o eksporcie i przejęciach na EEC 2026",
+    "published_at": "2026-04-23",
+    "source": "fixture (portalspozywczy.pl — cookie wall)"
+  },
+  "qualification": {
+    "qualified": false,
+    "total_score": 68.0,
+    "industry_score": 9.0,
+    "purchase_signal_score": 35.0,
+    "disqualification_reason": "Industry score too low: 9.0 (min 12). Matched groups: ['food_production', 'manufacturing', 'plastics']",
+    "matched_industry_groups": [
+      "food_production",
+      "manufacturing",
+      "plastics"
+    ],
+    "matched_purchase_groups": [
+      "cost_pressure",
+      "expansion"
+    ],
+    "explanation": "[Industry/food_production]: producent słodyczy; [Industry/manufacturing]: producent; [Industry/plastics]: PE; [Signal/cost_pressure]: koszty produkcji, presja kosztowa, ceny surowców, wzrost cen; [Signal/expansion]: eksport, przejęcie, fuzja, akwizycja, strategia wzrostu; [Amplifiers]: fuzja, optymalizacja kosztów; [Age]: 0 days",
+    "note": "Override: fixture forced as qualified for pilot"
+  },
+  "entity_extraction": {
+    "extracted_name": "Colian",
+    "source_name": "Colian",
+    "canonical_name": "Colian",
+    "name_normalized": "colian",
+    "company_type": "producer",
+    "campaign_eligible": true,
+    "eligibility_reason": "Colian to producent słodyczy i FMCG, czyli dokładnie profil odbiorcy SpendGuru. Artykuł pokazuje presję kosztową, aktywne zakupy surowców oraz potrzebę optymalizacji łańcucha dostaw i kosztów produkcji.",
+    "confidence": 0.98,
+    "related_companies": [
+      "Grupa Colian"
+    ]
+  },
+  "company_resolution": {
+    "status": "skipped",
+    "reason": "use_company_resolution=false in campaign_config",
+    "resolved_name_used": "Colian",
+    "domain_hint": "colian.pl",
+    "note": "Alias dict contains 'Colian' entry with colian.pl domain. Direct Apollo search."
+  },
+  "contact_search": {
+    "total_contacts_found": 10,
+    "strategy_used": "name_only",
+    "winning_strategy": "none",
+    "name_search_count": 10,
+    "name_search_email_count": 0,
+    "domain_fallback_triggered": true,
+    "domain_searched": "colian.pl",
+    "domain_search_email_count": 0,
+    "assoc_fallback_triggered": true,
+    "assoc_fallback_company": null,
+    "search_log": [
+      "[1] name_search: 'Colian' → 10 contacts, 0 with email",
+      "[2] domain_fallback: 'colian.pl' → 10 contacts, 0 with email",
+      "[3] assoc_fallback: 'Grupa Colian' → 0 contacts, 0 with email",
+      "[RESULT] All strategies failed — 0 contacts with email"
+    ],
+    "all_contacts": [
+      {
+        "full_name": "Sandra",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "665468a8a82dfe00015e5874"
+      },
+      {
+        "full_name": "Radu",
+        "job_title": "Country Manager Romania & Rep. of Moldova",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Country Manager Romania & Rep. of Moldova'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54a13b4069702d1fe5415301"
+      },
+      {
+        "full_name": "Jacek",
+        "job_title": "Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6125f6ea28cabc000193de8f"
+      },
+      {
+        "full_name": "Krzysztof",
+        "job_title": "National Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'National Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6235d7ab4595940001e45daa"
+      },
+      {
+        "full_name": "Tomasz",
+        "job_title": "Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "55dd79b2f3e5bb29a4002edc"
+      },
+      {
+        "full_name": "Simon",
+        "job_title": "Senior National Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Senior National Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54c1e2a7746869163910a456"
+      },
+      {
+        "full_name": "Magda",
+        "job_title": "Marketing Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Marketing Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54a3b38e7468693b8cb6e00b"
+      },
+      {
+        "full_name": "Zbigniew",
+        "job_title": "Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "57da26eea6da985b270ab787"
+      },
+      {
+        "full_name": "Wioleta",
+        "job_title": "Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "602accc02912c40001c3144e"
+      },
+      {
+        "full_name": "Artur",
+        "job_title": "Senior Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Senior Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54a477877468692abf217049"
+      }
+    ]
+  },
+  "recipient_selection": {
+    "pilot_max_contacts": 3,
+    "selected_count": 0,
+    "excluded_count": 10,
+    "tier_1_selected": 0,
+    "tier_2_selected": 0,
+    "selected": [],
+    "excluded": [
+      {
+        "full_name": "Sandra",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "665468a8a82dfe00015e5874"
+      },
+      {
+        "full_name": "Radu",
+        "job_title": "Country Manager Romania & Rep. of Moldova",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Country Manager Romania & Rep. of Moldova'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54a13b4069702d1fe5415301"
+      },
+      {
+        "full_name": "Jacek",
+        "job_title": "Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6125f6ea28cabc000193de8f"
+      },
+      {
+        "full_name": "Krzysztof",
+        "job_title": "National Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'National Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6235d7ab4595940001e45daa"
+      },
+      {
+        "full_name": "Tomasz",
+        "job_title": "Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "55dd79b2f3e5bb29a4002edc"
+      },
+      {
+        "full_name": "Simon",
+        "job_title": "Senior National Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Senior National Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54c1e2a7746869163910a456"
+      },
+      {
+        "full_name": "Magda",
+        "job_title": "Marketing Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Marketing Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54a3b38e7468693b8cb6e00b"
+      },
+      {
+        "full_name": "Zbigniew",
+        "job_title": "Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "57da26eea6da985b270ab787"
+      },
+      {
+        "full_name": "Wioleta",
+        "job_title": "Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "602accc02912c40001c3144e"
+      },
+      {
+        "full_name": "Artur",
+        "job_title": "Senior Key Account Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Senior Key Account Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54a477877468692abf217049"
+      }
+    ]
+  },
+  "message_generation": {},
+  "apollo_flow": {},
+  "notification": {},
+  "final_status": "BLOCKED_NO_CONTACT",
+  "final_stage": "recipient_selection",
+  "final_reason": "No Tier 1 or Tier 2 contacts found for Colian in Apollo",
+  "errors": []
+}

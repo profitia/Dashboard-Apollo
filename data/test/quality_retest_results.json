@@ -1,0 +1,869 @@
+[
+  {
+    "label": "ORLEN",
+    "company": "ORLEN S.A.",
+    "article_title": "ORLEN testuje regranulat PP do opakowań spożywczych",
+    "article_source": "tworzywa.online",
+    "article_date": "2026-01-30",
+    "total_candidates": 7,
+    "selected_count": 4,
+    "excluded_count": 3,
+    "selected_contacts": [
+      {
+        "full_name": "Ireneusz Fąfara",
+        "job_title": "Prezes Zarządu, CEO",
+        "tier": "tier_1_c_level"
+      },
+      {
+        "full_name": "Michał Róg",
+        "job_title": "CFO",
+        "tier": "tier_1_c_level"
+      },
+      {
+        "full_name": "Anna Kowalska",
+        "job_title": "Head of Procurement",
+        "tier": "tier_2_procurement_management"
+      },
+      {
+        "full_name": "Marek Nowak",
+        "job_title": "Dyrektor Zakupów",
+        "tier": "tier_2_procurement_management"
+      }
+    ],
+    "excluded_contacts": [
+      {
+        "full_name": "Piotr Wiśniewski",
+        "job_title": "Senior Buyer",
+        "tier": "tier_3_buyers_operational"
+      },
+      {
+        "full_name": "Kamil Zając",
+        "job_title": "Construction Manager",
+        "tier": "tier_uncertain"
+      },
+      {
+        "full_name": "Jacek Lewandowski",
+        "job_title": "Operations Director",
+        "tier": "tier_uncertain"
+      }
+    ],
+    "tier_audit": [
+      {
+        "full_name": "Ireneusz Fąfara",
+        "raw_title": "Prezes Zarządu, CEO",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "tier_reason": "Title match: 'prezes zarządu'",
+        "expected": "T1",
+        "tier_match": true
+      },
+      {
+        "full_name": "Michał Róg",
+        "raw_title": "CFO",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "tier_reason": "Title match: 'CFO'",
+        "expected": "T1",
+        "tier_match": true
+      },
+      {
+        "full_name": "Anna Kowalska",
+        "raw_title": "Head of Procurement",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "tier_reason": "Title match: 'head of procurement'",
+        "expected": "T2",
+        "tier_match": true
+      },
+      {
+        "full_name": "Marek Nowak",
+        "raw_title": "Dyrektor Zakupów",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "tier_reason": "Title match: 'dyrektor zakupów'",
+        "expected": "T2",
+        "tier_match": true
+      },
+      {
+        "full_name": "Piotr Wiśniewski",
+        "raw_title": "Senior Buyer",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'buyer'",
+        "expected": "T3_EXCLUDED",
+        "tier_match": true
+      },
+      {
+        "full_name": "Kamil Zając",
+        "raw_title": "Construction Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Construction Manager'",
+        "expected": "UNCERTAIN_EXCLUDED",
+        "tier_match": true
+      },
+      {
+        "full_name": "Jacek Lewandowski",
+        "raw_title": "Operations Director",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Operations Director'",
+        "expected": "UNCERTAIN_NOT_T2",
+        "tier_match": true
+      }
+    ],
+    "message_packs": [
+      {
+        "full_name": "Ireneusz Fąfara",
+        "job_title": "Prezes Zarządu, CEO",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "email": "(no email yet)",
+        "email_source": "unknown",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "ORLEN: regranulat a presja na marżę",
+          "body": "Po lekturze publikacji „ORLEN testuje regranulat PP do opakowań spożywczych” w tworzywa.online pomyślałem, że temat może być istotny dla Pana jako Prezesa Zarządu ORLEN, bo dotyczy zmiany struktury zakupów surowców.\n\nZ artykułu wynika, że ORLEN testuje przemysłowo regranulat PP do opakowań do kontaktu z żywnością i jednocześnie planuje zwiększać moce przerobowe regranulatu PP oraz PET do 2027 roku. To oznacza przejście z bardziej przewidywalnego rynku pierwotnego na kategorię, w której ceny i baza dostawców będą trudniejsze do obrony w negocjacjach.\n\nW Pana roli jako CEO taki ruch ma bezpośrednie znaczenie dla marży i przewidywalności EBIT, bo przy nowych surowcach różnica między dobrze przygotowanym a słabym negocjacyjnie zakupem szybko zamienia się w wynik roczny. Nazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży przemysłowej ograniczać koszty związane z zakupami.\n\nJeśli temat jest dla Pana interesujący, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 162,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "ORLEN - koszt regranulatu i EBIT",
+          "body": "Wracam do tematu z artykułu o testach regranulatu PP w ORLEN, bo przy przejściu na surowiec z recyklingu sama dostępność materiału to dopiero początek.\n\nKluczowe stają się benchmarki cenowe, argumenty jakościowe i sposób obrony warunków wobec dostawców, którzy przy nowych wymaganiach potrafią szybciej podnosić stawki niż rynek pierwotny. Właśnie tam przygotowanie negocjacyjne najczęściej decyduje o tym, czy koszt zostaje pod kontrolą, czy uderza w EBIT.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 89,
+          "word_count_ok": true
+        },
+        "follow_up_2": {
+          "subject": "Krótko o ORLEN i kosztach",
+          "body": "Doprecyzuję tylko jedną rzecz z artykułu o regranulacie PP w ORLEN: przy wejściu w nowe surowce przewagę daje nie sam zakup, ale przygotowanie do rozmowy z dostawcą.\n\nJeśli chciałby Pan sprawdzić to podejście na konkretnej kategorii, proszę wybrać termin spotkania:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 52,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "ORLEN testuje przemysłowo regranulat PP do opakowań spożywczych i planuje zwiększyć moce przerobowe regranulatu PP oraz PET do 2027 roku.",
+          "hypothesis": "Zmiana z pierwotnego PP na regranulat oznacza nową strukturę dostawców i trudniejsze do przewidzenia ceny, co może zwiększać presję na marżę i EBIT, jeśli negocjacje nie będą oparte na benchmarkach i przygotowaniu.",
+          "bridge": "Trigger pokazuje wejście w kategorię surowca o bardziej złożonej strukturze cenowej i dostawców. Dla CEO oznacza to ryzyko wahań kosztów zakupowych, więc bridge prowadzi przez wpływ na marżę, przewidywalność wyników i siłę obrony podwyżek.",
+          "cta_rationale": "Wybrano krótką rozmowę online o jednej kategorii kosztowej, bo dla C-Level najlepiej działa konkret, niski próg wejścia i odniesienie do wyniku, nie do operacji. Alternatywa telefoniczna obniża opór i utrzymuje elegancki, nieinwazyjny ton.",
+          "tier_alignment": "Treść jest osadzona w perspektywie zarządu: marża, EBIT, przewidywalność kosztów i kontrola ryzyka. Nie wchodzi w detale operacyjne, tylko pokazuje wpływ zmian surowcowych na wynik finansowy i standard decyzji zakupowych."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Po lekturze publikacji „ORLEN testuje regranulat PP do opakowań spożywczych” w tworzywa.online pomyślałem, że temat może być istotny dla Pana jako Pre",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      },
+      {
+        "full_name": "Michał Róg",
+        "job_title": "CFO",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "email": "(no email yet)",
+        "email_source": "unknown",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "ORLEN i presja na marżę",
+          "body": "Kontaktuję się po artykule „ORLEN testuje regranulat PP do opakowań spożywczych” w tworzywa.online - bo czytając go, miałem od razu hipotezę o tym, jak ta sytuacja przekłada się na ORLEN i Pana rolę jako CFO.\n\nJeśli ORLEN testuje regranulat PP do opakowań spożywczych, to oznacza to zmianę nie tylko w surowcu, ale też w strukturze dostawców i w sposobie uzasadniania cen. W praktyce przejście z pierwotnego PP na regranulat zwykle oznacza większą zmienność warunków handlowych i trudniejsze porównanie ofert.\n\nW Pana roli jako CFO to bezpośrednio wpływa na marżę i przewidywalność wyniku, bo przy nowych kategoriach zakupowych łatwo zaakceptować podwyżki, których nie da się dobrze obronić benchmarkiem. Nazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży przemysłowej ograniczać koszty związane z zakupami.\n\nJeśli temat jest dla Pana interesujący, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 156,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "ORLEN - koszt regranulatu a EBIT",
+          "body": "Po testach regranulatu PP w opakowaniach spożywczych pojawia się jeszcze jeden praktyczny efekt: przy przejściu na surowiec z recyklingu rośnie znaczenie benchmarku, bo rynek nie zawsze daje prosty punkt odniesienia do negocjacji. To zwykle otwiera przestrzeń do lepszego przygotowania argumentacji przed rozmową z dostawcami.\n\nWłaśnie w takich momentach firmy najczęściej blokują część proponowanych podwyżek i chronią EBIT. Jeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 81,
+          "word_count_ok": true
+        },
+        "follow_up_2": {
+          "subject": "Krótko o ORLEN i kosztach",
+          "body": "Wracam jeszcze do testów regranulatu PP w ORLEN, bo to dokładnie ten moment, w którym zmieniają się warunki zakupowe i rośnie ryzyko nieuzasadnionych podwyżek.\n\nJeśli chciałby Pan sprawdzić, jak przełożyć to na lepszą obronę marży, proszę wybrać termin:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 50,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "ORLEN prowadzi testy przemysłowe regranulatu polipropylenowego (PP) do opakowań spożywczych we współpracy z firmami recyklingu.",
+          "hypothesis": "Zmiana z pierwotnego PP na regranulat PP oznacza nową strukturę dostawców i cen, co może zwiększyć presję na marżę oraz utrudnić obronę kosztów w negocjacjach.",
+          "bridge": "Trigger wskazuje na przejście do nowej kategorii surowca i większą złożoność łańcucha dostaw. To naturalnie łączy się z potrzebą benchmarków i lepszej argumentacji negocjacyjnej, aby ograniczać nieuzasadnione podwyżki i chronić EBIT.",
+          "cta_rationale": "CTA proponuje krótką rozmowę o jednej kategorii kosztowej, co pasuje do poziomu CFO i nie brzmi operacyjnie ani produktowo. Alternatywa telefoniczna obniża barierę odpowiedzi.",
+          "tier_alignment": "Mail jest osadzony w narracji zarządczej: marża, rentowność, EBIT, przewidywalność wyniku i kontrola ryzyka. Nie wchodzi w szczegóły operacyjne zakupów, tylko pokazuje wpływ decyzji surowcowych na wynik finansowy."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Kontaktuję się po artykule „ORLEN testuje regranulat PP do opakowań spożywczych” w tworzywa.online - bo czytając go, miałem od razu hipotezę o tym, ja",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      },
+      {
+        "full_name": "Anna Kowalska",
+        "job_title": "Head of Procurement",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "email": "(no email yet)",
+        "email_source": "unknown",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "ORLEN i negocjacje regranulatu PP",
+          "body": "Po lekturze publikacji w tworzywa.online o tym, że ORLEN testuje regranulat PP do opakowań spożywczych pomyślałem, że temat może być istotny w Pani/Pana roli w ORLEN właśnie teraz, gdy zmienia się baza surowcowa dla opakowań.\n\nJeśli ORLEN testuje przemysłowo regranulat PP we współpracy z firmami recyklingu, to oznacza to nie tylko zmianę materiału, ale też wejście w nową strukturę dostawców i cen trudniejszych do przewidzenia niż przy PP pierwotnym. Przy takim przejściu decyzje zakupowe szybko zaczynają wpływać na marżę i na to, jak mocne argumenty ma kupiec w rozmowie z dostawcą.\n\nNazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży produkcyjnej i FMCG ograniczać koszty związane z zakupami. W Pani/Pana roli jako Head of Procurement warto mieć powtarzalny standard przygotowania do takich negocjacji: benchmark, cost drivers, analiza dostawcy i plan rozmowy.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 165,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "ORLEN - koszt regranulatu a argumenty",
+          "body": "Wracam do tematu ORLEN i testów regranulatu PP do opakowań spożywczych. Skoro projekt ma iść w stronę większych mocy przerobowych do 2027 roku, to po stronie zakupów pojawi się nie tylko nowy surowiec, ale też potrzeba szybkiego porównania ofert i uzasadnienia, dlaczego jeden dostawca daje lepszy wynik niż drugi.\n\nW praktyce największą różnicę robi tu nie sam materiał, tylko przygotowanie do rozmowy: koszt drivers, benchmark i scenariusz negocjacji. Właśnie na tym pomagamy budować powtarzalny standard dla kupców.\n\nJeśli chciałaby Pani/Pan sprawdzić to podejście na jednej kategorii, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 101,
+          "word_count_ok": false
+        },
+        "follow_up_2": {
+          "subject": "Krótko o ORLEN i zakupach",
+          "body": "Wrócę jeszcze krótko do testów regranulatu PP w ORLEN. Taki kierunek zwykle oznacza więcej zmiennych po stronie zakupów i mniej oczywiste argumenty w negocjacjach z dostawcami.\n\nJeśli temat jest dla Pani/Pana interesujący, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 50,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "ORLEN prowadzi testy przemysłowe regranulatu PP do opakowań spożywczych we współpracy z firmami recyklingu oraz planuje zwiększać moce przerobowe do 2027 roku.",
+          "hypothesis": "W ORLEN testy regranulatu PP oznaczają przejście do nowej struktury dostawców i cen, co zwiększa potrzebę mocniejszego przygotowania negocjacji zakupowych.",
+          "bridge": "Zmiana z PP pierwotnego na regranulat PP wpływa na benchmarki, cost drivers i przewidywalność cen, więc standard przygotowania do negocjacji staje się bezpośrednio powiązany z wynikiem zakupowym i marżą.",
+          "cta_rationale": "CTA proponuje krótkie spotkanie na jednej kategorii kosztowej, zgodnie z tierem procurement i bez zbyt sprzedażowego tonu; alternatywa telefoniczna obniża próg odpowiedzi.",
+          "tier_alignment": "Mail jest osadzony w perspektywie Head of Procurement: mówi o benchmarkach, cost drivers, analizie dostawcy, planie rozmowy i savings delivery, bez wchodzenia w język zarządczy lub produktowy."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Po lekturze publikacji w tworzywa.online o tym, że ORLEN testuje regranulat PP do opakowań spożywczych pomyślałem, że temat może być istotny w Pani/Pa",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      },
+      {
+        "full_name": "Marek Nowak",
+        "job_title": "Dyrektor Zakupów",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "email": "(no email yet)",
+        "email_source": "unknown",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "ORLEN i negocjacje przy regranulacie PP",
+          "body": "Postanowiłem napisać do Pana po artykule „ORLEN testuje regranulat PP do opakowań spożywczych” opublikowanym w tworzywa.online, bo wynika z niego, że ORLEN wchodzi w testy przemysłowe regranulatu PP do zastosowań food contact. Jeśli projekt ma wejść szerzej do zakupów, to oznacza to zmianę bazy dostawców i cen, które będą trudniejsze do porównania niż przy pierwotnym PP.\n\nW Pana roli jako Dyrektora Zakupów to zwykle oznacza większą presję na argumentację - nie tylko o cenie, ale też o jakości, bezpieczeństwie i dostępności materiału. Właśnie przy takich kategoriach najbardziej widać, czy negocjacje są przygotowane na benchmarkach, cost drivers i scenariuszach dostaw, czy prowadzone ad hoc.\n\nNazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży produkcyjnej i FMCG ograniczać koszty związane z zakupami.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 154,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "ORLEN - koszt regranulatu i siła argumentów",
+          "body": "Doprecyzuję jedną rzecz z tego artykułu: ORLEN nie tylko testuje regranulat PP, ale planuje też zwiększać moce przerobowe regranulatu PP i PET do 2027 roku. To zwykle oznacza, że po stronie zakupów pojawia się nowa dynamika cen i dostępności, a przy negocjacjach z dostawcami trzeba szybciej budować argumenty oparte na benchmarkach i alternatywach.\n\nW praktyce pomaga to uniknąć sytuacji, w której kupiec broni ceny bez twardego punktu odniesienia. Jeśli taki mechanizm ma być powtarzalny, wspieramy zespoły zakupowe w przygotowaniu jednej kategorii tak, żeby rozmowa z dostawcą była oparta na danych, a nie na intuicji.\n\nJeśli chciałby Pan sprawdzić to podejście na jednej kategorii, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 118,
+          "word_count_ok": false
+        },
+        "follow_up_2": {
+          "subject": "Krótko o ORLEN i zakupach",
+          "body": "Wracam jeszcze do testów regranulatu PP w ORLEN, bo to dobry przykład zmiany, która szybko wpływa na sposób negocjowania surowca. Jeśli temat jest dla Pana istotny, chętnie pokażę, jak takie kategorie przygotowuje się do rozmów z dostawcami.\n\nJeśli chciałby Pan sprawdzić to podejście, proszę wybrać termin spotkania:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 59,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "ORLEN prowadzi testy przemysłowe regranulatu polipropylenowego (PP) do opakowań spożywczych i planuje zwiększać moce przerobowe regranulatu PP i PET do 2027 roku.",
+          "hypothesis": "W ORLEN i podobnych organizacjach wejście w regranulat PP oznacza nową strukturę dostawców oraz mniej przewidywalne ceny niż przy pierwotnym PP, co zwiększa wagę przygotowania negocjacji.",
+          "bridge": "Zmiana z pierwotnego PP na regranulat PP tworzy nową bazę porównawczą cen i dostępności, więc skuteczne zakupy wymagają benchmarków, analizy cost drivers i scenariuszy negocjacyjnych, aby chronić savings i marżę.",
+          "cta_rationale": "CTA proponuje krótkie spotkanie na jednej kategorii kosztowej, bo to najniższy próg wejścia dla dyrektora zakupów i najlepiej pasuje do tematu przygotowania do negocjacji, a nie do prezentacji produktu.",
+          "tier_alignment": "Mail jest osadzony w perspektywie procurement: mówi o benchmarkach, argumentacji, dostępności i savings, bez wchodzenia w język zarządczy ani techniczne szczegóły platformy."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Postanowiłem napisać do Pana po artykule „ORLEN testuje regranulat PP do opakowań spożywczych” opublikowanym w tworzywa.online, bo wynika z niego, że ",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      }
+    ]
+  },
+  {
+    "label": "Grycan",
+    "company": "Grycan - Lody od pokoleń",
+    "article_title": "Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały",
+    "article_source": "portalspozywczy.pl",
+    "article_date": "2026-04-15",
+    "total_candidates": 6,
+    "selected_count": 4,
+    "excluded_count": 2,
+    "selected_contacts": [
+      {
+        "full_name": "Marek Grycan",
+        "job_title": "Prezes Zarządu",
+        "tier": "tier_1_c_level"
+      },
+      {
+        "full_name": "Joanna Grycan",
+        "job_title": "Dyrektor Zarządzający",
+        "tier": "tier_1_c_level"
+      },
+      {
+        "full_name": "Tomasz Bąk",
+        "job_title": "Dyrektor Zakupów",
+        "tier": "tier_2_procurement_management"
+      },
+      {
+        "full_name": "Barbara Kwiatkowska",
+        "job_title": "CPO",
+        "tier": "tier_2_procurement_management"
+      }
+    ],
+    "excluded_contacts": [
+      {
+        "full_name": "Dorota Kamińska",
+        "job_title": "Senior Brand Manager",
+        "tier": "tier_3_buyers_operational"
+      },
+      {
+        "full_name": "Justyna Lis",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational"
+      }
+    ],
+    "tier_audit": [
+      {
+        "full_name": "Marek Grycan",
+        "raw_title": "Prezes Zarządu",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "tier_reason": "Title match: 'prezes zarządu'",
+        "expected": "T1",
+        "tier_match": true
+      },
+      {
+        "full_name": "Joanna Grycan",
+        "raw_title": "Dyrektor Zarządzający",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "tier_reason": "Title match: 'dyrektor zarządzający'",
+        "expected": "T1",
+        "tier_match": true
+      },
+      {
+        "full_name": "Tomasz Bąk",
+        "raw_title": "Dyrektor Zakupów",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "tier_reason": "Title match: 'dyrektor zakupów'",
+        "expected": "T2",
+        "tier_match": true
+      },
+      {
+        "full_name": "Dorota Kamińska",
+        "raw_title": "Senior Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "expected": "T3_EXCLUDED",
+        "tier_match": true
+      },
+      {
+        "full_name": "Justyna Lis",
+        "raw_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "expected": "T3_EXCLUDED",
+        "tier_match": true
+      },
+      {
+        "full_name": "Barbara Kwiatkowska",
+        "raw_title": "CPO",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "tier_reason": "Title match: 'CPO' (CPO/Chief Procurement Officer)",
+        "expected": "T2",
+        "tier_match": true
+      }
+    ],
+    "message_packs": [
+      {
+        "full_name": "Marek Grycan",
+        "job_title": "Prezes Zarządu",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "email": "m.grycan@grycan.pl",
+        "email_source": "apollo_direct",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "Grycan i presja na marżę",
+          "body": "Postanowiłem napisać do Pana po artykule „Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały” opublikowanym w portalspozywczy.pl, bo wynika z niego, że dla Grycan sezon 2026 zaczął się mocniej niż zwykle. Z artykułu wynika też, że firma odnotowuje wzrost sprzedaży w kanale tradycyjnym i własnych lodziarniach oraz zwiększyła zakupy surowców mlecznych - mleka, śmietanki i masła.\n\nJeśli popyt rośnie szybciej niż baza kosztowa, to w Pana roli jako Prezesa Zarządu kluczowe staje się obronienie marży na surowcach, które są mocno sezonowe i podatne na podwyżki dostawców. W takich momentach przewagę daje nie sama skala zakupów, ale standard przygotowania do negocjacji - benchmarki, argumentacja kosztowa i jasny punkt odniesienia do rynku.\n\nNazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży FMCG ograniczać koszty związane z zakupami. Jeśli temat jest dla Pana interesujący, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 161,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "Grycan - surowce a rentowność",
+          "body": "Panie Prezesie,\n\nw nawiązaniu do wzrostu sprzedaży i większych zakupów mleka, śmietanki oraz masła warto zauważyć jedną rzecz: przy sezonowym popycie dostawcy zwykle szybciej testują poziom akceptacji cen niż sama sprzedaż pokazuje w wynikach. To oznacza, że nawet przy dobrym starcie sezonu część wzrostu obrotu może zostać zjedzona przez koszt zakupu, jeśli negocjacje nie mają mocnego oparcia w benchmarkach.\n\nWłaśnie w takich sytuacjach pomagamy firmom przygotować rozmowę z dostawcami tak, żeby bronić EBIT, a nie tylko kupować szybciej.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 102,
+          "word_count_ok": false
+        },
+        "follow_up_2": {
+          "subject": "Krótko o Grycan i kosztach",
+          "body": "Panie Prezesie,\n\nwracam jeszcze do artykułu o dobrym starcie sezonu w Grycan. Przy rosnącym popycie na lody premium najważniejsze staje się to, ile z tego wzrostu zostaje w marży po stronie mleka, śmietanki i masła.\n\nJeśli chciałby Pan sprawdzić to podejście na jednej kategorii, proszę wybrać termin spotkania:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 60,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "Grycan ocenia pozytywnie start sezonu lodowego 2026, odnotowuje wzrost sprzedaży w kanale tradycyjnym i własnych lodziarniach oraz zwiększył zakupy surowców mlecznych: mleka, śmietanki i masła.",
+          "hypothesis": "Przy rosnącej sprzedaży sezonowej i większym wolumenie zakupów surowców presja na marżę może wzrosnąć szybciej niż przychody, więc kluczowe staje się obronienie warunków zakupowych w negocjacjach z dostawcami.",
+          "bridge": "Wzrost popytu na lody premium i większe zakupy mleka, śmietanki oraz masła oznaczają większą ekspozycję na sezonowe podwyżki cen surowców. To bezpośrednio wpływa na marżę i EBIT, dlatego warto oprzeć negocjacje o benchmarki, argumentację kosztową i przewidywalny standard decyzji zakupowych.",
+          "cta_rationale": "CTA prowadzi do krótkiej rozmowy o jednej kategorii kosztowej, co jest spójne z perspektywą zarządczą i nie brzmi jak prośba o demo. Alternatywa telefoniczna obniża barierę odpowiedzi.",
+          "tier_alignment": "Mail jest napisany pod C-Level: akcentuje marżę, rentowność, EBIT, presję kosztową i obronę wyniku, bez wchodzenia w szczegóły operacyjne czy listę funkcji produktu."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Postanowiłem napisać do Pana po artykule „Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały” opublikowanym w por",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      },
+      {
+        "full_name": "Joanna Grycan",
+        "job_title": "Dyrektor Zarządzający",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "email": "j.grycan@grycan.pl",
+        "email_source": "apollo_direct",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "Grycan i presja na marżę",
+          "body": "Dzień dobry Pani Joanno,\n\nKontaktuję się po artykule „Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały” w portalspozywczy.pl - bo czytając go, miałem od razu hipotezę o tym, jak ten wzrost popytu przekłada się na wynik Grycan.\n\nZ artykułu wynika, że firma odnotowuje wzrost sprzedaży w kanale tradycyjnym i własnych lodziarniach, a jednocześnie zwiększyła zakupy mleka, śmietanki i masła pod sezon.\n\nW Pani roli jako Dyrektor Zarządzający to zwykle oznacza nie tylko większy wolumen, ale też silniejszą presję na marżę, jeśli ceny surowców mlecznych rosną szybciej niż sprzedaż. Przy takich kategoriach kluczowe jest wejście do rozmów z dostawcami z twardą argumentacją, żeby nie akceptować podwyżek bez obrony EBIT.\n\nNazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży FMCG ograniczać koszty związane z zakupami.\n\nJeśli temat jest dla Pani interesujący, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 159,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "Grycan - koszt surowców a EBIT",
+          "body": "Dzień dobry Pani Joanno,\n\nWracam do artykułu o starcie sezonu w Grycan, bo wzrost sprzedaży w lodziarniach i kanale tradycyjnym zwykle oznacza też większą ekspozycję na ceny mleka, śmietanki i masła. To właśnie na takich surowcach najłatwiej o podwyżki „z automatu”, jeśli nie ma gotowej argumentacji opartej na benchmarkach i realnym poziomie rynku.\n\nW praktyce to często decyduje o tym, czy lepszy sezon przełoży się na EBIT, czy tylko na większy obrót.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 96,
+          "word_count_ok": true
+        },
+        "follow_up_2": {
+          "subject": "Krótko o Grycan i marży",
+          "body": "Dzień dobry Pani Joanno,\n\nZostawiam tę wiadomość na koniec, bo sezon w Grycan wygląda na mocny, a przy surowcach mlecznych właśnie wtedy najłatwiej o niepotrzebny koszt.\n\nJeśli chciałaby Pani sprawdzić, jak podejście do przygotowania negocjacji może chronić marżę w jednej kategorii, proszę wybrać termin spotkania:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 57,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "Grycan ocenia pozytywnie start sezonu lodowego 2026, odnotowuje wzrost sprzedaży w kanale tradycyjnym i własnych lodziarniach oraz zwiększa zakupy mleka, śmietanki i masła pod sezon.",
+          "hypothesis": "Silniejszy sezon sprzedażowy zwiększa wolumen, ale jednocześnie podnosi presję na koszty surowców mlecznych, więc bez mocnego przygotowania negocjacyjnego poprawa przychodu może nie przełożyć się proporcjonalnie na marżę.",
+          "bridge": "Wzrost popytu i zakupów surowców oznacza większą ekspozycję na sezonowe ceny kontraktowe mleka, śmietanki i masła. Dla zarządu kluczowe jest wejście w negocjacje z benchmarkami i argumentacją, żeby ograniczać nieuzasadnione podwyżki i chronić EBIT.",
+          "cta_rationale": "CTA prowadzi do krótkiej rozmowy o jednej kategorii kosztowej, co pasuje do C-Level i nie brzmi jak prośba o demo. Alternatywa telefoniczna obniża próg odpowiedzi.",
+          "tier_alignment": "Mail jest osadzony w perspektywie zarządczej: marża, EBIT, presja kosztowa i przewidywalność wyniku. Nie wchodzi w operacyjne szczegóły, tylko pokazuje wpływ sezonu i zakupów na rentowność."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Dzień dobry Pani Joanno,",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      },
+      {
+        "full_name": "Tomasz Bąk",
+        "job_title": "Dyrektor Zakupów",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "email": "(no email yet)",
+        "email_source": "unknown",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "Grycan i negocjacje surowców",
+          "body": "Postanowiłem napisać do Pana po artykule „Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały” opublikowanym w portalspozywczy.pl, bo wynika z niego, że w Grycanie sezon 2026 już teraz przekłada się na wzrost sprzedaży w kanale tradycyjnym i własnych lodziarniach.\n\nZ artykułu wynika też, że firma zwiększyła zakupy mleka, śmietanki i masła, a przy lodach premium to zwykle oznacza większą presję na warunki zakupowe i na argumentację przy rozmowach z dostawcami.\n\nW Pana roli jako Dyrektora Zakupów to moment, w którym dobrze przygotowane negocjacje mogą realnie chronić marżę w sezonie, kiedy większość rocznych przychodów jest generowana w krótkim oknie sprzedażowym.\n\nNazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży FMCG ograniczać koszty związane z zakupami.\n\nJeśli warto byłoby sprawdzić to podejście na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 151,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "Grycan - koszt surowców i argumenty",
+          "body": "Po stronie zakupów w Grycanie ważne jest nie tylko to, że sezon ruszył mocno, ale też to, że przy wyższym popycie rośnie znaczenie benchmarków dla mleka, śmietanki i masła. Bez takiego punktu odniesienia łatwo wejść w negocjacje na poziomie deklaracji dostawcy, a nie twardych koszt drivers.\n\nPomagamy kupcom uporządkować przygotowanie do rozmowy tak, żeby przed wejściem do stołu mieć jasny plan argumentacji, zakres ustępstw i scenariusz obrony ceny.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 92,
+          "word_count_ok": true
+        },
+        "follow_up_2": {
+          "subject": "Krótko o sezonie w Grycanie",
+          "body": "Wracam tylko do artykułu o dobrym starcie sezonu w Grycanie, bo przy większym popycie na lody premium zwykle najszybciej widać różnicę między improwizacją a dobrze przygotowaną negocjacją.\n\nJeśli chciałby Pan sprawdzić to podejście na jednej kategorii, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 51,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "Grycan ocenia pozytywnie start sezonu lodowego 2026, odnotowuje wzrost sprzedaży w kanale tradycyjnym i własnych lodziarniach oraz zwiększa zakupy mleka, śmietanki i masła.",
+          "hypothesis": "Przy rosnącym sezonowym popycie i większych zakupach surowców mlecznych Tomasz może potrzebować mocniejszego standardu przygotowania do negocjacji, żeby utrzymać marżę i obronić warunki cenowe u dostawców.",
+          "bridge": "Wzrost sprzedaży i większe zakupy surowców zwiększają presję na koszt zakupu, więc przewagę daje benchmark, analiza koszt drivers i plan rozmowy z dostawcą, a nie improwizacja przed negocjacją.",
+          "cta_rationale": "CTA prowadzi do krótkiego sprawdzenia podejścia na jednej kategorii kosztowej, co pasuje do roli procurement i nie brzmi jak prośba o demo produktu.",
+          "tier_alignment": "Treść jest osadzona w negocjacjach zakupowych, benchmarkach, cost drivers i savings delivery, czyli dokładnie w perspektywie lidera zakupów w Tier 2."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Postanowiłem napisać do Pana po artykule „Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały” opublikowanym w por",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      },
+      {
+        "full_name": "Barbara Kwiatkowska",
+        "job_title": "CPO",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "email": "(no email yet)",
+        "email_source": "unknown",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "Grycan i negocjacje z dostawcami mleka",
+          "body": "Po lekturze publikacji w portalspozywczy.pl o przyspieszonym starcie sezonu lodowego pomyślałem, że temat może być istotny w Grycan właśnie teraz, gdy sprzedaż w kanale tradycyjnym i własnych lodziarniach rośnie. Z artykułu wynika też, że firma zwiększyła zakupy mleka, śmietanki i masła wraz z wyższym zapotrzebowaniem sezonowym.\n\nJeśli ten wolumen rośnie w krótkim czasie, to zwykle oznacza większą presję na warunki zakupu i na argumentację przy rozmowach z dostawcami surowców mlecznych oraz cukru. W Pani roli jako CPO kluczowe staje się nie tylko wynegocjowanie ceny, ale też powtarzalny standard przygotowania do każdej rozmowy - benchmark, cost drivers i plan rozmowy.\n\nNazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży spożywczej ograniczać koszty związane z zakupami.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 148,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "Grycan - koszt sezonu i siła argumentów",
+          "body": "Doprecyzuję jedną rzecz z artykułu o Grycan - sezonowy wzrost popytu na lody premium i większe zakupy mleka, śmietanki oraz masła zwykle skracają czas na przygotowanie negocjacji. W praktyce wtedy najszybciej widać, czy zespół zakupów ma gotowe benchmarki i cost drivers, czy musi budować argumenty ad hoc.\n\nPomagamy poukładać taki standard przed rozmową z dostawcą, żeby przy tym samym wolumenie wyciągać lepszy wynik savings i łatwiej go obronić wewnętrznie.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 93,
+          "word_count_ok": true
+        },
+        "follow_up_2": {
+          "subject": "Krótko o Grycan i zakupach",
+          "body": "Wracam jeszcze do artykułu o pozytywnym starcie sezonu w Grycan. Przy takim wzroście sprzedaży każdy punkt procentowy po stronie zakupu mleka, śmietanki czy masła szybciej przekłada się na wynik kategorii.\n\nJeśli chciałaby Pani sprawdzić, jak wygląda to na jednej kategorii, proszę wybrać termin spotkania:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 56,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "Pozytywny start sezonu lodowego 2026 w Grycan, wzrost sprzedaży w kanale tradycyjnym i własnych lodziarniach oraz zwiększone zakupy mleka, śmietanki i masła.",
+          "hypothesis": "Wzrost sezonowego popytu w Grycan zwiększa presję na zakupy surowców mlecznych i wymaga lepszego przygotowania do negocjacji z dostawcami, żeby ochronić marżę.",
+          "bridge": "Wyższy wolumen i sezonowość surowców oznaczają większą ekspozycję na ceny kontraktowe, dlatego przewagę daje benchmark, analiza cost drivers i powtarzalny plan rozmowy z dostawcą.",
+          "cta_rationale": "CTA prowadzi do krótkiego sprawdzenia podejścia na jednej kategorii kosztowej, co pasuje do procurementu i nie brzmi jak prośba o demo.",
+          "tier_alignment": "Mail jest osadzony w perspektywie CPO: mówi o negocjacjach, benchmarkach, cost drivers, savings i standardzie przygotowania, bez strategicznego języka zarządczego."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Po lekturze publikacji w portalspozywczy.pl o przyspieszonym starcie sezonu lodowego pomyślałem, że temat może być istotny w Grycan właśnie teraz, gdy",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      }
+    ]
+  },
+  {
+    "label": "Evra Fish",
+    "company": "Evra Fish Sp. z o.o.",
+    "article_title": "Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach",
+    "article_source": "portalspozywczy.pl",
+    "article_date": "2026-04-16",
+    "total_candidates": 5,
+    "selected_count": 3,
+    "excluded_count": 2,
+    "selected_contacts": [
+      {
+        "full_name": "Krzysztof Woźniak",
+        "job_title": "Prezes Zarządu",
+        "tier": "tier_1_c_level"
+      },
+      {
+        "full_name": "Agnieszka Malinowska",
+        "job_title": "Procurement Director",
+        "tier": "tier_2_procurement_management"
+      },
+      {
+        "full_name": "Michał Jabłoński",
+        "job_title": "Head of Sourcing",
+        "tier": "tier_2_procurement_management"
+      }
+    ],
+    "excluded_contacts": [
+      {
+        "full_name": "Paweł Dąbrowski",
+        "job_title": "Buyer",
+        "tier": "tier_3_buyers_operational"
+      },
+      {
+        "full_name": "Łukasz Krawczyk",
+        "job_title": "Supply Chain Director",
+        "tier": "tier_uncertain"
+      }
+    ],
+    "tier_audit": [
+      {
+        "full_name": "Krzysztof Woźniak",
+        "raw_title": "Prezes Zarządu",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "tier_reason": "Title match: 'prezes zarządu'",
+        "expected": "T1",
+        "tier_match": true
+      },
+      {
+        "full_name": "Agnieszka Malinowska",
+        "raw_title": "Procurement Director",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "tier_reason": "Title match: 'procurement director'",
+        "expected": "T2",
+        "tier_match": true
+      },
+      {
+        "full_name": "Michał Jabłoński",
+        "raw_title": "Head of Sourcing",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "tier_reason": "Title match: 'head of sourcing'",
+        "expected": "T2",
+        "tier_match": true
+      },
+      {
+        "full_name": "Paweł Dąbrowski",
+        "raw_title": "Buyer",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'buyer'",
+        "expected": "T3_EXCLUDED",
+        "tier_match": true
+      },
+      {
+        "full_name": "Łukasz Krawczyk",
+        "raw_title": "Supply Chain Director",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Supply Chain Director'",
+        "expected": "UNCERTAIN_NOT_T2",
+        "tier_match": true
+      }
+    ],
+    "message_packs": [
+      {
+        "full_name": "Krzysztof Woźniak",
+        "job_title": "Prezes Zarządu",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "email": "k.wozniak@evrafish.pl",
+        "email_source": "apollo_direct",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "Evra Fish i presja na marżę",
+          "body": "Postanowiłem napisać do Pana po artykule „Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach” opublikowanym w portalspozywczy.pl, bo wynika z niego, że Evra Fish jednocześnie rozwija convenience i HoReCa oraz negocjuje warunki z aktualnymi dostawcami surowców rybnych.\n\nZ artykułu wynika też, że przy przetwarzaniu kilkudziesięciu tysięcy ton rocznie wzrost kosztów surowców bezpośrednio uderza w marżę i przewidywalność wyniku, zwłaszcza gdy firma szuka nowych dostawców łososiowatych i dorsza.\n\nW Pana roli jako Prezesa Zarządu kluczowe jest nie tylko kupić lepiej, ale mieć powtarzalny standard obrony podwyżek i argumentacji wobec dostawców. Firmy z takim przygotowaniem negocjacyjnym potrafią blokować 30-50% proponowanych podwyżek, co szybko widać w EBIT.\n\nNazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży spożywczej ograniczać koszty związane z zakupami.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 158,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "Evra Fish - koszt surowca a EBIT",
+          "body": "Po stronie Evra Fish ważne jest nie tylko to, że firma negocjuje z obecnymi dostawcami, ale też że równolegle szuka nowych źródeł łososia i dorsza. Taka zmiana bazy dostawców zwykle oznacza większą presję cenową i konieczność szybkiego porównania ofert na tych samych warunkach.\n\nW praktyce bez mocnych benchmarków łatwo zaakceptować podwyżkę, która wygląda rynkowo, ale nie musi nią być. Właśnie w takich sytuacjach pomagamy uporządkować argumentację przed rozmową z dostawcą i obronić marżę.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 97,
+          "word_count_ok": true
+        },
+        "follow_up_2": {
+          "subject": "Krótko o Evra Fish",
+          "body": "Wracam jeszcze do artykułu o Evra Fish i zmianie formatów sprzedaży. Przy takiej ekspansji presja na koszt surowca i warunki dostaw zwykle rośnie szybciej niż sprzedaż.\n\nJeśli temat jest dla Pana interesujący, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 50,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "Evra Fish planuje ekspansję w convenience i HoReCa, szuka nowych dostawców łososiowatych i dorsza oraz negocjuje warunki z aktualnymi dostawcami surowców rybnych przy rosnących kosztach surowców.",
+          "hypothesis": "Wzrost kosztów surowców i równoległe poszukiwanie nowych dostawców zwiększają presję na marżę oraz ryzyko zaakceptowania niekorzystnych podwyżek bez mocnej obrony negocjacyjnej.",
+          "bridge": "Trigger pokazuje jednoczesną zmianę kanałów sprzedaży i bazy dostawców, co wprost przekłada się na presję kosztową. Dla zarządu oznacza to potrzebę standardu przygotowania do negocjacji, który pozwala bronić EBIT i blokować część podwyżek.",
+          "cta_rationale": "Wybrano 15-minutową rozmowę o jednej kategorii kosztowej, bo pasuje do poziomu C-level, nie wymaga wejścia w operacyjne szczegóły i naturalnie prowadzi do rozmowy o marży oraz wyniku.",
+          "tier_alignment": "Treść jest osadzona w perspektywie zarządu: marża, EBIT, przewidywalność wyniku, presja kosztowa i kontrola ryzyka. Unika operacyjnych detali i koncentruje się na efekcie finansowym decyzji zakupowych."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Postanowiłem napisać do Pana po artykule „Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach” opublikowanym w portalspoz",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      },
+      {
+        "full_name": "Agnieszka Malinowska",
+        "job_title": "Procurement Director",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "email": "(no email yet)",
+        "email_source": "unknown",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "Evra Fish i negocjacje z dostawcami",
+          "body": "Postanowiłem napisać do Pani po artykule „Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach” opublikowanym w portalspozywczy.pl, bo wynika z niego, że w Evra Fish równolegle rośnie presja na nowe kanały sprzedaży i na zakupy surowca.\n\nZ artykułu wynika też, że firma szuka nowych dostawców ryb łososiowatych i dorsza oraz negocjuje warunki z aktualnymi dostawcami surowców rybnych. Jeśli do tego dochodzi wzrost kosztów surowców, to każda rozmowa z dostawcą zaczyna mieć bezpośredni wpływ na marżę i na to, jak łatwo obronić wynik przed zarządem.\n\nW Pani roli jako Procurement Director kluczowe staje się nie samo prowadzenie negocjacji, ale przygotowanie mocnych argumentów: benchmarków, cost drivers i scenariusza rozmowy. Nazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży spożywczej ograniczać koszty związane z zakupami.\n\nJeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 161,
+          "word_count_ok": true
+        },
+        "follow_up_1": {
+          "subject": "Evra Fish - koszt surowca i argumenty",
+          "body": "W nawiązaniu do Evra Fish i planów wejścia mocniej w convenience oraz HoReCa, jedna rzecz zwykle umyka w zakupach: nowe kanały sprzedaży zwiększają presję na przewidywalność kosztu surowca, bo marża jest wtedy bardziej wrażliwa na każdy słabszy warunek kontraktu.\n\nDlatego przy takich negocjacjach pomaga standard przygotowania, w którym kupiec ma z góry policzone cost drivers, zakres możliwych ustępstw i punkt odniesienia do benchmarku. To właśnie ten etap najczęściej decyduje, czy rozmowa kończy się obroną ceny, czy realnym savings.\n\nJeśli chciałaby Pani sprawdzić to podejście na jednej kategorii, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 102,
+          "word_count_ok": false
+        },
+        "follow_up_2": {
+          "subject": "Krótko o Evra Fish",
+          "body": "Wracam krótko do artykułu o Evra Fish, bo szukanie nowych dostawców łososiowatych i dorsza zwykle oznacza też trudniejsze negocjacje na starcie kontraktu.\n\nJeśli temat jest aktualny, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 44,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "Evra Fish szuka nowych dostawców ryb łososiowatych i dorsza oraz negocjuje warunki z aktualnymi dostawcami surowców rybnych, przy wzroście kosztów surowców.",
+          "hypothesis": "W Pani roli presja na nowe kanały sprzedaży i wzrost kosztów surowca zwiększają znaczenie lepszego przygotowania do negocjacji, bo każdy punkt w warunkach zakupu wpływa na marżę i wynik.",
+          "bridge": "Nowe kanały i nowe kontrakty oznaczają większą wrażliwość marży na koszt surowca, więc potrzebne są benchmarki, cost drivers i plan rozmowy, aby obronić warunki i dowieźć savings.",
+          "cta_rationale": "CTA kieruje na krótkie spotkanie online na jednej kategorii kosztowej, co pasuje do procurement i pozwala sprawdzić podejście bez angażowania odbiorcy w duży projekt.",
+          "tier_alignment": "Treść jest osadzona w przygotowaniu do negocjacji, benchmarkach, cost drivers i savings delivery, czyli dokładnie w narracji dla lidera zakupów, bez wchodzenia w język analityczny lub zarządczy."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Postanowiłem napisać do Pani po artykule „Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach” opublikowanym w portalspoz",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      },
+      {
+        "full_name": "Michał Jabłoński",
+        "job_title": "Head of Sourcing",
+        "tier": "tier_2_procurement_management",
+        "tier_label": "Tier 2 - Procurement",
+        "email": "(no email yet)",
+        "email_source": "unknown",
+        "generated_by": "llm",
+        "email_1": {
+          "subject": "Evra Fish i negocjacje z dostawcami",
+          "body": "Postanowiłem napisać do Pana po artykule „Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach” opublikowanym w portalspozywczy.pl, bo wynika z niego, że w Evra Fish równolegle rośnie znaczenie nowych kanałów i presja na zakupy surowca.\n\nZ artykułu wynika też, że firma przetwarza rocznie kilkadziesiąt tysięcy ton ryb i owoców morza, a jednocześnie poszukuje nowych dostawców łososiowatych i dorsza oraz renegocjuje warunki z obecnymi dostawcami.\n\nJeśli wolumen i liczba rozmów z dostawcami rosną w takim tempie, to bez powtarzalnego standardu przygotowania do negocjacji bardzo łatwo oddać marżę na poziomie benchmarku, argumentów kosztowych i planu rozmowy. W Pana roli jako Head of Sourcing kluczowe jest, by każda taka rozmowa była oparta na tych samych założeniach, a nie na improwizacji.\n\nNazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży spożywczej ograniczać koszty związane z zakupami.\n\nJeśli warto byłoby sprawdzić to podejście na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 172,
+          "word_count_ok": false
+        },
+        "follow_up_1": {
+          "subject": "Evra Fish - benchmark w rozmowach z dostawcami",
+          "body": "W nawiązaniu do Evra Fish i planów wejścia w convenience oraz HoReCa, zwraca uwagę nie tylko sam wzrost skali, ale też to, że przy nowych kanałach zwykle zmienia się miks wymagań wobec surowca i terminów dostaw.\n\nTo oznacza więcej punktów do obrony w negocjacjach - od jakości po warunki handlowe - a bez uporządkowanego benchmarku i analizy cost drivers kupiec często broni ceny zamiast wartości. W takich sytuacjach pomagamy przygotować rozmowę tak, by argumentacja była spójna i łatwa do obrony przed zarządem.\n\nJeśli warto byłoby omówić to na jednej kategorii, proszę wybrać termin:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 105,
+          "word_count_ok": false
+        },
+        "follow_up_2": {
+          "subject": "Krótko o kosztach w Evra Fish",
+          "body": "Wracam do artykułu o Evra Fish, bo przy jednoczesnym poszukiwaniu nowych dostawców i renegocjacji obecnych kontraktów łatwo o rozjazd między oczekiwaniami a realnym wynikiem zakupowym.\n\nJeśli temat jest dla Pana istotny, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/standard-negocjacji-i-oszczednosci\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię.",
+          "word_count": 49,
+          "word_count_ok": true
+        },
+        "review_notes": {
+          "trigger_used": "Evra Fish przetwarza rocznie kilkadziesiąt tysięcy ton ryb i owoców morza, poszukuje nowych dostawców łososiowatych i dorsza oraz renegocjuje warunki z obecnymi dostawcami surowców rybnych.",
+          "hypothesis": "Przy takiej skali i równoległych negocjacjach z nowymi oraz obecnymi dostawcami Pana zespół może tracić część savings przez brak powtarzalnego standardu przygotowania do rozmów.",
+          "bridge": "Rozszerzenie działalności i presja na surowiec przekładają się na większą liczbę negocjacji, gdzie o wyniku decydują benchmarki, cost drivers, analiza dostawcy i plan rozmowy, a nie sama siła zakupowa.",
+          "cta_rationale": "CTA proponuje sprawdzenie podejścia na jednej kategorii kosztowej, co jest naturalne dla Procurement i zgodne z obietnicą standardu negocjacji, bez nadmiernej sprzedażowości.",
+          "tier_alignment": "Mail jest osadzony w problemach Head of Sourcing: przygotowanie do negocjacji, benchmark, cost drivers, renegocjacje i savings delivery, bez wchodzenia w język zarządczy lub techniczny."
+        },
+        "quality_checks": {
+          "anchor": {
+            "first_sentence": "Postanowiłem napisać do Pana po artykule „Evra Fish: wzrost spożycia ryb w Polsce nie wydarzy się w tradycyjnych formatach” opublikowanym w portalspoz",
+            "has_article_reference": true,
+            "has_source_reference": true,
+            "anchor_ok": true
+          },
+          "calendly": {
+            "has_correct_calendly": true,
+            "has_wrong_calendly": false,
+            "has_phone_alternative": true,
+            "cta_ok": true
+          },
+          "forbidden_phrases_found": [],
+          "signature_clean_no_llm": true,
+          "no_em_dash": true
+        }
+      }
+    ]
+  }
+]

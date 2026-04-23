@@ -154,7 +154,10 @@ def build_follow_up_1(
 
     # === body_html_nosig (nowa treść + podpis + historia wątku — do Apollo custom field) ===
     # Podpis jest embedded PRZED thread, bo w FU template nie ma {{pl_signature_tu}}.
-    # Thread: separator + cytowany Email 1 (bez meta, bez podpisu)
+    # Thread: separator + cytowany Email 1 (bez meta, bez podpisu) + podpis E1
+    # UWAGA: E1 body_html_nosig nie zawiera podpisu (podpis E1 jest w pl_market_news_signature_tu).
+    # Dlatego dodajemy SIGNATURE_STANDALONE_HTML po quoted_e1 — żeby w cytowanym threadzie
+    # E1 miał podpis widoczny jako część historii wątku.
     quoted_e1 = _strip_meta_tags(email_1["body_html_nosig"])
     body_html_nosig = (
         META_BLOCK
@@ -162,6 +165,7 @@ def build_follow_up_1(
         + SIGNATURE_STANDALONE_HTML
         + _separator_html(date_email_1, contact, email_1["subject"])
         + quoted_e1
+        + SIGNATURE_STANDALONE_HTML
     )
 
     # === PLAIN ===
@@ -215,8 +219,8 @@ def build_follow_up_2(
 
     # === body_html_nosig (nowa treść + podpis + historia wątku — do Apollo custom field) ===
     # Podpis jest embedded PRZED thread, bo w FU template nie ma {{pl_signature_tu}}.
-    # Thread: separator + cytowany FU1 (z zagnieżdżonym Email 1)
-    # Każda wiadomość w threadzie ma własny podpis — E1 na dole też.
+    # Thread: separator + cytowany FU1 (który już zawiera FU1 sig + sep(E1) + E1 body + E1 sig)
+    # Podpis E1 jest już zagnieżdżony wewnątrz quoted_fu1 — NIE dodajemy go ponownie.
     quoted_fu1 = _strip_meta_tags(follow_up_1["body_html_nosig"])
     body_html_nosig = (
         META_BLOCK
@@ -224,7 +228,6 @@ def build_follow_up_2(
         + SIGNATURE_STANDALONE_HTML
         + _separator_html(date_follow_up_1, contact, follow_up_1["subject"])
         + quoted_fu1
-        + SIGNATURE_STANDALONE_HTML
     )
 
     # === PLAIN ===

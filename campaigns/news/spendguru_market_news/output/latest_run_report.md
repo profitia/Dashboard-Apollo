@@ -1,8 +1,8 @@
 # Run Report — spendguru_market_news
 
-**Wygenerowany:** 2026-04-22 17:20:00 UTC  
-**Tryb:** report  
-**Artykułów przetworzonych:** 0
+**Wygenerowany:** 2026-04-23 17:10:02 UTC  
+**Tryb:** single-article (dry-run)  
+**Artykułów przetworzonych:** 1
 
 ---
 
@@ -10,11 +10,11 @@
 
 | Kategoria | Liczba |
 |-----------|--------|
-| 🟢 Gotowe do review (READY_FOR_REVIEW) | 0 |
+| 🟢 Gotowe do review (READY_FOR_REVIEW) | 1 |
 | 🔴🟡 Wymagają uwagi (BLOCKED_NO_EMAIL / PENDING) | 0 |
 | ⚪ Odrzucone / pominięte | 0 |
 | ⚪ Zablokowane — firma / kontakt | 0 |
-| **SUMA** | **0** |
+| **SUMA** | **1** |
 
 ---
 
@@ -22,6 +22,7 @@
 
 | Status | Liczba | % | Pasek |
 |--------|--------|---|-------|
+| 🟢 `READY_FOR_REVIEW` | 1 | 100.0% | ████████████████████ |
 
 ---
 
@@ -29,7 +30,7 @@
 
 ### 🟢 Gotowe do działania
 
-_Brak w tym runie_
+- 🟢 **READY_FOR_REVIEW** — 1 przypadków (100.0%)
 
 ### 🔴🟡 Wymagają uwagi
 
@@ -49,7 +50,9 @@ _Brak w tym runie_
 
 ### 🟢 READY_FOR_REVIEW — gotowe do uruchomienia
 
-_Brak_
+- **Mlekpol**
+  - Artykuł: [https://www.portalspozywczy.pl/mleko/wiadomosci/polska-marka-jest-juz-](https://www.portalspozywczy.pl/mleko/wiadomosci/polska-marka-jest-juz-na-6-kontynentach-prezes-mlekpolu-na-eec-2026,287684.html)
+  - Etap: `apollo_write` | Powód: Flow complete — contact added to list, email available, sequence ready for review
 
 ### 🔴 BLOCKED_NO_EMAIL — kontakty bez emaila
 
@@ -67,4 +70,6 @@ _Brak_
 
 ## Najczęstsze powody zatrzymania
 
-_Brak danych_
+| Powód | Liczba |
+|-------|--------|
+| Flow complete — contact added to list, email available, sequence ready for review | 1 |

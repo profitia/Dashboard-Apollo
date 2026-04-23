@@ -91,6 +91,18 @@ class PipelineStatus:
     PENDING_MANUAL_REVIEW = "PENDING_MANUAL_REVIEW"
     """Human review gate aktywny — case czeka na ręczne zatwierdzenie."""
 
+    # --------------------------------------------------------
+    # MANUAL MODE — dedykowane statusy trybu manual
+    # --------------------------------------------------------
+    MANUAL_COMPLETE = "MANUAL_COMPLETE"
+    """Manual mode — flow kompletny: custom fields zapisane, sekwencja gotowa do review."""
+
+    MANUAL_INPUT_INVALID = "MANUAL_INPUT_INVALID"
+    """Manual mode — błąd walidacji danych wejściowych (brak email/tier/article_url)."""
+
+    MANUAL_CONTACT_SYNC_FAILED = "MANUAL_CONTACT_SYNC_FAILED"
+    """Manual mode — zapis custom fields do Apollo nie powiódł się dla żadnego kontaktu."""
+
 
 # ---------------------------------------------------------------------------
 # Status metadata — właściwości każdego statusu
@@ -208,6 +220,30 @@ STATUS_META: dict[str, dict] = {
         "requires_review": True,
         "retryable": True,
         "category": "review",
+    },
+    PipelineStatus.MANUAL_COMPLETE: {
+        "description": "Manual mode: flow kompletny — custom fields zapisane, sekwencja gotowa",
+        "stage": "apollo_write",
+        "sends_notification": True,
+        "requires_review": True,
+        "retryable": False,
+        "category": "success",
+    },
+    PipelineStatus.MANUAL_INPUT_INVALID: {
+        "description": "Manual mode: błąd walidacji wejścia — brak wymaganego pola (email/tier/article_url)",
+        "stage": "input_validation",
+        "sends_notification": False,
+        "requires_review": False,
+        "retryable": True,
+        "category": "blocked",
+    },
+    PipelineStatus.MANUAL_CONTACT_SYNC_FAILED: {
+        "description": "Manual mode: zapis custom fields do Apollo nie powiódł się dla żadnego kontaktu",
+        "stage": "apollo_write",
+        "sends_notification": False,
+        "requires_review": True,
+        "retryable": True,
+        "category": "blocked",
     },
 }
 

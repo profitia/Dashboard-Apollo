@@ -1,0 +1,430 @@
+{
+  "test_run_at": "2026-04-23T12:41:49.751134+00:00",
+  "dry_run": false,
+  "campaign_id": "spendguru_market_news",
+  "company_under_test": "ON Lemon",
+  "article": {
+    "url": "https://www.horecatrends.pl/gastronomia/114/on_lemon_na_eec_20226_blizej_mi_do_kreowania_niz_do_reagowania_na_trendy,94363.html",
+    "title": "ON Lemon na EEC 2026: Bliżej mi do kreowania niż do reagowania na trendy",
+    "published_at": "2026-04-23",
+    "source": "horecatrends.pl — partial live fetch + controlled fixture (cookie wall)"
+  },
+  "tier1_owner_verification": {
+    "all_pass": true,
+    "test_cases": [
+      {
+        "title": "Właściciel",
+        "expected": "tier_1_c_level",
+        "got": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "reason": "Title match: 'właściciel'",
+        "pass": true
+      },
+      {
+        "title": "właściciel",
+        "expected": "tier_1_c_level",
+        "got": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "reason": "Title match: 'właściciel'",
+        "pass": true
+      },
+      {
+        "title": "Owner",
+        "expected": "tier_1_c_level",
+        "got": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "reason": "Title match: 'owner'",
+        "pass": true
+      },
+      {
+        "title": "owner",
+        "expected": "tier_1_c_level",
+        "got": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "reason": "Title match: 'owner'",
+        "pass": true
+      },
+      {
+        "title": "Właściciel ON Lemon",
+        "expected": "tier_1_c_level",
+        "got": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "reason": "Title match: 'właściciel'",
+        "pass": true
+      },
+      {
+        "title": "Owner, ON Lemon",
+        "expected": "tier_1_c_level",
+        "got": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "reason": "Title match: 'owner'",
+        "pass": true
+      },
+      {
+        "title": "Robert Orszulak, Właściciel",
+        "expected": "tier_1_c_level",
+        "got": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "reason": "Title match: 'właściciel'",
+        "pass": true
+      }
+    ]
+  },
+  "qualification": {
+    "qualified": false,
+    "total_score": 40.0,
+    "industry_score": 15.0,
+    "purchase_signal_score": 5.0,
+    "disqualification_reason": "Purchase signal score too low: 5.0 (min 15). Matched groups: ['compliance_trigger']",
+    "matched_industry_groups": [
+      "food_beverages",
+      "plastics"
+    ],
+    "matched_purchase_groups": [
+      "compliance_trigger"
+    ],
+    "explanation": "[Industry/food_beverages]: napoje, napój; [Industry/plastics]: PET, PE, PS; [Signal/compliance_trigger]: ESPR; [Age]: 0 days",
+    "pipeline_decision": "NOT QUALIFIED — override applied for downstream test"
+  },
+  "entity_extraction": {
+    "extracted_name": "ON Lemon",
+    "source_name": "ON Lemon",
+    "canonical_name": "ON Lemon",
+    "name_normalized": "onlemon",
+    "company_type": "producer",
+    "campaign_eligible": true,
+    "eligibility_reason": "ON Lemon to producent napojów i lemoniad, czyli firma z segmentu FMCG, dla której narzędzia do negocjacji zakupowych mogą wspierać zakupy surowców i opakowań. Artykuł pokazuje też, że marka aktywnie tworzy nowe produkty i eksperymentuje, co zwiększa potencjał do optymalizacji kosztów zakupowych.",
+    "confidence": 0.98,
+    "related_companies": []
+  },
+  "company_resolution": {
+    "status": "skipped",
+    "reason": "use_company_resolution=false in campaign_config",
+    "resolved_name_used": "ON Lemon",
+    "domain_hint": "onlemon.pl",
+    "note": "Alias dict contains 'ON Lemon' entry with onlemon.pl domain."
+  },
+  "contact_search": {
+    "total_contacts_found": 10,
+    "strategy_used": "name_only",
+    "winning_strategy": "none",
+    "name_search_count": 10,
+    "name_search_email_count": 0,
+    "domain_fallback_triggered": true,
+    "domain_searched": "onlemon.pl",
+    "domain_search_email_count": 0,
+    "assoc_fallback_triggered": false,
+    "assoc_fallback_company": null,
+    "search_log": [
+      "[1] name_search: 'ON Lemon' → 10 contacts, 0 with email",
+      "[2] domain_fallback: 'onlemon.pl' → 10 contacts, 0 with email",
+      "[3] assoc_fallback: skipped — no associated companies provided",
+      "[RESULT] All strategies failed — 0 contacts with email"
+    ],
+    "all_contacts": [
+      {
+        "full_name": "Robert",
+        "job_title": "Owner",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "tier_reason": "Title match: 'owner'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "620b6279a717920001a8a112"
+      },
+      {
+        "full_name": "Jacek",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "5e5d9a272709f80001776b13"
+      },
+      {
+        "full_name": "Grzegorz",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "57d80f5ba6da980a36d24572"
+      },
+      {
+        "full_name": "Karol",
+        "job_title": "Senior Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "66a7758086d14f00011425be"
+      },
+      {
+        "full_name": "Anna",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "63dba0b76a94a90001e12b12"
+      },
+      {
+        "full_name": "Bartek",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6723cd2a3aa3b00001c24301"
+      },
+      {
+        "full_name": "Kacper",
+        "job_title": "Export Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "66fe8b22103f160001237150"
+      },
+      {
+        "full_name": "Lukasz",
+        "job_title": "Event Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Event Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "614d4caaf88811000136860e"
+      },
+      {
+        "full_name": "Aleksandra",
+        "job_title": "Administration Team Leader",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Administration Team Leader'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "657f18d255f05b0001fa24ff"
+      },
+      {
+        "full_name": "Olaf",
+        "job_title": "Business Development & Sales Team Senior Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Business Development & Sales Team Senior Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "642ab8517cdf3a0001073adc"
+      }
+    ]
+  },
+  "recipient_selection": {
+    "pilot_max_contacts": 3,
+    "selected_count": 1,
+    "excluded_count": 9,
+    "tier_1_selected": 1,
+    "tier_2_selected": 0,
+    "selected": [
+      {
+        "full_name": "Robert",
+        "job_title": "Owner",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "tier_reason": "Title match: 'owner'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "620b6279a717920001a8a112"
+      }
+    ],
+    "excluded": [
+      {
+        "full_name": "Jacek",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "5e5d9a272709f80001776b13"
+      },
+      {
+        "full_name": "Grzegorz",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "57d80f5ba6da980a36d24572"
+      },
+      {
+        "full_name": "Karol",
+        "job_title": "Senior Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "66a7758086d14f00011425be"
+      },
+      {
+        "full_name": "Anna",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "63dba0b76a94a90001e12b12"
+      },
+      {
+        "full_name": "Bartek",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6723cd2a3aa3b00001c24301"
+      },
+      {
+        "full_name": "Kacper",
+        "job_title": "Export Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "66fe8b22103f160001237150"
+      },
+      {
+        "full_name": "Lukasz",
+        "job_title": "Event Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Event Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "614d4caaf88811000136860e"
+      },
+      {
+        "full_name": "Aleksandra",
+        "job_title": "Administration Team Leader",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Administration Team Leader'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "657f18d255f05b0001fa24ff"
+      },
+      {
+        "full_name": "Olaf",
+        "job_title": "Business Development & Sales Team Senior Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Business Development & Sales Team Senior Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "642ab8517cdf3a0001073adc"
+      }
+    ]
+  },
+  "message_generation": {
+    "total_generated": 1,
+    "total_failed": 0,
+    "messages": [
+      {
+        "full_name": "Robert",
+        "tier_label": "Tier 1 - C-Level",
+        "email_1": {
+          "subject": "ON Lemon i presja na marżę",
+          "word_count": 158,
+          "word_count_ok": true,
+          "first_line": "Postanowiłem napisać do Pana po artykule „ON Lemon na EEC 2026: Bliżej mi do kreowania niż do reagowania na trendy” w horecatrends.pl - od razu pomyśl",
+          "cta_calendly_ok": true,
+          "cta_rozmowa_ok": true,
+          "em_dash_found": false,
+          "forbidden_phrases": [],
+          "body_full": "Postanowiłem napisać do Pana po artykule „ON Lemon na EEC 2026: Bliżej mi do kreowania niż do reagowania na trendy” w horecatrends.pl - od razu pomyślałem o ON Lemon, bo w Pana roli każda nowa idea szybko spotyka się z pytaniem, ile kosztuje jej dowiezienie.\n\nZwróciłem uwagę w tym artykule na to, że ON Lemon stawia na kreowanie, a nie podążanie za trendem, i że cztery lata temu powstał u Was tonik espresso w puszce. Jeśli firma testuje tak nietypowe połączenia, to łatwo o sytuację, w której dobry pomysł zaczyna przegrywać z kosztem surowców, opakowań albo warunków u dostawców.\n\nWłaśnie w takich momentach przydaje się lepsze przygotowanie do rozmów. Nazywam się Tomasz Uściński i jestem z Profitii - polskiej firmy, która od 15 lat pomaga firmom z branży napojów ograniczać koszty związane z zakupami.\n\nJeśli temat jest dla Pana interesujący, proszę wybrać termin krótkiego spotkania online:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię."
+        },
+        "follow_up_1": {
+          "subject": "ON Lemon - koszt pomysłu i marża",
+          "word_count": 87,
+          "word_count_ok": true,
+          "body_full": "Wracając do tego artykułu - zwróciłem uwagę jeszcze na jeden wątek: skoro ON Lemon daje sobie przestrzeń na testy i eksperymenty, to rośnie znaczenie tego, jak szybko widać koszt takiego pomysłu po stronie zakupów. Przy nowych produktach często nie chodzi o samą ideę, tylko o to, czy da się ją utrzymać na sensownej marży.\n\nW takich rozmowach pomaga prosty standard przygotowania do negocjacji. Jeśli warto byłoby omówić to na jednej kategorii kosztowej, proszę wybrać termin:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię."
+        },
+        "follow_up_2": {
+          "subject": "Krótko o ON Lemon",
+          "word_count": 59,
+          "word_count_ok": true,
+          "body_full": "Jeden wątek z tego artykułu od razu zwrócił moją uwagę: u Was chodzi o kreowanie, nie o bieganie za trendem. W praktyce przy zakupach oznacza to jedno - dobrze mieć z góry policzone, gdzie marża może uciekać.\n\nJeśli chciałby Pan sprawdzić to podejście, proszę wybrać termin spotkania:\nhttps://calendly.com/profitia/zakupy-a-marza-firmy\nJeśli wygodniejsza będzie krótka rozmowa telefoniczna, proszę przesłać numer - oddzwonię."
+        },
+        "generation_ok": true
+      }
+    ]
+  },
+  "apollo_flow": {
+    "sequence_name": "NEWS-2026-04-23-on-lemon-on-lemon-na-eec-2026-blizej-mi-do-kreowa",
+    "dry_run": false,
+    "contacts_processed": 1,
+    "contacts_added_to_list": 1,
+    "contacts_stage_set": 1,
+    "contacts_synced": 1,
+    "contacts_enrolled": 0,
+    "reveal_attempted": true,
+    "reveal_count": 1,
+    "email_available": true,
+    "auto_enroll": false,
+    "contact_results": [
+      {
+        "full_name": "Robert",
+        "email": "robertorszulak@onlemon.pl",
+        "tier": "tier_1_c_level",
+        "tier_label": "Tier 1 - C-Level",
+        "apollo_person_id": "620b6279a717920001a8a112",
+        "apollo_crm_contact_id": "69ea076be47b8500152f590c",
+        "list_name": "PL Tier 1 do market_news VSC",
+        "stage": "News pipeline - drafted",
+        "status": "drafted_with_email",
+        "email_revealed": true,
+        "email_source": "apollo_reveal"
+      }
+    ],
+    "errors": []
+  },
+  "notification": {
+    "type": "READY_FOR_REVIEW",
+    "note": "Sent by create_news_sequence internally"
+  },
+  "final_status": "READY_FOR_REVIEW",
+  "final_stage": "apollo_write",
+  "final_reason": "Flow complete — contacts added to list, email available, messages ready",
+  "errors": [],
+  "elapsed_seconds": 16.0
+}

@@ -16,18 +16,28 @@ aliases:
       - "Evra Fish"
       - "Evra-Fish"
       - "EVRA FISH"
+      - "Evra Fish Sp. z o.o."
+      - "Evra Fish sp. z o.o."
+      - "EvraFish Sp. z o.o."
     canonical_name: "EvraFish"
     search_variants:
       - "EvraFish"
-    domain: ""
+      - "Evra Fish"
+    domain: "evrafish.pl"
     notes: >
       Media (Portal Spożywczy) piszą 'Evra Fish' ze spacją.
       Branding i KRS firmy to 'EvraFish' (jedno słowo).
+      LLM entity extractor może zwracać 'Evra Fish Sp. z o.o.' — pokryte przez source_variants.
       Przetwórca i dystrybutor ryb i owoców morza. Polska spółka z o.o.
       Apollo org search może nie mieć firmy — people search bardziej prawdopodobny.
+      Domena: evrafish.pl — używana jako domain_hint.
 
   - source_variants:
       - "Grycan"
+      - "Grycan - Lody od pokoleń"
+      - "Grycan Lody od pokoleń"
+      - "Grycan Lody"
+      - "Grycan lody od pokoleń Sp. z o.o."
     canonical_name: "Grycan"
     search_variants:
       - "Grycan lody"
@@ -37,3 +47,68 @@ aliases:
       Popularny producent lodów premium. Portal używa skrótu 'Grycan'.
       Pełna nazwa prawna: 'Grycan - Lody od pokoleń Sp. z o.o.' lub podobna.
       Domena: grycan.pl — używana jako domain_hint w heurystyce gdy Apollo nie ma domeny.
+
+  - source_variants:
+      - "Maspex"
+      - "Grupa Maspex"
+      - "Maspex Wadowice"
+      - "Maspex Group"
+    canonical_name: "Maspex"
+    search_variants:
+      - "Maspex"
+      - "Grupa Maspex"
+    domain: "maspex.com"
+    notes: >
+      Polska prywatna grupa FMCG — napoje, słodycze, przetwory. Marki: Tymbark, Żubrówka, Tiger, Kubuś, Lubella.
+      Prezes: Krzysztof Pawiński. Media piszą 'Maspex' lub 'Grupa Maspex'.
+      Domena korporacyjna: maspex.com (en). Apollo może mieć kontakty z maspex.com.
+
+  - source_variants:
+      - "Colian"
+      - "Grupa Colian"
+      - "Colian Group"
+      - "Colian Sp. z o.o."
+    canonical_name: "Colian"
+    search_variants:
+      - "Colian"
+      - "Grupa Colian"
+    domain: "colian.pl"
+    notes: >
+      Polska prywatna grupa słodyczowa — Grześki, Jeżyki, Familijne, Solidarność, Sniezka.
+      Prezes/Założyciel: Jan Kolański. 70% sprzedaży zagranica (UK, FR, DE, IE).
+      Media piszą 'Colian' lub 'Grupa Colian'.
+      Domena: colian.pl — domain hint dla Apollo.
+
+  - source_variants:
+      - "ON Lemon"
+      - "On Lemon"
+      - "ON LEMON"
+    canonical_name: "ON Lemon"
+    search_variants:
+      - "ON Lemon"
+    domain: "onlemon.pl"
+    notes: >
+      Polska mała marka premium napojów — naturalne lemoniady, espresso tonic w puszce, napoje matcha.
+      Właściciel/Founder: Robert Orszulak. Firma kreacyjna, nie skalowa ("skala nie jest celem").
+      Źródło artykułu: horecatrends.pl. Domena: onlemon.pl (do weryfikacji — Apollo może nie mieć domeny).
+      Firma bardzo mała — Apollo coverage niepewne.
+
+  - source_variants:
+      - "ORLEN"
+      - "PKN ORLEN"
+      - "PKN Orlen"
+      - "Orlen"
+      - "ORLEN S.A."
+      - "PKN ORLEN S.A."
+      - "Orlen S.A."
+    canonical_name: "PKN ORLEN"
+    search_variants:
+      - "PKN ORLEN"
+      - "ORLEN"
+    domain: "orlen.pl"
+    notes: >
+      Główna spółka grupy ORLEN. Media często piszą skrótowo 'ORLEN'.
+      Apollo może zwrócić spółki zależne (ORLEN Technologie, ORLEN Oil, ORLEN Upstream itd.).
+      Canonical name 'PKN ORLEN' + domain hint 'orlen.pl' pozwalają faworyzować główną spółkę.
+      Jeśli resolver zwraca spółkę zależną, pipeline powinien wybrać tę z domeną orlen.pl.
+

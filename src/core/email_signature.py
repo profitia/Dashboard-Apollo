@@ -7,9 +7,11 @@ Jedno źródło prawdy dla formatu podpisu używanego we wszystkich kampaniach
 """
 
 import html as html_mod
+import re
 
 
-# ============================================================
+# Regex do wykrywania URLów w plain-text body
+_URL_RE = re.compile(r'https?://\S+')
 # Font styles
 # ============================================================
 
@@ -151,16 +153,37 @@ def body_to_html(body_text: str) -> str:
     Używa FONT_PARAGRAPH z kontrolowanym marginem (margin: 0 0 10px 0)
     zamiast domyślnego marginu <p> (~1em), który tworzy zbyt duże odstępy.
 
-    WAŻNE: Elementy łączone BEZ \n — Apollo konwertuje \n w merge tagach
+    URLS: przed html.escape() wykrywa URL-e i opakowuje je w <a href> —
+    dzięki temu linki są klikalne w Apollo UI.
+
+    WAżNE: Elementy łączone BEZ \n — Apollo konwertuje \n w merge tagach
     na <br />, co tworzy niechciane odstępy między paragrafami.
     """
-    escaped = html_mod.escape(body_text)
+    # Linkify URLs BEFORE html.escape() — to preserve the raw URL for href
+    parts: list[str] = []
+    last_end = 0
+    for m in _URL_RE.finditer(body_text):
+        # Escape text before the URL
+        parts.append(html_mod.escape(body_text[last_end:m.start()]))
+        # Strip trailing punctuation that is not part of the URL
+        url = m.group()
+        stripped = url.rstrip('.,;:!?)')
+        trailing = html_mod.escape(url[len(stripped):])
+        safe_url = html_mod.escape(stripped, quote=True)
+        parts.append(
+            f'<a href="{safe_url}" style="{FONT_LINK}" rel="noopener noreferrer">'
+            f'{safe_url}</a>{trailing}'
+        )
+        last_end = m.end()
+    parts.append(html_mod.escape(body_text[last_end:]))
+    escaped = "".join(parts)
+
     paragraphs = escaped.split("\n\n")
-    parts = [
+    result = [
         f'<p style="{FONT_PARAGRAPH}">{p.replace(chr(10), "<br>")}</p>'
         for p in paragraphs
     ]
-    return "".join(parts)
+    return "".join(result)
 
 
 # Placeholdery, które LLM może dodać zamiast podpisu

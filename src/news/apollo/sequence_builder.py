@@ -73,32 +73,98 @@ def build_sequence_name(
     return f"{prefix}-{date_str}-{company_slug}-{topic_slug}"
 
 
-def _outreach_pack_to_custom_fields(outreach_pack) -> dict[str, str]:
-    """Mapuje OutreachPack → dict pól custom Apollo (prefix: sg_market_news)."""
+def _outreach_pack_to_custom_fields(outreach_pack, contact=None) -> dict[str, str]:
+    """Mapuje OutreachPack → dict pól custom Apollo (prefix: sg_market_news).
+
+    ZMIANA 3: Buduje threaded HTML (E1, FU1+E1, FU2+FU1+E1) przy użyciu
+              email_thread_formatter — ten sam wzorzec co pipeline CSV.
+    ZMIANA 4: Dodaje pl_market_news_signature_tu (statyczny HTML podpisu)
+              do pól custom, a do body_html_nosig E1 wstrzykuje podpis inline.
+    """
     try:
         root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
         src_dir = os.path.join(root, "src")
         if src_dir not in sys.path:
             sys.path.insert(0, src_dir)
+        from core.email_thread_formatter import build_outreach_pack as _build_thread_pack
+        from core.email_signature import SIGNATURE_HTML, SIGNATURE_STANDALONE_HTML
+        _thread_formatter_available = True
+    except ImportError:
+        _thread_formatter_available = False
+
+    try:
         from core.email_signature import body_to_html
     except ImportError:
         def body_to_html(b): return f"<p>{b}</p>"
 
-    def _nosig_html(step: dict) -> str:
-        """HTML bez podpisu (podpis w osobnym polu Apollo)."""
-        body_core = step.get("body_core") or step.get("body", "")
-        sig_marker = "Z poważaniem,"
-        if sig_marker in body_core:
-            body_core = body_core[:body_core.index(sig_marker)].rstrip()
-        return body_to_html(body_core)
+    # Pobierz body_core z OutreachPack
+    e1_body_core = outreach_pack.email_1.get("body_core") or outreach_pack.email_1.get("body", "")
+    fu1_body_core = outreach_pack.follow_up_1.get("body_core") or outreach_pack.follow_up_1.get("body", "")
+    fu2_body_core = outreach_pack.follow_up_2.get("body_core") or outreach_pack.follow_up_2.get("body", "")
+
+    e1_subject = outreach_pack.email_1.get("subject", "")
+
+    if _thread_formatter_available and contact is not None:
+        # Buduj contact dict dla thread formattera
+        from datetime import datetime, timedelta, timezone
+        today = datetime.now(timezone.utc)
+        d0 = today.strftime("%d.%m.%Y")
+        d2 = (today + timedelta(days=2)).strftime("%d.%m.%Y")
+        d4 = (today + timedelta(days=4)).strftime("%d.%m.%Y")
+
+        contact_dict = {
+            "first_name": getattr(contact, "first_name", ""),
+            "last_name": getattr(contact, "last_name", ""),
+            "domain": getattr(contact, "company_domain", "") or getattr(contact, "email", "").split("@")[-1] if getattr(contact, "email", "") else "example.com",
+        }
+
+        threaded = _build_thread_pack(
+            email_1_subject=e1_subject,
+            email_1_body_core=e1_body_core,
+            follow_up_1_body_core=fu1_body_core,
+            follow_up_2_body_core=fu2_body_core,
+            contact=contact_dict,
+            date_email_1=d0,
+            date_follow_up_1=d2,
+            date_follow_up_2=d4,
+        )
+
+        # E1: body_html_nosig (bez podpisu — podpis w pl_market_news_signature_tu)
+        step_1_body = threaded["email_1"]["body_html_nosig"]
+        # FU1: body_html_nosig zawiera SIGNATURE_STANDALONE_HTML + thread (Outlook-style)
+        step_2_body = threaded["follow_up_1"]["body_html_nosig"]
+        # FU2: body_html_nosig zawiera SIGNATURE_STANDALONE_HTML + pełny thread FU1+E1
+        step_3_body = threaded["follow_up_2"]["body_html_nosig"]
+    else:
+        # Fallback: bez threadingu (jak poprzednio)
+        def _nosig_html(step: dict) -> str:
+            body_core = step.get("body_core") or step.get("body", "")
+            sig_marker = "Z poważaniem,"
+            if sig_marker in body_core:
+                body_core = body_core[:body_core.index(sig_marker)].rstrip()
+            return body_to_html(body_core)
+
+        step_1_body = _nosig_html(outreach_pack.email_1)
+        step_2_body = _nosig_html(outreach_pack.follow_up_1)
+        step_3_body = _nosig_html(outreach_pack.follow_up_2)
+
+    # Buduj podpis HTML (do pola pl_market_news_signature_tu)
+    # Używamy SIGNATURE_STANDALONE_HTML (single-line, bez <table>) — Apollo konwertuje \n na <br />,
+    # co powoduje zbędne odstępy w tabeli. Standalone jest identyczny wizualnie, ale bezpieczny.
+    try:
+        from core.email_signature import SIGNATURE_STANDALONE_HTML as _SIG_HTML
+        signature_html = _SIG_HTML
+    except ImportError:
+        signature_html = ""
 
     fields = {
-        "sg_market_news_email_step_1_subject": outreach_pack.email_1.get("subject", ""),
-        "sg_market_news_email_step_1_body": _nosig_html(outreach_pack.email_1),
+        "sg_market_news_email_step_1_subject": e1_subject,
+        "sg_market_news_email_step_1_body": step_1_body,
         "sg_market_news_email_step_2_subject": outreach_pack.follow_up_1.get("subject", ""),
-        "sg_market_news_email_step_2_body": _nosig_html(outreach_pack.follow_up_1),
+        "sg_market_news_email_step_2_body": step_2_body,
         "sg_market_news_email_step_3_subject": outreach_pack.follow_up_2.get("subject", ""),
-        "sg_market_news_email_step_3_body": _nosig_html(outreach_pack.follow_up_2),
+        "sg_market_news_email_step_3_body": step_3_body,
+        "pl_market_news_signature_tu": signature_html,
     }
     for k, v in fields.items():
         if len(v) > 4900:
@@ -550,7 +616,8 @@ def create_news_sequence(
     tier_list_map = {
         "tier_1_c_level": apollo_lists.get("tier_1", "PL Tier 1 do market_news VSC"),
         "tier_2_procurement_management": apollo_lists.get("tier_2", "PL Tier 2 do market_news VSC"),
-        "tier_3_buyers_operational": apollo_lists.get("tier_3", "PL Tier 3 do market_news VSC"),
+        # Tier 3 — nie przypisujemy do żadnej listy (kampania nie obejmuje Tier 3)
+        "tier_3_buyers_operational": None,
     }
     contact_stage = campaign_config.get("contact_stage_draft", "News pipeline - drafted")
     auto_enroll = campaign_config.get("auto_enroll", False)
@@ -566,7 +633,7 @@ def create_news_sequence(
         "contacts_added_to_list": 0,
         "contacts_stage_set": 0,
         "contacts_synced": 0,       # kontakty z zapisanymi custom fields (mają email)
-        "contacts_enrolled": 0,     # zawsze 0 w trybie draft-only
+        "contacts_enrolled": 0,     # kontakty dodane do sekwencji docelowej (gdy enroll_in_sequence=True)
         "reveal_attempted": False,
         "reveal_count": 0,          # liczba kontaktów z ujawnionym emailem
         "email_available": False,   # True jeśli ≥1 kontakt ma email po reveal
@@ -671,6 +738,8 @@ def create_news_sequence(
                 )
                 if email:
                     contact.email = email
+                    if hasattr(contact, "email_source"):
+                        contact.email_source = "apollo_reveal"
                     result["reveal_count"] += 1
                     log.info("[Reveal] Email revealed for %s: %s", contact.full_name, email)
 
@@ -729,11 +798,12 @@ def create_news_sequence(
             "stage": contact_stage,
             "status": "drafted",
             "email_revealed": idx in revealed_idxs and bool(contact.email),
+            "email_source": getattr(contact, "email_source", "unknown"),
         }
 
         if contact.email and crm_id:
             # Kontakt ma email i CRM ID — zapisz custom fields
-            custom_fields = _outreach_pack_to_custom_fields(pack)
+            custom_fields = _outreach_pack_to_custom_fields(pack, contact=contact)
             try:
                 client.update_contact_custom_fields(crm_id, custom_fields)
                 result["contacts_synced"] += 1
@@ -743,6 +813,73 @@ def create_news_sequence(
             except Exception as exc:
                 log.warning("[BUILD] Custom field sync failed for %s: %s", contact.full_name, exc)
                 result["errors"].append(f"Custom field sync failed: {contact.full_name}: {exc}")
+
+            # ----------------------------------------------------------------
+            # FAZA 4: Enrollment do sekwencji docelowej "VSC Market News"
+            # Tylko dla kontaktów z emailem i CRM ID po zapisaniu custom fields.
+            # Kontrolowane przez enroll_in_sequence w campaign_config.yaml.
+            # auto_enroll (tworzenie nowych sekwencji) pozostaje false — to jest
+            # enrollment do ISTNIEJĄCEJ sekwencji docelowej.
+            # ----------------------------------------------------------------
+            enroll_in_sequence = campaign_config.get("enroll_in_sequence", False)
+            target_sequence_name = campaign_config.get("target_sequence_name", "")
+            if enroll_in_sequence and target_sequence_name and not dry_run:
+                log.info("[SEQUENCE] Looking up sequence: '%s'", target_sequence_name)
+                try:
+                    sequences = client.get_sequences()
+                    target_seq = next(
+                        (s for s in sequences if s.get("name") == target_sequence_name), None
+                    )
+                    if target_seq:
+                        target_seq_id = target_seq["id"]
+                        log.info("[SEQUENCE] Found sequence id=%s name='%s'",
+                                 target_seq_id, target_sequence_name)
+
+                        # Pobierz email account ID — wymagany przez Apollo API
+                        email_account_id = campaign_config.get("email_account_id")
+                        if not email_account_id:
+                            email_accounts = client.get_email_accounts()
+                            if email_accounts:
+                                email_account_id = email_accounts[0]["id"]
+                                log.info("[SEQUENCE] Using email account id=%s (%s)",
+                                         email_account_id,
+                                         email_accounts[0].get("email", "?"))
+                            else:
+                                log.warning("[SEQUENCE] No active email accounts found — enrollment skipped")
+                                contact_entry["enrollment_error"] = "No active email accounts"
+                                result["errors"].append("Enrollment skipped: no active email accounts found")
+
+                        if email_account_id:
+                            log.info("[SEQUENCE] Enrolling crm_id=%s (%s)",
+                                     crm_id, contact.full_name)
+                            client.add_to_sequence(
+                                sequence_id=target_seq_id,
+                                contact_ids=[crm_id],
+                                email_account_id=email_account_id,
+                                bypass_active=True,
+                                bypass_finished=True,
+                            )
+                            result["contacts_enrolled"] += 1
+                            contact_entry["enrolled_in_sequence"] = target_sequence_name
+                            contact_entry["enrolled_sequence_id"] = target_seq_id
+                            log.info("[SEQUENCE] Enrollment succeeded — crm_id=%s → sequence='%s' (id=%s)",
+                                     crm_id, target_sequence_name, target_seq_id)
+                    else:
+                        log.warning("[SEQUENCE] Sequence not found in Apollo: '%s' — enrollment skipped",
+                                    target_sequence_name)
+                        contact_entry["enrollment_error"] = f"Sequence '{target_sequence_name}' not found"
+                        result["errors"].append(f"Sequence '{target_sequence_name}' not found in Apollo")
+                except Exception as exc:
+                    log.warning("[SEQUENCE] Enrollment failed for crm_id=%s ('%s') in '%s': %s",
+                                crm_id, contact.full_name, target_sequence_name, exc)
+                    contact_entry["enrollment_error"] = str(exc)
+                    result["errors"].append(f"Enrollment failed for {contact.full_name}: {exc}")
+            elif enroll_in_sequence and dry_run:
+                log.info("[SEQUENCE] dry_run=True — enrollment skipped (would enroll crm_id=%s into '%s')",
+                         crm_id, target_sequence_name)
+            elif not enroll_in_sequence:
+                log.debug("[SEQUENCE] enroll_in_sequence=False — skipping enrollment for %s",
+                          contact.full_name)
 
             _step_1_body = pack.email_1.get("body_core") or pack.email_1.get("body", "")
             _step_2_body = pack.follow_up_1.get("body_core") or pack.follow_up_1.get("body", "")
@@ -827,11 +964,12 @@ def create_news_sequence(
                          result["contacts_added_to_list"])
 
     log.info(
-        "Draft complete: %s — listed=%d, stage=%d, synced=%d, reveal=%d/%s, email_available=%s",
+        "Draft complete: %s — listed=%d, stage=%d, synced=%d, enrolled=%d, reveal=%d/%s, email_available=%s",
         sequence_name,
         result["contacts_added_to_list"],
         result["contacts_stage_set"],
         result["contacts_synced"],
+        result["contacts_enrolled"],
         result["reveal_count"],
         "attempted" if result["reveal_attempted"] else "skipped",
         result["email_available"],

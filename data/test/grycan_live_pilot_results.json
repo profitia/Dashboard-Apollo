@@ -1,0 +1,303 @@
+{
+  "pilot_run_at": "2026-04-23T12:23:53.786577+00:00",
+  "dry_run": false,
+  "campaign_id": "spendguru_market_news",
+  "article": {
+    "url": "https://www.portalspozywczy.pl/slodycze-przekaski/wiadomosci/przyspieszony-start-sezonu-lodowego-grycan-poczatek-sezonu-przynosi-pozytywne-sygnaly,287489.html",
+    "title": "Przyspieszony start sezonu lodowego. Grycan: początek sezonu przynosi pozytywne sygnały",
+    "published_at": "2026-04-15",
+    "source": "fixture (portalspozywczy.pl blocked)"
+  },
+  "qualification": {
+    "qualified": true,
+    "total_score": 47.0,
+    "industry_score": 17.0,
+    "purchase_signal_score": 21.0,
+    "disqualification_reason": null,
+    "matched_industry_groups": [
+      "food_production",
+      "manufacturing",
+      "plastics"
+    ],
+    "matched_purchase_groups": [
+      "cost_pressure",
+      "supply_chain"
+    ],
+    "explanation": "[Industry/food_production]: lody, lodziarnia, lody premium; [Industry/manufacturing]: producent; [Industry/plastics]: PE; [Signal/cost_pressure]: ceny surowców; [Signal/supply_chain]: dostawca, negocjacji, zakupy surowców, kontrakt; [Age]: 8 days"
+  },
+  "entity_extraction": {
+    "extracted_name": "Grycan",
+    "source_name": "Grycan",
+    "canonical_name": "Grycan",
+    "name_normalized": "grycan",
+    "company_type": "producer",
+    "campaign_eligible": true,
+    "eligibility_reason": "Grycan jest producentem lodów i FMCG, a artykuł wskazuje na wzrost popytu, większe zakupy surowców mlecznych oraz potrzebę zarządzania łańcuchem dostaw i negocjacjami cenowymi. To bezpośrednio pasuje do zastosowania SpendGuru w zakupach i optymalizacji kosztów dostaw.",
+    "confidence": 0.98,
+    "related_companies": []
+  },
+  "company_resolution": {
+    "status": "skipped",
+    "reason": "use_company_resolution=false in campaign_config",
+    "resolved_name_used": "Grycan",
+    "domain_hint": "grycan.pl",
+    "note": "Alias dict contains 'Grycan' entry with grycan.pl domain. Company resolution is bypassed — direct Apollo search with resolved_company_name."
+  },
+  "contact_search": {
+    "total_contacts_found": 10,
+    "strategy_used": "name_only",
+    "winning_strategy": "none",
+    "name_search_count": 10,
+    "name_search_email_count": 0,
+    "domain_fallback_triggered": true,
+    "domain_searched": "grycan.pl",
+    "domain_search_email_count": 0,
+    "assoc_fallback_triggered": false,
+    "assoc_fallback_company": null,
+    "search_log": [
+      "[1] name_search: 'Grycan' → 10 contacts, 0 with email",
+      "[2] domain_fallback: 'grycan.pl' → 10 contacts, 0 with email",
+      "[3] assoc_fallback: skipped — no associated companies provided",
+      "[RESULT] All strategies failed — 0 contacts with email"
+    ],
+    "all_contacts": [
+      {
+        "full_name": "Karolina",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6108f224e27695000101feba"
+      },
+      {
+        "full_name": "Justyna",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "61dcdc10e8cf8a00015d3a83"
+      },
+      {
+        "full_name": "Dorota",
+        "job_title": "Senior Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6093a4f841f145000168d48d"
+      },
+      {
+        "full_name": "Wojciech",
+        "job_title": "National Key Account Manager / Krajowy Kierownik ds. Rynku Nowoczesnego",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'National Key Account Manager / Krajowy Kierownik ds. Rynku Nowoczesnego'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "634811d0be46ad00013fb003"
+      },
+      {
+        "full_name": "Aleksandra",
+        "job_title": "Deputy Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Deputy Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "642ecc4599be810001cbb5a4"
+      },
+      {
+        "full_name": "Ewa",
+        "job_title": "HR Director",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'HR Director'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "60e6fbed2a94690001e13321"
+      },
+      {
+        "full_name": "Pawel",
+        "job_title": "Area Operations Manager Southern Poland",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Area Operations Manager Southern Poland'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54a3e7217468693b8cc2151c"
+      },
+      {
+        "full_name": "Pawel",
+        "job_title": "Senior IT Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Senior IT Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "66f930cf60e65000018c61f6"
+      },
+      {
+        "full_name": "Ireneusz",
+        "job_title": "Director of Operations Support",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Director of Operations Support'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "66f9310cde27170001009e45"
+      },
+      {
+        "full_name": "Wojciech",
+        "job_title": "Commercial Director",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Commercial Director'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "57dd17a8a6da987b0158559f"
+      }
+    ]
+  },
+  "recipient_selection": {
+    "pilot_max_contacts": 3,
+    "selected_count": 0,
+    "excluded_count": 10,
+    "tier_1_selected": 0,
+    "tier_2_selected": 0,
+    "selected": [],
+    "excluded": [
+      {
+        "full_name": "Karolina",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6108f224e27695000101feba"
+      },
+      {
+        "full_name": "Justyna",
+        "job_title": "Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "61dcdc10e8cf8a00015d3a83"
+      },
+      {
+        "full_name": "Dorota",
+        "job_title": "Senior Brand Manager",
+        "tier": "tier_3_buyers_operational",
+        "tier_label": "Tier 3 - Buyers/Operational",
+        "tier_reason": "Title match: 'brand manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "6093a4f841f145000168d48d"
+      },
+      {
+        "full_name": "Wojciech",
+        "job_title": "National Key Account Manager / Krajowy Kierownik ds. Rynku Nowoczesnego",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'National Key Account Manager / Krajowy Kierownik ds. Rynku Nowoczesnego'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "634811d0be46ad00013fb003"
+      },
+      {
+        "full_name": "Aleksandra",
+        "job_title": "Deputy Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Deputy Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "642ecc4599be810001cbb5a4"
+      },
+      {
+        "full_name": "Ewa",
+        "job_title": "HR Director",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'HR Director'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "60e6fbed2a94690001e13321"
+      },
+      {
+        "full_name": "Pawel",
+        "job_title": "Area Operations Manager Southern Poland",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Area Operations Manager Southern Poland'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "54a3e7217468693b8cc2151c"
+      },
+      {
+        "full_name": "Pawel",
+        "job_title": "Senior IT Manager",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Senior IT Manager'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "66f930cf60e65000018c61f6"
+      },
+      {
+        "full_name": "Ireneusz",
+        "job_title": "Director of Operations Support",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Director of Operations Support'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "66f9310cde27170001009e45"
+      },
+      {
+        "full_name": "Wojciech",
+        "job_title": "Commercial Director",
+        "tier": "tier_uncertain",
+        "tier_label": "Tier Uncertain",
+        "tier_reason": "No match for: 'Commercial Director'",
+        "email": "",
+        "has_email": false,
+        "confidence": 0.3,
+        "apollo_contact_id": "57dd17a8a6da987b0158559f"
+      }
+    ]
+  },
+  "message_generation": {},
+  "apollo_flow": {},
+  "notification": {},
+  "final_status": "BLOCKED_NO_CONTACT",
+  "final_stage": "recipient_selection",
+  "final_reason": "No Tier 1 or Tier 2 contacts found for Grycan",
+  "errors": []
+}

@@ -6,6 +6,7 @@ Tryby uruchomienia:
   qualify         — oceń artykuły i wybierz relewantne
   build-sequence  — dla artykułu/firmy: kontakty + treści + sekwencja Apollo
   run-daily       — pełny workflow dzienny end-to-end
+  manual          — alias dla build-sequence z --single-article-url (ręczne wskazanie URL)
   
 Flagi:
   --dry-run            — nie pisz do Apollo
@@ -219,7 +220,7 @@ def run_build_sequence(
     from news.entity.company_resolver import resolve_company, STATUS_NO_MATCH, STATUS_AMBIGUOUS
     from news.contacts.contact_finder import (
         find_contacts_for_company, find_contacts_with_fallbacks,
-        validate_contact_found, select_best_contacts,
+        validate_contact_found, select_best_contacts, select_campaign_contacts,
     )
     from news.messaging.message_generator import generate_outreach_pack
     from news.apollo.sequence_builder import build_sequence_name, create_news_sequence, send_blocked_no_email_notification
@@ -399,6 +400,9 @@ def run_build_sequence(
             tier_mapping=tier_mapping,
             campaign_config=campaign_config,
             associated_companies=associated_companies or None,
+            article_title=article.title,
+            article_lead=article.lead,
+            article_body=article.body,
         )
         contacts = search_result.contacts
 
@@ -431,11 +435,10 @@ def run_build_sequence(
             })
             continue
 
-        # --- Wybierz najlepsze kontakty wg tier (bez filtrowania po emailu) ---
+        # --- Wybierz kontakty wg reguł kampanii (tylko T1 i T2, wszyscy, bez Tier 3) ---
         # Email reveal jest wykonywany dopiero w create_news_sequence (Faza 2).
-        max_contacts = campaign_config.get("max_contacts_for_draft", 3)
-        best_contacts = select_best_contacts(contacts, max_contacts=max_contacts)
-        log.info("[BUILD] Selected %d best contact(s) for %s (from %d total)",
+        best_contacts = select_campaign_contacts(contacts, campaign_config=campaign_config)
+        log.info("[BUILD] Selected %d campaign contact(s) for %s (from %d total — T3/uncertain excluded)",
                  len(best_contacts), company.name, len(contacts))
 
         # --- Treści wiadomości dla WSZYSTKICH wybranych kontaktów ---
@@ -624,6 +627,223 @@ def run_daily(campaign_id: str, dry_run: bool = False, **kwargs) -> list[dict]:
 
 
 # ============================================================
+# MODE: MANUAL
+# ============================================================
+def run_manual_sequence(
+    campaign_id: str,
+    article_url: str,
+    contacts_raw: list[dict],
+    dry_run: bool = False,
+) -> dict:
+    """
+    Tryb manual — uruchamia pipeline dla artykułu i kontaktów podanych ręcznie.
+
+    POMIJA etapy: qualification/scoring, entity extraction, contact discovery, email reveal.
+    WYKONUJE: fetch artykułu, message generation, custom fields Apollo, enrollment, notyfikacja.
+
+    Zasady:
+    - email podany przez operatora = source of truth (nigdy nie nadpisywany)
+    - tier podany przez operatora = source of truth (nigdy nie nadpisywany)
+    - jeśli kontakt istnieje w Apollo CRM po emailu → użyj istniejącego rekordu
+    - jeśli nie istnieje → utwórz nowy kontakt w Apollo z podanym emailem
+    - brak danych w Apollo NIE blokuje flow
+
+    Returns:
+        dict z wynikiem operacji (status, contacts_synced, errors)
+    """
+    from news.ingestion.article_fetcher import fetch_article
+    from news.apollo.sequence_builder import (
+        build_sequence_name, create_news_sequence,
+    )
+    from news.messaging.message_generator import generate_outreach_pack
+    from news.manual.contact_input import validate_contacts, contacts_to_records
+    from news.state.state_manager import ArticleStateManager
+    from news.notifications.notifier import notify
+
+    campaign_config, sources_config, _, _ = _load_campaign_configs(campaign_id)
+    cdir = _campaign_dir(campaign_id)
+
+    # --- Walidacja wejścia ---
+    if not article_url:
+        log.error("[MANUAL] Brak article_url — przerywam.")
+        return {
+            "status": PipelineStatus.MANUAL_INPUT_INVALID,
+            "error": "article_url is required",
+            "contacts_synced": 0,
+        }
+
+    validation = validate_contacts(contacts_raw or [])
+    if not validation.valid:
+        error_msgs = [f"  [{e.index}] {e.field}: {e.message}" for e in validation.errors]
+        log.error("[MANUAL] Walidacja kontaktów nieudana:\n%s", "\n".join(error_msgs))
+        return {
+            "status": PipelineStatus.MANUAL_INPUT_INVALID,
+            "error": "Contact validation failed",
+            "validation_errors": [
+                {"index": e.index, "field": e.field, "message": e.message}
+                for e in validation.errors
+            ],
+            "contacts_synced": 0,
+        }
+
+    # --- Fetch artykułu (bez scoringu) ---
+    sources_list = sources_config.get("sources", [])
+    source_config = next(
+        (s for s in sources_list if article_url.startswith(s.get("base_url", ""))),
+        {"id": "manual", "article_selectors": {}, "paywall": {"mode": "partial_content", "paywall_indicators": []}, "scrape_options": {}},
+    )
+    log.info("[MANUAL] Fetching article: %s", article_url)
+    article = fetch_article(article_url, source_config)
+
+    if not article.is_usable and article.fetch_error:
+        log.warning("[MANUAL] Article fetch error: %s — kontynuuję z częściowymi danymi", article.fetch_error)
+        # W manual mode błąd fetcha NIE blokuje pipeline — dane kontaktu są source of truth
+
+    log.info("[MANUAL] Article: '%s' (usable=%s)", article.title or "(no title)", article.is_usable)
+
+    # --- Konwersja kontaktów operator → ContactRecord ---
+    contacts = contacts_to_records(contacts_raw)
+    log.info("[MANUAL] Contacts: %d records (operator-provided)", len(contacts))
+    for c in contacts:
+        log.info("[MANUAL]   - %s | %s | %s | email=%s", c.full_name, c.job_title, c.tier, c.email)
+
+    # --- Wyznacz company_name dla sekwencji ---
+    # Pobierz z pierwszego kontaktu (najczęstszy przypadek: wszyscy z tej samej firmy)
+    company_name = contacts[0].company_name if contacts[0].company_name else "manual"
+
+    # --- Sekwencja name (ta sama konwencja co auto) ---
+    sequence_name = build_sequence_name(
+        article_date=article.published_at,
+        company_name=company_name,
+        article_title=article.title or article_url,
+        campaign_config=campaign_config,
+    )
+    log.info("[MANUAL] Sequence name: %s", sequence_name)
+
+    # --- Generuj wiadomości (ten sam generator co auto) ---
+    contacts_with_packs: list[dict] = []
+    tier_breakdown: dict[str, int] = {"tier_1": 0, "tier_2": 0, "tier_3": 0, "other": 0}
+
+    for contact in contacts:
+        try:
+            pack = generate_outreach_pack(
+                contact=contact,
+                article=article,
+                campaign_dir=cdir,
+                article_key_facts=None,
+            )
+            contacts_with_packs.append({"contact": contact, "pack": pack})
+            tier_key = {
+                "tier_1_c_level": "tier_1",
+                "tier_2_procurement_management": "tier_2",
+                "tier_3_buyers_operational": "tier_3",
+            }.get(contact.tier, "other")
+            tier_breakdown[tier_key] += 1
+            log.info("[MANUAL] Pack generated for %s (%s)", contact.full_name, contact.tier)
+        except Exception as exc:
+            log.warning("[MANUAL] Pack generation failed for %s: %s", contact.full_name, exc)
+
+    if not contacts_with_packs:
+        log.error("[MANUAL] Generowanie wiadomości nieudane dla wszystkich kontaktów.")
+        return {
+            "status": PipelineStatus.BLOCKED_MESSAGE_GENERATION_FAILED,
+            "article_url": article_url,
+            "company_name": company_name,
+            "contacts_synced": 0,
+            "error": "All outreach pack generation attempts failed",
+        }
+
+    # --- Apollo sync — ta sama logika co auto, ale:
+    #     1. Sekwencja docelowa: "VSC Market News - manual"
+    #     2. Brak email reveal (kontakty mają email z operatora)
+    #     3. create_news_sequence z campaign_config zmodyfikowanym dla manual mode ---
+    manual_config = {
+        **campaign_config,
+        # Sekwencja docelowa dla manual mode
+        "target_sequence_name": campaign_config.get(
+            "target_sequence_name_manual", "VSC Market News - manual"
+        ),
+        # W manual mode enrollment do sekwencji jest zawsze aktywny
+        # (operator podaje gotowe, zwalidowane kontakty z emailem)
+        "enroll_in_sequence": True,
+        # W manual mode email reveal jest wyłączony (email = source of truth operatora)
+        "use_email_reveal": False,
+    }
+
+    seq_result = create_news_sequence(
+        sequence_name=sequence_name,
+        contacts_with_packs=contacts_with_packs,
+        campaign_config=manual_config,
+        dry_run=dry_run,
+        article_title=article.title or article_url,
+        article_url=article.canonical_url or article_url,
+        company_name=company_name,
+    )
+
+    # --- Status finalny ---
+    contacts_synced = seq_result.get("contacts_synced", 0)
+    email_available = seq_result.get("email_available", False)
+
+    if contacts_synced > 0 or dry_run:
+        final_status = PipelineStatus.MANUAL_COMPLETE
+        final_reason = (
+            f"Manual mode complete — {contacts_synced} contacts synced, "
+            f"sequence '{sequence_name}' ready for review"
+        )
+    else:
+        final_status = PipelineStatus.MANUAL_CONTACT_SYNC_FAILED
+        final_reason = "Manual mode: custom fields sync failed for all contacts"
+
+    # --- State manager (manual mode używa oddzielnego klucza) ---
+    state_file = os.path.join(_ROOT_DIR, campaign_config.get("state_file", "data/processed_articles.json"))
+    sequences_file = os.path.join(_ROOT_DIR, campaign_config.get("sequences_log_file", "data/sequences_created.json"))
+    state = ArticleStateManager(state_file, sequences_file)
+
+    article_hash = article.article_hash or article_url
+    state.mark_article(article_url, article_hash, final_status, {
+        "company": company_name,
+        "sequence_name": sequence_name,
+        "sequence_id": seq_result.get("sequence_id"),
+        "final_stage": "apollo_write",
+        "final_reason": final_reason,
+        "mode": "manual",
+        "contacts_count": len(contacts_with_packs),
+    })
+
+    if final_status == PipelineStatus.MANUAL_COMPLETE:
+        state.register_sequence(
+            sequence_name=sequence_name,
+            sequence_id=seq_result.get("sequence_id"),
+            article_url=article_url,
+            article_title=article.title or article_url,
+            company_name=company_name,
+            company_normalized=company_name.lower(),
+            contacts_count=len(contacts_with_packs),
+            tier_breakdown=tier_breakdown,
+        )
+
+    log.info(
+        "[MANUAL] %s → %s (synced=%d, dry_run=%s)",
+        company_name, final_status, contacts_synced, dry_run,
+    )
+
+    return {
+        "status": final_status,
+        "article_url": article_url,
+        "article_title": article.title,
+        "company_name": company_name,
+        "sequence_name": sequence_name,
+        "contacts_processed": len(contacts_with_packs),
+        "contacts_synced": contacts_synced,
+        "contacts_enrolled": seq_result.get("contacts_enrolled", 0),
+        "tier_breakdown": tier_breakdown,
+        "email_available": email_available,
+        "dry_run": dry_run,
+        "errors": seq_result.get("errors", []),
+    }
+
+
+# ============================================================
 # CLI
 # ============================================================
 def main():
@@ -632,87 +852,183 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Tryby:
+  auto              Automatyczny pipeline: scan → qualify → contact discovery → Apollo
+  manual            Ręczny pipeline: artykuł + kontakty od operatora → Apollo
   scan              Skanuj serwisy i zapisz kandydatów artykułów
   qualify           Oceniaj artykuły i wybierz relewantne
   build-sequence    Dla zakwalifikowanych artykułów: kontakty + treści + sekwencja Apollo
-  run-daily         Pełny workflow end-to-end (scan + qualify + build)
+  run-daily         Pełny workflow end-to-end (scan + qualify + build) — alias dla 'auto'
   report            Generuj raport z ostatniego runu (z pliku stanu)
 
 Przykłady:
-  python orchestrator.py run-daily
-  python orchestrator.py run-daily --dry-run
-  python orchestrator.py build-sequence --single-article-url https://...
-  python orchestrator.py qualify --single-article-url https://...
-  python orchestrator.py scan
-  python orchestrator.py report
+
+  # TRYB AUTO (pełny pipeline automatyczny)
+  python orchestrator.py auto run-daily
+  python orchestrator.py auto run-daily --dry-run
+  python orchestrator.py auto build-sequence --single-article-url https://...
+  python orchestrator.py auto scan
+  python orchestrator.py auto qualify
+
+  # TRYB MANUAL (operator podaje artykuł i kontakty)
+  python orchestrator.py manual \\
+      --article-url https://example.com/artykul \\
+      --contacts-json '[{"email":"jan@firma.pl","tier":"tier_1_c_level",...}]'
+
+  python orchestrator.py manual \\
+      --article-url https://example.com/artykul \\
+      --contacts-file contacts.json
+
+  python orchestrator.py manual --article-url https://... --contacts-json '[...]' --dry-run
 """
     )
-    parser.add_argument("mode", choices=["scan", "qualify", "build-sequence", "run-daily", "report"],
-                        help="Tryb uruchomienia")
-    parser.add_argument("--campaign", default="spendguru_market_news",
-                        help="ID kampanii (domyślnie: spendguru_market_news)")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Nie pisz do Apollo — symulacja")
-    parser.add_argument("--no-apollo-write", action="store_true",
-                        help="Alias dla --dry-run")
-    parser.add_argument("--review-only", action="store_true",
-                        help="Generuj tylko treści, nie twórz sekwencji")
-    parser.add_argument("--single-article-url",
-                        help="Uruchom tylko dla jednego URL artykułu")
-    parser.add_argument("--verbose", action="store_true",
-                        help="Tryb debug — więcej logów")
+
+    subparsers = parser.add_subparsers(dest="top_mode", metavar="MODE")
+    subparsers.required = True
+
+    # ---- Tryb AUTO ----
+    auto_parser = subparsers.add_parser(
+        "auto",
+        help="Automatyczny pipeline (scan/qualify/build/run-daily)",
+        description="Automatyczny pipeline news — scan → qualify → contact discovery → Apollo",
+    )
+    auto_sub = auto_parser.add_subparsers(dest="auto_mode", metavar="SUBCOMMAND")
+    auto_sub.required = True
+
+    for cmd, help_txt in [
+        ("run-daily",      "Pełny workflow dzienny: scan + qualify + build"),
+        ("scan",           "Skanuj serwisy, zapisz kandydatów"),
+        ("qualify",        "Oceniaj artykuły i wybierz relewantne"),
+        ("build-sequence", "Kontakty + treści + sekwencja Apollo dla zakwalifikowanych"),
+        ("report",         "Generuj raport z pliku stanu"),
+    ]:
+        p = auto_sub.add_parser(cmd, help=help_txt)
+        p.add_argument("--campaign", default="spendguru_market_news",
+                       help="ID kampanii (domyślnie: spendguru_market_news)")
+        p.add_argument("--dry-run", action="store_true",
+                       help="Nie pisz do Apollo — symulacja")
+        p.add_argument("--no-apollo-write", action="store_true", help="Alias --dry-run")
+        p.add_argument("--review-only", action="store_true",
+                       help="Generuj tylko treści, nie twórz sekwencji")
+        p.add_argument("--single-article-url",
+                       help="Uruchom dla jednego URL artykułu")
+        p.add_argument("--verbose", action="store_true", help="Debug — więcej logów")
+
+    # ---- Tryb MANUAL ----
+    manual_parser = subparsers.add_parser(
+        "manual",
+        help="Ręczny pipeline — artykuł + kontakty od operatora",
+        description=(
+            "Manual mode: operator podaje URL artykułu i listę kontaktów.\n"
+            "Pipeline pomija qualification/scoring i contact discovery.\n"
+            "Email i tier podane przez operatora są source of truth."
+        ),
+    )
+    manual_parser.add_argument(
+        "--article-url", required=True,
+        help="URL artykułu do użycia jako trigger kampanii",
+    )
+    manual_parser.add_argument(
+        "--contacts-json",
+        help='Inline JSON z listą kontaktów, np.: \'[{"email":"...", "tier":"tier_1_c_level", ...}]\'',
+    )
+    manual_parser.add_argument(
+        "--contacts-file",
+        help="Ścieżka do pliku JSON z listą kontaktów (format identyczny jak --contacts-json)",
+    )
+    manual_parser.add_argument(
+        "--campaign", default="spendguru_market_news",
+        help="ID kampanii (domyślnie: spendguru_market_news)",
+    )
+    manual_parser.add_argument("--dry-run", action="store_true",
+                               help="Nie pisz do Apollo — symulacja")
+    manual_parser.add_argument("--no-apollo-write", action="store_true", help="Alias --dry-run")
+    manual_parser.add_argument("--verbose", action="store_true", help="Debug — więcej logów")
 
     args = parser.parse_args()
 
-    if args.verbose:
+    if getattr(args, "verbose", False):
         logging.getLogger().setLevel(logging.DEBUG)
 
-    dry_run = args.dry_run or args.no_apollo_write
+    # ---- Routing ----
+    top_mode = args.top_mode
 
-    mode = args.mode
-    campaign_id = args.campaign
-    single_url = args.single_article_url
+    if top_mode == "manual":
+        # --- MANUAL MODE ---
+        dry_run = args.dry_run or args.no_apollo_write
 
-    if mode == "scan":
-        run_scan(campaign_id)
-    elif mode == "qualify":
-        run_qualify(campaign_id, single_url=single_url)
-    elif mode == "build-sequence":
-        results = run_build_sequence(
-            campaign_id,
-            single_url=single_url,
+        # Załaduj kontakty
+        contacts_raw: list[dict] = []
+        if args.contacts_file:
+            try:
+                with open(args.contacts_file, encoding="utf-8") as f:
+                    contacts_raw = json.load(f)
+                if not isinstance(contacts_raw, list):
+                    parser.error(f"Plik {args.contacts_file} musi zawierać JSON array kontaktów.")
+            except (OSError, json.JSONDecodeError) as exc:
+                parser.error(f"Nie można wczytać pliku kontaktów '{args.contacts_file}': {exc}")
+        elif args.contacts_json:
+            try:
+                contacts_raw = json.loads(args.contacts_json)
+                if not isinstance(contacts_raw, list):
+                    parser.error("--contacts-json musi być JSON array kontaktów.")
+            except json.JSONDecodeError as exc:
+                parser.error(f"Nieprawidłowy JSON w --contacts-json: {exc}")
+        else:
+            parser.error("Tryb manual wymaga --contacts-json lub --contacts-file")
+
+        result = run_manual_sequence(
+            campaign_id=args.campaign,
+            article_url=args.article_url,
+            contacts_raw=contacts_raw,
             dry_run=dry_run,
-            review_only=args.review_only,
         )
-        print(json.dumps(results, indent=2, ensure_ascii=False, default=str))
-    elif mode == "run-daily":
-        results = run_daily(campaign_id, dry_run=dry_run)
-        print(json.dumps(results, indent=2, ensure_ascii=False, default=str))
-    elif mode == "report":
-        # Generuj raport na podstawie pliku stanu (bez uruchamiania runu)
-        from news.state.state_manager import ArticleStateManager
-        campaign_config, _, _, _ = _load_campaign_configs(campaign_id)
-        state_file = os.path.join(_ROOT_DIR, campaign_config.get("state_file", "data/processed_articles.json"))
-        sequences_file = os.path.join(_ROOT_DIR, campaign_config.get("sequences_log_file", "data/sequences_created.json"))
-        state = ArticleStateManager(state_file, sequences_file)
-        # Build synthetic results from state
-        synthetic_results = [
-            {"url": art.get("url", url), "status": art.get("status", "unknown"),
-             "company": art.get("company", ""), "final_stage": art.get("final_stage", ""),
-             "final_reason": art.get("final_reason", ""), "article_title": art.get("article_title", "")}
-            for url, art in state._articles.items()
-        ]
-        report_dir = os.path.join(_campaign_dir(campaign_id), "output")
-        paths = build_and_save_run_report(
-            run_results=synthetic_results,
-            campaign_config=campaign_config,
-            report_dir=report_dir,
-            run_mode="report",
-            dry_run=False,
-            state_manager=state,
-        )
-        for fmt, path in paths.items():
-            print(f"[REPORT] {fmt.upper()}: {path}")
+        print(json.dumps(result, indent=2, ensure_ascii=False, default=str))
+
+    elif top_mode == "auto":
+        # --- AUTO MODE ---
+        auto_mode = args.auto_mode
+        campaign_id = args.campaign
+        dry_run = args.dry_run or args.no_apollo_write
+        single_url = getattr(args, "single_article_url", None)
+
+        if auto_mode == "scan":
+            run_scan(campaign_id)
+        elif auto_mode == "qualify":
+            run_qualify(campaign_id, single_url=single_url)
+        elif auto_mode == "build-sequence":
+            results = run_build_sequence(
+                campaign_id,
+                single_url=single_url,
+                dry_run=dry_run,
+                review_only=args.review_only,
+            )
+            print(json.dumps(results, indent=2, ensure_ascii=False, default=str))
+        elif auto_mode == "run-daily":
+            results = run_daily(campaign_id, dry_run=dry_run)
+            print(json.dumps(results, indent=2, ensure_ascii=False, default=str))
+        elif auto_mode == "report":
+            from news.state.state_manager import ArticleStateManager
+            campaign_config, _, _, _ = _load_campaign_configs(campaign_id)
+            state_file = os.path.join(_ROOT_DIR, campaign_config.get("state_file", "data/processed_articles.json"))
+            sequences_file = os.path.join(_ROOT_DIR, campaign_config.get("sequences_log_file", "data/sequences_created.json"))
+            state = ArticleStateManager(state_file, sequences_file)
+            synthetic_results = [
+                {"url": art.get("url", url), "status": art.get("status", "unknown"),
+                 "company": art.get("company", ""), "final_stage": art.get("final_stage", ""),
+                 "final_reason": art.get("final_reason", ""), "article_title": art.get("article_title", "")}
+                for url, art in state._articles.items()
+            ]
+            report_dir = os.path.join(_campaign_dir(campaign_id), "output")
+            paths = build_and_save_run_report(
+                run_results=synthetic_results,
+                campaign_config=campaign_config,
+                report_dir=report_dir,
+                run_mode="report",
+                dry_run=False,
+                state_manager=state,
+            )
+            for fmt, path in paths.items():
+                print(f"[REPORT] {fmt.upper()}: {path}")
 
 
 if __name__ == "__main__":

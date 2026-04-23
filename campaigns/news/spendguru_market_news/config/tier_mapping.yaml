@@ -12,33 +12,35 @@
 
 tier_1_titles:
   label: "Tier 1 — C-Level / Zarząd / Właściciele"
+  # ZASADA: tylko role z listy per spec kampanii.
+  # ZAKAZANE w Tier 1: CPO (→ Tier 2), general manager, country manager.
   titles:
     # C-Suite PL
     - "prezes zarządu"
     - "wiceprezes zarządu"
     - "prezes"
+    - "dyrektor zarządzający"
     - "dyrektor generalny"
     - "dyrektor naczelny"
+    - "dyrektor operacyjny"
+    - "dyrektor finansowy"
     - "właściciel"
     - "współwłaściciel"
     - "założyciel"
     - "współzałożyciel"
-    - "dyrektor finansowy"
-    - "dyrektor operacyjny"
-    - "chief executive"
-    - "dyrektor ds. produkcji"   # na poziomie zarządu
+    - "członek zarządu"
+    - "wiceprezes"
 
     # C-Suite EN
     - "CEO"
     - "CFO"
     - "COO"
-    - "CTO"
-    - "CSO"
-    - "CPO"                      # Chief Procurement Officer — Tier 1 (nie mylić z Category Manager)
+    - "Chief Executive Officer"
+    - "Chief Financial Officer"
+    - "Chief Operating Officer"
     - "board member"
+    - "member of the board"
     - "managing director"
-    - "general manager"          # GM jeśli całość firmy
-    - "country manager"
     - "managing partner"
     - "founder"
     - "co-founder"
@@ -46,37 +48,28 @@ tier_1_titles:
     - "president"
     - "chairman"
 
-    # Finansowe na poziomie zarządu
-    - "finance director"
-    - "financial director"
-    - "VP Finance"
-    - "VP Operations"
-    - "VP Sales"
-    - "VP Supply Chain"          # tylko jeśli na poziomie całej firmy
-    - "executive director"
-    - "chief financial officer"
-    - "chief operating officer"
-    - "chief procurement officer"
-
 tier_2_titles:
   label: "Tier 2 — Procurement Management / Liderzy zakupów"
+  # ZASADA DWUSKŁADNIKOWA: tytuł musi zawierać:
+  #   poziom: head / director / chief / dyrektor
+  #   ORAZ komponent zakupowy: procurement / purchasing / zakup / sourcing
+  # Przykłady poprawne: "Head of Procurement", "Dyrektor Zakupów"
+  # Przykłady błędne: "Director", "Operations Director", "Head"
   titles:
     # PL
     - "dyrektor zakupów"
     - "dyrektor ds. zakupów"
-    - "szef zakupów"
-    - "kierownik działu zakupów"
-    - "head of zakupów"
-    - "kierownik zakupów"
     - "dyrektor ds. zaopatrzenia"
     - "dyrektor zaopatrzenia"
+    - "szef zakupów"
+    - "head of zakupów"
     - "dyrektor ds. supply chain"
     - "dyrektor łańcucha dostaw"
     - "dyrektor operacji zakupowych"
-    - "dyrektor kategorii"
-    - "dyrektor ds. kategorii"
 
-    # EN
+    # EN — spec roles
+    - "CPO"                            # Chief Procurement Officer — Tier 2 (nie Tier 1!)
+    - "Chief Procurement Officer"
     - "procurement director"
     - "director of procurement"
     - "head of procurement"
@@ -84,19 +77,16 @@ tier_2_titles:
     - "director of purchasing"
     - "sourcing director"
     - "head of sourcing"
-    - "supply chain director"
-    - "head of supply chain"
-    - "category director"
-    - "head of category"
-    - "strategic procurement manager"  # jeśli zarządza zespołem
-    - "procurement manager"            # conditional: jeśli zarządza
-    - "purchasing manager"             # conditional: jeśli zarządza
-    - "supply chain manager"           # conditional: jeśli zarządza
-    - "global procurement manager"
-    - "regional procurement manager"
+    - "head of procurement and logistics"
+    - "head of strategic procurement"
+    - "director of procurement division"
+    - "head of procurement department"
+    - "head of group procurement"
     - "VP Procurement"
     - "VP Purchasing"
     - "VP Sourcing"
+    - "global procurement manager"      # managerowie zarządzający globalnie
+    - "regional procurement manager"
 
 tier_3_titles:
   label: "Tier 3 — Buyers / Operational / Category Managers"
@@ -143,17 +133,18 @@ tier_keyword_hints:
     - "CEO"
     - "CFO"
     - "COO"
-    - "CPO"                     # Chief
+    # CPO → Tier 2 (Chief Procurement Officer) — celowo pominięty w Tier 1 keywords
     - "zarząd"
     - "board"
-    - "managing"
-    - "general manager"
-    - "country manager"
+    - "managing director"
     - "founder"
     - "owner"
     - "president"
+    - "chairman"
 
   tier_2_keywords:
+    # Uwaga: keyword hints dla Tier 2 są weryfikowane dwuskładnikowo w contact_finder.py
+    # (must have: head/director/chief/dyrektor + procurement/purchasing/zakup/sourcing)
     - "dyrektor zakupów"
     - "dyrektor zaopatrzenia"
     - "head of procurement"
@@ -161,8 +152,8 @@ tier_keyword_hints:
     - "procurement director"
     - "purchasing director"
     - "sourcing director"
-    - "supply chain director"
-    - "category director"
+    - "chief procurement"
+    - "CPO"
 
   tier_3_keywords:
     - "kupiec"

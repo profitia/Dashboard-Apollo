@@ -188,7 +188,7 @@ def fetch_article(
         title_el = soup.select_one(title_sel)
         art.title = title_el.get_text(strip=True) if title_el else ""
 
-        # Fallback: if extracted title matches the generic <title> tag (site name), try og:title
+        # Fallback 1: if extracted title matches the generic <title> tag (site name), try og:title
         _page_title_tag = soup.find("title")
         _page_title_text = _page_title_tag.get_text(strip=True) if _page_title_tag else ""
         if art.title and _page_title_text and art.title in _page_title_text:
@@ -199,10 +199,24 @@ def fetch_article(
                 if og_title and og_title != art.title:
                     art.title = og_title
 
+        # Fallback 2: title empty (e.g. logo in h1) — try og:title, then <title> tag
+        if not art.title:
+            og_title_el = soup.find("meta", property="og:title")
+            if og_title_el and og_title_el.get("content"):
+                art.title = og_title_el["content"].split(" - ")[0].split(" | ")[0].strip()
+        if not art.title and _page_title_text:
+            art.title = _page_title_text.split(" - ")[0].split(" | ")[0].strip()
+
         # Lead
         lead_sel = selectors.get("lead", ".lead, .excerpt")
         lead_el = soup.select_one(lead_sel)
         art.lead = lead_el.get_text(strip=True) if lead_el else ""
+
+        # Fallback: use og:description when lead is empty
+        if not art.lead:
+            og_desc = soup.find("meta", property="og:description")
+            if og_desc and og_desc.get("content"):
+                art.lead = og_desc["content"].strip()
 
         # Body
         body_sel = selectors.get("body", "article")

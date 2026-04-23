@@ -1,22 +1,50 @@
 {
-  "generated_at": "2026-04-22T17:20:00.094176+00:00",
+  "generated_at": "2026-04-23T17:10:02.183748+00:00",
   "campaign_id": "spendguru_market_news",
-  "run_mode": "report",
-  "dry_run": false,
+  "run_mode": "single-article",
+  "dry_run": true,
   "summary": {
-    "total_processed": 0,
-    "success": 0,
+    "total_processed": 1,
+    "success": 1,
     "requires_attention": 0,
     "rejected_skipped": 0,
     "company_contact_blocked": 0,
     "requires_review": 0
   },
-  "status_breakdown": [],
+  "status_breakdown": [
+    {
+      "status": "READY_FOR_REVIEW",
+      "count": 1,
+      "pct": 100.0,
+      "description": "Flow kompletny — sekwencja gotowa do review i uruchomienia w Apollo",
+      "emoji": "🟢"
+    }
+  ],
   "detail_lists": {
-    "READY_FOR_REVIEW": [],
-    "BLOCKED_COMPANY_AMBIGUOUS": [],
     "PENDING_MANUAL_REVIEW": [],
+    "READY_FOR_REVIEW": [
+      {
+        "url": "https://www.portalspozywczy.pl/mleko/wiadomosci/polska-marka-jest-juz-na-6-kontynentach-prezes-mlekpolu-na-eec-2026,287684.html",
+        "status": "READY_FOR_REVIEW",
+        "company": "Mlekpol",
+        "sequence_name": "NEWS-2026-04-17-mlekpol-polska-marka-jest-juz-na-6-kontynentach-",
+        "sequence_id": null,
+        "contacts_added_to_list": 0,
+        "reveal_attempted": false,
+        "reveal_count": 0,
+        "email_available": true,
+        "dry_run": true,
+        "final_stage": "apollo_write",
+        "final_reason": "Flow complete — contact added to list, email available, sequence ready for review"
+      }
+    ],
+    "BLOCKED_COMPANY_AMBIGUOUS": [],
     "BLOCKED_NO_EMAIL": []
   },
-  "top_reasons": []
+  "top_reasons": [
+    {
+      "reason": "Flow complete — contact added to list, email available, sequence ready for review",
+      "count": 1
+    }
+  ]
 }

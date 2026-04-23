@@ -135,10 +135,17 @@ SpendGuru jest adresowany do:
 
 Firmy WYKLUCZONE z outreachu: {excluded_str}
 
+ZASADA NAZEWNICTWA (krytyczna):
+W polu "name" podaj KRÓTKĄ NAZWĘ BRANDOWĄ firmy (taką, jak używa jej rynek i media), NIE pełną nazwę prawną.
+- Poprawnie: "Evra Fish" (nie: "Evra Fish Sp. z o.o.")
+- Poprawnie: "ORLEN" lub "PKN ORLEN" (nie: "ORLEN S.A." ani "PKN ORLEN S.A.")
+- Poprawnie: "Grycan" (nie: "Grycan - Lody od pokoleń Sp. z o.o.")
+- Ogólnie: usuń formy prawne (Sp. z o.o., S.A., sp.j., Ltd., GmbH itp.) z nazwy, chyba że są integralną częścią brandu.
+
 Odpowiedz w JSON (nic poza JSON):
 {{
   "primary_company": {{
-    "name": "PEŁNA NAZWA FIRMY",
+    "name": "KRÓTKA NAZWA BRANDOWA FIRMY (bez formy prawnej)",
     "company_type": "producer|retailer|distributor|tech_vendor|other",
     "campaign_eligible": true/false,
     "eligibility_reason": "krótkie uzasadnienie (max 2 zdania)",

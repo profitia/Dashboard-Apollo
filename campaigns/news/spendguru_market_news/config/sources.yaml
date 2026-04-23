@@ -95,6 +95,42 @@ sources:
 #     request_delay_ms: 2000
 #     max_articles_per_scan: 30
 
+  - id: portal_spozywczy
+    label: "Portal Spożywczy"
+    enabled: true
+    base_url: "https://www.portalspozywczy.pl"
+
+    scan_urls:
+      - url: "https://www.portalspozywczy.pl/artykuly/"
+        label: "Artykuły — lista"
+        type: article_index
+
+    article_list_selectors:
+      article_link: "a[href*='/wiadomosci/']"
+      title: "h2, h3"
+      date: "time[datetime], .date"
+
+    article_selectors:
+      title: "h1"                   # fallback do og:title gdy h1 puste (logika artcle_fetcher)
+      lead: ".lead"                 # fallback do og:description gdy .lead puste
+      body: ".article-body"
+      date: "meta[property='article:published_time']"
+      tags: ".tags a, .article-tags a"
+      canonical: "link[rel='canonical']"
+
+    paywall:
+      mode: partial_content
+      paywall_indicators:
+        - ".paywall"
+        - "Zaloguj się by przeczytać"
+
+    scrape_options:
+      user_agent: "Mozilla/5.0 (compatible; Profitia-OutreachBot/1.0)"
+      request_delay_ms: 2000
+      timeout_s: 15
+      follow_redirects: true
+      max_articles_per_scan: 30
+
   - id: tworzywa_online
     label: "Tworzywa Online"
     enabled: true

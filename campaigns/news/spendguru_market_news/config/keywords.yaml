@@ -99,6 +99,18 @@ industry_keywords:
       - producent przekąsek
       - producent konserw
       - producent mrożonek
+      # Lody / wyroby mrożone
+      - producent lodów
+      - lody
+      - lodziarnia
+      - wytwórnia lodów
+      - branża lodowa
+      - lody premium
+      - mrożonki
+      - produkty mrożone
+      - wyroby mleczarskie
+      - nabiał
+      - surowce mleczne
 
   # [SUPPORTING] Manufacturing — generic fallback dla artykułów produkcyjnych
   manufacturing:
@@ -195,6 +207,8 @@ industry_keywords:
       - PVC
       - PS
       - polistyren
+      # PE i PS usunięte — za krótkie, dawały false positive w polskich słowach
+      # (PE w 'operuje', PS w innych — polietylen/polistyren pokrywają to samo)
       - plastik
       - plastiki
       - regranulat
@@ -252,7 +266,7 @@ industry_keywords:
       - producent leków
       - wytwórca leków
       - leki
-      - lek
+      # 'lek' usunięte — false positive w 'mleka', 'mlecznych' itp.
       - środek farmaceutyczny
       - API
       - substancja aktywna
@@ -412,6 +426,12 @@ purchase_signals:
       - dywersyfikacja dostawców
       - zmiana dostawcy
       - kontrakty dostaw
+      # Formy fleksyjne — polskie deklinacje
+      - negocjacje
+      - negocjacji
+      - negocjowanie
+      - zakupy surowców
+      - kontrakt
 
   energy_packaging:
     label: "Energia / Opakowania"

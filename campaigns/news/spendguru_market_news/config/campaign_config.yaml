@@ -89,6 +89,9 @@ min_purchase_signal_score: 15
 min_contacts_to_create_sequence: 1
 require_email_for_sequence: true
 tier_3_required: false        # brak Tier 3 nie blokuje sekwencji
+# max T1+T2 kontaktów przekazywanych do wiadomości (None = brak limitu)
+# select_campaign_contacts używa tego jako opcjonalny hard cap
+max_contacts_for_draft: 10    # obejmuje T1+T2; 10 = praktycznie bez limitu
 
 # ---------------------------------------------------------------------------
 # 4. Company priority rules — jak wybierać główną firmę z artykułu
@@ -172,6 +175,19 @@ mailbox_mode: all_active          # all_active | single
 mailbox_distribution: round_robin
 
 # ---------------------------------------------------------------------------
+# ZMIANA 2: Enrollment do docelowej sekwencji Apollo (VSC Market News)
+# enroll_in_sequence: true  = po zapisaniu custom fields kontakt jest
+#                             automatycznie dodawany do sekwencji target_sequence_name
+# enroll_in_sequence: false = draft-only — enrollment ręczny po zatwierdzeniu (dotychczasowe zachowanie)
+# Uwaga: auto_enroll (powyżej) dotyczy TWORZENIA nowych sekwencji.
+#         enroll_in_sequence dotyczy ISTNIEJĄCEJ sekwencji docelowej.
+# ---------------------------------------------------------------------------
+enroll_in_sequence: false
+target_sequence_name: "VSC Market News"
+# Sekwencja docelowa dla trybu manual (operator-provided contacts)
+target_sequence_name_manual: "VSC Market News - manual"
+
+# ---------------------------------------------------------------------------
 # Tryb draft_review
 # true = generuj uzasadnienia, trigger, hypothesis, CTA rationale
 # ---------------------------------------------------------------------------
@@ -211,6 +227,9 @@ company_resolution_alias_dict: "campaigns/news/spendguru_market_news/data/compan
 use_domain_fallback: true                    # szukaj po domenie jeśli name search = 0 emaili
 use_associated_company_fallback: true        # szukaj firm powiązanych jeśli name+domain = 0 emaili
 max_associated_company_candidates: 2        # max firm powiązanych do sprawdzenia
+use_article_person_fallback: true            # szukaj osoby wzmiankowanej w artykule (np. Prezes Imię Nazwisko)
+max_article_person_candidates: 3             # max liczba osób z artykułu do sprawdzenia
+apollo_person_fallback_per_page: 15          # per_page dla wyszukania osoby wzmiankowanej
 
 # ---------------------------------------------------------------------------
 # State / deduplication

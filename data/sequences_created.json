@@ -1,0 +1,36 @@
+{
+  "NEWS-2026-04-17-mlekpol-polska-marka-jest-juz-na-6-kontynentach-": {
+    "sequence_name": "NEWS-2026-04-17-mlekpol-polska-marka-jest-juz-na-6-kontynentach-",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/mleko/wiadomosci/polska-marka-jest-juz-na-6-kontynentach-prezes-mlekpolu-na-eec-2026,287684.html",
+    "article_title": "Polska marka jest już na 6 kontynentach. Prezes Mlekpolu na EEC 2026",
+    "company_name": "Mlekpol",
+    "company_normalized": "mlekpol",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-23T17:42:31.691710+00:00"
+  },
+  "NEWS-2026-04-17-spoldzielnia-mleczarska-mlekpo-polska-marka-jest-juz-na-6-kontynentach-": {
+    "sequence_name": "NEWS-2026-04-17-spoldzielnia-mleczarska-mlekpo-polska-marka-jest-juz-na-6-kontynentach-",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/mleko/wiadomosci/polska-marka-jest-juz-na-6-kontynentach-prezes-mlekpolu-na-eec-2026,287684.html",
+    "article_title": "Polska marka jest już na 6 kontynentach. Prezes Mlekpolu na EEC 2026",
+    "company_name": "SPÓŁDZIELNIA MLECZARSKA MLEKPOL W GRAJEWIE",
+    "company_normalized": "spółdzielnia mleczarska mlekpol w grajewie",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-23T19:43:18.930740+00:00"
+  }
+}
