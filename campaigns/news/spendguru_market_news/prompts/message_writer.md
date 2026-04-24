@@ -59,6 +59,7 @@ Kluczowe fakty z artykułu (do użycia w wiadomości):
 Zawiera: powód kontaktu + tytuł lub temat artykułu + źródło + odniesienie do firmy/odbiorcy.
 
 DOZWOLONE warianty otwarcia (wybierz jeden — NIE zawsze ten sam, dopasuj do artykułu):
+- "Z zainteresowaniem przeczytałem artykuł „[tytuł]" w [źródło] i od razu pomyślałem o [firmie odbiorcy], bo…" ← PREFEROWANY: zwrot „z zainteresowaniem" buduje wiarygodność nadawcy
 - "Postanowiłem napisać do Pana/Pani po artykule „[tytuł]" w [źródło] - od razu pomyślałem o [firmie odbiorcy], bo…"
 - "Zwrócił moją uwagę artykuł o [krótki opis tematu] w [źródło]. Od razu przyszło mi do głowy, że w [firmie] temat może być aktualny, bo…"
 - "Przeczytałem w [źródło] artykuł o [krótki opis tematu] i pomyślałem, że to dobry powód, żeby napisać - bo…"
@@ -87,13 +88,16 @@ Logiczne i naturalne przejście: jak konkretny fakt z artykułu przekłada się 
 - Jeśli artykuł dotyczy surowców / dostawców / opakowań → bridge prowadzi przez benchmarki i argumentację negocjacyjną.
 - Jeśli artykuł dotyczy ekspansji / nowych rynków / wzrostu → bridge prowadzi przez presję na koszty zakupowe i marżę.
 - Jeśli artykuł dotyczy wyniku / inwestycji → bridge prowadzi przez przewidywalność kosztów i ochronę EBIT.
-- **Język bridge ma być praktyczny i prosty** — nie analityczny. Zamiast: "model rozwoju przekłada się na pytanie o EBIT bez oddawania marży w negocjacjach z dostawcami" → "szybko pojawia się kwestia tego, jak dowieźć nowe pomysły tak, żeby marża nie uciekała na kosztach".
+- **Język bridge ma być praktyczny i prosty** — nie analityczny. Zamiast: "model rozwoju przekłada się na pytanie o EBIT bez oddawania marży w negocjacjach z dostawcami" → "szybko pojawia się kwestia tego, jak dowieźć nowe pomysły tak, żeby nie tracić marży na kosztach współpracy z dostawcami".
+- ZAKAZANE: "żeby marża nie uciekała na kosztach współpracy z dostawcami" → POPRAWNIE: "żeby nie tracić marży na kosztach współpracy z dostawcami".
 - Unikaj schematycznych zdań jak "W dzisiejszym rynku…" — zamiast tego: konkretna mechanika opisana prostym językiem.
 
 **4. Framework Profitii (obowiązkowy):**
 Przedstawienie Tomasza i Profitii — naturalne, osadzone w branży odbiorcy.
 OBOWIĄZKOWY SENS: "Nazywam się Tomasz Uściński i jestem z Profitii — polskiej firmy, która od 15 lat pomaga firmom z branży [branża] ograniczać koszty związane z zakupami."
 Nie zaczynaj od nazwy firmy / produktu. Postaw na kontekst roli odbiorcy.
+Po przedstawieniu Profitii dodaj konkretyzację — PREFEROWANA forma: "Skupiamy się na tym, jak lepiej przygotować w firmach negocjacje i obronić wynik przy rosnących kosztach zakupów surowców."
+ZAKAZANE: "Pracujemy w modelu negotiation-first" — to określenie nic nie mówi odbiorcy. Zamiast niego zawsze użyj konkretnego opisu działania ("Skupiamy się na tym, jak..."). Fraza "obronić wynik przy rosnących kosztach zakupów surowców" jest preferowana jako universalny pain point dla firm produkcyjnych i FMCG.
 
 **5. CTA (obowiązkowe) — patrz sekcja CTA poniżej.**
 

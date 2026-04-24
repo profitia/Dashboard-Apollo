@@ -1,7 +1,7 @@
 # Run Report — spendguru_market_news
 
-**Wygenerowany:** 2026-04-23 17:10:02 UTC  
-**Tryb:** single-article (dry-run)  
+**Wygenerowany:** 2026-04-24 14:58:05 UTC  
+**Tryb:** single-article  
 **Artykułów przetworzonych:** 1
 
 ---
@@ -50,8 +50,8 @@ _Brak w tym runie_
 
 ### 🟢 READY_FOR_REVIEW — gotowe do uruchomienia
 
-- **Mlekpol**
-  - Artykuł: [https://www.portalspozywczy.pl/mleko/wiadomosci/polska-marka-jest-juz-](https://www.portalspozywczy.pl/mleko/wiadomosci/polska-marka-jest-juz-na-6-kontynentach-prezes-mlekpolu-na-eec-2026,287684.html)
+- **Polmlek**
+  - Artykuł: [https://www.portalspozywczy.pl/mleko/wiadomosci/eec-2026-do-ekspansji-](https://www.portalspozywczy.pl/mleko/wiadomosci/eec-2026-do-ekspansji-zagranicznej-trzeba-sie-przygotowac-latwo-popelnic-bledy,287897.html)
   - Etap: `apollo_write` | Powód: Flow complete — contact added to list, email available, sequence ready for review
 
 ### 🔴 BLOCKED_NO_EMAIL — kontakty bez emaila
@@ -73,3 +73,12 @@ _Brak_
 | Powód | Liczba |
 |-------|--------|
 | Flow complete — contact added to list, email available, sequence ready for review | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-17-spoldzielnia-mleczarska-mlekpo-p | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-23-rajpol-pora-na-konkurowanie-mark | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-23-nestl-nestl-polska-na-eec-2026-w | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-22-nestl-prezes-nestl-polska-na-eec | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-22-jnt-group-prezes-jnt-na-eec-2026 | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-18-green-factory-convenience-rosnie | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-16-dozz-wygoda-jakosc-i-103-litry-r | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-16-jawo-jawo-inwestuje-w-nowe-moce- | 1 |
+| Manual mode complete — 1 contacts synced, sequence 'NEWS-2026-04-15-unipro-activlab-na-eec-2026-jak- | 1 |

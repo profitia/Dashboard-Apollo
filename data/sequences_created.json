@@ -32,5 +32,175 @@
     },
     "status": "created",
     "created_at": "2026-04-23T19:43:18.930740+00:00"
+  },
+  "NEWS-2026-04-23-rajpol-pora-na-konkurowanie-marka-prezes-grupy-": {
+    "sequence_name": "NEWS-2026-04-23-rajpol-pora-na-konkurowanie-marka-prezes-grupy-",
+    "sequence_id": null,
+    "article_url": "https://www.sadyogrody.pl/owoce/101/pora_na_konkurowanie_marka_i_innowacjami_prezes_grupy_rajpol_na_eec_2026,52393.html",
+    "article_title": "Pora na konkurowanie marką. Prezes Grupy Rajpol na EEC 2026",
+    "company_name": "Rajpol",
+    "company_normalized": "rajpol",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T05:58:28.143499+00:00"
+  },
+  "NEWS-2026-04-23-nestl-nestl-polska-na-eec-2026-woda-jako-zasob": {
+    "sequence_name": "NEWS-2026-04-23-nestl-nestl-polska-na-eec-2026-woda-jako-zasob",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/napoje/wiadomosci/nestl-polska-na-eec-2026-woda-jako-zasob-strategiczny-wymaga-wspolnego-dzialania,287898.html",
+    "article_title": "Nestlé Polska na EEC 2026: Woda jako zasób strategiczny wymaga wspólnego działania",
+    "company_name": "Nestlé",
+    "company_normalized": "nestlé",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T06:30:11.277295+00:00"
+  },
+  "NEWS-2026-04-22-nestl-prezes-nestl-polska-na-eec-2026-polska-j": {
+    "sequence_name": "NEWS-2026-04-22-nestl-prezes-nestl-polska-na-eec-2026-polska-j",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/slodycze-przekaski/artykuly/prezes-nestl-polska-na-eec-2026-polska-juz-nie-goni-lecz-wyznacza-standardy,287867.html",
+    "article_title": "Prezes Nestlé Polska na EEC 2026: Polska już nie goni, lecz wyznacza standardy",
+    "company_name": "Nestlé",
+    "company_normalized": "nestlé",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T06:34:10.602478+00:00"
+  },
+  "NEWS-2026-04-22-jnt-group-prezes-jnt-na-eec-2026-mamy-3-4-lata-pot": {
+    "sequence_name": "NEWS-2026-04-22-jnt-group-prezes-jnt-na-eec-2026-mamy-3-4-lata-pot",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/alkohole-uzywki/wiadomosci/prezes-jnt-na-eec-2026-mamy-3-4-lata-potem-moze-byc-za-pozno-dla-polskich-firm,287868.html",
+    "article_title": "Prezes JNT na EEC 2026: Mamy 3-4 lata. Potem może być za późno dla polskich firm",
+    "company_name": "JNT Group",
+    "company_normalized": "jnt group",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T06:46:24.849541+00:00"
+  },
+  "NEWS-2026-04-18-green-factory-convenience-rosnie-green-factory-inwestu": {
+    "sequence_name": "NEWS-2026-04-18-green-factory-convenience-rosnie-green-factory-inwestu",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/owoce-warzywa/wiadomosci/convenience-rosnie-green-factory-inwestuje-nowa-produkcja-i-plany-skalowania,287705.html",
+    "article_title": "Convenience rośnie, Green Factory inwestuje. Nowa produkcja i plany skalowania",
+    "company_name": "Green Factory",
+    "company_normalized": "green factory",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T06:56:23.647991+00:00"
+  },
+  "NEWS-2026-04-16-dozz-wygoda-jakosc-i-103-litry-rocznie-na-pol": {
+    "sequence_name": "NEWS-2026-04-16-dozz-wygoda-jakosc-i-103-litry-rocznie-na-pol",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/owoce-warzywa/wiadomosci/wygoda-jakosc-i-103-litry-rocznie-na-polaka-ten-rynek-kusi-biznes,287657.html",
+    "article_title": "Wygoda, jakość i 103 litry rocznie na Polaka. Ten rynek kusi biznes",
+    "company_name": "DOZZ",
+    "company_normalized": "dozz",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T07:07:04.066813+00:00"
+  },
+  "NEWS-2026-04-16-jawo-jawo-inwestuje-w-nowe-moce-i-rosnie-w-ho": {
+    "sequence_name": "NEWS-2026-04-16-jawo-jawo-inwestuje-w-nowe-moce-i-rosnie-w-ho",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/owoce-warzywa/wiadomosci/jawo-inwestuje-w-nowe-moce-i-rosnie-w-horeca-chcemy-stac-na-kilku-nogach-wywiad,287637.html",
+    "article_title": "Jawo inwestuje w nowe moce i rośnie w HoReCa: \"Chcemy stać na kilku nogach\" (wywiad)",
+    "company_name": "Jawo",
+    "company_normalized": "jawo",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T07:23:20.624719+00:00"
+  },
+  "NEWS-2026-04-15-unipro-activlab-na-eec-2026-jak-budowac-silna-m": {
+    "sequence_name": "NEWS-2026-04-15-unipro-activlab-na-eec-2026-jak-budowac-silna-m",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/technologie/wiadomosci/activlab-na-eec-2026-jak-budowac-silna-marke-spozywcza-poza-polska,287580.html",
+    "article_title": "Activlab na EEC 2026: Jak budować silną markę poza Polską?",
+    "company_name": "Unipro",
+    "company_normalized": "unipro",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T07:29:20.854977+00:00"
+  },
+  "NEWS-2026-04-24-osm-piatnica-piatnica-ma-jedna-czwarta-rynku-prezes-o": {
+    "sequence_name": "NEWS-2026-04-24-osm-piatnica-piatnica-ma-jedna-czwarta-rynku-prezes-o",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/mleko/wiadomosci/piatnica-ma-jedna-czwarta-rynku-prezes-o-mleczarskich-wyzwaniach-zmieniajacych-rynek,287941.html",
+    "article_title": "Piątnica ma jedną czwartą rynku. Prezes o wyzwaniach zmieniających mleczarstwo",
+    "company_name": "OSM Piątnica",
+    "company_normalized": "osm piątnica",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T09:22:15.116989+00:00"
+  },
+  "NEWS-2026-04-24-polmlek-eec-2026-do-ekspansji-zagranicznej-trzeb": {
+    "sequence_name": "NEWS-2026-04-24-polmlek-eec-2026-do-ekspansji-zagranicznej-trzeb",
+    "sequence_id": null,
+    "article_url": "https://www.portalspozywczy.pl/mleko/wiadomosci/eec-2026-do-ekspansji-zagranicznej-trzeba-sie-przygotowac-latwo-popelnic-bledy,287897.html",
+    "article_title": "EEC 2026: Do ekspansji zagranicznej trzeba się przygotować. Łatwo popełnić błędy",
+    "company_name": "Polmlek",
+    "company_normalized": "polmlek",
+    "contacts_count": 1,
+    "tier_breakdown": {
+      "tier_1": 1,
+      "tier_2": 0,
+      "tier_3": 0,
+      "other": 0
+    },
+    "status": "created",
+    "created_at": "2026-04-24T14:58:05.419390+00:00"
   }
 }

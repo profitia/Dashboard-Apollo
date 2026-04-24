@@ -37,13 +37,13 @@ FONT_LINK = (
 # ============================================================
 
 SENDER_NAME = "Tomasz Uściński"
-SENDER_TITLE = "Senior Client Partner | Procurement Technology"
+SENDER_TITLE = "Senior Client Partner | Procurement"
 SENDER_PHONE = "+48 787 417 293"
 SENDER_COMPANY = "PROFITIA Management Consultants Mazurowski i Wspólnicy Spółka Jawna"
 SENDER_BRAND = "Profitia"
 SENDER_TAGLINE = (
-    "SpendGuru Data-driven Procurement | Certyfikowany Partner CIPS w Polsce "
-    "| Doradztwo | Szkolenia | Analityka zakupowa"
+    "Negotiation Intelligence w Zakupach | Doradztwo procurement "
+    "| Certyfikowany Partner CIPS w Polsce | Szkolenia | Analityka zakupowa"
 )
 SENDER_ADDRESS = "02-715 Warszawa, Villa Metro, ul. Puławska 145, V p."
 CONFIDENTIALITY_NOTICE = (
@@ -57,7 +57,7 @@ CONFIDENTIALITY_NOTICE = (
 # Plain text signature
 # ============================================================
 
-SIGNATURE_PLAIN = f"""Pozdrawiam serdecznie,
+SIGNATURE_PLAIN = f"""Pozdrawiam,
 
 {SENDER_NAME}
 {SENDER_TITLE}
@@ -80,7 +80,7 @@ FONT_SIGNATURE_CLOSING = (
     "margin: 10px 0 2px 0;"
 )
 
-SIGNATURE_HTML = f"""<p style="{FONT_SIGNATURE_CLOSING}">Pozdrawiam serdecznie,</p>
+SIGNATURE_HTML = f"""<p style="{FONT_SIGNATURE_CLOSING}">Pozdrawiam,</p>
 <table cellpadding="0" cellspacing="0" border="0" style="{FONT_BASE}">
   <tr><td style="padding-bottom:0;"><strong style="{FONT_BASE} font-weight:bold;">{SENDER_NAME}</strong></td></tr>
   <tr><td style="{FONT_BASE}">{SENDER_TITLE}</td></tr>
@@ -114,7 +114,7 @@ FONT_SIGNATURE_STANDALONE_CLOSING = (
 # WAŻNE: Cały HTML w jednej linii — Apollo konwertuje \n na <br /> w merge tagach.
 # BEZ <table> — lekki podpis tekstowy dla lepszej deliverability i naturalnego wyglądu.
 SIGNATURE_STANDALONE_HTML = (
-    f'<p style="{FONT_SIGNATURE_STANDALONE_CLOSING}">Pozdrawiam serdecznie,</p>'
+    f'<p style="{FONT_SIGNATURE_STANDALONE_CLOSING}">Pozdrawiam,</p>'
     f'<p style="{FONT_BASE} margin: 0 0 0 0;">'
     f'<strong>{SENDER_NAME}</strong><br>'
     f'{SENDER_TITLE}<br>'
@@ -260,11 +260,11 @@ def strip_llm_signature(body: str) -> str:
 
 
 def strip_signature(body_with_sig: str) -> str:
-    """Usuwa podpis z body — szuka 'Pozdrawiam serdecznie,' jako markera."""
-    marker = "Pozdrawiam serdecznie,"
-    idx = body_with_sig.find(marker)
-    if idx > 0:
-        return body_with_sig[:idx].rstrip()
+    """Usuwa podpis z body — szuka 'Pozdrawiam,' lub 'Pozdrawiam serdecznie,' jako markera."""
+    for marker in ("Pozdrawiam,", "Pozdrawiam serdecznie,"):
+        idx = body_with_sig.find(marker)
+        if idx > 0:
+            return body_with_sig[:idx].rstrip()
     return body_with_sig
 
 
